@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>Demo 复制文字</title>
+</head>
+<body>
+  <p id="text">我把你当兄弟你竟然想复制我？</p>
+  <button id="btn" type="button">复制</button>
+  <script>
+    (function (doc) {
+      btn.addEventListener('click', evt => {
+        const str = text.textContent;
+        let input = doc.createElement('input');
+        input.style.display = 'none';
+        doc.body.appendChild(input);
+        input.value = str;
+        input.select();
+
+        doc.execCommand('copy');
+
+        alert('复制成功');
+
+        doc.body.removeChild(input);
+      }, !1);
+    })(document);
+  </script>
+</body>
+</html>

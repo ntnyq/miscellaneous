@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>模仿codepen布局</title>
+  <link rel="stylesheet" href="./../css/codepen.css" />
+</head>
+<body>
+  <div class="header">
+    请选择运行结果的位置：
+    <select id="select">
+      <option value="left">left</option>
+      <option value="top">top</option>
+      <option value="right" selected="true">right</option>
+      <option value="bottom">bottom</option>
+    </select>
+  </div>
+  <div class="main" id="main">
+    <aside class="aside" id="aside">
+      <section>#html</section>
+      <section>#css</section>
+      <section>#js</section>
+    </aside>
+    <div class="divider" id="divider"></div>
+    <div class="display" id="display">#display</div>
+  </div>
+  <div class="footer">#footer</div>
+  <script src="./../js/codepen.js"></script>
+</body>
+</html>

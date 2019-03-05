@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>视力大作战</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      border: 3px solid #aaa;
+    }
+    .item {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #fff;
+      cursor: pointer;
+    }
+    .points {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      width: 120px;
+      height: 80px;
+      padding: 10px;
+      border: 5px solid pink;
+      border-radius: 10px;
+      box-shadow: 0 0 2px 3px #ccc;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: #333;
+    }
+    h1 {
+      position: absolute;
+      left: 5%;
+      top: 10%;
+      width: 40px;
+      font-size: 30px;
+      color: indigo;
+      text-align: center;
+    }
+    h1 span {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>视力大作战 <span>by<br />ntnyq</span></h1>
+  <!-- 游戏容器 -->
+  <div class="container" id="container"></div>
+  <div class="points">
+    <p>得分：<span id="point">0</span></p>
+    <p>失误：<span id="error">0</span></p>
+  </div>
+  <script>
+    window.onload = () => {
+
+      const GAME_CONFIG = { // 默认参数
+        num: 2, // 初始化 2 * 2 个小div
+        colorArray: ['#0033FF', '#00FF33', '#33FFFF', '#663300', '#CC3300', '#CC66CC', '#CCFF00', '#FFCC33'],
+        colorIndex: 0, // 颜色索引
+        point: 0, // 得分数量
+        error: 0, // 错误数量
+        offset: 200 // 本来预想的每次颜色的更新值
+      }
+
+
+      const GAME = {
+        createGame () { // 绘制游戏
+
+          container.innerHTML = '' // 清空游戏框
+          let num = Math.pow(GAME_CONFIG.num, 2) // 计算小div个数
+
+          let html = []
+
+          Array.from(new Array(num)).forEach(() => { // 创建对应个数的小div 并设置背景色
+            html.push(`<div class="item" style="background-color:${GAME_CONFIG.colorArray[GAME_CONFIG.colorIndex]}"></div>`)
+          })
+          container.innerHTML = html.join('') // 将小div加入dom
+
+          let aim = document.querySelectorAll('.item')[Math.floor(Math.random() * num)] // 随机目标div 并设置颜色
+          aim.classList.add('aim')
+          let newColor = ('000000' + (parseInt(GAME_CONFIG.colorArray[GAME_CONFIG.colorIndex].substr(1), 16) + GAME_CONFIG.offset).toString(16)).slice(-6)
+          aim.style.backgroundColor = '#' + newColor
+
+          container.style.width = GAME_CONFIG.num * 30 + 10 + 'px' // 设置容器尺寸
+          container.style.height = GAME_CONFIG.num * 30 + 10 + 'px'
+        },
+        updateGame () { // 更新游戏
+          if (GAME_CONFIG.num <= 18) { // 结束条件
+            GAME_CONFIG.num++ // 关卡
+            GAME_CONFIG.colorIndex++ // 颜色索引
+            GAME_CONFIG.colorIndex %= 8 // 边界控制
+            GAME_CONFIG.offset -= 10 // 颜色差
+            this.createGame() // 重绘游戏
+          } else {
+            alert(`游戏结束，您的得分为${GAME_CONFIG.point}, 失误次数为${GAME_CONFIG.error}`)
+          }
+        },
+        updateGrade () { // 更新得分与失误
+          point.textContent = GAME_CONFIG.point
+          error.textContent = GAME_CONFIG.error
+        }
+      }
+
+      GAME.createGame() // 初始化游戏
+
+      container.addEventListener('click', (e) => { // 鼠标点击反馈
+        if (e.target && e.target.classList.toString().indexOf('aim') !== -1) {
+          GAME_CONFIG.point++
+          GAME.updateGame()
+        } else {
+          GAME_CONFIG.error++
+        }
+        GAME.updateGrade()
+      }, false)
+    }
+  </script>
+</body>
+</html>

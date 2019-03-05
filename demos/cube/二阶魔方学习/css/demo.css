@@ -1,0 +1,174 @@
+/*
+* @Author: Emmet
+* @Date:   2016-11-21 23:49:03
+* @Last Modified by:   M S I
+* @Last Modified time: 2017-09-01
+*/
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+}
+body{
+  background-color: #000;
+}
+div{
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  width: 100px;
+  height: 100px;
+  margin: 150px 200px;
+  -webkit-transform: rotateX(-45deg) rotateY(30deg);
+          transform: rotateX(-45deg) rotateY(30deg);
+  -webkit-transform-origin: 105px 105px 55px;
+          transform-origin: 105px 105px 55px;
+}
+ul{
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  list-style: none;
+  background-color: none;
+}
+li{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: #0ff;
+  /*opacity: .5;*/
+  /*border: 1px solid #999;*/
+  text-align: center;
+  line-height: 100px;
+  font-size: 30px;
+  color: #0ff;
+}
+li span{
+  position: absolute;
+}
+li span:nth-child(1){
+  top: -20px;
+  left: 45px;
+}
+li span:nth-child(2){
+  top: 0;
+  left: 20px;
+}
+li span:nth-child(3){
+  left: 60px;
+}
+li span:nth-child(4){
+  top: 20px;
+  left: 45px;
+}
+li:nth-child(1){
+  -webkit-transform: translateZ(50px) rotate(0);
+          transform: translateZ(50px) rotate(0);
+}
+li:nth-child(2){
+  -webkit-transform: translateZ(-50px) rotate(180deg);
+          transform: translateZ(-50px) rotate(180deg);
+}
+li:nth-child(3){
+  -webkit-transform: translateX(-50px) rotateY(90deg);
+          transform: translateX(-50px) rotateY(90deg);
+}
+li:nth-child(4){
+  -webkit-transform: translateX(50px) rotateY(-90deg);
+          transform: translateX(50px) rotateY(-90deg);
+}
+li:nth-child(5){
+  -webkit-transform: translateY(-50px) rotateX(90deg);
+          transform: translateY(-50px) rotateX(90deg);
+}
+li:nth-child(6){
+  -webkit-transform: translateY(50px) rotateX(-90deg);
+          transform: translateY(50px) rotateX(-90deg);
+}
+
+ul:nth-child(1){}
+ul:nth-child(2){
+  -webkit-transform: translateX(110px);
+          transform: translateX(110px);
+}
+ul:nth-child(3){
+  -webkit-transform: translateZ(110px);
+          transform: translateZ(110px);
+}
+ul:nth-child(4){
+  -webkit-transform: translateX(110px) translateZ(110px);
+          transform: translateX(110px) translateZ(110px);
+}
+ul:nth-child(5){
+  -webkit-transform: translateY(110px);
+          transform: translateY(110px);
+}
+ul:nth-child(6){
+  -webkit-transform: translateX(110px) translateY(110px);
+          transform: translateX(110px) translateY(110px);
+}
+ul:nth-child(7){
+  -webkit-transform: translateZ(110px) translateY(110px);
+          transform: translateZ(110px) translateY(110px);
+}
+ul:nth-child(8){
+  -webkit-transform: translateX(110px) translateZ(110px) translateY(110px);
+          transform: translateX(110px) translateZ(110px) translateY(110px);
+}
+
+/*top*/
+ul:nth-child(1) li:nth-child(5),
+ul:nth-child(2) li:nth-child(5),
+ul:nth-child(3) li:nth-child(5),
+ul:nth-child(4) li:nth-child(5){
+  background: blue;
+}
+/*bottom*/
+ul:nth-child(5) li:nth-child(6),
+ul:nth-child(6) li:nth-child(6),
+ul:nth-child(7) li:nth-child(6),
+ul:nth-child(8) li:nth-child(6){
+  background: yellow;
+}
+/*front*/
+ul:nth-child(3) li:nth-child(1),
+ul:nth-child(4) li:nth-child(1),
+ul:nth-child(7) li:nth-child(1),
+ul:nth-child(8) li:nth-child(1){
+  background: red;
+}
+
+/*back*/
+ul:nth-child(1) li:nth-child(2),
+ul:nth-child(2) li:nth-child(2),
+ul:nth-child(5) li:nth-child(2),
+ul:nth-child(6) li:nth-child(2){
+  background: green;
+}
+
+/*left*/
+ul:nth-child(1) li:nth-child(3),
+ul:nth-child(3) li:nth-child(3),
+ul:nth-child(5) li:nth-child(3),
+ul:nth-child(7) li:nth-child(3){
+  background: white;
+}
+
+/*right*/
+ul:nth-child(2) li:nth-child(4),
+ul:nth-child(4) li:nth-child(4),
+ul:nth-child(6) li:nth-child(4),
+ul:nth-child(8) li:nth-child(4){
+  background: purple;
+}
+

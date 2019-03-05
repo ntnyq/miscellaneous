@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>flex-direction</title>
+  <link rel="stylesheet" href="./src/css/flex-direction.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>flex-direction</h2>
+    <!-- radios -->
+    <div class="radios" id="radios">
+      <input type="radio" name="same" value="row" checked />row
+      <input type="radio" name="same" value="row-reverse" />row-reverse
+      <input type="radio" name="same" value="column" />column
+      <input type="radio" name="same" value="column-reverse" />column-reverse
+    </div>
+    <!-- btn -->
+    <div>
+      <button id="add_btn">add</button>
+      <button id="remove_btn">remove</button>
+    </div>
+    <!-- main -->
+    <div class="box" id="box">
+      <div class="item">
+        <p>1</p>
+      </div>
+      <div class="item">
+        <p>2</p>
+      </div>
+      <div class="item">
+        <p>3</p>
+      </div>
+    </div>
+  </div>
+  <script src="./src/js/flex-direction.js"></script>
+</body>
+</html>

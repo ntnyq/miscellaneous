@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <meta content="telephone=no, email=no" name="format-detection" />
+  <title>Prism代码高亮工具DEMO</title>
+  <link rel="stylesheet" href="./src/css/prism.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    pre[class*="language-"].line-numbers {
+      padding-left: 1em;
+    }
+    .container {
+      padding: 15px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    @media screen and (min-width: 991px) {
+      .container {
+        width: 800px;
+      }
+    }
+    @media screen and (min-width: 1260px) {
+      .container {
+        width: 1200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <pre class="line-numbers language-css">
+      <code>
+        #name {
+          width: 200px;
+          height: 300px;
+        }
+      </code>
+    </pre>
+    <pre>
+      <code class="line-numbers language-js">
+        var name = 'ntnyq';
+        const foo = 'bar';
+      </code>
+    </pre>
+    <pre>
+      <code class="line-numbers language-bash">
+        # 初始化git
+        $ git init
+        $ git add .
+        $ git commit -m ":tada: Initialize project"
+      </code>
+    </pre>
+  </div>
+  <script src="./src/js/prism.js"></script>
+</body>
+</html>

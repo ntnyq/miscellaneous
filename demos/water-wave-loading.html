@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demmo</title>
+  <style>
+    .wave{
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      z-index: 1;
+      width: 150px;
+      height: 150px;
+      line-height: 150px;
+      border: 5px solid #000;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: rgba(255,255,255,.6);
+    }
+    #turn{
+      position: absolute;
+      top: 100%;
+      left: -100%;
+      width: 350px;
+      height: 350px;
+      background-color: rgba(40,150,200,.7);
+      border-radius: 40%;
+      animation: turn 5s linear infinite;
+    }
+    #tips{
+      position: absolute;
+      width: 150px;
+      font-size: 30px;
+      color: #000;
+      text-align: center;
+    }
+    @keyframes turn{
+      from{
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      }
+      to{
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wave">
+    <div id="turn"></div>
+    <div id="tips">1%</div>
+  </div>
+  <script>
+    var oTurn = document.getElementById('turn');
+    var oTips = document.getElementById('tips');
+    var iNum = 100;
+    var timer = null;
+    timer = setInterval(turn, 1);
+    // alert(oTurn.style.top);
+    /**
+    * [turn 改变水波纹中的文字和让波纹动起来]
+    * @return {[type]} [description]
+    */
+    function turn () {
+        // alert(oTurn.style.top);
+        oTurn.style.top = iNum + '%';
+        iNum -= 0.05;
+        // console.log(iNum);
+        var text = (100 - parseInt(iNum)) + '%';
+        // console.log(text);
+        oTips.innerHTML = text;
+        if (iNum <= 0) {
+          clearInterval(timer);
+        }
+    }
+  </script>
+</body>
+</html>

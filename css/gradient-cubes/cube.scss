@@ -1,0 +1,132 @@
+body{
+  width:100%;
+  height:100vh;
+  background:radial-gradient(circle at center, #222, #000);
+  overflow:hidden;
+  .wrap{
+    position:absolute;
+    width:800px;
+    height:800px;
+    left:calc(50% - 400px);
+    top:calc(50% - 400px);
+    transform:translateY(10px) translateX(10px);
+    &:nth-of-type(2){
+      transform:scaleX(-1) translateY(10px) translateX(10px);
+    }
+    &:nth-of-type(3){
+      transform:scaleY(-1) translateY(10px) translateX(10px);
+    }
+    &:nth-of-type(4){
+      transform:scaleX(-1) scaleY(-1) translateY(10px) translateX(10px);
+    }
+    .row{
+      width:100%;
+      height:40px;
+      float:left;
+      display:inline-block;
+
+      @for $a from 1 through 10{
+        &:nth-of-type(#{$a}){
+          .square{
+
+            @for $b from 1 through 10{
+              &:nth-of-type(#{$b}){
+                animation-delay:#{$b * $a / -40}s !important;
+              }
+            }
+          }
+        }
+      }
+
+      @for $a from 11 through 20{
+        &:nth-of-type(#{$a}){
+          .square{
+
+            @for $b from 1 through 10{
+              &:nth-of-type(#{$b}){
+                animation-delay:#{$b * $a / -40}s !important;
+              }
+            }
+          }
+        }
+      }
+
+      @for $a from 1 through 10{
+        &:nth-of-type(#{$a}){
+          .square{
+
+            @for $b from 11 through 20{
+              &:nth-of-type(#{$b}){
+                animation-delay:#{$b * $a / -40}s !important;
+              }
+            }
+          }
+        }
+      }
+
+      @for $a from 11 through 20{
+        &:nth-of-type(#{$a}){
+          .square{
+
+            @for $b from 11 through 20{
+              &:nth-of-type(#{$b}){
+                animation-delay:#{$b * $a / -40}s !important;
+              }
+            }
+          }
+        }
+      }
+
+      @for $a from 1 through 40{
+        &:nth-of-type(#{$a}){
+          .square{
+
+            @for $b from 1 through 40{
+              &:nth-of-type(#{$b}){
+
+                &:before{
+                  box-shadow:0 0 20px 1px adjust-hue(yellow, $a * $b * 5), 0 0 40px 0px adjust-hue(yellow, $a * $b * 5);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .square{
+        display:inline-block;
+        float:left;
+        width:40px;
+        height:40px;
+        animation:rotate 4s ease-in-out infinite;
+        position:relative;
+        transform-style:preserve-3d;
+        backface-visiblity:hidden;
+        will-change: transform;
+        pointer-events:none;
+        &:before{
+          content:'';
+          position:absolute;
+          width:20px;
+          height:20px;
+          left:50%;
+          top:50%;
+          transform-style:preserve-3d;
+          backface-visibility:hidden;
+          pointer-events:none;
+        }
+        @keyframes rotate{
+          0%{
+            transform:rotate(0deg);
+          }
+          50%{
+            transform:rotate(0deg);
+          }
+          100%{
+            transform:rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    #window{
+      position: relative;
+      top: 100px;
+      left: 100px;
+      width: 400px;
+      height: 200px;
+      background-color: #333;
+      cursor: pointer;
+      overflow: hidden;
+      text-align: center;
+    }
+    #window span{
+      position: absolute;
+      top: -40px;
+      left: 165px;
+      z-index: 10;
+      font-size: 20px;
+      color: #fc6e00;
+      font-family: "微软雅黑";
+      -webkit-transition: top .2s ease;
+      -o-transition: top .2s ease;
+      transition: top .2s ease;
+    }
+    #window div{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 500px;
+      height: 500px;
+      background-color: #7cd439;
+      border-radius: 50%;
+      margin: -250px 0 0 -250px;
+      -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+      -o-transform: scale(0);
+      transform: scale(0);
+    }
+    #window::before{
+      position: absolute;
+      left: -50px;
+      top: calc(50% - 20px);
+      content: "";
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-color: #0e8a7c;
+      border-radius: 50%;
+      -webkit-transition: left .2s ease;
+      -o-transition: left .2s ease;
+      transition: left .2s ease;
+    }
+    #window::after{
+      position: absolute;
+      right: -40px;
+      top: calc(50% - 15px);
+      z-index: 10;
+      content: "";
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: #1470fa;
+      border-radius: 50%;
+      box-shadow: 0px 0px 3px #333, 0px 0px 5px #333 inset;
+      -webkit-transition: right .2s ease;
+      -o-transition: right .2s ease;
+      transition: right .2s ease;
+    }
+    #window:hover::after{
+      right: calc(50% - 15px);
+      -webkit-transition: right .2s ease;
+      -o-transition: right .2s ease;
+      transition: right .2s ease;
+    }
+    #window:hover::before{
+      left: calc(50% - 20px);
+      -webkit-transition: left .2s ease;
+      -o-transition: left .2s ease;
+      transition: left .2s ease;
+    }
+    #window:hover span{
+      top: 40px;
+      -webkit-transition: top .2s ease;
+      -o-transition: top .2s ease;
+      transition: top .2s ease;
+    }
+    #window:hover div{
+      transform:scale(1);
+      -webkit-transition: transform 0.5s ease 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div id="window">
+    <span>Emmet</span>
+    <div></div>
+  </div>
+</body>
+</html>

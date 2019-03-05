@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>自定义鼠标样式</title>
+  <style>
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      height: 100%;
+      background-color: rgba(0, 0, 0, .4);
+      cursor: url(data:image/png;base64,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), auto;
+    }
+  </style>
+  <script>
+    (function () { // IE10+
+
+      let pageTitle = '';
+
+      document.addEventListener('visibilitychange', () => {
+
+        if (document.visibilityState === 'hidden') {
+
+          pageTitle = document.title;
+          document.title = '亲爱的不要离开我啊';
+        } else {
+          console.log(pageTitle)
+          document.title = pageTitle;
+        }
+      }, false);
+
+      // 禁止右键
+      document.oncontextmenu = function () {
+
+        return false;
+      };
+
+    })();
+  </script>
+</head>
+<body>
+
+</body>
+</html>

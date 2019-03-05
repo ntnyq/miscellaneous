@@ -1,0 +1,10 @@
+<script>
+const p = new Promise((resolve, reject) => {
+  reject()
+})
+
+// catch 与then 都可以返回Promise对象方法
+p.catch(() => {
+  return Promise.resolve('I love you')
+}).then(alert)
+</script>

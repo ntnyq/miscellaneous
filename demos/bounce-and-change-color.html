@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>ballrun</title>
+  <style>
+    html, body, div{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .box{
+      position: relative;
+      width: 80%;
+      height: 500px;
+      border: 5px solid #999;
+      margin: 50px auto;
+      background-color: #efefef;
+    }
+    .ball{
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="box" class="box">
+    <div id="ball" class="ball"></div>
+  </div>
+  <script>
+    var oBox = document.querySelector('#box'),
+        oBall = document.querySelector('#ball');
+
+    oBall.timer = setInterval(ballrun, 20);
+
+    var speedX = 8,
+        speedY = 10;
+
+    var colors = ['#c52c03', '#62bf3a', '#6aadde', '#d10400', '#9b99ca', '#91b813'];
+
+    var idx = 0;
+
+    var rangeX = oBox.clientWidth - oBall.offsetWidth,
+        rangeY = oBox.clientHeight - oBall.offsetHeight;
+
+
+    function ballrun () {
+
+      var iTargetX = 0,
+          iTargetY = 0;
+
+      iTargetX = speedX > 0 ? rangeX : 0;
+      iTargetY = speedY > 0 ? rangeY : 0;
+
+      if (Math.abs(iTargetX - oBall.offsetLeft) <= Math.abs(speedX)) {
+        oBall.style.left = iTargetX + 'px';
+        speedX *= -1;
+        idx ++;
+      }else {
+        oBall.style.left = oBall.offsetLeft + speedX + 'px';
+      }
+
+      if (Math.abs(iTargetY - oBall.offsetTop) <= Math.abs(speedY)) {
+        oBall.style.top = iTargetY + 'px';
+        speedY *= -1;
+        idx ++;
+      }else {
+        oBall.style.top = oBall.offsetTop + speedY + 'px';
+      }
+
+      oBall.style.backgroundColor = colors[idx];
+      idx %= 6;
+    }
+
+  </script>
+</body>
+</html>

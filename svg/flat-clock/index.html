@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>SVG钟表</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1e2730;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    }
+    svg {
+      display: block;
+      width: 90vmin;
+    }
+    circle {
+      fill: none;
+      stroke-width: 4;
+    }
+    #secondsPath,
+    #minutesPath,
+    #hoursPath {
+      stroke-width: 2;
+      pointer-events: none;
+      stroke-linecap: round;
+      transform: translate(0, .5px);
+    }
+    text {
+      dominant-baseline: central;
+      text-anchor: middle;
+      font-size: 5px;
+      fill: Linen;
+    }
+    #hub {
+      fill: #24303a;
+      stroke-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 50 50">
+    <g>
+      <circle id="secondsCircle" r="14" stroke="#24303a"></circle>
+      <path id="secondsPath" d="" fill="tranparent" stroke="#1ed5f6"></path>
+      <circle id="minutesCircle" r="10" stroke="#24303a"></circle>
+      <path id="minutesPath" d="" fill="tranparent" stroke="#f61ed5"></path>
+      <circle id="hoursCircle" r="6" stroke="#24303a"></circle>
+      <path id="hoursPath" d="" fill="tranparent" stroke="#d5f61e"></path>
+
+      <circle id="hub" cx="0" cy="0" r="3.5" fill="#24303a"></circle>
+    </g>
+    <text id="text" transform="translate(25 44)">00:00:00</text>
+  </svg>
+  <script>
+
+    addEventListener('load', () => {
+
+      const RAD = Math.PI / 180,
+            SVG = document.querySelector('svg'),
+            g = document.querySelector('g')
+
+      let rAF = null,
+          isStop = false;
+
+      const fixNumber = (num) => ('0' + num).slice(-2)
+
+      const setText = (h, m, s) => {
+        text.textContent = `${fixNumber(h)}:${fixNumber(m)}:${fixNumber(s)}`
+      }
+
+      const animClock = () => {
+
+        sTrack.updateStrokeLength()
+        mTrack.updateStrokeLength()
+        hTrack.updateStrokeLength()
+        rAF = requestAnimationFrame(animClock)
+      }
+
+      const getNow = () => {
+
+        let _now = new Date()
+        return {
+          h: _now.getHours(),
+          m: _now.getMinutes(),
+          s: _now.getSeconds()
+        }
+      }
+
+      let circles = {
+
+        s: {
+          path: secondsPath,
+          divisions: 60,
+          r: secondsCircle.getAttribute('r'),
+          stroke: '#1ed5f6',
+          start: getNow().s
+        },
+        m: {
+          path: minutesPath,
+          divisions: 60,
+          r: minutesCircle.getAttribute('r'),
+          stroke: '#f61ed5',
+          start: getNow().m
+        },
+        h: {
+          path: hoursPath,
+          divisions: 24,
+          r: hoursCircle.getAttribute('r'),
+          stroke: '#d5f61e',
+          start: getNow().h
+        }
+      }
+
+      let translation = { x: 25, y: 25 },
+          rotation = -90,
+          rotRad = -(rotation * RAD)
+
+      g.setAttributeNS(null, 'transform', `translate(${translation.x} ${translation.y}) rotate(${rotation})`)
+
+      let spring = 0.09, // 跳
+          friction = 0.8 // 摩擦
+
+      class ClockCircle {
+
+        constructor (o) {
+
+          this.path = o.path
+          this.divisions = o.divisions
+          this.start = o.start
+          this.r = o.r
+          this.strokeDashoffset = 0
+          this.definePath(this.path)
+          this.vel = 0
+        }
+
+        update (time) {
+
+          this.strokeLength = this.target // 要画的弧线长度
+          this.target = time * this.pathLength / this.divisions // 要画的长度
+
+          if (this.pathLength - this.strokeLength <= this.delta) {
+
+            this.strokeDashoffset += this.pathLength
+            this.strokeLength = 0.1
+          }
+        }
+
+        updateStrokeLength () {
+
+          this.dist = this.target - this.strokeLength
+          this.acc = this.dist * spring
+          this.vel += this.acc
+          this.vel *= friction
+          this.strokeLength += this.vel
+          this.path.style.strokeDasharray = `${this.strokeLength},${this.pathLength - this.strokeLength}`
+          this.path.style.strokeDashoffset = this.strokeDashoffset
+        }
+
+        definePath () {
+
+          let d = `M${this.r},0 A${this.r},${this.r} 0 1,1${this.r}, -1z`
+          this.path.setAttributeNS(null, 'd', d)
+
+          this.pathLength = this.path.getTotalLength() // 周长
+          this.delta = this.pathLength / this.divisions // 每单位变化值
+          this.strokeLength = this.start * this.delta // 已经变化值
+          this.target = this.strokeLength // 目标值 也为已经变化值
+          console.log(`${this.strokeLength0}, ${this.pathLength - this.strokeLength}`)
+          this.path.style.strokeDasharray = `${this.strokeLength}, ${this.pathLength - this.strokeLength}`
+          this.path.style.strokeDashoffset = this.strokeDashoffset
+        }
+      }
+
+      const updateTime = () => { // 每秒变化1次
+
+        let {h, m, s} = getNow()
+
+        setText(h, m, s)
+
+        sTrack.update(s)
+        mTrack.update(m)
+        hTrack.update(h)
+      }
+
+      let sTrack = new ClockCircle(circles.s),
+          mTrack = new ClockCircle(circles.m),
+          hTrack = new ClockCircle(circles.h)
+
+      let {h, m, s} = getNow()
+
+      setText(h, m, s)
+      animClock()
+      setInterval(updateTime, 1000)
+    }, false)
+  </script>
+</body>
+</html>

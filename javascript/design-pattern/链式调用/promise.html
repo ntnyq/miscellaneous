@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+</head>
+<body>
+  <script>
+    // var account = 1000;
+    // var p = new Promise(function (resolve, reject) {
+    //   if (account >= 500) {
+    //     resolve(500);
+    //   }else {
+    //     rejetc(new error('No money'));
+    //   }
+    // });
+
+    // p.then(function (value) {
+    //   alert(value + ', god boy!');
+    // }, function (error) {
+    //   alert('bye bye!');
+    // });
+    //
+    //
+/*    var p = new Promise(function (resolve, reject) {
+      resolve(500);
+    });*/
+    // 简写
+    // var p = Promise.resolve(500); // 注意简写这里没有new
+    // var p = Promise.reject(new Error('no money '));
+
+/*    p.then(function (value) {
+      alert(value + ', good boy!');
+    }, function (error) {
+      alert('Bye bye');
+    });
+*/
+// 决议可以是异步的 promise模式主要是解决异步问题 因为决议的时机可能是异步的
+/*    var p = new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        reject(new Error('no money'));
+      }, 3000);
+    });
+
+    p.then(function (value) {
+      alert(value + ', good boy!');
+    }, function (error) {
+      alert('Keep in touch...');
+    });*/
+
+    var account = 1000;
+
+    var p = new Promise(function (resolve, reject) {
+      if (account >= 500) {
+        setTimeout(function () {
+          resolve(500);
+        }, 3000);
+      }else {
+        reject(new Error('no money'));
+      }
+    });
+
+    p.then(function (value) {
+      alert(value + ', good boy');
+    });
+
+    p.then(function (value) {
+      alert('go getting food');
+    });
+  </script>
+</body>
+</html>

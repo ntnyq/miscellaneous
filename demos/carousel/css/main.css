@@ -1,0 +1,90 @@
+/*
+* @Author: Emmet
+* @Date:   2017-01-02 14:06:24
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-01-02 18:27:28
+*/
+/*CSS reset start*/
+body, div, span, ul, li, img{
+  margin: 0;
+  padding: 0;
+}
+li{ list-style: none; }
+/*CSS reset end*/
+
+/*style start*/
+#wrap{
+  width: 600px;
+  height: 500px;
+  border: 1px solid #333;
+  margin: 50px auto 0;
+  padding: 20 50px;
+}
+#pics{
+  position: relative;
+  width: 600px;
+  height: 500px;
+  overflow: hidden;
+}
+#pics>img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 500px;
+  display: none;
+}
+#pics>img.active{
+  display: block;
+}
+.btn{
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 5px;
+  color: #fff;
+  margin-top: -30px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+}
+#prev{ left: 10px; }
+#next{ right: 10px; }
+#controls{
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  margin-left: -100px;
+  display: none;
+}
+#controls li{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 24px;
+  color: #fff;
+  font-family: arial;
+  line-height: 30px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  background-color: #0ecbd6;
+  opacity: .5;
+  filter: alpha(opacity=60);
+  cursor: pointer;
+  /*display: none;*/
+}
+#controls li.active{
+  background-color: #d72806;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}

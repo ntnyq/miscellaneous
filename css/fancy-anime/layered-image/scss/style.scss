@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  width: 360px;
+  height: 640px;
+  background-color: rgba(0, 0, 0, .1);
+  transform: rotate(-30deg) skew(25deg) scale(.8);
+  transition: .5s;
+  cursor: pointer;
+
+  img {
+    position: absolute;
+    width: 100%;
+    transition: .5s;
+  }
+
+
+  &:hover {
+
+    @for $i from 1 through 5 {
+
+      img:nth-of-type(#{$i}) {
+
+        transform: translate(200px - (40px * $i), -200px + (40px * $i));
+        opacity: 1 - (0.2 * ($i - 1));
+      }
+    }
+  }
+}

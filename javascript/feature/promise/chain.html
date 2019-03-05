@@ -1,0 +1,20 @@
+<script>
+function sleep (delay) {
+  return new Promise((resolve => {
+    setTimeout(resolve, delay)
+  }))
+}
+
+sleep(1000)
+  .then(() => {
+    console.log('console one')
+    return sleep(1000)
+  })
+  .then(() => {
+    console.log('console two')
+    return sleep(1000)
+  })
+  .then(() => {
+    console.log('console three')
+  })
+</script>

@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+*{padding:0;margin:0;}
+mark{background:none;}
+h1,h4{color:#555;}
+.right{float:right;}
+.ok{color:green;}
+.warm{color:red;}
+.log{width:700px;padding:30px;margin:15px auto;border:2px solid rgb(119,119,119);color:rgb(85,85,85);border-radius:10px;box-shadow:1px 1px 8px #666;}
+.log h1{border-bottom:1px dashed rgb(204,204,204);padding:20px;position:relative;}
+.data{position:absolute;right:5px;bottom:5px;font:16px "Comic Sans MS",cursive;}
+.log h4{padding:10px;}
+.log ul{margin:30px 0 0 30px;}
+.log li{height:25px;line-height:25px;}

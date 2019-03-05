@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>Document</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      justify-content: center;
+      -ms-align-items: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      border: 2px solid #666;
+      text-align: center;
+      font-size: 36px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="box"></div>
+  <script>
+    window.onload = () => {
+      let ofW = box.offsetWidth,
+          ofH = box.offsetHeight,
+          arr = ['left', 'top', 'top', 'right', 'right', 'bottom', 'bottom', 'left'];
+      box.addEventListener('mouseover', function (e) {
+        let rect = this.getBoundingClientRect(),
+            x = e.clientX,
+            y = e.clientY;
+        box.textContent = arr[Math.floor(((Math.atan2(y - rect.top - ofH / 2, x - rect.left - ofW / 2) * 180 / Math.PI) + 180) / 45)];
+      }, false);
+    };
+  </script>
+</body>
+</html>

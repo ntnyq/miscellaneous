@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  font-size: 24px;
+  color: #fff;
+}
+div {
+  background-color: #1d1f20;
+}
+select {
+  width: 80px;
+}
+.header {
+  height: 60px;
+  border-bottom: 5px solid #555;
+}
+.footer {
+  height: 60px;
+  border-top: 5px solid #555;
+}
+.main {
+  display: flex;
+  flex: 1;
+}
+.aside {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.aside section {
+  flex: 1;
+  padding: 20px;
+  border: 3px solid #555;
+}
+.divider {
+  flex: 0 0 10px;
+  background-color: #555;
+}
+.display {
+  flex: 3;
+  padding: 20px;
+  border-right-width: 0;
+}

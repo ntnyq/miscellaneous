@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>跟随鼠标移动的箭头</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    canvas{
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <canvas>Sorry, but your browser doesn't support the canvas tag!</canvas>
+  <script>
+    var canvas = document.querySelector('canvas'),
+        cc = canvas.getContext('2d');
+    cw = canvas.width = 500;
+    ch = canvas.height = 500;
+
+    var Arrow = function () {
+      this.x = 0;
+      this.y = 0;
+      this.color = '#f90';
+      this.rotation = 0;
+    };
+
+    Arrow.prototype.draw = function(cc){
+      cc.save();
+      cc.translate(this.x, this.y);
+      cc.rotate(this.rotation);
+      cc.fillStyle = this.color;
+      cc.beginPath();
+      cc.moveTo(0, 15);
+      cc.lineTo(-50, 15);
+      cc.lineTo(-50, -15);
+      cc.lineTo(0, -15);
+      cc.lineTo(0, -35);
+      cc.lineTo(50, -0);
+      cc.lineTo(0, 35);
+      cc.closePath();
+      cc.fill();
+      cc.restore();
+    };
+
+    var arr = new Arrow();
+    arr.x = cw / 2;
+    arr.y = ch / 2;
+
+    var c_x, c_y; // 相对于canvas坐标的位置
+    var isMouseDown = false;
+    arr.draw(cc);
+
+    canvas.addEventListener('mousedown', function (e) {
+      isMouseDown = true;
+    }, false);
+
+    canvas.addEventListener('mousemove', function (e) {
+      if (isMouseDown === true) {
+        c_x = getPos(e).x - canvas.offsetLeft;
+        c_y = getPos(e).y - canvas.offsetTop;
+        requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
+        requestAnimationFrame(drawFrame);
+      }
+    }, false);
+
+    canvas.addEventListener('mouseup', function (e) {
+      isMouseDown = false;
+    }, false);
+
+    function drawFrame () {
+      var dx = c_x - arr.x;
+      var dy = c_y - arr.y;
+
+      arr.rotation = Math.atan2(dy, dx);
+
+      cc.clearRect(0, 0, cw, ch);
+      arr.draw(cc);
+    }
+
+    function getPos (e) {
+
+      var point = {
+        x: 0,
+        y: 0
+      };
+
+      var e = e || window.event;
+
+      if (e.pageX || e.pageY) {
+        point.x = e.pageX;
+        point.y = e.pageY;
+      } else {
+        point.x = e.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+        point.y = e.clientY + (document.body.scrollTop || document.documentElement.scrollTop);
+      }
+
+      return point;
+    }
+  </script>
+</body>
+</html>

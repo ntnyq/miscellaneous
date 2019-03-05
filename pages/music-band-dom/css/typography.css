@@ -1,0 +1,54 @@
+/*
+* @Author: Emmet
+* @Date:   2016-12-02 12:42:14
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-12-02 16:37:04
+*/
+body{
+  font-size: 76%;
+  font-family: "Helvetica","Arial",sans-serif;
+}
+body *{font-size: 1em;}
+a{
+  font-weight: bold;
+  text-decoration: none;
+}
+header nav{
+  font-family: "Lucida Grande","Helvetica","Arial",sans-serif;
+}
+header nav a{
+  text-decoration: none;
+  font-weight: bold;
+}
+article{line-height: 1.8em;}
+article p{margin: 1em 0;}
+h1{
+  font-family: "Lucida Grande","Times New Roman",sans-serif;
+  font-size: 2.4em;
+  font-weight: normal;
+}
+h2{
+  font-family: "Lucida Grande","Times New Roman",sans-serif;
+  font-size: 1.8em;
+  font-weight: normal;
+  margin-top: 1em;
+}
+h3{
+  font-family: "Lucida Grande","Times New Roman",sans-serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  margin-top: 1em;
+}
+#imagegallery li{
+  list-style-type: none;
+}
+textarea{
+  font-family: "Helvetica","Arial",sans-serif;
+}
+
+dt{
+  margin-right: 1em;
+}
+dd{
+  margin-right: 3em;
+}

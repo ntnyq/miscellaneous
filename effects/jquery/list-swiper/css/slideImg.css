@@ -1,0 +1,137 @@
+/*
+* @Author: Emmet
+* @Date:   2016-12-17 12:59:27
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-12-17 14:25:01
+*/
+
+/*CSS nomalize start*/
+*{
+  margin: 0;
+  padding: 0;
+}
+h2, span, em, a, div{
+  font-family: "微软雅黑", arial, sans-serif;
+  font-size: 12px;
+}
+h2, h4{ font-weight: normal; }
+ul{ list-style: none; }
+a{ text-decoration: none; }
+a:hover{ text-decoration: underline; }
+em{ font-style: normal; }
+img{ border: 0; }
+/*end*/
+
+.vShow{
+  width: 800px;
+  height: 260px;
+  margin: 100px auto;
+  border: 1px solid #333;
+}
+.vCaption{
+  width: 800px;
+  height: 50px;
+  margin: 0 auto;
+  background-color: #aaa;
+}
+.vCaption h2{
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 24px;
+}
+.vCaption .highLightTip{
+  float: left;
+  margin-left: 10px;
+  height: 50px;
+  line-height: 50px;
+}
+.vCaption .highLightTip span{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  text-indent: 9999px;
+  vertical-align: middle;
+  cursor: pointer;
+  overflow: hidden;
+}
+.vCaption .highLightTip .cur{
+  background-color: #0cc;
+}
+.vCaption a{
+  color: #000;
+}
+.vCaption .changeBtn{
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 10px;
+}
+.vCaption .changeBtn span{
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  background-color: #fff;
+  text-indent: 9999px;
+  vertical-align: middle;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.vCaption .changeBtn .prev{ background: url(../img/btn.png) no-repeat -2px; }
+.vCaption .changeBtn .next{ background: url(../img/btn.png) no-repeat -29px 0; }
+.vCaption em{
+  float: right;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  margin-right: 10px;
+}
+.vContent{
+  position: relative;
+  height: 250px;
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+.vContent a{
+  color: #000;
+}
+.vContent .vContentList{
+  /*position: absolute;*/
+  width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.vContent .vContentList ul{
+  position: absolute;
+  width: 3000px;
+  height: 212px;
+}
+.vContent .vContentList li{
+  float: left;
+  padding: 10px;
+}
+.vContent .vContentList li img{
+  width: 180px;
+}
+.vContent .vContentList li h4 a{
+  font-size: 16px;
+  color: #306;
+  line-height: 20px;
+}
+.vContent .vContentList li span{
+  font-size: 14px;
+  line-height: 18px;
+}
+.vContent .vContentList li em{
+  font-size: 14px;
+  font-style: italic;
+  color: #5e5e5e;
+}
+
+
+

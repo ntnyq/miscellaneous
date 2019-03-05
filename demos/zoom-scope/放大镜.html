@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+  <style>
+    body, div, span, img{
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+      position: relative;
+      width: 1055px;
+      height: 600px;
+      margin: 20px auto 0;
+    }
+    #smallBox{
+      position: relative;
+      width: 245px;
+    }
+    #smallBox img{
+      width: 245px;
+      height: 200px;
+    }
+    #smallBox .small-slider{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: goldenrod;
+      opacity: .6;
+      filter: alpha(opacity=60);
+      display: none;
+    }
+    #showBox{
+      position: absolute;
+      top: 0;
+      left: 255px;
+      width: 800px;
+      height: 600px;
+      display: none;
+      overflow: hidden;
+    }
+    #showBox img{
+      width: 1600px;
+      position: absolute;
+    }
+    #text{
+      width: 233px;
+      height: 80px;
+      border: 1px solid #333;
+      padding: 5px;
+      border-radius: 10px;
+      margin-top: 20px;
+      background-color: #f4b53f;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 80px;
+      font-family: Arial;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="box" class="box">
+    <div id="smallBox" class="small-box">
+      <img src="img/small.jpg" alt="小图" />
+      <span class="small-slider"></span>
+    </div>
+    <div id="showBox" class="show-Box">
+      <img src="img/big.jpg" alt="大图" />
+    </div>
+    <div id="text">鼠标移动产生放大镜</div>
+  </div>
+  <script>
+    window.onload = function () {
+      var oBox = document.getElementById('box'),
+          oSmall = document.getElementById('smallBox'),
+          oBig = document.getElementById('showBox'),
+          oShowBigImg = oBig.children[0],
+          oSlider = oSmall.children[1],   // 放大镜 用DOM的子节点
+          iSliderLeft = oSmall.offsetParent.offsetLeft,  // 获取到的值是相对页面的间距
+          iSliderTop = oSmall.offsetParent.offsetTop;
+          // console.log(iSliderLeft, iSliderTop);
+
+      // 给小盒子添加鼠标移入事件
+      oSmall.onmouseover = function () {
+        // 显示放大镜 和右边的部分大图片
+        oSlider.style.display = 'block';
+        oBig.style.display = 'block';
+        // 放大镜运动的范围  和右边图片运动的范围
+        var maxLeftX = oSmall.offsetWidth - oSlider.offsetWidth,
+            maxTopY = oSmall.offsetHeight - oSlider.offsetHeight,
+            // console.log(maxLeftX, maxTopY);
+            showImgMaxLeft = oShowBigImg.offsetWidth - oBig.offsetWidth,
+            showImgMaxTop = oShowBigImg.offsetHeight - oBig.offsetHeight,
+            // X和y方向的运动比例
+            xRatio = maxLeftX / showImgMaxLeft,
+            yRatio = maxTopY / showImgMaxTop;
+            console.log(xRatio, yRatio);
+            oSlider.onmousemove = function (ev) {
+              var e = ev || window.event;
+              // 通过leftX 与 maxLeftX 比较确定边界 必定为正数
+              var leftX = e.pageX - iSliderLeft - oSlider.offsetWidth / 2,
+                  topY = e.pageY - iSliderTop - oSlider.offsetHeight / 2;
+              if (leftX < 0) {
+                leftX = 0;
+              }else if (leftX > maxLeftX) {
+                leftX = maxLeftX;
+              }
+              if (topY < 0) {
+                topY = 0;
+              }else if (topY > maxTopY) {
+                topY = maxTopY;
+              }
+              oSlider.style.left = leftX + 'px';
+              oSlider.style.top = topY + 'px';
+              oShowBigImg.style.left = -leftX / xRatio + 'px';
+              oShowBigImg.style.top = -topY / yRatio + 'px';
+
+              return false;
+            };
+            oSmall.onmouseout = function () {
+              oSlider.style.display = 'none';
+              oBig.style.display = 'none';
+            };
+            return false;
+      };
+    };
+  </script>
+</body>
+</html>

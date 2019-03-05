@@ -1,0 +1,11 @@
+
+<button id="btn" type="button">我只能执行一次</button>
+<script>
+const p = new Promise(resolve => {
+  btn.addEventListener('click', () => {
+    resolve('我被点击了')
+  }, false)
+})
+
+p.then(alert)
+</script>

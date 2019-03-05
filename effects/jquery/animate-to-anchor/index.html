@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>锚点平滑滚动</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      padding: 20px;
+      background-color: #f2f2f2;
+      font-size: 16px;
+      line-height: 2;
+      color: #333;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .navbar {
+      font-size: 1.4em;
+    }
+    .content {
+      padding: 1em;
+      background-color: #fff;
+      font-size: 1.4em;
+    }
+    .paragraph {
+      width: 60%;
+      padding: 1em;
+      margin: 1em auto;
+      border: 1px solid #ccc;
+      border-radius: .3em;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="navbar">
+      <a href="#p1">Paragraph 1</a>
+      <br />
+      <a href="#p2">Paragraph 2</a>
+      <br />
+      <a href="#p3">Paragraph 3</a>
+      <br />
+      <a href="#p4">Paragraph 4</a>
+    </div>
+    <div class="content">
+      <div id="p1" class="paragraph">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+      </div>
+      <div id="p2" class="paragraph">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+      </div>
+      <div id="p3" class="paragraph">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+      </div>
+      <div id="p4" class="paragraph">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nesciunt iure vero, natus error commodi voluptas eos sed libero reprehenderit sunt aspernatur quaerat dolor quibusdam veniam necessitatibus. Veniam, id, sequi.</p>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+      $(function() {
+        $('a[href*="#"]:not([href="#"])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html, body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+  </script>
+</body>
+</html>

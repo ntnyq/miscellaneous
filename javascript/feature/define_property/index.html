@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Object.defineProperty实现数据和视图的联动</h2>
+    <span id="nickName"></span>
+    <div id="introduce"></div>
+  </div>
+  <script>
+    class Event {
+      constructor() {
+        this.subs = [];
+      }
+
+      addSubscriber(k, callback) {
+        if (!this.subs[k]) {
+          this.subs[k] = [];
+        }
+        this.subs[k].push(callback);
+      }
+
+      publish(k, item) {
+        const fns = this.subs[k];
+
+        if (fns) { // 防止发布不存在的对象
+          for (var i = 0; i < fns.length; i++) {
+            fns[i](item);
+          }
+        }
+      }
+    }
+
+    const reader = item => {
+      console.log(item);
+      console.log('我是收听的');
+    };
+
+    var event = new Event();
+
+    event.addSubscriber('a', reader);
+    event.addSubscriber('b', reader);
+
+    event.publish('a', 'publish发表信息');
+    event.publish('b', 'publish发表信息');
+
+    /*    // 观察者对象
+        var observer = {
+
+          addSubscriber: function (callback) { // 添加订阅者
+            if (typeof callback === 'function') {
+
+              this.subscribers[this.subscribers.length] = callback;
+            }
+          },
+
+          removeSubscriber: function (callback) { // 移除订阅者
+            for (var i = 0, len = this.subscribers.length; i < len; i++) {
+              if (this.subscribers[i] === callback) {
+                delete this.subscribers[i];
+              }
+            }
+          },
+
+          publish: function (what) {
+
+            for (var i = 0, len = this.subscribers.length; i < len; i++) {
+              if (typeof this.subscribers[i] === 'function') {
+                this.subscribers[i](what);
+              }
+            }
+          },
+
+          make: function (o) {
+
+            for (var i in this) {
+              if (this.hasOwnProperty(i)) {
+                o[i] = this[i];
+                o.subscribers = []; // 订阅者
+              }
+            }
+          }
+        };
+
+        var blogger = {
+          writeBlogPost: function () {
+
+            var content = 'blogger';
+            this.publish(content);
+          }
+        };
+
+        var jack = {
+          read: function (what) {
+            console.log('jack订阅：' + what);
+          }
+        };
+
+        observer.make(blogger);
+
+        blogger.addSubscriber(jack.read);
+
+        blogger.writeBlogPost();
+
+        // 最后： 别的函数也可以成为发布者，
+        //           blogger也可以添加任意的函数为订阅者
+        //           jack也可以订阅别的发布者*/
+
+    // Function.prototype.fn = function (fn) {
+    //   var self = this;
+    //   return function () {
+    //     self.apply(this, arguments);
+    //     fn.apply(this, arguments);
+    //   };
+    // };
+
+    // function foo () {
+    //   console.log('我是函数foo');
+    // }
+
+    // var copyFoo = foo.fn(function () {
+    //   console.log('我是a函数的额外功能');
+    // });
+
+    // copyFoo();
+
+    // var methods = ['push', 'pop', 'shift', 'unshift', 'splice', 'slice', 'sort', 'reverse'];
+
+    // var Method = {};
+
+    // for (var i = 0, len = methods.length; i < len; i++) {
+    //   var method = methods[i];
+
+    //   (function (method) {
+
+    //     var original = Array.prototype[method];
+
+    //     Method[method] = function () {
+    //       console.log('监听数组的变化或者操作函数等');
+    //       return original.apply(this, arguments);
+    //     };
+
+    //   })(method);
+    // }
+
+    // var list = ['a', 'b', 'c'];
+
+    // list.__proto__ = Method;
+
+    // list.push('d');
+
+
+    /*    var userInfo = {};
+
+        Object.defineProperty(userInfo, 'nickName', {
+          get: function () {
+            return document.querySelector('#nickName').innerHTML;
+          },
+          set: function (nick) {
+            document.querySelector('#nickName').innerHTML = nick;
+          }
+        });
+
+        Object.defineProperty(userInfo, 'introduce', {
+          get: function () {
+            return document.querySelector('#introduce').innerHTML;
+          },
+          set: function (intro) {
+            document.querySelector('#introduce').innerHTML = intro;
+          }
+        });
+
+        userInfo.nickName = '那天你远去';
+        userInfo.introduce = '你好世界，我是前端菜鸟。';
+    */
+    // let a = {};
+
+    // Object.defineProperty(a, 'b', {
+
+    //   set (newValue) {
+    //     console.log(`设置了新值：${newValue}`);
+    //   },
+
+    //   get () {
+    //     console.log('取值');
+    //     return 2;
+    //   }
+    // });
+
+    // a.b = 'liusen';
+
+    // console.log(a.b)
+
+    /*    // 判断是否为对象
+        const isObj = obj => {
+          var type = Object.prototype.toString.call(obj);
+          return type === '[object Object]';
+        };
+
+        // 执行函数
+        const objFun = obj => isObj(obj) && new Observer(obj);
+
+        const def = (obj, k, val) => {
+
+          Object.defineProperty(obj, k, {
+            configurable: true,
+            enumerable: true,
+            get () {
+              console.log('get取值');
+              return val;
+            },
+            set (newVal) {
+              if (val !== newVal) {
+                val = newVal;
+                console.log(`set设置值为${newVal}`);
+              }
+            }
+          });
+        };
+
+        // 构造函数
+        class Observer {
+
+          constructor (obj) {
+            this.data = obj;
+            this.walk(obj);
+          }
+
+          walk (obj) {
+            for (var k in obj) {
+              def(obj, k, obj[k]);
+            }
+          }
+        }
+
+        var obj = {
+          name: 'liusen',
+          age: 25
+        };
+
+        objFun(obj);
+
+        console.log(obj.name)
+        obj.name = 'baoxiaowan';
+
+        console.log(obj.name)
+        console.log(obj.age)*/
+  </script>
+</body>
+
+</html>

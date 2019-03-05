@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>粒子吸附效果</title>
+  <style>
+    html,
+    body,
+    canvas {
+      margin: 0;
+      padding: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    canvas {
+      cursor: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    window.onload = () => {
+
+      const PI = Math.PI, // constant PI
+            cc = canvas.getContext('2d'),
+            PART_NUM = 2000 // partical number
+
+      let mousedown = false,
+          centerX,
+          centerY,
+          X, // mouse coord x
+          Y, // mouse coord y
+          p = [] // partical array
+
+      /**
+       * Partical 构造函数
+       * @param {Number} x     x coord
+       * @param {Number} y     y coord
+       * @param {Number} vx    x speed
+       * @param {Number} vy    y speed
+       * @param {Number} r     radius
+       * @param {Number} red   color r
+       * @param {Number} green color g
+       * @param {Number} blue  color b
+       * @param {Number} alpha color a
+       * @param {string} col color
+       */
+      const Partical = function (x, y, vx, vy, r, red, green, blue, alpha, col) {
+        this.x = x
+        this.y = y
+        this.vx = vx
+        this.vy = vy
+        this.r = r
+        this.red = red
+        this.green = green
+        this.blue = blue
+        this.alpha = alpha
+        this.col = col
+      }
+
+      window.onmousemove = (e) => {
+        X = e.clientX
+        Y = e.clientY
+      }
+
+      window.onmousedown = () => {
+        mousedown = true
+      }
+
+      window.onmouseup = () => {
+        mousedown = false
+      }
+
+      let mouseover = false
+      window.onmouseover = () => {
+        mouseover = true
+      }
+
+      window.onmouseout = (e) => {
+        mouseover = false
+      }
+
+      /**
+       * random number in range
+       * @param  {number} min min value
+       * @param  {number} max max value
+       * @return {number}     a random number
+       */
+      const random = (min, max) => {
+        return Math.random() * (max - min) + min
+      }
+
+      /**
+       * distance to [0, 0]
+       * @param  {number} dx x coord
+       * @param  {number} dy y coord
+       * @return {number}    distance
+       */
+      const distance = (dx, dy) => {
+        return Math.sqrt(dx * dx + dy * dy)
+      }
+
+      /**
+       * set canvas element size
+       */
+      const size = () => {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+        centerX = canvas.width / 2
+        centerY = canvas.height / 2
+      }
+
+      size()
+
+      X = centerX
+      Y = centerY
+
+      /**
+       * create 2000 particals
+       */
+      const init = () => {
+
+        let x,
+            y,
+            vx,
+            vy,
+            r,
+            red,
+            green,
+            blue,
+            alpha,
+            col
+
+        for (var i = 0; i < PART_NUM; i++) {
+
+            x = random(0, canvas.width)
+            y = random(0, canvas.height)
+            vx = random(-5, 5)
+            vy = random(-5, 5)
+            r = random(1, 10)
+            red = Math.round(random(150, 200))
+            green = Math.round(random(100, 255))
+            blue = Math.round(random(180, 255))
+            alpha = 1
+            col = `rgba(${red}, ${green}, ${blue}, ${alpha})`
+
+            p.push(new Partical(x, y, vx, vy, r, red, green, blue, alpha, col))
+        }
+      }
+
+      /**
+       * draw background
+       */
+      const drawBg = () => {
+        cc.fillStyle = 'rgba(25, 25, 30, 1)'
+        cc.fillRect(0, 0, canvas.width, canvas.height)
+      }
+
+      /**
+       * attract the cursor
+       * @param  {object} p partical obj
+       */
+      const attract = (p) => {
+
+        let dx = (p.x - X),
+            dy = (p.y - Y),
+            dist = Math.sqrt(dx * dx + dy * dy),
+            angle = Math.atan2(dy, dx) // arc deg
+
+        if (dist > 50 && dist < 500) {
+          if (!mousedown) {
+            p.vx -= (200 / (p.r * dist)) * Math.cos(angle)
+            p.vy -= (200 / (p.r * dist)) * Math.sin(angle)
+          } else if (mousedown) {
+            p.vx += (300 / (p.r * dist)) * Math.cos(angle)
+            p.vy += (300 / (p.r * dist)) * Math.sin(angle)
+          }
+        }
+      }
+
+      /**
+       * partical bounce back
+       * @param  {[type]} b [description]
+       */
+      const bounce = (b) => {
+
+        if (b.x < b.r) {
+          b.x = b.y;
+          b.vx *= -3;
+        }
+
+        if (b.x > canvas.width - b.r) {
+          b.x = canvas.width - b.r;
+          b.vx *= -3;
+        }
+
+
+        if (b.y - b.r < 0) {
+          b.y = b.r;
+          b.vy *= -3;
+        }
+
+        if (b.y > canvas.height - b.r) {
+          b.y = canvas.height - b.r;
+          b.vy *= -3;
+        }
+      }
+
+      /**
+       * draw particals
+       */
+      const draw = () => {
+
+        var P;
+
+        for (let i = 0, len = p.length; i < len; i++) {
+          P = p[i]
+
+          if (mouseover) {
+            attract(P)
+          }
+
+          bounce(P)
+
+          P.x += P.vx
+          P.y += P.vy
+
+          P.vx *= .975
+          P.vy *= .975
+
+          cc.fillStyle = P.col
+          cc.fillRect(P.x, P.y, P.r, P.r)
+        }
+
+        cc.strokeStyle = (!mousedown) ? 'rgba(0, 0, 0, 1)' : 'rgba(255, 0, 0, 1)'
+
+        cc.beginPath()
+        cc.moveTo(X, Y - 10)
+        cc.lineTo(X, Y + 10)
+        cc.moveTo(X - 10, Y)
+        cc.lineTo(X + 10, Y)
+        cc.stroke()
+      }
+
+      /**
+       * main loop
+       */
+      const loop = () => {
+        drawBg()
+        draw()
+        window.requestAnimationFrame(loop)
+      }
+
+      /**
+       * watch window resize
+       */
+      window.onresize = size
+
+      init()
+      loop()
+    }
+  </script>
+</body>
+</html>

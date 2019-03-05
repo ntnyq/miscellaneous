@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<ntnyq13@gmail.com>" />
+  <title>手风琴效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      padding-top: 100px;
+    }
+    ul {
+      width: 1200px;
+      height: 250px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    li {
+      position: relative;
+      float: left;
+      width: 200px;
+      height: 260px;
+      list-style: none;
+      -webkit-transition: width .5s ease-out;
+      -o-transition: width .5s ease-out;
+      transition: width .5s ease-out;
+      cursor: pointer;
+    }
+    .mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .3);
+      overflow: hidden;
+    }
+    .mask:hover {
+      background: none;
+    }
+    .text {
+      position: relative;
+      display: block;
+      width: 30px;
+      margin: 0 auto;
+      padding: 30px 0 0 0;
+      font: 30px/30px Arial;
+      color: #fff;
+      -webkit-transition: all .3s .5s ease-out;
+      -o-transition: all .3s .5s ease-out;
+      transition: all .3s .5s ease-out;
+    }
+    li:hover {
+      width: 400px;
+    }
+    li:hover .text {
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    ul:hover li:not(:hover) {
+      width: 160px;
+    }
+    .pic {
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .pic1 {
+      background-image: url(./src/img/pic1.jpg);
+    }
+    .pic2 {
+      background-image: url(./src/img/pic2.jpg);
+    }
+    .pic3 {
+      background-image: url(./src/img/pic3.jpg);
+    }
+    .pic4 {
+      background-image: url(./src/img/pic4.jpg);
+    }
+    .pic5 {
+      background-image: url(./src/img/pic5.jpg);
+    }
+    .pic6 {
+      background-image: url(./src/img/pic6.jpg);
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>
+      <div class="mask">
+        <span class="text">园林酒店</span>
+      </div>
+      <div class="pic pic1"></div>
+    </li>
+    <li>
+      <div class="mask">
+        <span class="text">情侣酒店</span>
+      </div>
+      <div class="pic pic2"></div>
+    </li>
+    <li>
+      <div class="mask">
+        <span class="text">设计师酒店</span>
+      </div>
+      <div class="pic pic3"></div>
+    </li>
+    <li>
+      <div class="mask">
+        <span class="text">青年旅社</span>
+      </div>
+      <div class="pic pic4"></div>
+    </li>
+    <li>
+      <div class="mask">
+        <span class="text">特色客栈</span>
+      </div>
+      <div class="pic pic5"></div>
+    </li>
+    <li>
+      <div class="mask">
+        <span class="text">海岛酒店</span>
+      </div>
+      <div class="pic pic6"></div>
+    </li>
+  </ul>
+</body>
+</html>

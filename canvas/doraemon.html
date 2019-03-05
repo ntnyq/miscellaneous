@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas哆啦A梦</title>
+	<style type="text/css">
+		* {
+		  margin: 0;
+      padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas">Your browser doesn't support the canvas!</canvas>
+  <script>
+      var canvas = document.querySelector('#myCanvas');
+      canvas.width = 500;
+      canvas.height = 600;
+      var cc =  canvas.getContext('2d');
+      // 蓝色填充的头
+      cc.beginPath();
+      cc.fillStyle = 'blue';
+      cc.arc(200, 175, 135, 45 * Math.PI / 180, 135 * Math.PI / 180, true);
+      cc.closePath();
+      cc.fill();
+      cc.stroke();
+      // 头里面的白色
+      cc.beginPath();
+      cc.fillStyle = 'white';
+      cc.arc(200, 200, 110, 40 * Math.PI / 180, 140 * Math.PI / 180, true);
+      cc.fill();
+      cc.stroke();
+
+      cc.beginPath();
+      cc.lineWidth = 2;
+      cc.fillStyle = 'white';
+      cc.moveTo(200, 100);
+      cc.bezierCurveTo(210, 40, 140, 40, 150, 100);
+      cc.lineTo(150, 100);
+      cc.bezierCurveTo(160, 130, 190, 130, 200, 100);
+      cc.closePath();
+      cc.fill();
+      cc.stroke();
+      // 左眼睛
+      cc.beginPath();
+      cc.moveTo(165, 80);
+      cc.quadraticCurveTo(187, 75, 195, 95);
+      cc.stroke();
+      cc.beginPath();
+      cc.moveTo(160, 100);
+      cc.quadraticCurveTo(175, 85, 195, 95);
+      cc.stroke();
+
+
+      cc.beginPath();
+      cc.fillStyle = 'white';
+      cc.moveTo(200, 100);
+      cc.bezierCurveTo(190, 40, 260, 40, 250, 100);
+      cc.lineTo(250, 100);
+      cc.bezierCurveTo(240, 130, 210, 130, 200, 100);
+      cc.closePath();
+      cc.fill();
+      cc.stroke();
+      // 右
+      cc.beginPath();
+      cc.save();
+      cc.scale(1, 2);
+      cc.translate(0, -50);
+      cc.arc(214, 95, 10, 0, 2 * Math.PI);
+      cc.fillStyle = 'black';
+      cc.fill();
+      cc.closePath();
+      cc.restore();
+      cc.stroke()
+      cc.beginPath();
+      cc.fillStyle = 'white';
+      cc.arc(211,95,7,0,2*Math.PI);
+      cc.fill();
+      cc.stroke();
+
+
+      // 鼻子
+      cc.beginPath();
+      cc.fillStyle = 'red';
+      cc.lineWidth = 2;
+      cc.arc(200, 150, 20, 0, 2 * Math.PI);
+      cc.fill();
+      cc.stroke();
+
+      cc.beginPath();
+      cc.moveTo(200, 170);
+      cc.quadraticCurveTo(205, 190, 200, 240);
+      cc.stroke();
+
+      // 嘴
+      cc.beginPath();
+      cc.moveTo(120, 205);
+      cc.bezierCurveTo(160, 250, 240, 250, 280, 205);
+      cc.stroke();
+
+      // 脖子
+      cc.beginPath();
+      cc.strokeStyle = 'red';
+      cc.lineWidth = 10;
+      cc.lineCap = 'round';
+      cc.moveTo(100, 270);
+      cc.lineTo(300, 270);
+      cc.stroke();
+
+      // 胳膊
+      cc.beginPath();
+      cc.strokeStyle = 'black';
+      cc.lineWidth=2;
+      cc.moveTo(110, 275);
+      cc.fillStyle = 'blue';
+      cc.quadraticCurveTo(50, 300, 98, 380);
+
+
+      cc.lineTo(105, 330);
+      cc.quadraticCurveTo(90, 400, 105, 450);
+
+      cc.lineTo(105, 450);
+      cc.quadraticCurveTo(150, 480, 200, 450);
+
+      cc.lineTo(200, 450);
+      cc.quadraticCurveTo(255, 480, 295, 450);
+
+      cc.lineTo(295, 450);
+      cc.quadraticCurveTo(310, 400, 295, 330);
+
+      cc.lineTo(302, 380);
+      cc.quadraticCurveTo(350, 300, 290,275);
+      cc.fillStyle = 'blue';
+      cc.closePath();
+      cc.fill();
+      cc.stroke();
+
+      // 肚子
+      cc.beginPath();
+      cc.strokeStyle = 'black';
+      cc.fillStyle ='white';
+      cc.lineWidth = 2;
+      cc.moveTo(140, 275);
+      cc.bezierCurveTo(50, 440, 350, 440, 260, 275);
+      cc.fill();
+      cc.stroke();
+      // 肚兜
+      cc.beginPath();
+      cc.arc(200, 330, 50, 0, Math.PI, false);
+      cc.closePath();
+      cc.stroke();
+      //铃铛
+      cc.beginPath();
+      cc.fillStyle ='gold';
+      cc.strokeStyle ='black';
+      cc.lineWidth = 2;
+      cc.arc(200,295,20,0,2*Math.PI);
+      cc.fill();
+      cc.stroke();
+      cc.beginPath();
+      cc.lineWidth = 2;
+      cc.rect(181,288,38,5);
+      cc.stroke();
+      cc.beginPath();
+      cc.arc(200,300,7,0,2*Math.PI);
+      cc.stroke();
+      //  鞋
+      cc.beginPath();
+      cc.moveTo(105, 450);
+      cc.bezierCurveTo(40, 490, 150, 500, 195, 480);
+      cc.stroke();
+
+      cc.beginPath();
+      cc.moveTo(295, 450);
+      cc.bezierCurveTo(350, 490, 255, 500, 195, 480);
+      cc.stroke();
+      //  脚缝
+      cc.beginPath();
+      cc.moveTo(200, 450);
+      cc.quadraticCurveTo(200, 465, 195, 480);
+      cc.stroke();
+      // 腿缝
+      cc.beginPath();
+      cc.moveTo(200, 410);
+      cc.quadraticCurveTo(205, 430, 200, 450);
+      cc.stroke();
+      // 胡子
+      cc.beginPath();
+      cc.moveTo(90,140);
+      cc.lineTo(160,160);
+      cc.stroke();
+
+      cc.beginPath();
+      cc.moveTo(80,170);
+      cc.lineTo(160,175);
+      cc.stroke();
+
+      cc.beginPath();
+      cc.moveTo(80,195);
+      cc.lineTo(160,190);
+      cc.stroke();
+
+      cc.beginPath();
+      cc.moveTo(240,175);
+      cc.lineTo(320,170);
+      cc.stroke();
+
+      cc.beginPath();
+      cc.moveTo(240,160);
+      cc.lineTo(320,150);
+      cc.stroke();
+
+      cc.beginPath();
+      cc.moveTo(240,190);
+      cc.lineTo(320,195);
+      cc.stroke();
+  </script>
+</body>
+</html>

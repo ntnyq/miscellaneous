@@ -1,0 +1,72 @@
+/*
+* @Author: Emmet
+* @Date:   2017-01-21 16:32:16
+* @Last Modified by:   Administrator
+* @Last Modified time: 2017-02-10 01:17:55
+*/
+
+html, body, canvas, div{
+  margin: 0;
+  padding: 0;
+}
+#canvas{
+  display: block;
+  margin: 0 auto;
+}
+#controller{
+    margin:0 auto;
+}
+.op_btn{
+  float: right;
+  margin: 10px 0 0 10px;
+  border: 2px solid #aaa;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
+  font-family: Microsoft Yahei,Arial;
+  cursor: pointer;
+}
+.op_btn:hover{
+  background-color: #def;
+}
+.clearfix{
+  clear: both;
+}
+.color_btn{
+  float: left;
+  margin: 10px 10px 0 0;
+  border: 5px solid #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.color_btn:hover{
+  border: 5px solid violet
+}
+.color_btn_selected{
+  border: 5px solid blueviolet;
+}
+#black_btn{
+  background-color: #000;
+}
+#blue_btn{
+  background-color: blue;
+}
+#green_btn{
+    background-color: green;
+}
+#red_btn{
+    background-color: red;
+}
+#orange_btn{
+    background-color: orange;
+}
+#yellow_btn{
+    background-color: yellow;
+}

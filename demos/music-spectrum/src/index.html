@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>音频播放器频谱</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      filter: contrast(120%);
+      overflow: hidden;
+    }
+    #canvas {
+      position: relative;
+      height: 100%;
+      background-image: radial-gradient(1600px at 70% 120%, rgba(33, 39, 80, 1) 10%, #020409 100%);
+    }
+  </style>
+</head>
+<body>
+  <!-- <audio id="audio" src="./audio/viva-la-vida.mp3" autoplay="autoplay"></audio> -->
+  <video crossOrigin="anonymous" id="video" src="./video/video.mp4"></video>
+  <canvas id="canvas"></canvas>
+  <script>
+    (function (d, w) {
+
+      const video = d.querySelector('#video');
+      // video.crossOrigin = 'anonymous';
+
+      const canvas = d.querySelector('#canvas'),
+            $ = canvas.getContext('2d'),
+            AudioContext = window.AudioContext || window.webkitAudioContext,
+            audioContext = new AudioContext();
+            // 创建输入源
+            source = audioContext.createMediaElementSource(video),
+            // 获取音频时间和频率数据，实现数据可视化
+            analyser = audioContext.createAnalyser();
+
+      // 连接 source -> analyser -> destination
+      source.connect(analyser);
+      // 声音连接到扬声器
+      analyser.connect(audioContext.destination);
+
+      // 存储频谱数据 Unit8Array数组创建时候必须指定长度，长度从analyser.frequencyBinCount内获取，长度是 1024
+      let arrData = new Uint8Array(analyser.frequencyBinCount),
+            count = Math.min(500, arrData.length), // 能量主个数， 不能大于数组长度
+            // 计算步长 每隔都少取一个数据用于绘画 意抽取片段数据来反应整体频谱规律
+            // 乘以0.6是因为 测试发现数组长度600以后的数据为0
+            step = Math.round(arrData.length * 0.6 / count),
+            value = 0, // 每个能量柱的值
+            drawX = 0, // 能量柱x坐标
+            drawY = 0, // y坐标
+            height = canvas.height = window.innerHeight,
+            width = canvas.width = window.innerWidth,
+            // 能量柱宽度， 设置线条宽度
+            lineWidth = $.lineWidth = canvas.width / count;
+
+        $.lineWidth = lineWidth;
+
+        const render = () => {
+
+          $.clearRect(0, 0, width, height);
+
+          // 获取频谱值
+          analyser.getByteFrequencyData(arrData);
+
+          for (let i = 0; i < count; i++) {
+
+            value = arrData[i * step + step];
+
+            // x轴位置
+            drawX = i * lineWidth;
+
+            // 能量柱的高度，从canvas底部往上画，那么y坐标就是画布的高度减去能量柱的高度，
+            // 测试发现， value值正常一般比较小， 要画的高一点，所以乘以2，
+            // 又防止太高，取了一下最大值，并且为性能考虑，避免小数值
+            drawY = parseInt(Math.max((height - value * 2), 10));
+
+            // 开始路径
+            $.beginPath();
+            // 设置画笔颜色, hsl通过这个公式计算出的是很漂亮的彩虹色
+            /*
+              H：Hue(色调)。0(或 360)表示红色，120 表示绿色，240 表示蓝色，
+                     也可取其他数值来指定颜色。取值为：0 - 360
+              S：Saturation(饱和度)。取值为：0.0% - 100.0%
+              L：Lightness(亮度)。取值为：0.0% - 100.0%
+            */
+           // count为循环总量 i为循环变量
+           $.strokeStyle = `hsl(${Math.round((i * 360) / count)}, 100%, 50%)`;
+           // 从X轴 drawX, y轴就是canvas的高度，也就是canvas的底部
+           $.moveTo(drawX, height);
+           $.lineTo(drawX, drawY);
+
+           $.stroke();
+          }
+
+          requestAnimationFrame(render);
+        };
+
+        render();
+
+        const resize = () => {
+
+          height = canvas.height = window.innerHeight;
+          width = canvas.width = window.innerWidth;
+
+          // 能量柱宽度
+          $.lineWidth = lineWidth = canvas.width / count;
+        };
+
+        window.addEventListener('resize', resize, !1);
+    })(document, window);
+  </script>
+</body>
+</html>

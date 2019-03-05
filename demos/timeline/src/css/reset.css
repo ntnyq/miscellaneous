@@ -1,0 +1,229 @@
+/*
+* @Author: Emmet
+* @Date:   2017-06-01 16:47:55
+* @文件名: 样式重置库
+* @版本:   v 0.01
+* @参考:   nomalize.css
+*/
+/* 去除 以下元素 内填充和外边距 设置盒模型为 宽度 = 内容 + 内填充 +边框 优化web字体渲染*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+a,
+code,
+em,
+img,
+q,
+small,
+strong,
+dd,
+dl,
+dt,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+table,
+tbody,
+tr,
+th,
+td,
+input,
+textarea,
+button,
+i,
+input,
+select,
+option {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+/* 去除 以下元素 斜体效果 */
+em,
+i {
+  font-style: normal;
+}
+/* 去除 以下元素 粗体效果 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong {
+  font-weight: normal;
+}
+/* 去除 无序列表 小圆点 */
+ul,
+li {
+  list-style: none;
+}
+/* 修正 超链接 相关样式 */
+a:focus,
+a:active,
+a:hover {
+  outline: 0;
+}
+/*
+*  去掉 超链接 下划线
+*  修改移动端点击阴影
+*  设置鼠标样式
+*/
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+/* 设置 默认 页面背景 字色 字号 字族 和 阻止移动端切换横屏调整字体  */
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+/* 修正ie8/9无法显示h5新语义化标签为块级元素 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+/* 默认hr 元素 样式  */
+hr {
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0;
+  border: 0;
+}
+img {
+  border: none;
+  vertical-align: top;
+}
+a,
+img {
+  -webkit-touch-callout: none;
+}
+/* 修正超链接与图片嵌套的底部空白问题 */
+a img,
+:link img,
+:visited img {
+  border: 0;
+}
+/* 修改图片边框 和 单元格 间距 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* 修正不可用元素 鼠标样式 */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+/* 修正 按钮样式 和 鼠标样式 */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+/* 去除 输入框 的 默认阴影边框 */
+input[type="text"],
+input[type="search"],
+input[type="password"] {
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+}
+button,
+input[type="radio"],
+input[type="checkbox"] {
+  border: none;
+  outline: none;
+}
+/* 设置输入框默认样式 令其不可自定义大小 去除ie默认滚动条 */
+textarea {
+  border: 1px solid #e7e7e7;
+  color: #444;
+  font-size: 14px;
+  padding: 8px 10px;
+  resize: none;
+  overflow: auto;
+  vertical-align: top;
+}
+/* 去掉 获取焦点后 阴影 和 外边框效果 */
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="submit"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="search"]:focus,
+input[type="search"]:active {
+  box-shadow: 0;
+  outline: 0 none;
+}
+/* 去除 提交 按钮 边框 */
+input[type="submit"],
+input[type="submit"]:focus {
+  border: 0;
+}
+/* 兼容 修改 placeholder默认颜色 */
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #999;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #999;
+  opacity: 1;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #999;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #999;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+  overflow: hidden;
+}

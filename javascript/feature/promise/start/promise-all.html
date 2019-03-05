@@ -1,0 +1,21 @@
+<script>
+const p1 = Promise.resolve(300)
+const p2 = new Promise(resolve => {
+  resolve(1000)
+})
+const p3 = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(500)
+  }, 200)
+})
+const p4 = Promise.resolve(2000)
+const p5 = Promise.reject('no').catch(() => 0)
+
+const p = Promise.all([p1, p2, p3, p4, p5])
+
+p.then(results => {
+  return sum = results.reduce((a, b) => (a + b))
+}).then(sum => {
+  console.log(sum)
+})
+</script>

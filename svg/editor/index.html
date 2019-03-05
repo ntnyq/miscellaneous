@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>SVG编辑器</title>
+  <style>
+    .toolbox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      padding: 10px;
+      border-right: 1px solid #ccc;
+    }
+    .toolbox h2 {
+      height: 24px;
+      line-height: 24px;
+      margin: 10px 0;
+      padding: 5px 10px;
+      background-color: #eee;
+      font-size: 16px;
+    }
+    .canvas {
+      position: absolute;
+      left: 260px;
+      top: 10px;
+      right: 10px;
+      bottom: 10px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, .4);
+      border-radius: 5px;
+    }
+    label {
+      display: inline-block;
+      width: 80px;
+      text-align: right;
+    }
+    .il {
+      display: inline;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbox" id="toolbox">
+    <h2>创建</h2>
+    <div class="create_shape" id="create_shape">
+      <button type="button" create="rect">rect</button>
+      <button type="button" create="circle">crcle</button>
+      <button type="button" create="ellipse">ellipse</button>
+      <button type="button" create="line">line</button>
+    </div>
+    <h2>形状</h2>
+    <div class="shape_attrs" id="shape_attrs">
+      <span>请先创建图形</span>
+    </div>
+    <h2>外观和变换</h2>
+    <form class="look_transform" id="look_transform" disabled="disabled">
+      <p>
+        <label class="il" for="fill">填充</label>
+        <input id="fill" type="color" value="#ffffff" />
+      </p>
+      <p>
+        <label class="il" for="stroke">描边</label>
+        <input id="stroke" type="color" value="#ff0000" />
+        <input id="stroke_width" type="range" min="0" max="20" value="1" />
+      </p>
+      <p>
+        <label for="translateX">translateX</label>
+        <input id="translateX" type="range" min="-400" max="400" value="0" />
+
+        <label for="translateY">translateY</label>
+        <input id="translateY" type="range" min="-400" max="400" value="0" />
+
+        <label for="rotate">rotate</label>
+        <input id="rotate" type="range" min="-180" max="180" value="0" />
+
+        <label for="scale">scale</label>
+        <input id="scale" type="range" min="-1" max="2" value="1" step="0.01" />
+      </p>
+    </form>
+  </div>
+  <div class="canvas" id="canvas"></div>
+  <script>
+    const SVG_NS = 'http://www.w3.org/2000/svg'
+
+    const SHAPE_INFO = {
+      rect: 'x:10,y:10,width:200,height:100,rx:0,ry:0',
+      circle: 'cx:200,cy:200,r:50',
+      ellipse: 'cx:200,cy:200,rx:80,ry:30',
+      line: 'x1:10,y1:10,x2:100,y2:100'
+    }
+
+    const DEFAULT_ATTRS = {
+      fill: '#ffffff',
+      stroke: '#ff0000'
+    }
+
+    let selected = null
+
+
+    let createHanle = (shape, name, value) => {
+      let label = document.createElement('label')
+      label.textContent = name
+
+      let handle = document.createElement('input')
+
+      handle.setAttribute('name', name)
+      handle.setAttribute('type', 'range')
+      handle.setAttribute('value', value)
+      handle.setAttribute('min', 0)
+      handle.setAttribute('max', 800)
+
+      shape_attrs.appendChild(label)
+      shape_attrs.appendChild(handle)
+    }
+
+    let decodeTransform = (transString) => {
+      let match = /translate\((\d+),(\d+)\)\srotate\((\d+)\)\sscale\((\d+)\)/.exec(transString)
+      return match ? {
+          tx: +match[1],
+          ty: +match[2],
+          rotate: +match[3],
+          scale: +match[4]
+      } : null
+    }
+
+    let encodeTransform = (transObject) => {
+      return ['translate(', transObject.tx, ',', transObject.ty, ') ',
+          'rotate(', transObject.rotate, ') ',
+          'scale(', transObject.scale, ')'].join('')
+    }
+
+    let updateLookHanle = () => {
+      fill.value = selected.getAttribute('fill')
+      stroke.value = selected.getAttribute('stroke')
+      let t = decodeTransform(selected.getAttribute('transform'))
+      translateX.value = t ? t.tx : 0
+      translateY.value = t ? t.rotate : 0
+      rotate.value = t ? t.tx : 0
+      scale.value = t ? t.scale : 1
+    }
+
+
+    let select = (shape) => {
+      let attrs = SHAPE_INFO[shape.tagName].split(',')
+      let attr, name, value
+
+      shape_attrs.innerHTML= ''
+
+      while (attrs.length) {
+        attr = attrs.shift().split(':')
+        name = attr[0]
+        value = shape.getAttribute(name) || attr[1]
+        createHanle(shape, name, value)
+        shape.setAttribute(name, value)
+      }
+
+      for (name in DEFAULT_ATTRS) {
+        value = shape.getAttribute(name) || DEFAULT_ATTRS[name]
+        shape.setAttribute(name, value)
+      }
+
+      selected = shape
+
+      updateLookHanle()
+    }
+
+    let createSVG = () => {
+      let svg = document.createElementNS(SVG_NS, 'svg')
+      svg.setAttribute('width', '100%')
+      svg.setAttribute('height', '100%')
+      canvas.appendChild(svg)
+
+      svg.addEventListener('click', (e) => {
+        if (e.target.tagName.toLowerCase() in SHAPE_INFO) {
+          select(e.target)
+        }
+      }, false)
+      return svg
+    }
+
+    let svg = createSVG()
+
+    let create = (name) => {
+      let shape = document.createElementNS(SVG_NS, name)
+      svg.appendChild(shape)
+      select(shape)
+    }
+
+    create_shape.addEventListener('click', (e) => {
+      if (e.target && e.target.tagName.toLowerCase() === 'button') {
+        create(e.target.getAttribute('create'))
+      }
+    }, false)
+
+    shape_attrs.addEventListener('input', (e) => {
+      if (e.target && e.target.tagName.toLowerCase() !== 'input') {
+        return
+      }
+      let handle = e.target
+      selected.setAttribute(handle.name, handle.value)
+    }, false)
+
+    look_transform.addEventListener('input', (e) => {
+      if (e.target && e.target.tagName.toLowerCase() !== 'input') {
+        return
+      }
+      if (!selected) {
+        return
+      }
+      selected.setAttribute('fill', fill.value)
+      selected.setAttribute('stroke', stroke.value)
+      selected.setAttribute('stroke-width', stroke_width.value)
+      selected.setAttribute('transform', encodeTransform({
+        tx: translateX.value,
+        ty: translateY.value,
+        scale: scale.value,
+        rotate: rotate.value
+      }))
+    }, false)
+
+
+  </script>
+</body>
+</html>

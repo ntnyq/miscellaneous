@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+</head>
+<body>
+  <script>
+
+  // 1.方法链式调用
+  // 2.类的使用和面向对象编程的思路
+  // 3.设计模式的应用
+  // 4.代码的解耦
+  // 5.最少知识原则，也即 迪米特法则（Law of Demeter）
+  // 6.代码的书写结构和命名
+/*  function Lazyman (name) {
+    console.log('Hi,this is ' + name + '!');
+  }
+  Lazyman('Hank');*/
+
+  (function (window, undefined) {
+
+    var taskList = [];
+
+    /**
+     * [subscribe用一个param变量来组织好需要存储的信息，然后push进taskList中，缓存起来。特别的，如果是sleepFirst，则放置在队列头部。]
+     * @return {[type]} [description]
+     */
+    function subscribe () {
+      var param = {};
+      args = Array.prototype.slice.call(arguments);
+      if (args.length < 1) {
+        throw new Error('subscribe参数不能为空');
+      }
+      param.msg = args[0]; // 消息名
+      param.args = args.slice(1); //参数列表
+      if (param.msg == 'sleepFirst') {
+        taskList.unshift(param); // 从队列首部进队列
+      }else {
+        taskList.push(param); // 按正常顺序进队列
+      }
+    }
+
+    /**
+     * [publish 发布方法 将存储的信息去除，交给函数run去执行 同时从队列中删除，避免重复执行]
+     * @return {[type]} [description]
+     */
+    function publish () {
+      if (taskList.length > 0) {
+        run(taskList.shift()); //从前面依次执行
+      }
+    }
+
+    /**
+     * [LazyMan 将LazyMan类实现，具有eat、sleep、sleepFrist等行为。
+    触发一次行为，就在taskList中记录一次，并返回当前对象，以支持链式调用。]
+     */
+    function LazyMan () {}
+
+    LazyMan.prototype.eat = function (str) {
+      subscribe('eat', str);
+      return this;
+    };
+    LazyMan.prototype.sleep = function (num) {
+      subscribe('sleep', num);
+      return this;
+    };
+    LazyMan.prototype.sleepFirst = function (num) {
+      subscribe('sleepFirst', num);
+      return this;
+    };
+
+    // 输出文字
+    // 为什么还要为console.log包装一层，是因为在实战项目中，产经经常会修改输出提示的UI。如果每一处都用console.log直接调用，那改起来就麻烦很多。
+    // 另外，如果要兼容IE等低级版本浏览器，也可以很方便的修改。
+    // 也就是DRY原则（Don’t Repeat Youself）。
+      function lazyManLog (str) {
+        console.log(str);
+      }
+
+    // setTimeout执行时会延迟调用，也即线程异步执行的问题。只有该方法执行成功后，再发布一次消息publish()，提示可以执行下一个队列信息。否则，就会一直等待。
+    function lazyMan (str) {
+      lazyManLog('Hi, this is ' + str + '!');
+      publish();
+    }
+
+    function eat (str) {
+      lazyManLog('Eat ' + str + '~');
+      publish();
+    }
+
+    function sleep (num) {
+      setTimeout(function () {
+        lazyManLog('Wake up after ' + num);
+        publish();
+      }, num * 1000);
+    }
+
+    function sleepFirst (num) {
+      setTimeout(function () {
+        lazyManLog('Wake up after ' + num);
+      }, num * 1000);
+    }
+
+    /**
+     * [run run方法接收队列中的单个消息，然后读取出来，看消息是什么类型的，然后执行对应的方法。]
+     * @param  {[type]} option [description]
+     * @return {[type]}        [description]
+     */
+    function run (option) {
+      var msg = option.msg;
+      args = option.args;
+      switch (msg) {
+        case 'lazyMan':
+          lazyMan.apply(null, args);
+          break;
+        case 'eat':
+          eat.apply(null, args);
+          break;
+        case 'sleep':
+          sleep.apply(null, args);
+          break;
+        case 'sleepFirst':
+          sleepFirst.apply(null, args);
+          break;
+        default:
+          break;
+      }
+    }
+
+    // 暴露接口
+    window.lazyMan = function (str) {
+      subscribe('lazyMan', str);
+      setTimeout(function () {
+        publish();
+      }, 0);
+      return new LazyMan();
+    };
+  })(window);
+
+  // lazyMan('Hank').sleep(10).eat('dinner');
+  lazyMan('Hank').sleepFirst(10).eat('dinner');
+
+  </script>
+</body>
+</html>

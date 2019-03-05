@@ -1,0 +1,16 @@
+<button id="success" type="button">成功</button>
+<button id="fail" type="button">失败</button>
+<script>
+const p = new Promise((resolve, reject) => {
+
+  success.addEventListener('click', () => {
+    resolve('成功回调')
+  }, false)
+
+  fail.addEventListener('click', () => {
+    reject('失败回调')
+  }, false)
+})
+
+p.then(alert, alert)
+</script>

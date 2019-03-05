@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+  <style>
+    body{
+      background-color: #801638;
+    }
+    body, body>*{
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", sans-serif;
+      font-weight: normal;
+    }
+    *{
+      -webkit-transition: all .3s ease 0s;
+      -o-transition: all .3s ease 0s;
+      transition: all .3s ease 0s;
+    }
+    /*background colors*/
+    div+div article:nth-child(1){
+      background-color: #c22326;
+    }
+    div+div article:nth-child(2){
+      background-color: #f37338;
+    }
+    div+div article:nth-child(3){
+      background-color: #fdb632;
+    }
+    div+div article:nth-child(4){
+      background-color: #027827;
+    }
+    div+div article:nth-child(5), div+div{
+      background-color: #801638;
+    }
+    /*Main layout*/
+    div+div{
+      width: 100vw;
+      height: 100vh;
+    }
+    div+div{
+      position: relative;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      flex-direction: row;
+      -ms-align-items: stretch;
+      align-items: stretch;
+      overflow: hidden;
+      list-style: none;
+    }
+    /*Articles*/
+    div+div article{
+      position: relative;
+      flex: initial;
+      width: 20%;
+      height: 100%;
+      padding: 2vh 1vw;
+      vertical-align: bottom;
+      text-decoration: none;
+      color: #fff;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    /*Big heading*/
+    body>div:first-child{
+      position: fixed;
+      bottom: 8vh;
+      z-index: 2;
+      background-color: #fff;
+      width: 100%;
+      padding: .5rem;
+      text-align: center;
+    }
+    body>div:first-child h1,
+    body>div:first-child h2{
+      margin: 0;
+      padding: 0;
+    }
+    /*Hover interaction*/
+    div+div:hover article{
+      -webkit-flex: initial;
+      -moz-flex: initial;
+      -ms-flex: initial;
+      -o-flex: initial;
+      flex: initial;
+      width: 10%;
+    }
+    div+div article:hover{
+      width: 60%;
+    }
+    article>div{
+      opacity: 0;
+      -webkit-transition: opacity .2s ease 0;
+      -o-transition: opacity .2s ease 0;
+      transition: opacity .2s ease 0;
+    }
+    div+div article:hover>div{
+      opacity: 1;
+      -webkit-transition: opacity .3s ease .3s;
+      -o-transition: opacity .3s ease .3s;
+      transition: opacity .3s ease .3s;
+    }
+    /*navigation*/
+    div+div article>h2{
+      position: absolute;
+      bottom: 2vh;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 3vh;
+    }
+    /*Article layout*/
+    article div{
+      -ms-text-align-last: auto;
+      text-align-last: auto;
+      width: 58vw;
+    }
+    article div p,
+    article div div h2,
+    article div h3{
+      margin: 0 0 1em 0;
+    }
+    article div p{
+      width: 40vw;
+    }
+    @media screen and (max-width: 900px){
+      div+div article{
+        padding: 2vh 3vw;
+      }
+      div+div article>h2{
+        transform: rotate(90deg);
+        bottom: 23vh;
+        min-width: 12em;
+        text-align: left;
+        transform: rotate(-90deg);
+        transform-origin: 0 0 0;
+        opacity: 1;
+      }
+      div+div article:hover>h2{
+        opacity: 0;
+      }
+      article div p{
+        width: 50vw;
+      }
+      article div{
+        max-height: calc(72%);
+        overflow-y: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>微信：ntnyq</h1>
+    <h2>QQ:1210485244</h2>
+  </div>
+  <div>
+    <article>
+      <h2>Section1</h2>
+      <div>
+        <h3>Section1</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eveniet soluta doloremque pariatur, eligendi sint quaerat odio dolore non asperiores omnis, numquam modi harum aliquid ipsa. Ab nisi, maxime recusandae.
+        </p>
+      </div>
+    </article>
+    <article>
+      <h2>Section2</h2>
+      <div>
+        <h3>Section2</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eveniet soluta doloremque pariatur, eligendi sint quaerat odio dolore non asperiores omnis, numquam modi harum aliquid ipsa. Ab nisi, maxime recusandae.
+        </p>
+      </div>
+    </article>
+    <article>
+      <h2>Section3</h2>
+      <div>
+        <h3>Section3</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eveniet soluta doloremque pariatur, eligendi sint quaerat odio dolore non asperiores omnis, numquam modi harum aliquid ipsa. Ab nisi, maxime recusandae.
+        </p>
+      </div>
+    </article>
+    <article>
+      <h2>Section4</h2>
+      <div>
+        <h3>Section4</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eveniet soluta doloremque pariatur, eligendi sint quaerat odio dolore non asperiores omnis, numquam modi harum aliquid ipsa. Ab nisi, maxime recusandae.
+        </p>
+      </div>
+    </article>
+    <article>
+      <h2>Section5</h2>
+      <div>
+        <h3>Section5</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eveniet soluta doloremque pariatur, eligendi sint quaerat odio dolore non asperiores omnis, numquam modi harum aliquid ipsa. Ab nisi, maxime recusandae.
+        </p>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

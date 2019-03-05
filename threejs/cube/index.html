@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+  <script>
+
+    window.onload = () => {
+
+      const WIDTH = 500,
+            HEIGHT = 400;
+
+      let div = document.createElement('div');
+      div.id = 'canvas';
+      div.style.width = WIDTH + 'px';
+      div.style.height = HEIGHT + 'px';
+
+      document.body.appendChild(div);
+
+      let renderer = new THREE.WebGLRenderer({
+        antialize: true
+      });
+
+      renderer.setSize(WIDTH, HEIGHT);
+
+      div.appendChild(renderer.domElement);
+
+
+      let scene = new THREE.Scene();
+
+      let camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 1, 1000);
+
+      camera.position.z = 10;
+      scene.add(camera);
+
+
+      let object = new THREE.Object3D();
+
+      let cube = createCube1();
+
+      object.add(cube);
+
+      let plane = createPlane();
+
+      scene.add(plane);
+      scene.add(object);
+
+      animation();
+
+
+      function animation () {
+
+        object.rotation.x += 0.01;
+        object.rotation.y += 0.01;
+        renderer.render(scene, camera);
+
+        requestAnimationFrame(animation);
+      }
+
+      function createCube1 () {
+
+        let box = new THREE.BoxGeometry(2, 2, 2);
+
+        let texture = THREE.ImageUtils.loadTexture('./src/img/cube.jpg', null, function (t) {
+
+        });
+        let material = new THREE.MeshBasicMaterial({
+          map: texture
+        });
+
+        let cube = new THREE.Mesh(box, material);
+
+        cube.position.z = 2;
+        return cube;
+
+      }
+
+      function createPlane () {
+
+        let geometry = new THREE.PlaneGeometry(10, 8, 1, 1);
+
+        geometry.vertices[0].uv = new THREE.Vector2(0, 0);
+
+        geometry.vertices[1].uv = new THREE.Vector2(1, 0);
+
+        geometry.vertices[2].uv = new THREE.Vector2(1, 1);
+
+        geometry.vertices[3].uv = new THREE.Vector2(0, 1);
+
+        let texture = THREE.ImageUtils.loadTexture('./src/img/chest.jpg', null, function (t) {});
+
+        let material = new THREE.MeshBasicMaterial({
+          map: texture
+        });
+
+        let mesh = new THREE.Mesh(geometry, material);
+
+        return mesh;
+      }
+    };
+  </script>
+</body>
+</html>

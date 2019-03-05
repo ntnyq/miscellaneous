@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+  <style>
+    .xc-china{
+      width: 694px;
+      height: 800px;
+      margin: 0 auto;
+      background-color: #2bb673;
+    }
+    .xc-bg{
+      position: relative;
+      z-index: 1;
+      width: 0;
+      height: 0;
+      color: black;
+      border-bottom: 199px solid #0062cc;
+      border-left: 346px solid transparent;
+      border-right: 346px solid transparent;
+    }
+    .xc-bg:before{
+      content: "";
+      position: absolute;
+      top: 199px;
+      left: -346px;
+      z-index: 1;
+      widows: 692;
+      height: 400px;
+      background-color: #007aff;
+    }
+    .xc-bg:after{
+      content: "";
+      width: 0;
+      height: 0;
+      color: #0000ff;
+      position: absolute;
+      top: 599px;
+      left: -346px;
+      z-index: 1;
+      border-top: 199px solid #00f;
+      border-left: 346px solid transparent;
+      border-right: 346px solid transparent;
+    }
+    .xc-bg-center{
+      position: absolute;
+      top: 100px;
+      left: -174px;
+      z-index: 2;
+      width: 348px;
+      height: 600px;
+      background-color: #008000;
+    }
+    .xc-bg-center:before{
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 99px solid #d90200;
+      border-left: 176px solid transparent;
+      border-right: 176px solid transparent;
+    }
+    .xc-bg-center:after{
+      position: absolute;
+      content: "";
+      top: 501px;
+      width: 0;
+      height: 0;
+      border-bottom: 99px solid #d90200;
+      border-left: 176px solid transparent;
+      border-right: 176px solid transparent;
+    }
+    .xc-bg-c-c{
+      position: relative;
+      width: 348px;
+      height: 198px;
+      top: 199px;
+      background-color: #007aff;
+    }
+    .xc-bg-c-c:before{
+      position: absolute;
+      top: -99px;
+      content: "";
+      border-bottom: 99px solid #007aff;
+      border-left: 176px solid transparent;
+      border-right: 176px solid transparent;
+    }
+    .xc-bg-c-c:after{
+      position: absolute;
+      top: 198px;
+      content: "";
+      border-top: 99px solid #007aff;
+      border-left: 176px solid transparent;
+      border-right: 176px solid transparent;
+    }
+    .xc-bg-c-1{
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 119px;
+      top: -101px;
+      border-bottom: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+    }
+    .xc-bg-c-1:before{
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      left: -58px;
+      top: 101px;
+      border-top: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+    }
+    .xc-bg-c-2{
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 119px;
+      top: 100px;
+      z-index: 3;
+      border-bottom: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+    }
+    .xc-bg-c-2:before{
+      position: absolute;
+      width: 0;
+      height: 0;
+      content: "";
+      left: -58px;
+      top: 100px;
+      z-index: 3;
+      border-top: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+    }
+    .xc-bg-c-3{
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 163px;
+      top: 75px;
+      z-index: 3;
+      border-bottom: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+      -webkit-transform: rotate(-60deg);
+        -moz-transform: rotate(-60deg);
+        -ms-transform: rotate(-60deg);
+        -o-transform: rotate(-60deg);
+   }
+   .xc-bg-c-3:before{
+      content: "";
+      position: absolute;
+      width: 0;
+    height: 0;
+    left: -58px;
+    top: 100px;
+    border-top: 101px solid #da9b02;
+    border-left: 58px solid transparent;
+    border-right: 58px solid transparent;
+   }
+   .xc-bg-c-4{
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 75px;
+      top: 75px;
+      z-index: 3;
+      border-bottom: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+      -webkit-transform: rotate(60deg);
+        -moz-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        -o-transform: rotate(60deg);
+   }
+   .xc-bg-c-4:before{
+      content: "";
+      position: absolute;
+      width: 0;
+    height: 0;
+    left: -58px;
+    top: 100px;
+    border-top: 101px solid #da9b02;
+    border-left: 58px solid transparent;
+    border-right: 58px solid transparent;
+   }
+   .xc-bg-c-5{
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 75px;
+      top: 25px;
+      z-index: 3;
+      border-bottom: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+      -webkit-transform: rotate(120deg);
+        -moz-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+        -o-transform: rotate(120deg);
+   }
+   .xc-bg-c-5:before{
+      content: "";
+      position: absolute;
+      width: 0;
+    height: 0;
+    left: -58px;
+    top: 100px;
+    border-top: 101px solid #da9b02;
+    border-left: 58px solid transparent;
+    border-right: 58px solid transparent;
+   }
+   .xc-bg-c-6{
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 163px;
+      top: 25px;
+      z-index: 3;
+      border-bottom: 101px solid #da9b02;
+      border-left: 58px solid transparent;
+      border-right: 58px solid transparent;
+      -webkit-transform: rotate(240deg);
+        -moz-transform: rotate(240deg);
+        -ms-transform: rotate(240deg);
+        -o-transform: rotate(240deg);
+   }
+   .xc-bg-c-6:before{
+      content: "";
+      position: absolute;
+      width: 0;
+    height: 0;
+    left: -58px;
+    top: 100px;
+    border-top: 101px solid #da9b02;
+    border-left: 58px solid transparent;
+    border-right: 58px solid transparent;
+   }
+  </style>
+</head>
+<body>
+  <div class="xc-china">
+    <div class="xc-bg">
+      <div class="xc-bg-center">
+        <div class="xc-bg-c-c">
+          <div class="xc-bg-c-1"></div>
+          <div class="xc-bg-c-2"></div>
+          <div class="xc-bg-c-3"></div>
+          <div class="xc-bg-c-4"></div>
+          <div class="xc-bg-c-5"></div>
+          <div class="xc-bg-c-6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

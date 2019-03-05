@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>拖拽效果实现</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: indigo;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="box"></div>
+  <script>
+    var isDown = false;
+
+    var ObjLeft, ObjTop, posX, posY, obj;
+
+    window.onload = function () {
+      obj = document.querySelector('.box');
+      obj.onmousedown = down;
+      document.onmousemove = move;
+      document.onmouseup = up;
+    };
+
+    function down (event) {
+      obj.style.cursor = 'move';
+      isDown = true;
+      ObjLeft = obj.offsetLeft; // 对象的初始偏移量
+      ObjTop = obj.offsetTop;
+      posX = parseInt(mousePosition(event).x); // 鼠标点击在客户区的位置
+      posY = parseInt(mousePosition(event).y);
+    }
+
+    function move (event) {
+      if (isDown) {
+        var x = parseInt(mousePosition(event).x - posX + ObjLeft); // 移动前和移动结束后的差值 与 初始偏移量之和
+        var y = parseInt(mousePosition(event).y - posY + ObjTop);
+        var w = document.documentElement.clientWidth - obj.offsetWidth; // 可视区的尺寸减去对象的尺寸 也就是可以移动的范围
+        var h = document.documentElement.clientHeight - obj.offsetHeight;
+
+        if (x < 0) {
+          x = 0;
+        } else if (x > w) {
+          x = w;
+        }
+        if (y < 0) {
+          y = 0;
+        } else if (y > h) {
+          y = h;
+        }
+
+        obj.style.left = x + 'px';
+        obj.style.top = y + 'px';
+      }
+    }
+
+    function up () {
+      isDown = false;
+    }
+
+    function mousePosition (ev) {
+      var xPos, yPos;
+
+      var e = ev || window.event;
+
+        xPos = e.clientX; // 客户区坐标所有浏览器都兼容
+        yPos = e.clientY;
+
+      return {
+        x: xPos,
+        y: yPos
+      };
+    }
+  </script>
+</body>
+</html>

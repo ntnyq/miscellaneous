@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <meta content="telephone=no, email=no" name="format-detection" />
+  <title>悬浮效果按钮</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      height: 100%;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      color: #fff;
+    }
+    .button {
+      position: relative;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      padding: 1em 3em;
+      border: none;
+      background-color: #f72359;
+      border-radius: 100px;
+      -webkit-box-shadow: 2px 2px 3px #999;
+              box-shadow: 2px 2px 3px #999;
+      font-size: 1.2em;
+      color: white;
+      outline: none;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .button span {
+      position: relative;
+    }
+    .button:before {
+      --size: 0;
+      content: "";
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: var(--size);
+      height: var(--size);
+      background: -webkit-radial-gradient(circle closest-side, #4405f7, transparent);
+      background: -o-radial-gradient(circle closest-side, #4405f7, transparent);
+      background: radial-gradient(circle closest-side, #4405f7, transparent);
+      -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      -webkit-transition: width .2s ease,
+                    height .2s ease;
+      -o-transition: width .2s ease,
+                    height .2s ease;
+      transition: width .2s ease,
+                    height .2s ease;
+    }
+    .button:hover:before {
+      --size: 400px;
+    }
+  </style>
+</head>
+<body>
+  <button class="button" id="button" type="button"><span>I am awesome!</span></button>
+  <script>
+    (function (d) {
+
+      button.addEventListener('mousemove', e => {
+
+        let target = e.target;
+
+        const x = e.pageX - target.offsetLeft,
+              y = e.pageY - target.offsetTop;
+
+        target.style.setProperty('--x', `${x}px`);
+        target.style.setProperty('--y', `${y}px`);
+      }, !1);
+    })(document);
+  </script>
+</body>
+</html>

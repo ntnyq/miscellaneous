@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+  <style>
+  /*公共样式*/
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    li{
+      list-style: none;
+    }
+    .loader{
+      position: relative;
+      float: left;
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      border: 1px solid #ccc;
+    }
+    /*移动的关键帧动画*/
+    @keyframes move{
+      0%{
+        transform: rotate(0deg);
+      }
+      25%{
+        transform: rotate(90deg);
+      }
+      50%{
+        transform: rotate(180deg);
+      }
+      75%{
+        transform: rotate(270deg);
+      }
+      100%{
+        transform: rotate(360deg);
+      }
+    }
+    /*6单独的样式*/
+    .loading6 li:nth-child(1){
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(60deg, transparent, rgba(53, 255, 174, .45) 65%, #35ffae 85%, #05961e 100%);
+      background: -webkit-linear-gradient(60deg, transparent, rgba(53, 255, 174, .45) 65%, #35ffae 85%, #05961e 100%);
+      animation: move 0.5s linear 0s infinite;
+      -webkit-animation: move 0.5s linear 0s infinite;
+    }
+    .loading6 li:nth-child(2){
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+    /*7的样式*/
+    @keyframes moon{
+      0%{
+        left: 12px;
+        top: 0;
+      }
+      100%{
+        left: 90px;
+        top: 90px;
+      }
+    }
+    @keyframes star{
+      0%{
+        transform: scale(0.5);
+      }
+      100%{
+        transform: scale(0.2);
+      }
+    }
+    .loading7:before{
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50px;
+      top: 50px;
+      width: 100px;
+      height: 100px;
+      background-color: #ff0;
+      border-radius: 100px;
+    }
+    .loading7:after{
+      content: "";
+      display: block;
+      position: absolute;
+      left: 26px;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #000;
+      border-radius: 100px;
+      animation: moon 3s linear 0s infinite;
+      -webkit-animation: moon 3s linear 0s infinite;
+    }
+    .loading7 .star{
+      position: absolute;
+    }
+    .loading7 .star:before{
+      content: "\2605";
+      display: block;
+      position: absolute;
+      left: 10px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      color: #fff;
+      transform: scale(0.5);
+      animation: 1s star linear infinite;
+      -webkit-animation: 1s star linear infinite;
+    }
+    .loading7 .star:after{
+      content: "\2605";
+      display: block;
+      position: absolute;
+      left: 10px;
+      top: 120px;
+      width: 40px;
+      height: 40px;
+      color: #fff;
+      transform: scale(0.5);
+      -webkit-transform: scale(0.5);
+      animation: 1s star linear infinite;
+      -webkit-animation: 1s star linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- 同心圆旋转效果 -->
+  <div class="loader">
+    <ul class="loading6">
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <!-- 日食效果 -->
+  <div class="loader loading7" style="background-color: #000000">
+    <div class="star"></div>
+  </div>
+</body>
+</html>

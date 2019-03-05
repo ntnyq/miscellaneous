@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>窗口拖动</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      width: 2000px;
+      font-family: "微软雅黑";
+    }
+    .popWindow{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 300px;
+      height: 150px;
+      background-color: #abcdef;
+      border: 3px solid #abcdef;
+    }
+    .popWindow h3{
+      height: 30px;
+      line-height: 30px;
+      padding: 0 3px;
+      cursor: all-scroll;
+    }
+    .popWindow span{
+      float: right;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    .popWindow span:hover{
+      color: #f00;
+    }
+    .popWindow .text{
+      height: 120px;
+      line-height: 120px;
+      text-align: center;
+      background-color: #fff;
+      color: #f00;
+    }
+    .hide{
+      display: none;
+    }
+    .mask{
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      background-color: #000;
+      opacity: .5;
+      filter: alpha(opacity = 50);
+    }
+  </style>
+  <script src="js/jquery.js"></script>
+  <script>
+    $(function () {
+      //DOM获取结点
+      var oBtn = $('.isShow');
+      var popWindow = $('.popWindow');
+      var oClose = $('.popWindow h3 span');
+
+      //获取浏览器可视区域的宽和高
+      var browserWidth = $(window).width();
+      var browserHeight = $(window).height();
+      //获取横纵滚动条的值
+      var scrollTop = $(window).scrollTop();
+      var scrollLeft = $(window).scrollLeft();
+      //弹窗的宽和高
+      var popWidth = popWindow.width();
+      var popHeight = popWindow.height();
+
+      //left和top的值
+      var posLeft = browserWidth / 2 - popWidth / 2 + scrollLeft;
+      var posTop = browserHeight / 2 - popHeight / 2 + scrollTop;
+      //定义遮罩层
+      var oMask = '<div class="mask"></div>';
+      var maskWidth = $(document).width();
+      var maskHeight = $(document).height();
+
+      //点击显示弹窗
+      oBtn.click(function() {
+        scrollTop = $(window).scrollTop();
+        scrollLeft = $(window).scrollLeft();
+        getPopWindowSize();
+        popWindow.show();
+        $('body').append(oMask);
+        $('.mask').width(maskWidth).height(maskHeight);
+      });
+
+      //浏览器大小改变时，可视区域的大小
+      $(window).resize(function() {
+        browserWidth = $(window).width();
+        browserHeight = $(window).height();
+        getPopWindowSize();
+      });
+
+      //当两个滚动条滑动时
+      $(window).scroll(function() {
+        scrollTop = $(window).scrollTop();
+        scrollLeft = $(window).scrollLeft();
+        getPopWindowSize();
+      });
+      //点击标题拖曳
+      $('.popWindow h3').mousedown(function(e) {
+        var positionDiv = $('.popWindow').offset();
+        var distanceX = e.pageX - positionDiv.left;
+        var distanceY = e.pageY - positionDiv.top;
+
+        $(document).mousemove(function(e) {
+          var x = e.pageX - distanceX;
+          var y = e.pageY - distanceY;
+          $('.popWindow').css({
+            'left': x + 'px',
+            'top': y + 'px'
+          });
+        });
+        $(document).mouseup(function() {
+          $(this).unbind('mousemove');
+          $(this).off('mouseup');
+        });
+      });
+      //点击关闭弹窗
+      oClose.click(function() {
+        popWindow.hide('slow');
+        $('.mask').remove();
+      });
+
+      function getPopWindowSize () {
+        posLeft = browserWidth / 2 - popWidth / 2 + scrollLeft;
+        posTop = browserHeight / 2 - popHeight / 2 + scrollTop;
+
+        popWindow.animate({
+          'left': posLeft,
+          'top': posTop
+        }, 300).dequeue();
+      }
+
+    });
+  </script>
+</head>
+<body>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <a href="javascript:;" class="isShow">点我显示</a>
+  <div class="popWindow hide">
+    <h3>慕课网<span>关闭</span></h3>
+    <div class="text">公告：本网站禁止一切弹窗广告！</div>
+  </div>
+</body>
+</html>

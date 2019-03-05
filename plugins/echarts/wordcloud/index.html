@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>自定义词云</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    #chart {
+      width: calc(770px * 0.8);
+      height: calc(940px * 0.8);
+      margin: 5% auto 0;
+      border: 2px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="chart"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.6.2/echarts.min.js"></script>
+  <script src="./src/js/echarts-wordcloud.min.js"></script>
+  <script>
+    window.onload = () => {
+      const randomRange = num => ~~(Math.random() * num);
+
+      let maskImage = new Image();
+
+      maskImage.src = './src/img/mask.png';
+
+      let chart = echarts.init(document.querySelector('#chart')),
+        chartOption = {
+          color: ['#0ff', '#0f0', '#ff0', '#b7c0c0'],
+          backgroundColor: '#000',
+          series: [{
+            type: 'wordCloud',
+            gridSize: 5,
+            sizeRange: [18, 28],
+            rotationRange: [0, 45, 90, -45],
+            drawOutOfBound: false,
+            // shape: 'circle',
+            maskImage: maskImage,
+            width: '90%',
+            height: '90%'
+          }]
+        };
+
+      let words = ['栏目组', '舍不得', '绿巨人', '北京', '李彦宏', '托儿', '王尼玛', '支持', '王思聪', '王健林', '航母', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持', '舍不得', '钢铁侠', '北京', '李彦宏', '怪异君', '舍不得', '支持'],
+        colorList = ['#0ff', '#0f0', '#ff0'],
+        data = [];
+
+      words.forEach((word, idx) => {
+        data.push({
+          name: word,
+          value: randomRange(100),
+          textStyle: {
+            normal: {
+              color: colorList[idx % colorList.length],
+              opacity: 1
+            },
+            emphasis: {
+              opacity: 1
+            }
+          }
+        });
+      });
+
+      maskImage.onload = function () {
+        chart.setOption(chartOption);
+      };
+
+      chartOption.series[0].data = data;
+      chart.setOption(chartOption);
+    };
+  </script>
+</body>
+
+</html>

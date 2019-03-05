@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+                  <html lang="zh-CN">
+                  <head>
+                    <meta charset="UTF-8" />
+                    <meta name="renderer" content="webkit" />
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+                    <meta name="author" content="ntnyq<1210485244@qq.com>" />
+                    <title>豆瓣租房记录爬取</title>
+                    <style>
+                      .wrapper {
+                        width: 960px;
+                        margin: 0 auto;
+                        border: 2px solid #aaa;
+                        padding: 20px;
+                      }
+                      .wrapper table {
+                        width: 100%;
+                        border-collapse: collapse;
+                      }
+                      .wrapper table td,
+                      .wrapper table th {
+                        height: 32px;
+                        border: 1px solid #ccc;
+                        text-align: center;
+                      }
+                      .wrapper table thead tr,
+                      .wrapper table tr:nth-of-type(even) {
+                        background-color: #ddd;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div class="wrapper">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>标题</th>
+                            <th>总帖子楼层</th>
+                            <th>最后修改时间</th>
+                          </tr>
+                        </thead>
+                        <tbody><tr><td><a href="https://www.douban.com/group/topic/117459317/" target="_blank">
+                       蓝天小区主卧700非中介
+                    </td><td>89</td><td>06-21 11:05</td></tr><tr><td><a href="https://www.douban.com/group/topic/118303930/" target="_blank">
+                       运动公园无中介费主卧750打包带走
+                    </td><td>91</td><td>06-21 11:03</td></tr><tr><td><a href="https://www.douban.com/group/topic/118888277/" target="_blank">
+                       市图书馆地铁口主卧850拎包入住
+                    </td><td>15</td><td>06-21 11:03</td></tr><tr><td><a href="https://www.douban.com/group/topic/118948975/" target="_blank">
+                       某985博士、陕师大新进讲师在陕师大长安校区附近求...
+                    </td><td>2</td><td>06-21 10:47</td></tr><tr><td><a href="https://www.douban.com/group/topic/119044738/" target="_blank">
+                       合租房，出租单间。非中介！
+                    </td><td></td><td>06-21 10:37</td></tr><tr><td><a href="https://www.douban.com/group/topic/118986481/" target="_blank">
+                       押一付一 不是中介
+                    </td><td>4</td><td>06-21 10:36</td></tr><tr><td><a href="https://www.douban.com/group/topic/119019396/" target="_blank">
+                       洒金桥地铁口三室一厅转租一间
+                    </td><td>4</td><td>06-21 10:33</td></tr><tr><td><a href="https://www.douban.com/group/topic/119019537/" target="_blank">
+                       西安欧亚学院 长泰金帝 莱安城附近
+                    </td><td>5</td><td>06-21 10:30</td></tr><tr><td><a href="https://www.douban.com/group/topic/119015204/" target="_blank">
+                       高新区求室友一起合租
+                    </td><td>11</td><td>06-21 10:29</td></tr><tr><td><a href="https://www.douban.com/group/topic/119010948/" target="_blank">
+                       招可靠稳定的 女孩室友  龙首村
+                    </td><td>1</td><td>06-21 10:26</td></tr><tr><td><a href="https://www.douban.com/group/topic/114054915/" target="_blank">
+                       朝阳门火车站附近精装合租房
+                    </td><td>14</td><td>06-21 10:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/119042104/" target="_blank">
+                       高新 找女室友 两室一厅 太白南路or锦业路or丈八东路
+                    </td><td></td><td>06-21 09:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/117312635/" target="_blank">
+                       南门世界那么大青年旅社招合租啦
+                    </td><td>55</td><td>06-21 09:56</td></tr><tr><td><a href="https://www.douban.com/group/topic/119041044/" target="_blank">
+                       个人找室友 丈八北路 南窑头 附近易道君.玫瑰公馆 ...
+                    </td><td></td><td>06-21 09:42</td></tr><tr><td><a href="https://www.douban.com/group/topic/119040966/" target="_blank">
+                       劳动路，大雁塔，会展中心，太白南路，延平门
+                    </td><td></td><td>06-21 09:41</td></tr><tr><td><a href="https://www.douban.com/group/topic/119029713/" target="_blank">
+                       求，西安雁塔区附近的房子，合租也可以，价格在100...
+                    </td><td>2</td><td>06-21 09:39</td></tr><tr><td><a href="https://www.douban.com/group/topic/119039699/" target="_blank">
+                       急求合租，南窑村新家园，两室一厅，800次卧，1000...
+                    </td><td></td><td>06-21 09:22</td></tr><tr><td><a href="https://www.douban.com/group/topic/114887440/" target="_blank">
+                       寻找合租人，只限女生哦！明光路凤城七路口旭景兴...
+                    </td><td>1</td><td>06-21 07:55</td></tr><tr><td><a href="https://www.douban.com/group/topic/115764373/" target="_blank">
+                       会展中心附近租房
+                    </td><td>2</td><td>06-21 07:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/116431253/" target="_blank">
+                       新里魏玛公馆    两室    1600半年付找人合租，有...
+                    </td><td>20</td><td>06-21 07:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/116360082/" target="_blank">
+                       二环路段 大寨路 出租精品房屋 无中介费！
+                    </td><td>38</td><td>06-21 07:46</td></tr><tr><td><a href="https://www.douban.com/group/topic/119110472/" target="_blank">
+                       太白立交  西荷花园小区    大次卧出租   
+                    </td><td>1</td><td>06-22 13:17</td></tr><tr><td><a href="https://www.douban.com/group/topic/118855538/" target="_blank">
+                       小寨地铁口一室开间出租
+                    </td><td>5</td><td>06-22 13:09</td></tr><tr><td><a href="https://www.douban.com/group/topic/118879245/" target="_blank">
+                       【广泰门】荣德棕榈阳光小区两室一厅，次卧转租
+                    </td><td>4</td><td>06-22 12:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/118918159/" target="_blank">
+                       海荣豪佳  一室一厅，月租无中介费
+                    </td><td>12</td><td>06-22 12:40</td></tr><tr><td><a href="https://www.douban.com/group/topic/118961920/" target="_blank">
+                       找房子
+                    </td><td>2</td><td>06-22 12:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/119001079/" target="_blank">
+                       骡马市兴正元广场，钟楼南大街。印花布园小区，空...
+                    </td><td>2</td><td>06-22 12:00</td></tr><tr><td><a href="https://www.douban.com/group/topic/115585479/" target="_blank">
+                       雁塔区 大寨路 丰慧南路 创新路南段华府新桃园小区
+                    </td><td>2</td><td>06-22 11:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/119049232/" target="_blank">
+                       走过路过，有没有需要租房的呢？
+                    </td><td>8</td><td>06-22 11:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/115569897/" target="_blank">
+                       丈八北路,旭景碧泽园小区 单间出租，出门便是公交...
+                    </td><td>2</td><td>06-22 11:53</td></tr><tr><td><a href="https://www.douban.com/group/topic/118796900/" target="_blank">
+                       首月减半，无中介费，无套路。
+                    </td><td>17</td><td>06-22 11:53</td></tr><tr><td><a href="https://www.douban.com/group/topic/116402714/" target="_blank">
+                       ❤️女生合租❤️二号线大明宫西站❤...
+                    </td><td>48</td><td>06-22 11:53</td></tr><tr><td><a href="https://www.douban.com/group/topic/118918909/" target="_blank">
+                       吉祥诚信商业街 祥和雅居 年付  1800元/月
+                    </td><td>14</td><td>06-22 11:53</td></tr><tr><td><a href="https://www.douban.com/group/topic/118253631/" target="_blank">
+                       东二环 东新城市花园 一室一厅 房东整租
+                    </td><td>60</td><td>06-22 11:53</td></tr><tr><td><a href="https://www.douban.com/group/topic/115717317/" target="_blank">
+                       高新区 大寨路 团结南路 安琪儿医院 盛景园小区单...
+                    </td><td>3</td><td>06-22 11:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/119047205/" target="_blank">
+                       龙首原地铁口，龙御花园新装2室，家具家电全新，房...
+                    </td><td>10</td><td>06-22 11:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/119100376/" target="_blank">
+                       二号线市图书馆附近有没有小区招租主卧带独卫的…...
+                    </td><td>4</td><td>06-22 11:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/119038386/" target="_blank">
+                       丰庆路 八佳花园小区 两家合租 包物业供暖
+                    </td><td>8</td><td>06-22 11:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/118604221/" target="_blank">
+                       科技路西口 丈八北路地铁口 大寨路 枫韵蓝湾小区15...
+                    </td><td>11</td><td>06-22 11:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/119077942/" target="_blank">
+                       1号线劳动路地铁口，大庆路，玉祥门附近出租精装空...
+                    </td><td>2</td><td>06-22 11:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/119064836/" target="_blank">
+                       3号线主卧带独卫 高新区 旺座国际城 延平门地铁口 ...
+                    </td><td>6</td><td>06-22 11:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/119063708/" target="_blank">
+                       2号线，主卧带独卫，电视塔 国展中心地铁口， 附近...
+                    </td><td>2</td><td>06-22 11:50</td></tr><tr><td><a href="https://www.douban.com/group/topic/119105560/" target="_blank">
+                       大唐西市出租单间无中介
+                    </td><td>1</td><td>06-22 11:50</td></tr><tr><td><a href="https://www.douban.com/group/topic/116036324/" target="_blank">
+                       小寨 纬一街地铁口 邮电大学旁边 东八里高层电梯房...
+                    </td><td>1</td><td>06-22 08:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/117318219/" target="_blank">
+                       高新区 科技路 延平门 地铁口附主次卧
+                    </td><td>1</td><td>06-22 08:23</td></tr><tr><td><a href="https://www.douban.com/group/topic/118372571/" target="_blank">
+                       雁塔 雁环中路 地铁2号线三爻附近 华城泊郡 小区 ...
+                    </td><td>17</td><td>06-22 08:00</td></tr><tr><td><a href="https://www.douban.com/group/topic/119093945/" target="_blank">
+                       招室友 会展中心 长安南路 长延堡 杏园小区 附近出...
+                    </td><td></td><td>06-22 06:50</td></tr><tr><td><a href="https://www.douban.com/group/topic/119093933/" target="_blank">
+                       招室友 延平门 科技路 高新 旺座国际 沣惠南路 附...
+                    </td><td></td><td>06-22 06:49</td></tr><tr><td><a href="https://www.douban.com/group/topic/119033023/" target="_blank">
+                       （招合租室友）体育场为中心周边地铁二号线都能接受
+                    </td><td>12</td><td>06-22 03:31</td></tr><tr><td><a href="https://www.douban.com/group/topic/118437957/" target="_blank">
+                       太白立交  整租2室  陪读 白庙小区 1700元  拎包
+                    </td><td>10</td><td>06-22 00:59</td></tr><tr><td><a href="https://www.douban.com/group/topic/119073671/" target="_blank">
+                       求租，求合租考研/考公室友~
+                    </td><td>5</td><td>06-21 23:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/118751457/" target="_blank">
+                       美丽的院子两室整租，房东直租
+                    </td><td>12</td><td>06-21 23:46</td></tr><tr><td><a href="https://www.douban.com/group/topic/118874331/" target="_blank">
+                       单间转租，雁塔区国展中心，近地铁口
+                    </td><td>12</td><td>06-21 23:36</td></tr><tr><td><a href="https://www.douban.com/group/topic/118599854/" target="_blank">
+                       转租啦，没有中介费没有物业管理费，北二环东近未...
+                    </td><td>18</td><td>06-21 22:26</td></tr><tr><td><a href="https://www.douban.com/group/topic/119082970/" target="_blank">
+                       25日，西安，一个月，大叔，五星酒店
+                    </td><td></td><td>06-21 21:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/119082769/" target="_blank">
+                       南稍门地铁口800元招合租室友仅限女生
+                    </td><td></td><td>06-21 21:48</td></tr><tr><td><a href="https://www.douban.com/group/topic/119082324/" target="_blank">
+                       北大街洒金桥附近整租
+                    </td><td></td><td>06-21 21:39</td></tr><tr><td><a href="https://www.douban.com/group/topic/119081990/" target="_blank">
+                       寻房东！常春藤花园
+                    </td><td></td><td>06-21 21:33</td></tr><tr><td><a href="https://www.douban.com/group/topic/119081564/" target="_blank">
+                       神州数码（丈八四路）求租
+                    </td><td></td><td>06-21 21:23</td></tr><tr><td><a href="https://www.douban.com/group/topic/119081203/" target="_blank">
+                       西电社区求租
+                    </td><td></td><td>06-21 21:16</td></tr><tr><td><a href="https://www.douban.com/group/topic/118806159/" target="_blank">
+                       个人出租 未央区万达旁 金科天籁城三室两厅出租
+                    </td><td>9</td><td>06-21 21:05</td></tr><tr><td><a href="https://www.douban.com/group/topic/118816243/" target="_blank">
+                       兴庆路北段67号，碑林长乐坊，兴庆雅居1300/月整租...
+                    </td><td>1</td><td>06-21 21:01</td></tr><tr><td><a href="https://www.douban.com/group/topic/114270590/" target="_blank">
+                       【转租】 3号线延兴门(交大附近)
+                    </td><td>6</td><td>06-21 20:58</td></tr><tr><td><a href="https://www.douban.com/group/topic/119063611/" target="_blank">
+                       延平门地铁口  旺座国际  林凯国际  高新四路附近...
+                    </td><td></td><td>06-21 15:42</td></tr><tr><td><a href="https://www.douban.com/group/topic/119062685/" target="_blank">
+                       求会展中心地铁附近合租室友
+                    </td><td></td><td>06-21 15:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/118682885/" target="_blank">
+                       求租
+                    </td><td>1</td><td>06-21 15:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/118990967/" target="_blank">
+                       出租紫薇田园都市D区2号楼1单元
+                    </td><td>4</td><td>06-21 15:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/116985246/" target="_blank">
+                       安远门地铁口床位招租，500-700，包水电宽带暖气，...
+                    </td><td>18</td><td>06-21 14:31</td></tr><tr><td><a href="https://www.douban.com/group/topic/118864083/" target="_blank">
+                       求租
+                    </td><td>1</td><td>06-21 14:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/107185430/" target="_blank">
+                       龙首原次卧招租美女辣
+                    </td><td>2</td><td>06-21 14:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/119023747/" target="_blank">
+                       转租，北大街，三室一厨一卫
+                    </td><td>1</td><td>06-21 14:04</td></tr><tr><td><a href="https://www.douban.com/group/topic/118984439/" target="_blank">
+                       北大街附近有房源
+                    </td><td>1</td><td>06-21 13:49</td></tr><tr><td><a href="https://www.douban.com/group/topic/119054497/" target="_blank">
+                       洒金桥家电齐全找女室友
+                    </td><td></td><td>06-21 13:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/118781751/" target="_blank">
+                       长安区万科城三期 求合租 本人女，求女生室友
+                    </td><td>3</td><td>06-21 12:46</td></tr><tr><td><a href="https://www.douban.com/group/topic/119052570/" target="_blank">
+                       急！求租
+                    </td><td></td><td>06-21 12:37</td></tr><tr><td><a href="https://www.douban.com/group/topic/119008979/" target="_blank">
+                       进来看，你会满意的！
+                    </td><td>15</td><td>06-21 11:47</td></tr><tr><td><a href="https://www.douban.com/group/topic/119029945/" target="_blank">
+                       急求合租，南窑村新家园，两室一厅，900次卧，今天...
+                    </td><td>1</td><td>06-21 11:31</td></tr><tr><td><a href="https://www.douban.com/group/topic/107329498/" target="_blank">
+                       西安市，高新区，丈八北路，科技路西口，丈八北路...
+                    </td><td>1</td><td>06-21 11:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/117696266/" target="_blank">
+                       西稍门开元商城  锦园路  大唐西市  丰庆路附近出...
+                    </td><td>33</td><td>06-15 13:55</td></tr><tr><td><a href="https://www.douban.com/group/topic/118224788/" target="_blank">
+                       太白立交  边家村  印象城   红星美凯龙  人才市场...
+                    </td><td>20</td><td>06-15 13:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/107314785/" target="_blank">
+                       高新区，华为研究所，锦业路与西三环十字，满堂悦...
+                    </td><td>2</td><td>06-15 13:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/117528250/" target="_blank">
+                       招合租室友，地铁三号线太白南路，精装两室
+                    </td><td>21</td><td>06-15 13:05</td></tr><tr><td><a href="https://www.douban.com/group/topic/114262990/" target="_blank">
+                       已转出～女生转租～体育场地铁口近小寨南稍门 电梯...
+                    </td><td>26</td><td>06-15 11:35</td></tr><tr><td><a href="https://www.douban.com/group/topic/118741958/" target="_blank">
+                       招室友啦！！！西三爻 电视塔附近  三室一厅
+                    </td><td>1</td><td>06-15 11:27</td></tr><tr><td><a href="https://www.douban.com/group/topic/116007652/" target="_blank">
+                       同一屋檐，舒服即可
+                    </td><td>18</td><td>06-15 11:20</td></tr><tr><td><a href="https://www.douban.com/group/topic/90437610/" target="_blank">
+                       新房来袭，科技路，高新路，太白南路，西斜七路，...
+                    </td><td>21</td><td>06-15 10:38</td></tr><tr><td><a href="https://www.douban.com/group/topic/117227861/" target="_blank">
+                       纬一街地铁口东八里 精品装修 拎包入住 押一付一
+                    </td><td>3</td><td>06-15 10:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/105693008/" target="_blank">
+                       【单间出租】纬一街地铁口 新小区 单间出租 房租便...
+                    </td><td>8</td><td>06-15 10:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/107854585/" target="_blank">
+                       【转租】东八里纬一街地铁，主卧带飘窗，家具家电齐全
+                    </td><td>9</td><td>06-15 10:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/117636933/" target="_blank">
+                       北郊 龙首村 次卧 精装修个人出租 男女不限  女生优先
+                    </td><td>10</td><td>06-15 10:13</td></tr><tr><td><a href="https://www.douban.com/group/topic/118678699/" target="_blank">
+                       求租！！长安国际企业总部附近！
+                    </td><td>4</td><td>06-15 01:42</td></tr><tr><td><a href="https://www.douban.com/group/topic/118667349/" target="_blank">
+                       长安国际企业总部，附近两室求整租
+                    </td><td>1</td><td>06-15 01:41</td></tr><tr><td><a href="https://www.douban.com/group/topic/118611185/" target="_blank">
+                       饶城南苑小区一室一厅转租
+                    </td><td>4</td><td>06-14 22:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/118669096/" target="_blank">
+                       个人房源市图书馆凤城三路24号长安医院凤城医院隔...
+                    </td><td>2</td><td>06-14 21:47</td></tr><tr><td><a href="https://www.douban.com/group/topic/118683563/" target="_blank">
+                       个人转租西稍门 上城公寓
+loft公寓 一室一厅一厨一卫
+                    </td><td>2</td><td>06-14 21:39</td></tr><tr><td><a href="https://www.douban.com/group/topic/118726055/" target="_blank">
+                       华为工作，求合租舍友
+                    </td><td></td><td>06-14 21:23</td></tr><tr><td><a href="https://www.douban.com/group/topic/118529987/" target="_blank">
+                       招室友
+                    </td><td>5</td><td>06-14 20:34</td></tr><tr><td><a href="https://www.douban.com/group/topic/118417351/" target="_blank">
+                       郝佳城市花园次卧转租  吉祥村地铁  小寨  阳阳国...
+                    </td><td>1</td><td>06-14 20:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/111738366/" target="_blank">
+                       怎么删帖
+                    </td><td>10</td><td>06-20 11:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/118989682/" target="_blank">
+                       租房
+                    </td><td>1</td><td>06-20 11:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/118944844/" target="_blank">
+                       找合租室友 夏日景色 南窑头 西安软件园 主卧带独...
+                    </td><td>2</td><td>06-20 11:20</td></tr><tr><td><a href="https://www.douban.com/group/topic/110196990/" target="_blank">
+                       未央区 凤城五路和 明光路十字路口 两室两厅一卫 ...
+                    </td><td>12</td><td>06-20 10:59</td></tr><tr><td><a href="https://www.douban.com/group/topic/106445182/" target="_blank">
+                       未央区 精装修百花村社区 1室0厅1卫--780  个人房源
+                    </td><td>15</td><td>06-20 10:58</td></tr><tr><td><a href="https://www.douban.com/group/topic/118839497/" target="_blank">
+                       电视塔一室
+                    </td><td>9</td><td>06-20 10:55</td></tr><tr><td><a href="https://www.douban.com/group/topic/117631365/" target="_blank">
+                       未央区，凤城南路，备勤公寓楼，押一付一，无中介...
+                    </td><td>29</td><td>06-20 10:53</td></tr><tr><td><a href="https://www.douban.com/group/topic/118620953/" target="_blank">
+                       求租毛坯房
+                    </td><td>1</td><td>06-20 10:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/118645939/" target="_blank">
+                       纬二十九街住宅小区 押一付一 无中介费 17629034584
+                    </td><td>4</td><td>06-20 10:49</td></tr><tr><td><a href="https://www.douban.com/group/topic/118381184/" target="_blank">
+                       大明宫西地铁口 名京久合院 押一付一 无中介费
+                    </td><td>11</td><td>06-20 10:49</td></tr><tr><td><a href="https://www.douban.com/group/topic/118504677/" target="_blank">
+                       【求租、合租、找舍友、转租】反正就是要在高新区...
+                    </td><td>15</td><td>06-20 10:49</td></tr><tr><td><a href="https://www.douban.com/group/topic/118986257/" target="_blank">
+                       押一付一，不是中介
+                    </td><td></td><td>06-20 10:23</td></tr><tr><td><a href="https://www.douban.com/group/topic/118725717/" target="_blank">
+                       高新区丈八北路地铁口两室一厅招室友
+                    </td><td>3</td><td>06-19 11:33</td></tr><tr><td><a href="https://www.douban.com/group/topic/118834105/" target="_blank">
+                       【求租】吉祥村地铁站附近，两室整租，家电齐全的...
+                    </td><td>3</td><td>06-19 11:18</td></tr><tr><td><a href="https://www.douban.com/group/topic/118936209/" target="_blank">
+                       李家村万达一室短租  可包周
+                    </td><td></td><td>06-19 11:04</td></tr><tr><td><a href="https://www.douban.com/group/topic/118934624/" target="_blank">
+                       嘉怡豪庭
+                    </td><td></td><td>06-19 10:43</td></tr><tr><td><a href="https://www.douban.com/group/topic/97586832/" target="_blank">
+                       丰庆路 大唐西市 西稍门 边家村 西雅图，金丰大厦...
+                    </td><td>29</td><td>06-19 10:06</td></tr><tr><td><a href="https://www.douban.com/group/topic/113705007/" target="_blank">
+                       科技二路，软件园 夏日景色小区精装房合租
+                    </td><td>11</td><td>06-19 10:06</td></tr><tr><td><a href="https://www.douban.com/group/topic/118053792/" target="_blank">
+                       个人押一付一 无中介费  龙首商业街旁 绿景园
+                    </td><td>19</td><td>06-19 09:58</td></tr><tr><td><a href="https://www.douban.com/group/topic/118897774/" target="_blank">
+                       北大街地铁口出租
+                    </td><td>2</td><td>06-19 09:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/113989096/" target="_blank">
+                       电视塔长丰园小区房东直租！！！主卧出租！！好房...
+                    </td><td>36</td><td>06-19 09:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/102335080/" target="_blank">
+                       市图书馆  一室一厅一卫
+                    </td><td>67</td><td>06-19 06:48</td></tr><tr><td><a href="https://www.douban.com/group/topic/118925738/" target="_blank">
+                       求小寨附近，整租一房，急急急!
+                    </td><td>1</td><td>06-19 06:41</td></tr><tr><td><a href="https://www.douban.com/group/topic/118366158/" target="_blank">
+                       朱雀门内两室一厅转租
+                    </td><td>21</td><td>06-19 04:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/117687264/" target="_blank">
+                       碑林区  西荷家园    精装修的房子 急租  
+                    </td><td>13</td><td>06-18 23:23</td></tr><tr><td><a href="https://www.douban.com/group/topic/118920701/" target="_blank">
+                       西安二战考研求研友，合租，相互监督！无不良嗜好 ...
+                    </td><td></td><td>06-18 22:58</td></tr><tr><td><a href="https://www.douban.com/group/topic/118917460/" target="_blank">
+                       房屋单间
+                    </td><td></td><td>06-18 21:44</td></tr><tr><td><a href="https://www.douban.com/group/topic/118914839/" target="_blank">
+                       求租工商局家属院带卫生间主卧，或者整租一居室
+                    </td><td></td><td>06-18 20:31</td></tr><tr><td><a href="https://www.douban.com/group/topic/118095355/" target="_blank">
+                       西安租房吉祥村地铁口MOMOpark
+                    </td><td>14</td><td>06-18 19:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/118817407/" target="_blank">
+                       紫薇田园都市合租公寓空调房招室友
+                    </td><td>2</td><td>06-18 17:26</td></tr><tr><td><a href="https://www.douban.com/group/topic/118749705/" target="_blank">
+                       租房
+                    </td><td>4</td><td>06-18 16:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/118869855/" target="_blank">
+                       高新区丈八路北爱西华庭小区，
+                    </td><td>7</td><td>06-18 15:34</td></tr><tr><td><a href="https://www.douban.com/group/topic/115729916/" target="_blank">
+                       非中介 高新CBD中央 国际品牌公寓招租啦 啦啦啦
+电...
+                    </td><td>7</td><td>06-18 15:29</td></tr><tr><td><a href="https://www.douban.com/group/topic/118902609/" target="_blank">
+                       南二环求租预算3500内
+                    </td><td></td><td>06-18 15:22</td></tr><tr><td><a href="https://www.douban.com/group/topic/118329971/" target="_blank">
+                       郝佳城市花园次卧转租  阳阳国际  小寨  吉祥村
+                    </td><td>1</td><td>06-14 20:20</td></tr><tr><td><a href="https://www.douban.com/group/topic/114157778/" target="_blank">
+                       【女生合租】钟楼附近一室一厅精装修，空调wifi热...
+                    </td><td>37</td><td>06-14 19:32</td></tr><tr><td><a href="https://www.douban.com/group/topic/115972375/" target="_blank">
+                       【个人出租】【地铁鱼化寨站】52平米、中等装修、...
+                    </td><td>12</td><td>06-14 19:20</td></tr><tr><td><a href="https://www.douban.com/group/topic/118496730/" target="_blank">
+                       浐灞欧亚大道恒大御景，三室，领包入住，房东直租
+                    </td><td>9</td><td>06-14 19:09</td></tr><tr><td><a href="https://www.douban.com/group/topic/118540803/" target="_blank">
+                       找室友，北郊（凤一至凤二）
+                    </td><td>1</td><td>06-14 18:50</td></tr><tr><td><a href="https://www.douban.com/group/topic/118372863/" target="_blank">
+                       国展中心地铁口  八院 政法大学 陕师大 外国语
+                    </td><td>5</td><td>06-14 18:35</td></tr><tr><td><a href="https://www.douban.com/group/topic/115389420/" target="_blank">
+                       【女生床位500全包】一室一厅两人间
+                    </td><td>9</td><td>06-14 18:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/118712447/" target="_blank">
+                       会展中心，电子正街，地铁房，月付，无中介费。
+                    </td><td></td><td>06-14 16:42</td></tr><tr><td><a href="https://www.douban.com/group/topic/118373387/" target="_blank">
+                       【求租】浐灞半岛或地铁3号线浐灞商务中心、桃花潭...
+                    </td><td>4</td><td>06-14 16:19</td></tr><tr><td><a href="https://www.douban.com/group/topic/118692080/" target="_blank">
+                       求租长安区韦曲街道文化街区房源
+                    </td><td>1</td><td>06-14 15:55</td></tr><tr><td><a href="https://www.douban.com/group/topic/118705787/" target="_blank">
+                       逃离都市的车水马龙，中国秦岭玫瑰小镇会员招募中
+                    </td><td></td><td>06-14 14:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/117152874/" target="_blank">
+                       大寨路三家合住全女生
+                    </td><td>7</td><td>06-14 14:34</td></tr><tr><td><a href="https://www.douban.com/group/topic/114861844/" target="_blank">
+                       考研求大学附近房源！求靠谱研友！
+                    </td><td>17</td><td>06-14 14:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/118703429/" target="_blank">
+                       ［个人房源］城南南稍门宏信国际花园一室出租 
+                    </td><td></td><td>06-14 14:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/112285130/" target="_blank">
+                       南门世界那么大青旅限量招包月
+                    </td><td>6</td><td>06-14 14:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/118702655/" target="_blank">
+                       凤一未央路招合租靠谱的来
+                    </td><td></td><td>06-14 14:08</td></tr><tr><td><a href="https://www.douban.com/group/topic/118699932/" target="_blank">
+                       恒大绿洲110平房屋出租
+                    </td><td></td><td>06-14 13:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/116218991/" target="_blank">
+                       凤栖原地铁口，只需300便宜甩租，，家具齐全拎包入...
+                    </td><td>4</td><td>06-14 13:23</td></tr><tr><td><a href="https://www.douban.com/group/topic/118699437/" target="_blank">
+                       求租  人才市场附近有没有两室一厅出租的
+                    </td><td></td><td>06-14 13:13</td></tr><tr><td><a href="https://www.douban.com/group/topic/107236251/" target="_blank">
+                       曲江交大校区后华尔兹花园校区便宜合租啦。650就能...
+                    </td><td>55</td><td>06-14 12:45</td></tr><tr><td><a href="https://www.douban.com/group/topic/118390026/" target="_blank">
+                       可月付，丈八北路地铁口，都市印象，精装全配，个...
+                    </td><td>5</td><td>06-14 12:09</td></tr><tr><td><a href="https://www.douban.com/group/topic/97536538/" target="_blank">
+                       曲江金水湾   可短租
+                    </td><td>12</td><td>06-20 10:14</td></tr><tr><td><a href="https://www.douban.com/group/topic/113859454/" target="_blank">
+                       曲江旺座  海德堡小区   可做饭
+                    </td><td>15</td><td>06-20 10:13</td></tr><tr><td><a href="https://www.douban.com/group/topic/116470434/" target="_blank">
+                       本人女，二战考研，想在西安找个合租房，仅限女人...
+                    </td><td>42</td><td>06-20 10:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/118778721/" target="_blank">
+                       求高新区陕西省游泳中心附近住房
+                    </td><td>4</td><td>06-20 10:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/118274481/" target="_blank">
+                       汉城北路150号，莲湖城西客运站，雅卓花园1300/月...
+                    </td><td>3</td><td>06-20 10:05</td></tr><tr><td><a href="https://www.douban.com/group/topic/117806641/" target="_blank">
+                       非中介，高新区，丈八北路地铁口，科技路西口枫韵...
+                    </td><td>17</td><td>06-20 09:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/117579420/" target="_blank">
+                       大寨路爱西华庭有空房单间出租合租，看房联系我173...
+                    </td><td>19</td><td>06-20 09:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/118519373/" target="_blank">
+                       劳动路地铁口一百米，主卧一间，空调暖气，西稍门...
+                    </td><td>9</td><td>06-20 09:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/117650835/" target="_blank">
+                       高科新花园合租，非中介！干净，干净，干净
+                    </td><td>26</td><td>06-20 09:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/114806532/" target="_blank">
+                       陕师大长安校区
+                    </td><td>4</td><td>06-20 09:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/118281575/" target="_blank">
+                       雁塔区 沣惠南路 唐延路北段 金辉地产大厦 牡丹庄...
+                    </td><td>8</td><td>06-20 09:47</td></tr><tr><td><a href="https://www.douban.com/group/topic/117717430/" target="_blank">
+                       需要短租的看过来 良心房子
+                    </td><td>21</td><td>06-20 09:41</td></tr><tr><td><a href="https://www.douban.com/group/topic/118982661/" target="_blank">
+                       招合租室友，可以一起找合适的房子。
+                    </td><td></td><td>06-20 09:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/117029223/" target="_blank">
+                       凤城五路地铁口50米海棠花园合租单间招租，押一付...
+                    </td><td>15</td><td>06-20 09:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/118858885/" target="_blank">
+                       丰庆路东口景寓学府
+                    </td><td>2</td><td>06-20 09:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/118702820/" target="_blank">
+                       丰庆路东口景寓学府招室友
+                    </td><td>2</td><td>06-20 09:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/118917685/" target="_blank">
+                       刚从上海回来 想找房子诶
+                    </td><td>14</td><td>06-20 08:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/118906593/" target="_blank">
+                       软件园附近丈八北路 科技四路夏日景色小区个人出租...
+                    </td><td>4</td><td>06-20 14:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/118999182/" target="_blank">
+                       考研找靠谱室友~
+                    </td><td></td><td>06-20 13:58</td></tr><tr><td><a href="https://www.douban.com/group/topic/116991124/" target="_blank">
+                       已租
+                    </td><td>40</td><td>06-20 13:39</td></tr><tr><td><a href="https://www.douban.com/group/topic/118997969/" target="_blank">
+                       求租：高新或小寨附近单间/一房一厅
+                    </td><td></td><td>06-20 13:38</td></tr><tr><td><a href="https://www.douban.com/group/topic/118836701/" target="_blank">
+                       女生合租，个人合租，近高新四路，桃园南路上❤...
+                    </td><td>2</td><td>06-20 13:32</td></tr><tr><td><a href="https://www.douban.com/group/topic/117289348/" target="_blank">
+                       应届毕业生高新合租
+                    </td><td>9</td><td>06-20 13:30</td></tr><tr><td><a href="https://www.douban.com/group/topic/116360891/" target="_blank">
+                       华东万锦城附近西钞小区便宜出租
+                    </td><td>11</td><td>06-20 13:27</td></tr><tr><td><a href="https://www.douban.com/group/topic/118996848/" target="_blank">
+                       求租 高新区一室一厅
+                    </td><td></td><td>06-20 13:15</td></tr><tr><td><a href="https://www.douban.com/group/topic/118871080/" target="_blank">
+                       太华南路白桦林明天小区2居室出租，长租年付
+                    </td><td>2</td><td>06-20 13:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/118319007/" target="_blank">
+                       北郊求租，一室一卫或主卧都可以，20到60平，最好...
+                    </td><td>6</td><td>06-20 13:02</td></tr><tr><td><a href="https://www.douban.com/group/topic/118638770/" target="_blank">
+                       个人转租  西稍门 上城公寓 loft  上下两层整租 一...
+                    </td><td>1</td><td>06-20 13:02</td></tr><tr><td><a href="https://www.douban.com/group/topic/115520319/" target="_blank">
+                       东门外陕报社李家村万达南廓门交大西南门乐居场合...
+                    </td><td>35</td><td>06-20 12:56</td></tr><tr><td><a href="https://www.douban.com/group/topic/117204695/" target="_blank">
+                       西稍门，西电集团医院附近，独卫出租
+                    </td><td>74</td><td>06-20 12:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/118910331/" target="_blank">
+                       转租工商局家属院1室微信手机同号17621909664
+                    </td><td>9</td><td>06-20 12:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/118992995/" target="_blank">
+                       金花路小区中行家属院，两室一厅一卫一厨
+                    </td><td></td><td>06-20 12:01</td></tr><tr><td><a href="https://www.douban.com/group/topic/101268504/" target="_blank">
+                       科技路西口 铂悦小区合租招租
+                    </td><td>28</td><td>06-20 11:59</td></tr><tr><td><a href="https://www.douban.com/group/topic/118322925/" target="_blank">
+                       电视塔会展中心长安西路三兴园小区两室一厅招合租...
+                    </td><td>15</td><td>06-20 11:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/118992598/" target="_blank">
+                       求租 绿园 附近的小区 
+                    </td><td></td><td>06-20 11:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/118721220/" target="_blank">
+                       北大街莲湖公园附近合租
+                    </td><td>6</td><td>06-20 11:43</td></tr><tr><td><a href="https://www.douban.com/group/topic/118742184/" target="_blank">
+                       找合租室友 国展中心地铁口 八院家属院 精装小多层...
+                    </td><td>2</td><td>06-20 11:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/118809872/" target="_blank">
+                       （会展中心）（电视塔）（第八医院）（华城国际）...
+                    </td><td>4</td><td>06-19 15:44</td></tr><tr><td><a href="https://www.douban.com/group/topic/118760447/" target="_blank">
+                       地铁口中贸广场房源求合租
+                    </td><td>17</td><td>06-19 15:17</td></tr><tr><td><a href="https://www.douban.com/group/topic/118546815/" target="_blank">
+                       陕西省西安市雁塔区雁翔路博威公寓整租1室1厅1卫(...
+                    </td><td>19</td><td>06-19 15:13</td></tr><tr><td><a href="https://www.douban.com/group/topic/118214225/" target="_blank">
+                       长安南路449号，雁塔杨家村，丽融大厦900/月次卧单...
+                    </td><td>3</td><td>06-19 15:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/118950316/" target="_blank">
+                       有没有玩大众点评的小伙伴啊，来帮我店铺做个任务...
+                    </td><td></td><td>06-19 15:04</td></tr><tr><td><a href="https://www.douban.com/group/topic/118163527/" target="_blank">
+                       柿园路196号，碑林东门外，东方星座1200/月整租一...
+                    </td><td>6</td><td>06-19 15:02</td></tr><tr><td><a href="https://www.douban.com/group/topic/118145957/" target="_blank">
+                       劳动路与丰庆路十字    超大卧室低价出租  
+                    </td><td>7</td><td>06-19 14:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/118821086/" target="_blank">
+                       【转租】东三环 一号线 浐河地铁站 水岸东方主卧带...
+                    </td><td>2</td><td>06-19 14:51</td></tr><tr><td><a href="https://www.douban.com/group/topic/118948409/" target="_blank">
+                       求租！大明宫西地铁口附近，一室一厅的房子
+                    </td><td></td><td>06-19 14:30</td></tr><tr><td><a href="https://www.douban.com/group/topic/118654539/" target="_blank">
+                       碑林区交大东南门求房源
+                    </td><td>1</td><td>06-19 14:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/118474750/" target="_blank">
+                       开远门，土门900元品质单间
+                    </td><td>1</td><td>06-19 14:26</td></tr><tr><td><a href="https://www.douban.com/group/topic/117573047/" target="_blank">
+                       三号线通化门到广泰门沿线有木有转租的小伙伴，快...
+                    </td><td>5</td><td>06-19 14:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/118094770/" target="_blank">
+                       西安合租公寓尚城公馆
+                    </td><td>13</td><td>06-19 13:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/118709421/" target="_blank">
+                       求租西交大曲江校区附近的房子，两居室整租，希望...
+                    </td><td>1</td><td>06-19 13:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/118649467/" target="_blank">
+                       财富中心高科广场单间出租，
+                    </td><td>1</td><td>06-19 13:14</td></tr><tr><td><a href="https://www.douban.com/group/topic/118654808/" target="_blank">
+                       求租，女生
+                    </td><td>3</td><td>06-19 13:13</td></tr><tr><td><a href="https://www.douban.com/group/topic/106646032/" target="_blank">
+                       【房东直租】非中介！曲江新区新装修首次出租高档...
+                    </td><td>7</td><td>06-19 12:20</td></tr><tr><td><a href="https://www.douban.com/group/topic/117298928/" target="_blank">
+                       富苑阳光 押一付一 个人出租
+                    </td><td>15</td><td>06-19 12:05</td></tr><tr><td><a href="https://www.douban.com/group/topic/118862363/" target="_blank">
+                       高新求租一单间
+                    </td><td>7</td><td>06-19 12:04</td></tr><tr><td><a href="https://www.douban.com/group/topic/118835318/" target="_blank">
+                       找房，找室友
+                    </td><td>8</td><td>06-19 11:59</td></tr><tr><td><a href="https://www.douban.com/group/topic/118857708/" target="_blank">
+                       求租 高新太和时代广场附近 1000左右
+                    </td><td>14</td><td>06-19 11:52</td></tr><tr><td><a href="https://www.douban.com/group/topic/118329971/" target="_blank">
+                       郝佳城市花园次卧转租  阳阳国际  小寨  吉祥村
+                    </td><td>1</td><td>06-14 20:20</td></tr><tr><td><a href="https://www.douban.com/group/topic/114157778/" target="_blank">
+                       【女生合租】钟楼附近一室一厅精装修，空调wifi热...
+                    </td><td>37</td><td>06-14 19:32</td></tr><tr><td><a href="https://www.douban.com/group/topic/115972375/" target="_blank">
+                       【个人出租】【地铁鱼化寨站】52平米、中等装修、...
+                    </td><td>12</td><td>06-14 19:20</td></tr><tr><td><a href="https://www.douban.com/group/topic/118496730/" target="_blank">
+                       浐灞欧亚大道恒大御景，三室，领包入住，房东直租
+                    </td><td>9</td><td>06-14 19:09</td></tr><tr><td><a href="https://www.douban.com/group/topic/118540803/" target="_blank">
+                       找室友，北郊（凤一至凤二）
+                    </td><td>1</td><td>06-14 18:50</td></tr><tr><td><a href="https://www.douban.com/group/topic/118372863/" target="_blank">
+                       国展中心地铁口  八院 政法大学 陕师大 外国语
+                    </td><td>5</td><td>06-14 18:35</td></tr><tr><td><a href="https://www.douban.com/group/topic/115389420/" target="_blank">
+                       【女生床位500全包】一室一厅两人间
+                    </td><td>9</td><td>06-14 18:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/118712447/" target="_blank">
+                       会展中心，电子正街，地铁房，月付，无中介费。
+                    </td><td></td><td>06-14 16:42</td></tr><tr><td><a href="https://www.douban.com/group/topic/118373387/" target="_blank">
+                       【求租】浐灞半岛或地铁3号线浐灞商务中心、桃花潭...
+                    </td><td>4</td><td>06-14 16:19</td></tr><tr><td><a href="https://www.douban.com/group/topic/118692080/" target="_blank">
+                       求租长安区韦曲街道文化街区房源
+                    </td><td>1</td><td>06-14 15:55</td></tr><tr><td><a href="https://www.douban.com/group/topic/118705787/" target="_blank">
+                       逃离都市的车水马龙，中国秦岭玫瑰小镇会员招募中
+                    </td><td></td><td>06-14 14:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/117152874/" target="_blank">
+                       大寨路三家合住全女生
+                    </td><td>7</td><td>06-14 14:34</td></tr><tr><td><a href="https://www.douban.com/group/topic/114861844/" target="_blank">
+                       考研求大学附近房源！求靠谱研友！
+                    </td><td>17</td><td>06-14 14:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/118703429/" target="_blank">
+                       ［个人房源］城南南稍门宏信国际花园一室出租 
+                    </td><td></td><td>06-14 14:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/112285130/" target="_blank">
+                       南门世界那么大青旅限量招包月
+                    </td><td>6</td><td>06-14 14:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/118702655/" target="_blank">
+                       凤一未央路招合租靠谱的来
+                    </td><td></td><td>06-14 14:08</td></tr><tr><td><a href="https://www.douban.com/group/topic/118699932/" target="_blank">
+                       恒大绿洲110平房屋出租
+                    </td><td></td><td>06-14 13:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/116218991/" target="_blank">
+                       凤栖原地铁口，只需300便宜甩租，，家具齐全拎包入...
+                    </td><td>4</td><td>06-14 13:23</td></tr><tr><td><a href="https://www.douban.com/group/topic/118699437/" target="_blank">
+                       求租  人才市场附近有没有两室一厅出租的
+                    </td><td></td><td>06-14 13:13</td></tr><tr><td><a href="https://www.douban.com/group/topic/107236251/" target="_blank">
+                       曲江交大校区后华尔兹花园校区便宜合租啦。650就能...
+                    </td><td>55</td><td>06-14 12:45</td></tr><tr><td><a href="https://www.douban.com/group/topic/118390026/" target="_blank">
+                       可月付，丈八北路地铁口，都市印象，精装全配，个...
+                    </td><td>5</td><td>06-14 12:09</td></tr><tr><td><a href="https://www.douban.com/group/topic/119063611/" target="_blank">
+                       延平门地铁口  旺座国际  林凯国际  高新四路附近...
+                    </td><td></td><td>06-21 15:42</td></tr><tr><td><a href="https://www.douban.com/group/topic/119062685/" target="_blank">
+                       求会展中心地铁附近合租室友
+                    </td><td></td><td>06-21 15:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/118682885/" target="_blank">
+                       求租
+                    </td><td>1</td><td>06-21 15:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/118990967/" target="_blank">
+                       出租紫薇田园都市D区2号楼1单元
+                    </td><td>4</td><td>06-21 15:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/116985246/" target="_blank">
+                       安远门地铁口床位招租，500-700，包水电宽带暖气，...
+                    </td><td>18</td><td>06-21 14:31</td></tr><tr><td><a href="https://www.douban.com/group/topic/118864083/" target="_blank">
+                       求租
+                    </td><td>1</td><td>06-21 14:28</td></tr><tr><td><a href="https://www.douban.com/group/topic/107185430/" target="_blank">
+                       龙首原次卧招租美女辣
+                    </td><td>2</td><td>06-21 14:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/119023747/" target="_blank">
+                       转租，北大街，三室一厨一卫
+                    </td><td>1</td><td>06-21 14:04</td></tr><tr><td><a href="https://www.douban.com/group/topic/118984439/" target="_blank">
+                       北大街附近有房源
+                    </td><td>1</td><td>06-21 13:49</td></tr><tr><td><a href="https://www.douban.com/group/topic/119054497/" target="_blank">
+                       洒金桥家电齐全找女室友
+                    </td><td></td><td>06-21 13:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/118781751/" target="_blank">
+                       长安区万科城三期 求合租 本人女，求女生室友
+                    </td><td>3</td><td>06-21 12:46</td></tr><tr><td><a href="https://www.douban.com/group/topic/119052570/" target="_blank">
+                       急！求租
+                    </td><td></td><td>06-21 12:37</td></tr><tr><td><a href="https://www.douban.com/group/topic/119008979/" target="_blank">
+                       进来看，你会满意的！
+                    </td><td>15</td><td>06-21 11:47</td></tr><tr><td><a href="https://www.douban.com/group/topic/119029945/" target="_blank">
+                       急求合租，南窑村新家园，两室一厅，900次卧，今天...
+                    </td><td>1</td><td>06-21 11:31</td></tr><tr><td><a href="https://www.douban.com/group/topic/107329498/" target="_blank">
+                       西安市，高新区，丈八北路，科技路西口，丈八北路...
+                    </td><td>1</td><td>06-21 11:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/115843992/" target="_blank">
+                       东门外李家村万达南廓门交大西南门乐居场小区合租...
+                    </td><td>26</td><td>06-22 10:38</td></tr><tr><td><a href="https://www.douban.com/group/topic/119018125/" target="_blank">
+                       【会展中心】【紫郡长安】【可月供无中介费】
+                    </td><td>4</td><td>06-22 10:29</td></tr><tr><td><a href="https://www.douban.com/group/topic/115466439/" target="_blank">
+                       高新区 科技路西口 丈八北路地铁站 鱼化寨 枫韵蓝...
+                    </td><td>1</td><td>06-22 10:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/118197457/" target="_blank">
+                       招室友  会展中心    陕西师范大学 丈八东路 附近...
+                    </td><td>27</td><td>06-22 10:21</td></tr><tr><td><a href="https://www.douban.com/group/topic/87883713/" target="_blank">
+                       科技路西口蓝湖树小区一室房子出租
+                    </td><td>95</td><td>06-22 10:15</td></tr><tr><td><a href="https://www.douban.com/group/topic/118935540/" target="_blank">
+                       南稍门地铁附近尚城公馆小区
+                    </td><td>3</td><td>06-22 10:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/118936435/" target="_blank">
+                       南稍门地铁附近西安公馆小区
+                    </td><td>3</td><td>06-22 10:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/118935349/" target="_blank">
+                       南稍门地铁口中贸广场小区
+                    </td><td>4</td><td>06-22 10:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/118936042/" target="_blank">
+                       体育场地铁附近白金广场小区
+                    </td><td>3</td><td>06-22 10:09</td></tr><tr><td><a href="https://www.douban.com/group/topic/117431531/" target="_blank">
+                       （个人非中介）武警医院.交大西南门兴庆公园.咸宁...
+                    </td><td>40</td><td>06-22 10:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/118809707/" target="_blank">
+                       龙城铭园  两室一厅  次卧招舍友  租金800
+                    </td><td>7</td><td>06-22 09:43</td></tr><tr><td><a href="https://www.douban.com/group/topic/117700530/" target="_blank">
+                       西安长安南路我家刚装修好森系民宿，期待你的体验...
+                    </td><td>15</td><td>06-22 09:30</td></tr><tr><td><a href="https://www.douban.com/group/topic/119090812/" target="_blank">
+                       雁塔区会展中心地铁口景天佳苑求租 房租800到1000...
+                    </td><td>3</td><td>06-22 09:13</td></tr><tr><td><a href="https://www.douban.com/group/topic/118892257/" target="_blank">
+                       市图书馆附近房屋出租，600～1200不等，重点无中介...
+                    </td><td>11</td><td>06-22 09:09</td></tr><tr><td><a href="https://www.douban.com/group/topic/118814488/" target="_blank">
+                       地铁二号线 市图书馆附近单间出租 价格600～1200 ...
+                    </td><td>18</td><td>06-22 09:08</td></tr><tr><td><a href="https://www.douban.com/group/topic/115694642/" target="_blank">
+                       吉祥村地铁口  郝家城市花园 精装厅隔带阳台  客户...
+                    </td><td>1</td><td>06-22 08:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/118273926/" target="_blank">
+                       高新区   唐延路  唐延国际中心 整租一房一厅 1000...
+                    </td><td>26</td><td>06-21 20:43</td></tr><tr><td><a href="https://www.douban.com/group/topic/118152886/" target="_blank">
+                       3号线延平门地铁口2室2厅2卫找室友
+                    </td><td>17</td><td>06-21 20:41</td></tr><tr><td><a href="https://www.douban.com/group/topic/119039909/" target="_blank">
+                       陕师大雁塔校区对面，标准三室整租1300～1350，离...
+                    </td><td>2</td><td>06-21 20:32</td></tr><tr><td><a href="https://www.douban.com/group/topic/118859493/" target="_blank">
+                       小雁塔周边找合租室友
+                    </td><td>5</td><td>06-21 20:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/118967415/" target="_blank">
+                       找合租室友
+                    </td><td>6</td><td>06-21 20:03</td></tr><tr><td><a href="https://www.douban.com/group/topic/119012762/" target="_blank">
+                       体育场地铁口 长安大学旁边 合租 价格便宜 700到85...
+                    </td><td>7</td><td>06-21 19:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/117143202/" target="_blank">
+                       辛家庙地铁口两个月短租啦~
+                    </td><td>8</td><td>06-21 18:59</td></tr><tr><td><a href="https://www.douban.com/group/topic/118424454/" target="_blank">
+                       有房子，可以短租
+                    </td><td>4</td><td>06-21 18:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/118934087/" target="_blank">
+                       电子正街丈八东路花溪湾小区次卧出租
+                    </td><td>1</td><td>06-21 18:57</td></tr><tr><td><a href="https://www.douban.com/group/topic/118997147/" target="_blank">
+                       陕西师范大学 会展中心地铁口天坛西路长安南路杏园...
+                    </td><td>2</td><td>06-21 18:17</td></tr><tr><td><a href="https://www.douban.com/group/topic/119001491/" target="_blank">
+                       [求租]高新四路周边的房子
+                    </td><td>8</td><td>06-21 17:42</td></tr><tr><td><a href="https://www.douban.com/group/topic/118632722/" target="_blank">
+                       华清园自住精装修房子出租
+                    </td><td>2</td><td>06-21 17:19</td></tr><tr><td><a href="https://www.douban.com/group/topic/118637858/" target="_blank">
+                       【个人直租】城东一室一厅独立卫生间
+                    </td><td>3</td><td>06-21 17:12</td></tr><tr><td><a href="https://www.douban.com/group/topic/115936375/" target="_blank">
+                       洒金桥两室一厅一厨一卫次卧出租400（限女生）
+                    </td><td>11</td><td>06-21 17:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/117408193/" target="_blank">
+                       长安南路东八里小区三室一厅一卫主卧招合租 限女生
+                    </td><td>1</td><td>06-21 17:03</td></tr><tr><td><a href="https://www.douban.com/group/topic/118743501/" target="_blank">
+                       「电视塔旁」「带厨卫阳台」「可月付拎包入住」「...
+                    </td><td>10</td><td>06-21 16:32</td></tr><tr><td><a href="https://www.douban.com/group/topic/118754149/" target="_blank">
+                       95妹子征室友求合租啦，男女不限
+                    </td><td>24</td><td>06-21 16:25</td></tr><tr><td><a href="https://www.douban.com/group/topic/118398971/" target="_blank">
+                       个人出租 东仪路国税局家属院空调房低价直租 无中介费
+                    </td><td>3</td><td>06-21 16:03</td></tr><tr><td><a href="https://www.douban.com/group/topic/117934644/" target="_blank">
+                       个人转租！3号线科技北路电梯新房整租 环境幽雅交...
+                    </td><td>13</td><td>06-21 16:02</td></tr><tr><td><a href="https://www.douban.com/group/topic/116164870/" target="_blank">
+                       【合租】开远门 华府御城 2室1厅1卫 卧室出租 仅限...
+                    </td><td>12</td><td>06-21 16:02</td></tr><tr><td><a href="https://www.douban.com/group/topic/117191084/" target="_blank">
+                       太白路立交，西工大，两室合租600
+                    </td><td>16</td><td>06-21 15:48</td></tr><tr><td><a href="https://www.douban.com/group/topic/115886219/" target="_blank">
+                       纬一街地铁房带阳台主卧招室友
+                    </td><td>8</td><td>06-21 15:43</td></tr><tr><td><a href="https://www.douban.com/group/topic/118758781/" target="_blank">
+                       含光门内双仁府小区两室两厅出租（非中介）
+                    </td><td>2</td><td>06-20 23:54</td></tr><tr><td><a href="https://www.douban.com/group/topic/119030299/" target="_blank">
+                       [招合租室友]吉祥村·巴厘公馆三室一厅一厨两卫招...
+                    </td><td></td><td>06-20 23:39</td></tr><tr><td><a href="https://www.douban.com/group/topic/112953569/" target="_blank">
+                       [西安市高新区，缤纷南郡小区房屋出租，位于高新区...
+                    </td><td>2</td><td>06-20 23:24</td></tr><tr><td><a href="https://www.douban.com/group/topic/119029146/" target="_blank">
+                       急求和租，南窑村新家园，雁南五路，两室一厅。次...
+                    </td><td>3</td><td>06-20 23:22</td></tr><tr><td><a href="https://www.douban.com/group/topic/118787480/" target="_blank">
+                       求租房！大学刚毕业
+                    </td><td>6</td><td>06-20 23:12</td></tr><tr><td><a href="https://www.douban.com/group/topic/119025106/" target="_blank">
+                       合租带我呀
+                    </td><td>1</td><td>06-20 23:12</td></tr><tr><td><a href="https://www.douban.com/group/topic/119021738/" target="_blank">
+                       大学毕业求房源，合租
+                    </td><td>1</td><td>06-20 23:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/119017489/" target="_blank">
+                       凤城五路到北苑之间租房，两个人
+                    </td><td>2</td><td>06-20 23:11</td></tr><tr><td><a href="https://www.douban.com/group/topic/118969081/" target="_blank">
+                       草场坡（二号线体育场）次卧招租
+                    </td><td>5</td><td>06-20 23:10</td></tr><tr><td><a href="https://www.douban.com/group/topic/118879646/" target="_blank">
+                       上班族找室友合租 ， 中介和各种房托不要加我
+                    </td><td>2</td><td>06-20 22:44</td></tr><tr><td><a href="https://www.douban.com/group/topic/117544497/" target="_blank">
+                       【交大南门两居室】转租 1000/月
+                    </td><td>5</td><td>06-20 22:41</td></tr><tr><td><a href="https://www.douban.com/group/topic/118999964/" target="_blank">
+                       可月付！太白南路地铁口，太白花园小区精装全配拎...
+                    </td><td>1</td><td>06-20 22:32</td></tr><tr><td><a href="https://www.douban.com/group/topic/119021991/" target="_blank">
+                       西北大学长安校区家属区三室两厅精装修招合租联系...
+                    </td><td>1</td><td>06-20 22:08</td></tr><tr><td><a href="https://www.douban.com/group/topic/118794376/" target="_blank">
+                       主卧独卫空调暖气中兴产业园丈八四路锦业二路博士...
+                    </td><td>1</td><td>06-20 20:45</td></tr><tr><td><a href="https://www.douban.com/group/topic/118846121/" target="_blank">
+                       三室合租，空调暖气，主卧一间，水司，西门，草阳...
+                    </td><td>1</td><td>06-20 20:44</td></tr><tr><td><a href="https://www.douban.com/group/topic/118897881/" target="_blank">
+                       合租+缺两女室友)北大街/北关两室一厅，一主卧(双...
+                    </td><td>2</td><td>06-20 20:07</td></tr><tr><td><a href="https://www.douban.com/group/topic/119019284/" target="_blank">
+                       求租两居室或者两居室合租，中介勿扰
+                    </td><td></td><td>06-20 19:53</td></tr><tr><td><a href="https://www.douban.com/group/topic/115191545/" target="_blank">
+                       合租单间，低价出租。锦业路，丈八西路，环普产业...
+                    </td><td>23</td><td>06-20 19:03</td></tr><tr><td><a href="https://www.douban.com/group/topic/118306284/" target="_blank">
+                       丰庆路景寓学府招合租。我一个月去不了几次，你很...
+                    </td><td>16</td><td>06-20 18:47</td></tr><tr><td><a href="https://www.douban.com/group/topic/119015638/" target="_blank">
+                       高新三号线地铁盘求整租！
+                    </td><td></td><td>06-20 18:27</td></tr><tr><td><a href="https://www.douban.com/group/topic/118580188/" target="_blank">
+                       自住2居室太贵，出租一室，高新区旁大寨路 民洁小区
+                    </td><td>2</td><td>06-20 18:15</td></tr></tbody></table></div></body></html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Img2Base64</title>
+</head>
+<body>
+  <label for="img">选择图片</label>
+  <input id="img" type="file" /> <br />
+  <button id="start">开始转换</button>
+  <div>
+    <label for="imgShow">预览：</label>
+    <img id="imgShow" src="" alt="" />
+  </div>
+  <b>Base64数据:</b>
+  <textarea id="conte" name="" id="" cols="60" rows="15"></textarea>
+  <button id="cpData">复制</button><span id="succ"></span>
+  <div id="len">数据长度:</div>
+  <script>
+    var img = document.getElementById('img'),
+        imgShow = document.getElementById('imgShow'),
+        conte = document.getElementById('conte'),
+        len = document.getElementById('len'),
+        start = document.getElementById('start'),
+        cpData = document.getElementById('cpData');
+
+    cpData.addEventListener('click', cpDataF);
+    start.addEventListener('click', startt);
+
+    // 转换函数
+    function startt () {
+      var imgFile = new FileReader();
+      imgFile.readAsDataURL(img.files[0]);
+      imgFile.onload = function () {
+        var imgData = this.result; // base64数据
+        imgShow.setAttribute('src', imgData);
+        conte.value = imgData;
+        len.innerHTML += imgData.length;
+      };
+    }
+
+    // 复制数据
+    function cpDataF () {
+      conte.select();  // 选择对象
+      var cpd = document.execCommand('Copy');  // 执行浏览器复制命令
+      cpd ? document.getElementById('succ').innerHTML = '复制成功' : console.warn('复制失败');
+      window.setTimeout(function () {
+        document.getElementById('succ').innerHTML = '';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

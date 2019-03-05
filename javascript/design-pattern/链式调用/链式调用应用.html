@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+  <style>
+    body {
+      background: #eeeeee;
+    }
+    #canvas {
+      background: #ffffff;
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: 10px;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="400"></canvas>
+  <script>
+  // 辅助函数
+  function chainablize(constructor) {
+    var prototype = constructor.prototype;
+    for (var method in prototype) {
+      try {
+        if(prototype.hasOwnProperty(method) && typeof prototype[method] == 'function') {
+          (function(method) {
+            var old = prototype[method];
+            prototype[method] = function() {
+              var result = old.apply(this, arguments);
+              return result === void 0 ? this : result;
+            };
+          })(method);
+        }
+      } catch(e) {}
+    }
+
+    if ('prop' in prototype) return;
+    prototype.prop = function(object) {
+      for (var property in object) {
+        this[property] = object[property];
+      }
+      return this;
+    }
+  }
+  </script>
+  <script>
+  // 使其canvas的context相关api可以链式调用
+  chainablize(CanvasRenderingContext2D);
+
+  var context = document.getElementById('canvas').getContext('2d');
+
+  function drawGrid(context, color, stepx, stepy) {
+    context.prop({
+      strokeStyle: color,
+      lineWidth: 0.5
+    });
+
+    for (var i = stepx + 0.5; i < context.canvas.width; i += stepx) {
+      context
+        .beginPath()
+        .moveTo(i, 0)
+        .lineTo(i, context.canvas.height)
+        .stroke();
+    }
+
+    for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+      context
+        .beginPath()
+        .moveTo(0, i)
+        .lineTo(context.canvas.width, i)
+        .stroke();
+    }
+  }
+
+  drawGrid(context,'red', 10, 10);
+  </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>哆啦A梦</title>
+  <style>
+    html, body, div{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      position: absolute;
+      box-sizing: border-box;
+    }
+    .wrap{
+      width: 500px;
+      height: 700px;
+      background-color: #fff;
+      border: 2px solid #283;
+    }
+    .head{
+      top: 50px;
+      left: 50px;
+      width: 408px;
+      height: 375px;
+      border: 3px solid #222;
+      border-radius: 50%;
+      background-color: #039be6;
+    }
+    .face{
+      top: 60px;
+      left: 12px;
+      width: 378px;
+      height: 302px;
+      border: 3px solid #222;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+    /* 眼睛部分 */
+    .eye{
+      top: 22px;
+      z-index: 5;
+      width: 80px;
+      height: 110px;
+      border: 3px solid #222;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .eyeball{
+      top: 50px;
+      width: 28px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #000;
+    }
+    .cell{
+      top: 15px;
+      left: 10px;
+      width: 9px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .lefteye{
+      left: 129px;
+      transform: rotate(3deg);
+    }
+    .lefteye .eyeball{
+      left: 38px;
+    }
+    .righteye{
+      left: 207px;
+      transform: rotate(-3deg);
+    }
+    .righteye .eyeball{
+      left: 6px;
+    }
+
+    /* 鼻子部分 */
+    .nose{
+      top: 107px;
+      left: 182px;
+      z-index: 10;
+      width: 54px;
+      height: 54px;
+      border: 3px solid #222;
+      border-radius: 50%;
+      background-color: #e80012;
+    }
+    .dot{
+      top: 9px;
+      left: 11px;
+      z-index: 12;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+    /* 嘴部 */
+    .mouth{
+      left: 53px;
+      width: 280px;
+      height: 240px;
+      border: 3px solid #222;
+      border-radius: 50%;
+      clip: rect(120px 280px 240px 0);
+    }
+    .line{
+      top: 98px;
+      left: 190px;
+      width: 1px;
+      height: 135px;
+      background-color: #222;
+      box-shadow: 0 0 1px 1px #333;
+    }
+
+    /* 身体部分 */
+    .body{
+      top: 385px;
+      left: 100px;
+      width: 304px;
+      height: 236px;
+      border-bottom: 3px solid #222;
+      background-color: #039be6;
+    }
+    .belly{
+      left: 40px;
+      top: 30px;
+      width: 220px;
+      height: 180px;
+      border: 3px solid #222;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .pocket{
+      left: 20px;
+      width: 180px;
+      height: 160px;
+      border: 3px solid #222;
+      /*border-radius: 0 0 100% 100%;*/
+      border-radius: 50%;
+      clip: rect(80px 280px 240px 0);
+    }
+    .pocket::after{
+      content: "";
+      position: absolute;
+      top: 77px;
+      left: 0;
+      z-index: 100;
+      width: 100%;
+      height: 3px;
+      background-color: #222;
+    }
+
+    /* 脚部部分 */
+    .foot{
+      bottom: 50px;
+      width: 122px;
+      height: 170px;
+      border: 3px solid #222;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .leftfoot{
+      left: 55px;
+    }
+    .rightfoot{
+      right: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <div class="eye lefteye">
+        <div class="eyeball">
+          <div class="cell"></div>
+        </div>
+      </div>
+      <div class="eye righteye">
+        <div class="eyeball">
+          <div class="cell"></div>
+        </div>
+      </div>
+      <div class="nose">
+        <div class="dot"></div>
+      </div>
+      <div class="face">
+        <div class="mouth"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="belly">
+        <div class="pocket"></div>
+      </div>
+    </div>
+    <div class="foot leftfoot"></div>
+    <div class="foot rightfoot"></div>
+  </div>
+</body>
+</html>

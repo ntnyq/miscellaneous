@@ -1,0 +1,1187 @@
+/*
+* @Author: Administrator
+* @Date:   2016-11-04 13:23:43
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-11-08 15:56:00
+*/
+/*样式重置部分*/
+body,h1,h2,h3,h4,h5,h6,p,dl,dd,ul,ol,form,input,textarea,th,td,select{
+  margin: 0;
+  padding: 0;
+}
+em{font-style: normal;}
+li{list-style: none;}
+a{text-decoration: none;}
+img{
+  border: none;
+  vertical-align: top;
+}
+table{border-collapse: collapse;}
+input,textarea{
+  outline: none;
+}
+body{
+  font-size: 12px;
+  font-family: "微软雅黑";
+}
+/*样式重置结束*/
+
+/*公共样式开始*/
+
+/*左右浮动*/
+.fl{float: left;}
+.fr{float: right;}
+/*清除浮动*/
+.clear{zoom: 1;} /* for IE*/
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+/*  width: 0;
+  height: 0;
+  visibility: hidden;*/
+}
+
+
+.main-title{
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+}
+.main-title sup{
+  position: absolute;
+  top: -2px;
+  left: 19px;
+}
+.main-title strong,.nav li strong{
+  color: #cc0d13;
+  font-family: arial;
+  font-size: 12px;
+}
+.main-title span,.nav li span{
+  color: #000;
+}
+.main-title a{  /*定位更多的位置*/
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+.nav .triangle-down-red,.nav .triangle-down-gray{
+  top: 14px;
+  right: 12px;
+}
+
+
+
+/*三角形样式*/
+.triangle-up{
+  border-bottom: 4px solid #ca0309;
+}
+.triangle-down-red{
+  border-top: 4px solid #ca0309;
+}
+.triangle-down-gray{
+  border-top: 4px solid #c4bdbd;
+}
+
+
+.triangle-up, .triangle-down-red, .triangle-down-gray{
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden; /*防止IE6*/
+  border-left: 4px solid transparent;  /*IE6不认识此透明样式*/
+  border-right: 4px solid transparent;
+  _border-left: 4px solid #fff;  /*为IE6准备的下划线*/
+  _border-right: 4px solid #fff;
+}
+#header, #nav, .content{
+  width: 960px;
+  margin: 0 auto;
+}
+.section, .side-section, .side-ad, #footer, .activity, .recommend{
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+}
+.main-ad, .side-section, .side-ad{ margin-bottom: 10px;}
+/*公共样式结束*/
+
+/*布局模块样式*/
+#header{
+  height: 30px;
+  border-radius: 0 0 6px 6px;
+}
+#nav{
+  position: relative;
+  height: 100px;
+}
+#search{
+  position: relative;
+  width: 958px;
+  height: 114px;
+  margin: 0 auto;
+}
+.content{
+  /*height: 1800px;*/
+  /*background-color: #888;*/
+}
+.main{ width: 710px;}
+.main-wrap{ padding-bottom: 10px;}
+.section{
+  width: 318px;
+  padding: 0 15px;
+}
+.options{
+  position: relative;
+  width: 350px;
+}
+.main-ad{
+  border-radius: 6px;
+  overflow: hidden;
+}
+.side{ width: 240px;}
+.side-section{
+  padding: 0 12px;
+}
+.side-ad{ overflow: hidden;}
+#footer{
+  width: 958px;
+  height: 38px;
+  margin: 0 auto;
+  padding: 20px 0;
+  text-align: center;
+  color: #bb8a76;
+}
+#footer a{
+  padding: 0 5px;
+  color: #666;
+}
+#footer a:hover{
+  color: #d80000;
+  text-decoration: underline;
+}
+/*选项卡制作*/
+/*
+*还可以通过给父级元素设置定位，下面的nav和con两部分绝对定位，
+*再把nav多设置1个像素，再通过给2个设置不同的z-index值，来实现无下边框效果
+*/
+.options .nav{
+  position: relative;
+  z-index: 2;
+  /*height: 34px;*/
+}
+.options .active{
+  position: absolute;
+  top:1px;
+  height: 34px;
+  line-height: 34px;
+  background-color: #fff;
+}
+.options .nav li{
+  position: relative;
+  width: 172px;
+  height: 33px;
+  line-height: 33px;
+  border: 1px solid #dbdbdb;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  text-align: center;
+  cursor: pointer;
+}
+.options .con{
+  position: absolute;
+  top: 34px;
+  left: 0;
+  z-index: 1;
+  width: 318px;
+  padding: 0 15px;
+  border: 1px solid #dbdbdb;
+  border-radius:0 0 6px 6px;
+}
+
+
+/*网页内容样式*/
+
+/*网页头部样式*/
+#header .city{
+  float: left;
+  padding: 5px 0 0 20px;
+}
+#header .city a{
+  display: inline-block;
+  height: 18px;
+  padding: 0 7px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  box-shadow: 1px 1px 0 #ededed;
+  color: #999;
+  line-height: 18px;
+}
+#header .city .active{
+  color: #d60d03;
+}
+#header .city a:hover{
+  background-color: #f1f1f1;
+  color: #d60d03;
+}
+#header .link{
+  float: right;
+  line-height: 30px;
+  padding-right: 20px;
+  color: #d5d5d5;
+  word-spacing: 4px;
+}
+#header .link a{
+  color: #666;
+  background: url(../img/link.gif) no-repeat 0 3px;
+  padding-left: 20px;
+}
+#header .link a:hover{
+  text-decoration: underline;
+}
+#header .link .ico1{background-position: 0 3px;}
+#header .link .ico2{ background-position: 0 -27px;}
+
+
+/*网页导航样式*/
+#nav ul{
+  position: absolute;
+  top: 10px;
+}
+#nav li{
+  float: left;
+}
+#nav li a{
+  display: block;
+  width: 66px;
+  padding-top: 50px;
+  text-align: center;
+  background: url(../img/nav-bg.png) no-repeat;
+  color: #333;
+}
+#nav .bgi1{background-position: 0 0;}
+#nav .bgi2{background-position: -66px 0;}
+#nav .bgi3{background-position: -132px 0;}
+#nav .bgi4{background-position: -198px 0;}
+#nav .bgi5{background-position: -264px 0;}
+#nav .bgi6{background-position: -330px 0;}
+#nav .bgi7{background-position: -396px 0;}
+#nav .bgi8{background-position: -462px 0;}
+#nav .bgi9{background-position: -528px 0;}
+#nav .bgi10{background-position: -594px 0;}
+
+#nav .bgi1:hover{background-position: 0 -70px;}
+#nav .bgi2:hover{background-position: -66px -70px;}
+#nav .bgi3:hover{background-position: -132px -70px;}
+#nav .bgi4:hover{background-position: -198px -70px;}
+#nav .bgi5:hover{background-position: -264px -70px;}
+#nav .bgi6:hover{background-position: -330px -70px;}
+#nav .bgi7:hover{background-position: -396px -70px;}
+#nav .bgi8:hover{background-position: -462px -70px;}
+#nav .bgi9:hover{background-position: -528px -70px;}
+#nav .bgi10:hover{background-position: -594px -70px;}
+
+#nav .nav-1{
+  left: 11px;
+}
+#nav .nav-2{
+  right: 11px;
+}
+#nav h1{
+  position: relative;
+  top: 10px;
+  width: 223px;
+  height: 62px;
+  margin: 0 auto;
+}
+
+/*搜索栏样式*/
+#search .bar{
+  position: absolute;
+  top: 16px;
+  left: -1px;
+  width: 958px;
+  height: 64px;
+  background-color: #e21c01;
+  border: 1px solid #c40d0e;
+  border-radius: 5px;
+  box-shadow: 2px 3px 2px #e3e3e3;
+}
+#search .menu{
+  position: absolute;
+  top: -27px;
+  left: 226px;
+}
+#search .menu li{
+  display: inline-block;
+  float: left;
+  width: 78px;
+  height: 25px;
+  margin-right: 1px;
+  background-color: #fff;
+  border: 1px solid #f8d0bf;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 1px 0px 2px rgba(0,0,0,.15);
+  text-align: center;
+  font-size: 14px;
+  line-height: 25px;
+  cursor: pointer;
+}
+#search .menu .active{
+  background-color: #e21c01;
+  border: 1px solid #e21c01;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 2px 3px 3px rgba(0,0,0,.25);
+}
+#search .img{
+  position: absolute;
+  /*display: block;*/
+  top: -2px;
+  left: 32px;
+  z-index: 2;
+  width: 163px;
+  height: 122px;
+  border: none;
+  background: url(../img/search-img.png) no-repeat;
+}
+#search .form{
+  position: absolute;
+  left: 226px;
+  top: 36px;
+  z-index: 3;
+}
+#search .form .text{
+  float: left;
+  width: 380px;
+  height: 22px;
+  padding: 0 12px;
+  margin-right: 10px;
+  border: none;
+  background: #fff1ef;
+  border-radius: 3px;
+  color: #ea7a7a;
+  box-shadow: inset 2px 3px 3px rgba(0,0,0,.25);  /*内阴影*/
+}
+#search .form .btn{
+  width: 63px;
+  height: 26px;
+  border: none;
+  background: url(../img/search-img.png) no-repeat -163px 0;
+  cursor: pointer;
+}
+#search .joy{
+  position: absolute;
+  top: 30px;
+  right: 36px;
+  width: 206px;
+  line-height: 18px;
+  color: #fff;
+}
+#search .joy a{
+  color: #fff;
+  cursor: pointer;
+}
+#search .joy a:hover{text-decoration: underline;}
+
+/*搜索更新样式*/
+#search .update{
+  position: absolute;
+  left: 226px;
+  bottom: 0;
+  width: 405px;
+  height: 30px;
+  background: url(../img/search-img.png) no-repeat -226px 8px;
+}
+#search .wrap{
+  position: relative;
+  left: 60px;
+  width: 336px;
+  height: 30px;
+  overflow: hidden;
+}
+#search .update ul{
+  position: absolute;  /*这里定位是为了实现JS效果*/
+  top: 0;   /*top值变-30px的倍数 就会向上滚动*/
+  left: 0;
+  width: 336px;
+}
+#search .update li{
+  height: 30px;
+  line-height: 30px;
+}
+#search .update a{
+  color: #000;
+}
+#search .update strong{
+  color: #d30703;
+  font-weight: normal;
+}
+#search .update span{
+  color: #999;
+}
+#search .triangle-up{
+  top: 8px;
+  right: 0;
+}
+#search .triangle-down-red{
+  top: 17px;
+  right: 0;
+}
+
+
+.video-title{
+  height: 42px;
+  line-height: 42px;
+  background: url(../img/video-bg.gif) no-repeat 105px 10px;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: arial;
+  color: #d90000;
+}
+.video{
+  margin-bottom: 13px;
+}
+.video-list{
+  height: 78px;
+  padding-left: 75px;
+  background: url(../img/video-bg.gif) no-repeat 3px -47px;
+}
+.video-list li{
+  height: 20px;
+  text-indent: 14px;
+  background: url(../img/dot.gif) no-repeat 5px center;
+}
+.video-list a{
+  color: #4d4d4d;
+}
+.video-list a:hover{
+  text-decoration: underline;
+}
+
+/*热点内容样式*/
+.hot-list{
+  position: relative;
+  height: 374px;
+  margin-top: 10px;
+}
+.hot-list li{
+  width: 318px;
+  height: 108px;
+  margin-bottom: 6px;
+  background: url(../img/hot-li-bg.gif) no-repeat;
+}
+.hot-list .img{
+  float: left;
+  width: 106px;
+  height: 86px;
+}
+.hot-list .img a{
+  display: block;
+  width: 104px;
+  height: 84px;
+  border: 1px solid #e6e6e6;
+}
+.hot-list .img a:hover{
+  border: 1px solid #929292;
+}
+.hot-list .text{
+  float: right;
+  width: 190px;
+
+}
+.hot-list h3{
+  line-height: 24px;
+}
+.hot-list h3 a{
+  color: #bb0d0d;
+  font-weight: normal;
+}
+.hot-list p{
+  line-height: 16px;
+  color: #6e6e6e;
+}
+.hot-list .more{
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+}
+
+
+.tab{
+  height: 25px;
+  padding: 0 10px;
+  border-bottom: 1px solid #dadada;
+}
+.tab ul{
+  position: relative;   /*解决IE6问题*/
+  height: 26px;
+  margin-bottom: -1px;
+}
+.tab li{
+  position: relative;
+  float: left;
+  height: 24px;
+  margin-right: -1px;
+  border: 1px solid #dadada;
+  border-radius: 4px 4px 0 0;
+  text-align: center;
+  line-height: 24px;
+  color: #666;
+  cursor: pointer;
+}
+.tab .active{
+  border-bottom: 1px solid #fff;
+  background-color: #fff;
+  color: #454545;
+  font-weight: bold;
+}
+.tab li a{
+  top: 10px;
+  right: 12px;
+}
+
+
+.section .tab{
+  padding: 0 10px;
+}
+.section .tab li{
+  width: 98px;
+}
+.side-section .tab{
+  padding: 0 6px;
+}
+.side-section .tab li{
+  width: 66px;
+}
+
+.list-section{}
+.list-section li{
+  height: 27px;
+  line-height: 27px;
+  border-top: 1px dotted #dadada;
+  background: url(../img/dot.gif) no-repeat 5px center;
+  vertical-align: middle;   /*解决IE6下的li浮动 BUG*/
+}
+.list-section li a{
+  float: left;  /*浮动让元素变块元素不会有边*/
+  text-indent: 14px;
+  color: #333;
+}
+.list-section li a:hover{
+  color: #d80000;
+}
+.list-section li em{
+  color: #c3c3c3;
+}
+.list-section li span{
+  color: #c75d61;
+}
+
+.list-section .title{
+  background: none;
+  color: #999;
+}
+.list-section .title .col1{
+  text-align: center;
+}
+.list-section .col1,.list-section .col2,.list-section .col3{
+  float: left;
+  color: #333;
+}
+.list-section .col2,.list-section .col3{
+  text-align: center;
+}
+.side-section .col2-color{
+  color: #d80000;
+}
+.side-section .col1{
+  width: 137px;
+}
+.side-section .col2{
+  width: 35px;
+}
+
+.side-section .col3{
+  width: 36px;
+}
+.section .col1{
+  width: 273px;
+}
+.section .col2{
+  width: 35px;
+}
+.section .col2 img{
+  position: relative;  /*注意这种只需要给自身设置相对定位*/
+  top: 7px;
+}
+.list-section .title{
+  border-top: none;
+}
+
+.wrap-section1{
+  padding-bottom: 5px;
+}
+.wrap-section2{
+  padding-bottom: 2px;
+}
+.wrap-section2 li{
+  border-bottom: 1px dotted #dadada;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.wrap-section3{
+  padding-bottom: 1px;
+}
+.wrap-section3 .pic-list{
+  padding-bottom: 10px;
+}
+.wrap-section4{
+  overflow: hidden;   /*清除浮动*/
+}
+.wrap-section4{
+  padding-bottom: 10px;
+}
+.wrap-section4 li{
+  float: left;
+  width: 107px;
+  height: 150px;
+  line-height: 22px;
+  background: none;
+}
+.wrap-section4 li h3{
+  line-height: 30px;
+}
+.pic-list{}
+.pic-list li{
+  overflow: hidden;
+}
+.pic-list .img{
+  position: relative;
+  width: 96px;
+  height: 73px;
+}
+.pic-list .img a{
+  display: block;
+  width: 90px;
+  height: 20px;
+  padding: 2px;
+  border: 1px solid #dadada;
+}
+.pic-list .img a:hover{
+  border: 1px solid #d80000;
+}
+.pic-list .text{
+  width: 108px;
+}
+.pic-list .text h3{}
+.pic-list .text h3 a{
+  color: #d80000;
+  font-weight: normal;
+  font-size: 12px;
+}
+.pic-list .text h3 a:hover{text-decoration: underline;}
+.pic-list .text p{
+  color: #999;
+}
+.pic-list .text p a{
+  color: #666
+}
+.pic-list .text p a:hover{
+  color: #d80000;
+  text-decoration: underline;
+}
+
+
+.soso{
+  height: 47px;
+  padding: 17px 0 0 10px;
+  border-top: 1px dotted #dadada;
+}
+.soso label{
+  padding-top: 3px;
+  color: #595959;
+}
+.soso .text{
+  width: 172px;
+  height: 20px;
+  line-height: 20px;
+  padding:0 4px;
+  margin-left: 10px;
+  border: 1px solid #9c9c9c;
+  color: #9c9c9c;
+}
+.soso .btn{
+  width: 24px;
+  height: 25px;
+  border: none;
+  margin-left: 10px;
+  background: url(../img/btn.gif) no-repeat;
+  cursor: pointer;
+}
+.soso label,.soso .text,.soso .btn{
+  float: left;
+}
+
+.side-section .pic{
+  padding: 4px 0;
+}
+.side-section .modol{
+  display: block;
+  margin-bottom: 10px;
+  color: #666;
+}
+.side-section .modol:hover{
+  color: #d80000;
+  text-decoration: underline;
+}
+.side-section .form{
+  width: 220px;
+  margin: 0 auto;
+  padding: 15px 0 8px;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px dotted #dbdbdb;
+}
+.form li{
+  height: 25px;
+  color: #595959;
+}
+.form label{
+  display: inline-block;
+  width: 50px;
+}
+.form input[type="text"],.form input[type="password"]{
+  width: 100px;
+  height: 14px;
+  line-height: 14px;
+  font-size: 12px;
+}
+.form input[type="button"]{
+  width: 50px;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #cb0000;
+  font-weight: bold;
+  color: #fff;
+}
+.login p{
+  text-align: center;
+  padding: 5px 0;
+}
+.login p a{
+  display: inline-block;
+  width: 95px;
+  color: #666;
+  background: url(../img/dot.gif) no-repeat 5px center;
+}
+.login p a:hover{
+  text-decoration: underline;
+}
+.bbs{height: 328px;}
+.bbs ol li{
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 3px;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  vertical-align: middle;   /*IE6*/
+}
+.bbs ol strong,.bbs ol a{float: left;}
+.bbs ol strong{
+  width: 45px;
+  text-indent: 10px;
+  color: #d80000;
+}
+.bbs ol img,.bbs ol span,.bbs ol em,.bbs .active b{display: none;}
+.bbs ol a{color: #333;}
+.bbs ol b{
+  float: right;
+  padding-right: 22px;
+  font-weight: normal;
+  color: #666;
+}
+.bbs .active{
+  height: 70px;
+  background-color: #d90000;
+}
+.bbs .active img,.bbs .active a,.bbs .active span,.bbs .active em{position: absolute;}
+.bbs .active img{
+  display: block;
+  top: 10px;
+  left: 10px;
+}
+.bbs .active span{
+  top: 33px;
+  left: 70px;
+  display: block;
+  color: #fff;
+}
+.bbs .active a{
+  top: 7px;
+  left: 70px;
+  color: #fff;
+  font-weight: bold;
+}
+.bbs .active em{
+  bottom: -5px;
+  right: 4px;
+  display: block;
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+}
+.help{height: 208px;}
+.help ul{
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #dbdbdb;
+}
+.help ul li{
+  width: 154px;
+  text-indent: 30px;
+  background: url(../img/help.gif) no-repeat;
+  font-family: arial;
+}
+.help p{text-indent: 2em;}
+.help .phone{
+  font-size: 16px;
+  font-weight: bold;
+  color: #b80000;
+  background-position: 7px 11px;
+}
+.help .msn{
+  background-position: 7px -31px;
+}
+.help dl{
+  width: 144px;
+  padding: 15px 0 0 10px;
+  line-height: 18px;
+}
+.help dt{
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+.help dd{
+  background: url(../img/dot.gif) no-repeat 4px center;
+  text-indent: 12px;
+}
+.help dd a{
+  color: #333;
+}
+.help dd a:hover{
+  color: #c80000;
+  text-underline-position;
+}
+.media{
+  height: 205px;
+  padding-top: 3px;
+}
+.media p{
+  width: 200px;
+}
+.media li{
+  width: 318px;
+  height: 50px;
+  vertical-align: middle;
+}
+.media a{
+  display: block;
+}
+
+.new-title{
+  position: relative;
+  height: 70px;
+  background: url(../img/new-title-bg.gif) no-repeat right 0;
+}
+.new-title span,.new-title strong{
+  position: absolute;
+  left: 24px;
+}
+.new-title span{
+  top: 19px;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 12px;
+  color: #ea2b31;
+}
+.new-title strong{
+  top: 31px;
+  font-size: 24px;
+  color: #333;
+  font-weight: normal;
+}
+.new-title em{
+  position: absolute;
+  top: 16px;
+  left: 125px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #ea2b31;
+}
+
+.activity{
+  width: 348px;
+  float: left;
+}
+.recommend{
+  width: 348px;
+  float: right;
+}
+.recommend .new-title{
+  background-position: right -70px;
+}
+.recommend .list{
+  padding: 18px 26px 0;
+}
+.recommend .list li{
+  height: 27px;
+  vertical-align: middle;
+}
+.recommend .list span{
+  float: right;
+  font-family: arial;
+  color: #999;
+}
+.recommend .list em{
+  float: left;
+  margin-right: 7px;
+}
+.recommend .list a{
+  float: left;
+  color: #333;
+}
+.recommend .list em img{
+  margin-right: 3px;
+}
+.recommend .list a:hover{
+  color: #d80000;
+  text-decoration: underline;
+}
+
+.activity .con{
+  background: url(../img/activity-bg.gif) no-repeat;
+}
+.activity .info{
+  padding: 16px 25px 0;
+  height: 104px;
+}
+.activity .img{
+  position: relative;
+  width: 84px;
+  height: 84px;
+}
+.activity .mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84px;
+  height: 84px;
+  background: url(../img/activity-bg.gif) no-repeat -372px 0;
+}
+.activity .img img{
+  width: 84px;
+  height: 84px;
+}
+.activity .text{
+  width: 204px;
+}
+.activity .info h3{
+  height: 32px;
+  font-size: 12px;
+}
+.activity .info em{
+  width: 25px;
+  height: 25px;
+  color: #cf3530;
+  background: url(../img/activity-bg.gif) no-repeat -348px 0;
+  font-family: arial;
+  font-size: 14px;
+  text-align: center;
+  line-height: 25px;
+}
+.activity .text em, .activity .text span { float:left; margin-right:4px; }
+.activity .info span{
+  text-indent: 2em;
+  padding-top: 4px;
+}
+.activity .info p{
+  line-height: 18px;
+  color: #999;
+  font-weight: normal;
+  font-size: 12px;
+}
+.calender{
+  position: relative;
+  width: 323px;
+  padding-left: 25px;
+}
+.calender h3{
+  height: 34px;
+  line-height: 34px;
+  margin-right: 31px;
+  background: url(../img/adorn.gif) repeat-x;
+  word-spacing: 10px;
+}
+.calender h3 span{
+  font-size: 14px;
+  font-family: arial;
+}
+.calender ol{}
+.calender ol li{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 2px 2px 0;
+  background: #ededed;
+  float: left;
+  text-align: center;
+  color: #666;
+  font-weight: bold;
+}
+.calender ol .normal{
+  background: #f8f8f8;
+  color: #ccc;
+}
+.calender .active,.calender .img{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.calender .active{
+  width: 36px;
+  height: 36px;
+  border: 2px solid #d30408;
+}
+.calender .img{
+  width: 40px;
+  height: 40px;
+}
+.today-info{
+  position: absolute;
+  top: 140px;
+  left: 290px;
+  width: 294px;
+  height: 84px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  background: #fff;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.2);
+  display: none;
+}
+.today-info img{
+  float: left;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #dbdbdb;
+}
+.today-info .text{
+  width: 200px;
+  float: right;
+}
+.today-info p{
+  color: #999;
+  line-height: 20px;
+}
+.today-info h4{
+  font-size: 12px;
+  color: #333;
+}
+.today-info strong{
+  color: #ccc;
+  font-size: 16px;
+}
+.today-info span{
+  position: absolute;
+  top: 40px;
+  left: -8px;
+  width: 8px;
+  height: 14px;
+  overflow: hidden;/*IE6要求高度不能小于19*/
+  background: url(../img/adorn.gif) no-repeat 0 -48px;
+}
+.recommend .pic{
+  position: relative;
+  width: 294px;
+  height: 168px;
+  padding: 12px 12px 0;
+  background: #f8f8f8;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+.recommend .pic ul{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 223px;
+  height: 133px;
+}
+.recommend .pic ul li{
+  position: absolute;
+  width: 223px;
+  height: 133px;
+  border: 1px solid #fff;
+}
+.recommend .pic ul img{
+  width: 223px;
+  height: 133px;
+}
+.recommend .pic ol li,.recommend .pic ol img{
+  width: 54px;
+  height: 30px;
+}
+.recommend .pic ol{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.recommend .pic ol .active{
+  border: 3px solid #d80000;
+}
+.recommend .pic ol li{
+  border: 3px solid #fff;
+  margin-bottom: 13px;
+}
+.recommend p{
+  position: absolute;
+  left: 12px;
+  bottom: 0;
+  line-height: 32px;
+}
+.hot-area{height: 258px;}
+.hot-area ul{}
+.hot-area li{
+  position: relative;
+  margin: 0 2px 2px 0;
+  float: left;
+}
+.hot-area li img,.hot-area li{
+  width: 78px;
+  height: 78px;   /*上传图片大小保持一致*/
+}
+.hot-area .area1,.hot-area .area1 img{
+  width: 156px;
+  height: 78px;
+}
+.hot-area .area2,.hot-area .area2 img{
+  width: 77px;
+  height: 78px;
+}
+.hot-area p{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 144px;
+  height: 66px;
+  padding:12px 0 0 12px;
+  line-height: 18px;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+}
+.hot-area{}
+.hot-area{}
+.hot-area{}

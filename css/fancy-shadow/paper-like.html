@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+  <style>
+    body, div, p{
+      margin: 0;
+      padding: 0;
+    }
+    /*页面*/
+    .box{
+      position: relative;
+      width: 260px;
+      min-height: 260px;
+      margin: 30px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      text-align: center;
+      padding: 0 0 1px 0;
+      background-color: #f3f3f3;
+      background: -webkit-linear-gradient:(0 0 270deg, #f3f3f3, #f3f3f3 10%, #fff);
+      background: -o-linear-gradient:(0 0 270deg, #f3f3f3, #f3f3f3 10%, #fff);
+      background: linear-gradient:(0 0 270deg, #f3f3f3, #f3f3f3 10%, #fff);
+      border-top: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-radius: 0 0 60px 0 / 0 0 60px 0;
+      box-shadow: -1px 2px 2px rgba(0, 0, 0, .2);
+    }
+    /*褶皱*/
+    .box:before{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 25px;
+      height: 20px;
+      border-radius: 0 0 30px 0;
+      box-shadow: -2px -2px 5px rgba(0, 0, 0, .3);
+      -webkit-transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+      -ms-transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+      -o-transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+      transform: rotate(-20deg) skew(-40deg, -3deg) translate(-13px, -13px);
+    }
+    /*褶皱的阴影*/
+    .box:after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 0, 0, .2);
+      display: inline-block;
+      box-shadow: 20px 20px 8px rgba(0, 0, 0, .2);
+      -webkit-transform: rotate(0deg) translate(-45px, -20px) skew(20deg);
+      -ms-transform: rotate(0deg) translate(-45px, -20px) skew(20deg);
+      -o-transform: rotate(0deg) translate(-45px, -20px) skew(20deg);
+      transform: rotate(0deg) translate(-45px, -20px) skew(20deg);
+    }
+    .box p {
+      margin: 30px;
+      outline: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: rgb(41, 180, 240);
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>我是CSS写的喔</p>
+  </div>
+</body>
+</html>

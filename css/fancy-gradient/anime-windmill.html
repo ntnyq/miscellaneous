@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+  <style>
+    html, body, div{
+      margin: 0;
+      padding: 0;
+    }
+    body{ background-color: #000; }
+    div{ background-color: #000; }
+    .bottom{
+      position: relative;
+      z-index: -1;
+      width: 0;
+      margin: 0 auto;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 200px solid transparent;
+      border-bottom: 350px solid white;
+    }
+    .circle{
+      position: absolute;
+      top: 8px;
+      left: -8px;
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      background-color: #fff;
+    }
+    .flabellumarea{
+      position: absolute;
+      top: -135px;
+      left: -150px;
+      z-index: 0;
+      width: 300px;
+      height: 300px;
+      background-color: transparent;
+      transform-style: preserve-3d;
+      -webkit-animation: rotate 9s linear infinite;
+      -o-animation: rotate 9s linear infinite;
+      animation: rotate 9s linear infinite;
+    }
+    @keyframes rotate{
+      from{
+        transform: rotate(0deg);
+      }
+      to{
+        transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes rotate{
+      from{
+        transform: rotate(0deg);
+      }
+      to{
+        transform: rotate(360deg);
+      }
+    }
+    .one{
+        width: 50px;
+        height: 100px;
+        background-size: 10px 10px;
+        position:absolute;
+        left:148px;
+        background-image: linear-gradient(90deg,white 50%,transparent 50%), linear-gradient(white 50%,transparent 50%);
+      }
+    .one .a{
+      position: absolute;
+      top: 100px;
+      left: 0;
+      width: 5px;
+      height: 50px;
+      background-color: #fff;
+    }
+    .two{
+      position: absolute;
+      left: 0;
+      top: 103px;
+      width: 100px;
+      height: 50px;
+      -webkit-background-size: 10px 10px;
+      background-size: 10px 10px;
+      background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(transparent 50%,white 50%);
+    }
+    .two .a{
+      position: absolute;
+      bottom: 0;
+      right: -50px;
+      width: 50px;
+      height: 5px;
+      background-color: #fff;
+    }
+
+    .three{
+      width: 50px;
+      height: 100px;
+      background-size: 10px 10px;
+      position:absolute;
+      left:103px;
+      bottom:0px;
+      background-image: linear-gradient(90deg,transparent 50%,white 50%), linear-gradient(transparent 50%,white 50%);
+    }
+    .three .a{
+      width:5px;
+      height: 60px;
+      background-color: white;
+      position:absolute;
+      left:45px;
+      bottom: 100px;
+    }
+    .four{
+      width: 100px;
+      height: 50px;
+      background-size: 10px 10px;
+      position:absolute;
+      right:0px;
+      top:148px;
+      background-image: linear-gradient(90deg,transparent 50%,white 50%), linear-gradient(white 50%,transparent 50%);
+    }
+    .four .a{
+      width:50px;
+      height: 5px;
+      background-color: white;
+      position:absolute;
+      left: -50px;
+      top: 0px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bottom">
+    <div class="circle"></div>
+    <div class="flabellumarea">
+      <div class="flabellum one">
+        <div class="a"></div>
+      </div>
+      <div class="flabellum two">
+        <div class="a"></div>
+      </div>
+      <div class="flabellum three">
+        <div class="a"></div>
+      </div>
+      <div class="flabellum four">
+        <div class="a"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

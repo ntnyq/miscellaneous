@@ -1,0 +1,718 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> CSS & HTML </title>
+    <link rel="stylesheet" type="text/css" href="css/CssHtmlNote.css" />
+    <link rel="stylesheet" type="text/css" href="css/smoothConfirm.css" />
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/slide.js"></script>
+    <script type="text/javascript" src="js/scrollTop.js"></script>
+    <script type="text/javascript" src="js/fullscreen.js"></script>
+    <script type="text/javascript" src="js/jquery.smoothConfirm.js"></script>
+    <!--[if lt IE 9]>
+    	<style>
+        	.note{
+            	background:#000;
+            	filter:Alpha(opacity=30);
+            }
+        	.note_info{
+            	position:relative;
+            	background:#000;
+            	filter:Alpha(opacity=30);
+            }
+            .note h2,.note_info p,.note ul li,.note img{position:relative;}
+        </style>
+    <![endif]-->
+    <!--[if IE 6]>
+    	<style type="text/css">
+        	* html,* html body{background-image:url(about:blank);background-attachment:fixed;}
+			* html .fixed-top{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop));}
+        </style>
+    <![endif]-->
+</head>
+<body>
+		<script type="text/javascript">
+	$(function() {
+		if($.browser.msie && $.browser.version<9)
+		{
+			$(document.body).smoothConfirm('<p class=notice>比尔盖茨发现你正在用IE浏览器，紧紧握住您的手，使劲儿的那个摇。<br />拉里▪佩吉发现您正在用IE浏览器，耸了一下肩，摇头笑笑。<br />乔布斯发现您正在用IE浏览器，打算从天国下来和你聊聊。<br />我们发现您正在用IE浏览器，打算给您点建议：<span>亲！在下面挑一个新款浏览器升级吧！</span></p><div class=browser_version><a class=chrome href=#.></a><a class=firefox href=#.></a><a class=safair href=#.></a><a class=ie9  href=#.></a></div>',{
+				okVal: "知道了",
+				cancelVal: null,
+				width: 600,
+				height: 400,
+				direction:'bottom',
+				speed: 1000
+			});
+		}
+	});
+	</script>
+		
+        <ul class="nav fixed-top">
+            <li><a class="first" href="Log.html">小巫的Note</a></li>
+            <li id="open"><a href="javascript:void(0)">全部展开</a></li>
+            <li id="close"><a href="javascript:void(0)">全部折叠</a></li>
+            <li id="fullscreen"><a href="#.">全屏浏览</a></li>
+            <li id="cancelfullscreen"><a href="#.">退出全屏</a></li>
+	    </ul>
+
+		<div class="note">
+        	<h2>Google Chrome浏览器不支持小于12px的字体大小解决方法</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	Chrome浏览器不支持小于12px的字体，IE、Firefox、Opera(12.0其他版本不知道支不支持)。现在我们要解决Chrome浏览器的这一BUG。很简单只要写上-webkit-text-size-adjust:none;（取消webkit的对文字的自动调整）问题就解决了，你可以把它放在body里或者具体项目元素上。
+					<mark>（PS:加上后字体在Chrome浏览器里的放大效果变为不可用。）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>文本缩进</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	em这个单位的意思就是文字的高度，1em就是1个文字的高度，2em就是两个文字高度，所以我们写的"text-indent:2em;"的意思就是， 文本缩进2个文字的高度，因为汉字是方块字，高度和宽度是一样的，所以缩进2个文字的高度，就等于缩进两个文字的宽度，最后的效果就是缩进了两个文字。
+                    <mark>（PS:text-indent只能加在块状元素上面，内联元素是不起作用的。）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>内联元素转块级元素</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	内联元素无法设置宽度和高度，通过display:block;（或display:inline-block）把内联元素转换为块级元素（或内联块级元素），才可设置宽度和高度。
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>浏览器前缀（私有格式）</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<ul>
+                    	<li>-webkit-（for Chrome 、Safair）</li>
+                        <li>-moz-（for FireFox）</li>
+                        <li>-o-（for Opera）</li>
+                        <li>-ms-（for IE）</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>Text-transform</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	text-transform属性允许你应用uppercase(大写), lowercase(小写), 以及capitalize(首字母大写)等效果到你的文字。当然，该属性不能用于中文。
+                    <ul>
+                    	<li>text-transform: capitalize;</li>
+                        <li>text-transform: uppercase;</li>
+                        <li>text-transform: lowercase;</li>
+                        <li>text-transform: inherit;</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>Text-decoration</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	text-decoration属性允许你使用一些文字修饰，比如下划线(underline)、上划线(overline)、删除线(line-through)以及文字闪烁(blink)。
+                    <ul>
+                    	<li>text-decoration: none;</li>
+                        <li>text-decoration: underline;</li>
+                        <li>text-decoration: overline;</li>
+                        <li>text-decoration: line-through;</li>
+                        <li>text-decoration: blink;</li>
+                    </ul>
+                    <mark>（PS:text-decoration设置为blink（只有Firefox 和Opera 支持））</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>Font-Variant</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	font-variant属性允许你制作小型大写字母效果，也就是将小写字母变成大写并减小字体型号 。<br />
+					font-variant: small-caps;
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>Letter-Spacing和word-spacing</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	letter-spacing添加字母之间的空白，而word-spacing添加每个单词之间的空白。请注意，word-spacing对中文无效, letter-spacing对中文有效。
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>:first-letter与:first-line</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	first-letter就是第一个字母或文字，first-line是第一行文字。
+					<mark>（PS： :first-letter 只能与块级元素关联。）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>制作有吸引力的段落</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	对于更有吸引力的段落排版，可以采用Robert Bringhurst的方法，它约定：用你的文字大小乘以30就可以得到段落的宽度。比如如果你的文字大小是12px，用30乘以它，也就是360px，这样每行大约可以呈现65个英文字符。行高用来限定每行文字之间的空白大小。一个经验之谈就是让行高比你的字体大6-7px。
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>IE6双倍边距BUG</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<ul>
+                    	原因：
+                    	<li>块级元素；</li>
+                        <li>左浮动；</li>
+                        <li>设置了左边距。</li>
+                    </ul>
+                	<mark>（同时具备这三要素缺一不可）解决方法：display:inline;（display:inline-block;该方法不行）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>连续的数字和英文字符自动换行</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	自动换行问题,正常字符的换行是比较合理的,而连续的数字和英文字符常常将容器撑大
+                	<ul>
+                    	<li>1. 常文字的换行(亚洲文字和非亚洲文字)元素拥有默认的white-space:normal,当定义的宽度之后自动换行</li>
+                        <li>2. 连续的英文字符和阿拉伯数字,使用word-wrap:break-word;或者word-break:break-all;实现强制断行</li>
+                    </ul>
+                    <p>
+                    	<span>word-break:break-all和word-wrap:break-word的区别</span><br />
+                        word-break:break-all内容就会到200px自动换行，如果该行末端有个英文单词很长（congratulation等），它会把单词截断。<br />
+                        word-wrap:break-word它会把congratulation整个单词看成一个整体，如果该行末端宽度不够显示整个单词，它会自动把整个单词放到下一行，而不会把单词截断掉的。
+                    </p>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS Hack——条件Hack</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                    	<!--[if !IE]><!-->非IE浏览器可识别<!--<![endif]-->
+						<!--[if IE]> 所有的IE可识别 <![endif]-->
+						<!--[if IE 5.0]> 只有IE5.0可以识别 <![endif]-->
+						<!--[if lt IE 9]> 所有的IE版本低于IE9的IE浏览器可识别 <![endif]-->
+						<!--[if gte IE 9]> 所有版本大低于或等于IE9的IE浏览器可识别 <![endif]-->
+                        <mark>（PS:无法显示代码请查看源码）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS Hack——属性级Hack</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<ul>
+                    	<li>_height:300px;(for IE6)</li>
+                        <li>*height:300px;(for IE6\7)</li>
+                        <li>*hegiht:300px !important;(for IE7)</li>
+                   		<li>height:300px !important;(for IE7+ FF Chrome Opera)</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>@charset</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	@charset "utf-8";在外部样式表文件内使用。指定该样式表使用的字符编码。 <br />
+					<mark>（PS:该规则后面的分号是必需的，如果省略了此分号，会生成错误信息。 ）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>behavior</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	div{behavior:url(fly.htc) url(shy.htc);}多个行为之间用空格分开。<mark>（PS:htc行为组件）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>清除浮动</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<ul>
+                    	<li>1.空标签清除浮动的弊端在于增加了无意义的结构元素。</li>
+                        <li>2.overflow:auto\hidden;需要设置容器的宽度否则不兼容IE6\7。</li>
+                        <li>3.
+                        	<pre>
+                            	.clearfix:after {
+    								content: "";
+    								display: block;
+   									height: 0;
+   	 								clear: both;
+								}
+                                .clearfix {
+                                    zoom: 1;/*兼容IE6*/
+                                }
+                            </pre>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS透明</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	opacity:0.5;/*for IE9、FF、Chrome、Opera*/<br />
+					filter:alpha(opacity=60);/*for IE6~8 IE9也支持*/<br />
+					<span>CSS实现背景透明，文字不透明（兼容各浏览器）</span><br />
+					background:rgba(96,96,96,0.5); 而IE6/7/8浏览器不支持rgba，只有使用IE的专属滤镜filter:Alpha来实现，但是这样写法会把文字也变为透明，因此只有在透明容器的子节点（文本节点除外）内设置position:relative才能不继承其父元素的透明滤镜。
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS3 resize</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<span>resize设置或检索对象的区域是否允许用户缩放，调节元素尺寸大小</span>
+                	<ul>
+                    	<li>none：不允许用户调整元素大小；</li>
+                        <li>both：用户可以调节元素的宽度和高度；</li>
+                        <li>horizontal：用户可以调节元素的宽度；</li>
+                        <li>vertical：用户可以调节元素的高度；</li>
+                        <li>inherit：默认继承。</li>
+                    </ul>
+                    <mark>（PS:如果希望此属性生效，需要设置对象的overflow属性，值可以是auto,hidden或scroll。for FF\Chrome\Safair。）<br />
+                    </mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS3  border-radius</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	border-radius可以同时设置1到4个值。如果设置1个值，表示4个圆角都使用这个值。如果设置两个值，表示左上角和右下角使用第一个值，右上角和左下角使用第二个值。如果设置三个值，表示左上角使用第一个值，右上角和左下角使用第二个值，右下角使用第三个值。如果设置四个值，则依次对应左上角、右上角、右下角、左下角（顺时针顺序）。
+除了同时设置四个圆角以外，还可以单独对每个角进行设置。对应四个角，CSS3提供四个单独的属性：
+					<ul>
+                    	<li>* border-top-left-radius</li>
+                        <li>* border-top-right-radius</li>
+                        <li>* border-bottom-right-radius</li>
+                        <li>* border-bottom-left-radius</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS3  text-shadow</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<img src="images/text-shadow.jpg" />
+            	<p>
+                	X-Offset表示阴影的水平偏移距离，其值为正值时阴影向右偏移，如果其值为负值时，阴影向左偏移；Y-Offset是指阴影的垂直偏移距离，如果其值是正值时，阴影向下偏移反之其值是负值时阴影向顶部偏移；Blur是指阴影的模糊程度，其值不能是负值，如果值越大，阴影越模糊，反之阴影越清晰，如果不需要阴影模糊可以将Blur值设置为0；Color是指阴影的颜色，其可以使用rgba透明色。
+                    <mark>（PS：可以给一个对象应用一组或多组文字阴影效果，用逗号隔开。）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS3  box-shadow</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	
+                	<p>
+                    	<mark>
+                            box-shadow:inset x-offset y-offset blur-radius spread-radius color;<br />
+                            box-shadow:投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色
+                       </mark>
+                    </p>
+					
+					<p><span>阴影类型：</span>此参数是一个可选值，如果不设值，其默认的投影方式是外阴影；如果取其唯一值"inset",就是将外阴影变成内阴影，也就是说设置阴影类型为"inset"时，其投影就是内阴影；</p>
+                    <p><span>X-offset:</span>是指阴影水平偏移量其值可以是正负值可以取正负值，如果值为正值，则阴影在对象的右边，反之其值为负值时，阴影在对象的左边；</p>
+                    <p><span>Y-offset:</span>是指阴影的垂直偏移量，其值也可以是正负值，如果为正值，阴影在对象的底部，反之其值为负值时，阴影在对象的顶部；</p>
+                    <p><span>阴影模糊半径：</span>此参数是可选，但其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊；</p>
+                    <p><span>阴影扩展半径：</span>此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值是，则缩小;</p>
+                    <p><span>阴影颜色：</span>此参数可选，如果不设定任何颜色时，浏览器会取默认色，但各浏览器默认色不一样，特别是在webkit内核下的safari和chrome浏览器将无色，也就是透明，建议不要省略此参数。</p>
+
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS3  background-size</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	
+                	<p>
+                    	<mark>
+                        	  background-size: auto || length || percentage || cover || contain
+                       	</mark>
+                    </p>
+					<p>1、auto:此值为默认值，保持背景图片的原始高度和宽度；</p>
+                    <p>2、length此值设置具体的值，可以改变背景图片的大小；</p>
+                    <p>3、percentage此值为百分值，可以是0％〜100％之间任何值，但此值只能应用在块元素上，所设置百分值将使用背景图片大小根据所在元素的宽度的百分比来计算。</p>
+                    <p>4、cover：此值是将图片放大，以适合铺满整个容器，这个主要运用在，当图片小于容器时，又无法使用background-repeat来实现时，我们就可以采用cover;将背景图片放大到适合容器的大小，但这种方法会使用背景图片失真；</p>
+                    <p>5、contain:此值刚好与cover相反，其主要是将背景图片缩小，以适合铺满整个容器，这个主要运用在，当背景图片大于元素容器时，而又需要将背景图片全部显示出来，此时我们就可以使用contain将图片缩小到适合容器大小为止，这种方法同样会使用图片失真。</p>
+                    <mark>如果只提供一个，该值将用于定义背景图像的宽度，第2个值默认为auto，即高度为auto，此时背景图以提供的宽度作为参照来进行等比缩放。</mark>
+
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS3 Transition</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<mark>Transition属性主要是用来对某个CSS属性的变化过程进行控制，简单地理解为"在某个时间段内，平滑地改变某个CSS属性。</mark>
+                    <ul>
+                    	<li><span>1.transition-property:</span>property针对了当前选择器的某个css属性进行设置。比如我要过渡一个背景色时，则设置property值为background。</li>
+                        <li><span>2.transition-duration:</span>duration针对了过渡效果的持续时间。</li>
+                        <li><span>3.transition-timing-function:</span>它针对了过渡效果的特效，有多种特效展示。</li>
+                        <li><span>4.transition-delay:</span>duration针对了过渡效果的延迟执行时间。</li>
+                    </ul>
+					<pre>
+                        .bb{
+                            -webkit-transition:margin-left 2s;
+                            -moz-transition:margin-left 2s;
+                            -o-transition:margin-left 2s;
+                            transition:margin-left 2s;
+                        } /* 只有当鼠标移出时才处理 */
+                        .bb:hover{margin-left:30px;}  /* 只有当鼠标移入时才处理 注：若a:hover中不写transition,则会继承a中的transition */PS：IE9不支持CSS3 transition属性
+                    </pre>
+                </p>
+            </div>
+        </div>
+        
+		<div class="note">
+        	<h2>HTML5 datalist标签自动补全</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<code>
+                	<input type="text" list="data_list" />
+                    <datalist id="data_list">
+                        <option value="生化危机1" />
+                        <option value="生化危机2" />
+                        <option value="生化危机3" />
+                        <option value="生化危机4" />
+                        <option value="生化危机5" />
+                    </datalist>
+                </code>
+                <mark>PS:目前FireFox、Opera支持</mark>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>HTML5 details展开收缩标签</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                    details标签的出现，为我们带来了更好的用户体验，不必为这种收缩展开的效果再编写JS来实现。注：目前仅Chrome支持此标签。details有一个新增加的子标签——summary，当鼠标点击summary标签中的内容文字时，details标签中的其他所有元素将会展开或收缩。
+如果details中不存在summary标签会怎样呢，其实当details元素内没有summary标签的时候，浏览器在解析的时候会提供一个默认的文字，比如"查看详细"诸如此类的本地化文字，浏览器同样再会提供一个诸如上下箭头之类的图标
+                </p>
+				<pre>
+                	 <details open><!--open属性默认展开-->
+                		<summary>HTML5|CSS3|论坛 | 前端开发网(W3Cfuns.com)!</summary>
+                		<p>HTML5论坛,CSS3论坛,CSS论坛,WEB前端开发论坛,教程资源完全免费的CSS论坛，打造最好的HTML5/CSS3论坛</p>
+        			 </details>
+                </pre>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>让textarea标签前面的文字位于框的顶端</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>vertical-align:top可以使的textarea标签前面的文字位于框的顶端，而不是默认的底端</p>
+                <p>
+                    <details>
+                        <summary>例子</summary>
+                        <label>雁过留声：</label><textarea class="demo1"></textarea>
+                    </details>
+                </p>  
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>text-overflow:ellipsis对溢出文本显示省略号</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	使用text-overflow:ellipsis对溢出文本显示省略号有两个好处，一是不用通过程序限定字数；二是有利于SEO。
+                    需要使用对对溢出文本显示省略号的通常是文章标题列表，这样处理对搜索引擎更友好，因为标题实际上并未被截字，而是局限于宽度而未被显示而已。	
+                </p>
+            	<code>
+                	li{height:25px;line-height:25px;font-size:12px;border:1px dashed red;width:200px;list-style:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+                </code>
+                <p>
+                	<mark>其中，overflow: hidden和white-space: nowrap都是必须的否则不会显示省略号。</mark>
+                </p>
+            </div>
+        </div>
+
+		<div class="note">
+        	<h2>border:none;与border:0区别</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<span>理论上的性能差异:</span>
+					border:0;把border设为"0"像素虽然在页面上看不见，但按border默认值理解，浏览器依然对border-width/border-color进行了渲染，即已经占用了内存值。border:none;把border设为"none"即没有，浏览器解析"none"时将不作出渲染动作，即不会消耗内存值。	
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>图片标签img中alt与title的差别</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+                	<span>1、含意不同</span>
+					<p class="textindent">alt是当图片不存在时的替换文字；title是对图片的描写与进一步阐明</p>
+                    <span>2、在浏览器中的表示不同</span>
+					<p class="textindent">在现代浏览器跟ie8中，当鼠标经由图片时title值会显示，而alt的值不会显示；只有在ie6中，当鼠标经过图片时title和alt的值都会显示。</p>
+                    <span>3、对网站seo优化来说，title与alt还有最主要的一点</span>
+					<p class="textindent">搜寻引擎对图片意思的断定，重要靠alt属性。所以在图片alt属性中以扼要文字解释，同时包括要害词，也是页面优化的一局部。前提容许的话，可以在title属性里，进一步对图片说明。</p>
+            </div>
+        </div>
+
+		<div class="note">
+        	<h2>overflow</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+                <p>Overflow：Hidden这个CSS属性除了隐藏溢出功能外，还有清除浮动的作用,解决IE6中容器高度BUG。 </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS设置IE6中容器高度BUG</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	在IE6中设置display:block的空容器一个较小高度时，会发现其高度不能小于某个值。
+                    <p><span>解决方案：</span></p>
+                    <ul>
+                    	<li>设置font-size:0,但是这个容器的高度最小为2px,所以没有办法实现高度为1px的效果</li>
+                        <li>设置overflow:hidden，这是目前看到的最完美的解决方案</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS样式优先级</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<ul>
+                        <li>1，内联样式 [1.0.0.0]</li>
+                        <li>2，ID选择器 [0.1.0.0]</li>
+                        <li>3，类，属性，伪类 选择器 [0.0.1.0]</li>
+                        <li>4，元素标签，伪元素 选择器 [0.0.0.1]</li>
+                    </ul>
+                	
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>文本输入框和相邻的文本不能对齐</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<span> 解决办法：</span>设置文本输入框vertical-align:middle\top;
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>消除IE按钮左右padding随字数长度变化的BUG</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<span> 解决办法：</span>*overflow:visible;
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>background-clip</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<span> 语法：</span>background-clip : border-box | padding-box | content-box | no-clip
+                    <ul>
+                    	<li>border-box：从border区域向外裁剪背景。</li>
+                        <li>padding-box：从padding区域向外裁剪背景。</li>
+                        <li>content-box：从content区域向外裁剪背景。</li>
+                        <li>no-clip：从border区域向外裁剪背景。</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>background-clip</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<span> 语法：</span>background-clip : border-box | padding-box | content-box | no-clip
+                    <ul>
+                    	<li>border-box：从border区域向外裁剪背景。</li>
+                        <li>padding-box：从padding区域向外裁剪背景。</li>
+                        <li>content-box：从content区域向外裁剪背景。</li>
+                        <li>no-clip：从border区域向外裁剪背景。</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>让flash不遮挡层 </h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	embed标签：wmode="opaque"
+                    <mark>（PS:插入flash应使用embed标签，object 标签存在浏览器兼容问题。）</mark>
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>IE6中文字溢出问题--多出来的一只猪</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+                <span>1.IE6的BUG</span>
+                <p>经测试，只有IE6中有文字溢出bug,ie7 8火狐正常。</p>
+                
+				<span>2.与浮动有关</span>
+                <p>去除“div style="float:left"”中的"float:left;"，你会发现多出来的"猪"字不见了，页面正常显示。同样去除“div style="float:right;width:400px"”中的"float:right;"，多余的"猪"字也同样消								                失，页面正常显示。</p>
+                
+				<span>3.与注释"<---->"的位置有关</span>
+                <p>将注释转移到“div style="float:left"”前面，多余的"猪"字消失，页面正常显示。将注释转移到 “div style="float:right;width:400px"” ↓这就是多出来的那只猪div下面，多余的"猪"字也                同样消失，页面正常显示。</p>
+                
+                <span>4.与固定宽度有关去除 </span>
+                <p>“div style="float:right;width:400px"”中的"width:400px"，多余的"猪"字消失，页面正常显示。</p>
+                <ul>
+                	<span>解决方案：</span>
+                	<li>a.不放置注释。最简单、最快捷的解决方法</li>
+                    <li>b.注释不要放置于 2 个浮动的区块之间</li>
+                    <li>c.将文字区块包含在新的容器之间</li>
+                    <li>d.去除文字区块的固定宽度</li>
+                </ul>
+                <pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html;charset=gb2312" /&gt;
+&lt;title&gt;多了一只猪&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div style="width:400px"&gt;
+&lt;div style="float:left"&gt;&lt;/div&gt;
+&lt;!-- --&gt;
+&lt;div style="float:right;width:400px"&gt;↓这就是多出来的那只猪&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </pre>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>Z-index详解</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	z-index属性适用于定位元素（position 属性值为 relative 或 absolute 或 fixed的对象），用来确定定位元素在垂直于显示屏方向（称为Z轴）上的层叠顺序（stack order）。<br /><br />
+                    <span>Z-index用在relative元素的例子</span><br />
+                    假设A，B两个relative的元素分别对应两个子元素C，D。C，D两个元素都是绝对定位元素.如果C，D发生重叠。而且A的Z-index值大于B。则无论D的Z-index设置多大，D将始终位于C以及A的子元素之下。
+                    
+                </p><br />
+                <mark>详细资料请参阅：http://baike.baidu.com/view/1157742.htm</mark>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>文档流</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	 <span>文档流</span>
+                     将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流.
+                     每个非浮动块级元素都独占一行, 浮动元素则按规定浮在行的一端. 若当前行容不下, 则另起新行再浮动.
+                     内联元素也不会独占一行. 几乎所有元素(包括块级,内联和列表元素)均可生成子行, 用于摆放子元素.
+                     有三种情况将使得元素脱离文档流而存在,分别是浮动,绝对定位, 固定定位. 但是在IE中浮动元素也存在于文档流中
+                     {浮动元素不占任何正常文档流空间，而浮动元素的定位还是基于正常的文档流，然后从文档流中抽出并尽可能远的移动至左侧或者右侧。文字内容会围绕在浮动元素周围。当一个元素从正常文档流中抽出后，仍然在文档流中的其他元素将忽略该元素并填补他原先的空间。
+                    浮动概念让人迷惑根源在于浏览器对理论的解读造成的。只能说很多人以IE做标准，其实它不是。}
+                    基于文档流, 我们可以很容易理解以下的定位模式:
+                     
+                    相对定位, 即相对于元素在文档流中位置进行偏移. 但保留原占位.
+                    绝对定位, 即完全脱离文档流, 相对于position属性非static值的最近父级元素进行偏移
+                    固定定位, 即完全脱离文档流, 相对于视区进行偏移.
+                    <br /><br />
+                    absolute：绝对定位。将对象从文档流中拖出，使用left，right，top，bottom等属性相对于其最接近的一个最有定位设置的父对象进行绝对定位。如果不存在这样的父对象，则依据body对象。而其层叠通过z-index属性定义 。当对象定位在浏览器窗口以外，浏览器因此显示滚动条。 fixed：固定定位。对象定位遵从绝对(absolute)方式。但是要遵守一些规范。当对象定位在浏览器窗口以外，浏览器不会因此显示滚动条，而当滚动条滚动时，对象始终固定在原来位置。 relative：相对定位。对象不可层叠，但将依据left，right，top，bottom等属性在正常文档流中偏移位置。
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>取消IE6图片工具栏</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	 在IE6下图片会有个默认图片工具栏有碍观瞻很是烦人，其实要解决这个问题只要在head标签里加上这么段就可以轻松解决了。
+                     <img src="images/code.jpg" />
+                </p>
+            </div>
+        </div>
+        
+        <div class="note">
+        	<h2>CSS滚动条控制（overflow-x|overflow-y）</h2>
+        	<a href="#." class="open_ico">+</a>
+            <div class="note_info">
+            	<p>
+                	<span>overflow-x / overflow-y:visible | hidden | scroll | auto;</span><br />
+                	<span>visible：</span>不剪切内容。<br />
+					<span>hidden：</span>将超出对象高度的内容进行裁剪，将不出现滚动条。<br />
+					<span>scroll：</span>将超出对象高度的内容进行裁剪，并以滚动条的方式显示超出的内容。<br />
+					<span>auto：</span>在需要时剪切内容并添加滚动条，此为body对象和textarea的默认值。<br />
+                </p>
+            </div>
+        </div>
+        
+        <p id="back-to-top"><a href="javascript:"></a></p>        
+</body>
+</html>

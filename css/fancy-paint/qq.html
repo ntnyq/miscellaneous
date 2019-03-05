@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{position: absolute;}
+    .qq{top: 50px;}
+    .head{
+      left: 200px;
+      width: 350px;
+      height: 335px;
+      border-radius: 50%;
+      background-color: #1f1a17;
+    }
+    .body{
+      top: 150px;
+      left: 160px;
+      width: 412px;
+      height: 325px;
+      border-radius: 50%;
+      background-color: #1f1a17;
+    }
+    .belly{
+      top: 45px;
+      left: 35px;
+      width: 340px;
+      height: 272px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .eye{
+      width: 63px;
+      height: 100px;
+      z-index: 4;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+    .lefteye{
+      top: 70px;
+      left: 100px;
+    }
+    .righteye{
+      top: 70px;
+      left: 180px;
+    }
+    .eyeball{
+      width: 25px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #1f1a17;
+    }
+    .lefteye .eyeball{
+      top: 29px;
+      right: 10px;
+    }
+    .righteye .eyeball{
+      top: 30px;
+      left: 10px;
+    }
+    .cell{
+      width: 10px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .lefteye .cell{
+      top: 9px;
+      left: 7px;
+    }
+    .righteye .cell{
+      top: 9px;
+      right: 7px;
+    }
+    .mouth{
+      top: 72px;
+      left: 60px;
+      z-index: 100;
+      width: 230px;
+      height: 76px;
+      border-radius: 50%;
+      background-color: #fc9202;
+    }
+    .tips{
+      top: -15px;
+      left: 32px;
+      width: 166px;
+      height: 78px;
+      border-radius: 50%;
+      border: 8px solid #201E1F;
+      border-left: 1px solid #201E1F;
+      border-right: 1px solid #201E1F;
+      clip: rect(65px 160px 100px 0);
+    }
+    .wing{
+      top: 240px;
+      width: 55px;
+      height: 170px;
+      border-radius: 50%;
+      background-color: #1f1a17;
+    }
+    .leftwing{
+      left: 133px;
+      -webkit-transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+      -o-transform: rotate(20deg);
+      transform: rotate(20deg);
+    }
+    .rightwing{
+      left: 550px;
+      -webkit-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+      -o-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+    }
+    .foot{
+      top: 440px;
+      z-index: -1;
+      width: 157px;
+      height: 82px;
+      border-radius: 50%;
+      background-color: #f07203;
+      border: 3px solid #872e0c;
+      box-shadow: 0 0 20px 5px rgba(0,0,0,.3);
+    }
+    .leftfoot{
+      left: 170px;
+      -webkit-transform: rotate(-5deg);
+      -ms-transform: rotate(-5deg);
+      -o-transform: rotate(-5deg);
+      transform: rotate(-5deg);
+    }
+    .rightfoot{
+      left: 380px;
+      -webkit-transform: rotate(5deg);
+      -ms-transform: rotate(5deg);
+      -o-transform: rotate(5deg);
+      transform: rotate(5deg);
+    }
+    .tole{
+      width: 24px;
+      height: 66px;
+      background-color: #f07203;
+      border-radius: 50%;
+      border-top: 3px solid #872e0c;
+    }
+    .leftfoot .tole{
+      border-right: 2px solid #872e0c;
+      -webkit-transform: rotate(-105deg) translate(15px,30px);
+      -ms-transform: rotate(-105deg) translate(15px,30px);
+      -o-transform: rotate(-105deg) translate(15px,30px);
+      transform: rotate(-105deg) translate(15px,30px);
+    }
+    .rightfoot .tole{
+      border-left: 2px solid #872e0c;
+      -webkit-transform: rotate(105deg) translate(-48px,-95px);
+      -ms-transform: rotate(105deg) translate(-48px,-95px);
+      -o-transform: rotate(105deg) translate(-48px,-95px);
+      transform: rotate(105deg) translate(-48px,-95px);
+    }
+    .scarf1{
+      top: 130px;
+      left: 190px;
+      z-index: 2;
+      width: 370px;
+      height: 204px;
+      border-radius: 50%;
+      background-color: #f00;
+      box-shadow: 0 5px 10px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.3) inset;
+    }
+    .scarf2{
+      top: 300px;
+      left: 220px;
+      z-index: 1;
+      width: 70px;
+      height: 110px;
+      border-radius: 10px 10px 10px 27px;
+      background-color: red;
+      -webkit-transform: rotate(15deg) translateY(-15px);
+      -ms-transform: rotate(15deg) translateY(-15px);
+      -o-transform: rotate(15deg) translateY(-15px);
+      transform: rotate(15deg) translateY(-15px);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.3) inset;
+    }
+    .jaw{
+      top: 100px;
+      z-index: 3;
+      width: 350px;
+      height: 180px;
+      border-radius: 50%;
+      background-color: #1f1a17;
+    }
+  </style>
+</head>
+<body>
+  <div class="qq">
+    <div class="head">
+      <div class="bowknot"></div>
+      <div class="eye lefteye">
+        <div class="eyeball">
+          <div class="cell"></div>
+        </div>
+      </div>
+      <div class="eye righteye">
+        <div class="eyeball">
+          <div class="cell"></div>
+        </div>
+      </div>
+      <div class="jaw">
+        <div class="mouth">
+          <div class="tips"></div>
+        </div>
+      </div>
+    </div>
+    <div class="scarf1"></div>
+    <div class="scarf2"></div>
+    <div class="body">
+      <div class="belly"></div>
+    </div>
+    <div class="wing leftwing"></div>
+    <div class="wing rightwing"></div>
+    <div class="foot leftfoot">
+      <div class="tole"></div>
+    </div>
+    <div class="foot rightfoot">
+      <div class="tole"></div>
+    </div>
+  </div>
+</body>
+</html>

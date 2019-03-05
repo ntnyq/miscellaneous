@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>精灵图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+    .wrapper {
+      display: flex;
+      width: 50vw;
+      margin: 20vh auto;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .icon-coin {
+      width: 80px;
+      height: 80px;
+      background: url(./src/img/anim-coin.png) no-repeat 0 0;
+      cursor: pointer;
+      -webkit-animation: bgAnim 1s steps(7) infinite;
+              animation: bgAnim 1s steps(7) infinite;
+    }
+
+    .icon-star {
+      width: 80px;
+      height: 80px;
+      background: url(./src/img/anim-fav.png) no-repeat 0 0;
+      cursor: pointer;
+      -webkit-animation: bgAnim 1s steps(7) infinite;
+              animation: bgAnim 1s steps(7) infinite;
+    }
+
+    .icon-watch {
+      width: 80px;
+      height: 80px;
+      background: url(./src/img/anim-watch-later.png) no-repeat 0 0;
+      cursor: pointer;
+      -webkit-animation: bgAnim2 1.5s steps(12) infinite;
+              animation: bgAnim2 1.5s steps(12) infinite;
+    }
+
+    .icon-app {
+      width: 80px;
+      height: 80px;
+      background: url(./src/img/anim-app.png) no-repeat 0 0;
+      cursor: pointer;
+      -webkit-animation: bgAnim3 1.5s steps(15) infinite;
+              animation: bgAnim3 1.5s steps(15) infinite;
+    }
+
+    @-webkit-keyframes bgAnim {
+      0 {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -560px 0;
+      }
+    }
+
+    @keyframes bgAnim {
+      0 {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -560px 0;
+      }
+    }
+
+    @-webkit-keyframes bgAnim2 {
+      0 {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -960px 0;
+      }
+    }
+
+    @keyframes bgAnim2 {
+      0 {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -960px 0;
+      }
+    }
+
+    @-webkit-keyframes bgAnim3 {
+      0 {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -1200px 0;
+      }
+    }
+
+    @keyframes bgAnim3 {
+      0 {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -1200px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="icon-coin"></div>
+    <div class="icon-star"></div>
+    <div class="icon-watch"></div>
+    <div class="icon-app"></div>
+  </div>
+</body>
+</html>

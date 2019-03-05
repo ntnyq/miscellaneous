@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <title>zRender</title>
+  <style>
+    #main {
+      width: 500px;
+      height: 800px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <script src="./src/js/zrender.min.js"></script>
+  <script>
+    window.onload = () => {
+
+      var zr = zrender.init(document.querySelector('#main'));
+
+      var w = zr.getWidth(),
+          h = zr.getHeight();
+
+      var sun = new zrender.Circle({
+        shape: {
+          cx: 0,
+          cy: 0,
+          r: 50
+        },
+        style: {
+          fill: '#ff904f'
+        },
+        position: [w / 2, h / 2]
+      });
+
+      zr.add(sun);
+
+      var water = new zrender.Rect({
+        shape:{
+          cx: 0,
+          cy: 0,
+          width: w,
+          height: h / 2
+        },
+        style: {
+          fill: new zrender.RadialGradient(0.5, -0.1, 1, [{
+            offset: 0,
+            color: '#ffb166'
+          }, {
+            offset: 0.2,
+            color: '#d7c467'
+          }, {
+            offset: 1,
+            color: '#37b0ff'
+          }])
+        },
+        position: [0, h / 2]
+      });
+
+      zr.add(water);
+
+      var sky = new zrender.Rect({
+        shape: {
+          cx: 0,
+          cy: 0,
+          width: w,
+          height: h
+        },
+        style: {
+          fill: '#d7f9ff'
+        },
+        zlevel: -1
+      });
+
+      zr.add(sky);
+    };
+  </script>
+</body>
+</html>

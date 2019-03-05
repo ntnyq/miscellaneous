@@ -1,0 +1,96 @@
+/*
+* @Author: Emmet
+* @Date:   2016-12-02 12:41:57
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-12-02 17:56:22
+*/
+body{
+  background-color: #334;
+  color: #fb5;
+}
+a:link{
+  background-color: #eb6;
+  color: #445;
+}
+a:visited{
+  background-color: #eb6;
+  color: #345;
+}
+a:hover{
+  background-color: #fb5;
+  color: #667;
+}
+a:active{
+  background-color: #ec8;
+  color: #778;
+}
+header{
+  background-color: #334;
+  border-color: #667;
+  color: #ec8;
+}
+header nav{
+  background-color: #789;
+  border-color: #667;
+  color: #455;
+}
+article{
+  background-color: #edc;
+  border-color: #667;
+  color: #223;
+}
+header nav ul{
+  border-color: #99a;
+}
+header nav a:link,
+header nav a:visited{
+  background-color: transparent;
+  border-color: #99a;
+  color: #eef;
+}
+header nav a:hover{
+  background-color: #eb6;
+  color: #445;
+}
+header nav a:active{
+  background-color: #ec8;
+  color: #667;
+}
+article img{
+  border-color: #ba9;
+  outline-color: #dcb;
+}
+#imagegallery a{
+  background-color: transparent;
+}
+header nav a.here:link,
+header nav a.here:visited,
+header nav a.here:hover,
+header nav a.here:active{
+  background-color: #799;
+  color: #eef
+}
+
+th{
+  color: #edc;
+  background-color: #455;
+}
+tr td{
+  background-color: #eb6;
+  color: #223;
+}
+
+tr.odd td{
+  background-color: #ec8;
+  color: #223;
+}
+tr.highlight td{
+  background-color: #cba;
+  color: #223;
+}
+input.placeholder{
+  color: gray;
+}
+textarea.placeholder{
+  color: gray;
+}

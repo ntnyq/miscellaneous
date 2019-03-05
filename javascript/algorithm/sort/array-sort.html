@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>demo</title>
+</head>
+<body>
+  <script>
+    var aNum = [],
+        iLen = 5;  // 随机的数组个数
+    for(var i = 0; i < iLen; i++){
+      aNum.push(Math.floor(Math.random() * 100)); // 随机获取0-100的数字
+    }
+    console.log(aNum);
+    console.log(bubbleSort(aNum));
+    console.log(selectionSort(aNum));
+    console.log(quickSort(aNum));
+/*    console.log(aNum);
+    chooseRank(aNum);
+    function chooseRank (arr) {
+      var aTmp = [];
+      for(var i = 0; i < arr.length; i++){
+        var k = i;
+        var j = i + 1;
+        do{
+          if (arr[k] < arr [j]){
+            i ++;
+          }
+          j ++;
+        }while (j < arr.length - 1);
+    aTmp.push(arr.pop(arr[k]));
+    }
+    console.log(aTmp);
+    return aTmp;
+  }*/
+
+  /**
+   * [bubbleSort 冒泡排序算法]
+   * @param  {[type]} arr [description]
+   * @return {[type]}     [description]
+   *  执行过程如下
+    // 第一轮循环 内循环执行length-0-1次
+    // 13,16,20,15,9,18;
+    // 13,16,20,15,9,18;
+    // 13,16,15,20,9,18;
+    // 13,16,15,9,20,18;
+    // 13,16,15,9,18,20;
+
+    // 第二轮循环 内循环执行length-1-1次
+    // 13,16,15,9,18;
+    // 13,15,16,9,18;
+    // 13,15,9,16,18;
+    // 13,15,9,16,18;
+
+    // 第三轮循环 内循环执行ength-2-1次
+    // 13,15,9,16;
+    // 13,9,15,16;
+    // 13,9,15,16;
+
+    // 第四轮循环 内循环执行length-3-1次
+    // 9,13,15;
+    // 9,13,15;
+
+    // 第五轮循环 内循环执行length-4-1次
+    // 9,13;
+
+    // 得出 9,13,15,16,18,20
+    //可以看出外边的循环只需要执行length-1轮即可 而每一次的内循环只需要length-i-1次
+    // (当然你也可以内外都执行arr.length次 结果一样 但影响了执行效率)
+   */
+  function bubbleSort (arr) {
+    for(var i = 0; i < arr.length - 1; i++){
+      var tmp;
+      for(var j = 0; j < arr.length - i -1 ; j++){
+        if (arr[j] > arr[j + 1]) {
+          tmp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = tmp;
+        }
+      }
+    }
+    return arr;
+  }
+
+  /**
+   * [selectionSort 选择排序算法]
+   * @param  {[type]} arr [description]
+   * @return {[type]}     [description]
+   *  //执行过程如下
+
+    //第一轮
+    // 13,16,20,15,9,18;
+    // 13,16,20,15,9,18;
+    // 13,16,20,15,9,18;
+    // 9,16,20,15,13,18;
+    // 9,16,20,15,13,18;
+
+    //第二轮
+    // 16,20,15,13,18;
+    // 15,20,16,13,18;
+    // 13,20,16,15,18;
+    // 13,20,16,15,18;
+
+    //第三轮
+    // 16,20,15,18;
+    // 15,20,16,18;
+    // 15,20,16,18;
+
+    //第四轮
+    // 16,20,18;
+    // 16,20,18;
+
+    //第五轮
+    // 18,20;
+
+    // 得出 9,13,15,16,18,20
+    //可以看出 外边的循环只需要执行length-1轮即可 而每一次的内循环是从i+1项开始到最后一项 依次与第i项进行比较
+   */
+  function selectionSort (arr) {
+    for(var i = 0; i < arr.length - 1; i++){
+      var tmpl;
+      for(var j = i + 1; j < arr.length; j++){
+        if (arr[i] > arr[j]) {
+          tmp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = tmp;
+        }
+      }
+    }
+    return arr;
+  }
+  /**
+   * [quickSort 快速排序方法]
+   * @param  {[type]} arr [description]
+   * @return {[type]}     [description]
+   * //执行过程 数学二分法思想 取一个中间值 其他每一项分别与它比较 小的放在左边组成一个新数组 大的放在右边组成一个新数组
+    //利用递归的思想调用函数执行以上过程 直到中间值的索引为0 标志着排序的结束
+   */
+  function quickSort (arr) {
+    var index = Math.floor(arr.length / 2);
+    var value = arr[index];
+    var arrLeft = [];
+    var arrRight = [];
+
+    if (index === 0) {
+      return arr;
+    }
+
+    // 取出了那个参考值值
+    arr.splice(index, 1);
+    for(var i = 0; i < arr.length; i++){
+      if (arr[i] < value) {
+        arrLeft.push(arr[i]);
+      }else {
+        arrRight.push(arr[i]);
+      }
+    }
+
+    var arr1 = quickSort(arrLeft);
+    var arr2 = quickSort(arrRight);
+
+    return arr1.concat(value, arr2);
+  }
+
+  function multi (n) {
+    if (n === 1 || n === 0) {
+      return 1;
+    }else {
+      // return n * multi(n - 1);
+      return n * arguments.callee(n-1); // 解耦实现递归
+    }
+  }
+  console.log(multi(5));
+  </script>
+</body>
+</html>

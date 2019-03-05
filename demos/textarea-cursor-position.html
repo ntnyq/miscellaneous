@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .textarea {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 800px;
+      height: 100px;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 18px;
+      color: #666;
+      resize: none;
+      outline: none;
+      overflow-y: auto;
+      word-break: break-all;
+    }
+    div.textarea {
+      color: red;
+      border: 1px solid #ccc;
+    }
+    .text {
+      position: relative;
+      width: 800px;
+      margin: 100px auto;
+      height: 100px;
+    }
+    ul {
+      position: absolute;
+      z-index: 233;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      list-style: none;
+      display: none;
+    }
+    li {
+      padding: 5px 20px;
+      margin: 0;
+      border-bottom: 1px solid #ccc;
+    }
+    li:hover {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="text" id="text">
+    <textarea class="textarea" id="textarea" placeholder="测试位置"></textarea>
+  </div>
+    <ul id="list">
+      <li>0001</li>
+      <li>0002</li>
+      <li>0003</li>
+      <li>0004</li>
+      <li>0005</li>
+    </ul>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+  $(function () {
+
+    var $textarea = $('#textarea'), //获取多行文本框
+        $list = $('#list')
+
+    $textarea.on('keyup', function(e) {
+      var val = $textarea.val()
+
+      if (e.keyCode === 50 && val.slice(-1) === '@') {
+        var pos = getCursorPostion() // 获取镜像的光标位置
+
+        $list.fadeIn().css({ // 设置提示列表位置
+          left: pos.left + 'px',
+          top: pos.top + 'px'
+        })
+      }
+      val.length >= 140 && $textarea.val(val.slice(0, 140))
+    })
+    $list.on('click', 'li', function(e) {
+      var val = $textarea.val()
+      val += $(this).text()
+      $textarea.val(val)
+      $(this).parent().fadeOut()
+      e.stopPropagation()
+    })
+    $(document).on('click', function(e) {
+      $list.fadeOut()
+    });
+
+    var getCursorPostion = function () {
+
+      var textarea = $textarea.get(0),
+          end = textarea.selectionEnd,
+          beforeText = $textarea.val().slice(0, end),
+          afterText = $textarea.val().slice(end)
+
+      var escape = function (text) {
+        return text.replace(/<|>|'|"|&/g, '?').replace(/\r\n|\r|\n/g, '<br>')
+      }
+      // 核心方案 创建镜像元素
+      var mirror = '<div class="' + $textarea.attr('class') +'" id="mirror">' +
+                      escape(beforeText) + '<span id="cursor">|</span>' +
+                      escape(afterText) + '</div>'
+      $textarea.after($(mirror))
+      // 实现api
+      var pos = $('#cursor').get(0).getBoundingClientRect()
+
+      $('#mirror').remove()
+
+      return pos
+    }
+  })
+  </script>
+</body>
+</html>

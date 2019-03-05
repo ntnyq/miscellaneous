@@ -1,0 +1,16 @@
+{
+  "name": "octocat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "ntnyq<ntnyq13@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "https": "^1.0.0"
+  }
+}

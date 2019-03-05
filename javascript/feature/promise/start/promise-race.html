@@ -1,0 +1,26 @@
+<script>
+const p1 = new Promise(resolve => {
+  setTimeout(() => {
+    resolve('小黑')
+  }, 5000)
+})
+
+const p2 = new Promise(resolve => {
+  setTimeout(() => {
+    resolve('小白')
+  }, 10000)
+})
+
+const p3 = new Promise(resolve => {
+  setTimeout(() => {
+    resolve('小灰')
+  }, 2000)
+})
+
+
+const p = Promise.race([p1, p2, p3])
+
+p.then(who => {
+  console.log(who)
+})
+</script>

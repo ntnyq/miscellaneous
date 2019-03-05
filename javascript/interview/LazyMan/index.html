@@ -1,0 +1,59 @@
+<!--
+* @Author: ntnyq
+* @Date:   2017-04-27 19:00:40
+ -->
+<script>
+  function LazyMan (name) {
+    let tasks = [];
+
+    const next = () => {
+     const fn = tasks.shift();
+     fn && setTimeout(fn);
+    };
+
+    const print = msg => {
+     console.log(`${msg}\n`);
+    };
+
+    const man = {
+      hi (name) {
+        tasks.push(() => {
+          print(`Hi, this is ${name}!`);
+          next();
+        });
+        return this;
+      },
+      eat (thing) {
+        tasks.push(() => {
+          print(`eat ${thing}~`);
+          next();
+        });
+        return this;
+      },
+      sleep (time) {
+        tasks.push(() => {
+          setTimeout(() => {
+            print(`Wake up after ${time}`);
+            next();
+          }, time * 1e3);
+        });
+        return this;
+      },
+      sleepFirst (time) {
+        tasks.unshift(() => {
+          setTimeout(() => {
+            print(`Wake up after ${time}`);
+            next();
+          }, time * 1e3);
+        });
+        return this;
+      }
+    };
+
+    man.hi(name);
+    setTimeout(next);
+    return man;
+  }
+
+  LazyMan('Hank').sleep(5).eat('fish');
+</script>

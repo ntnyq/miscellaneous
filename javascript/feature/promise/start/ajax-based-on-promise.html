@@ -1,0 +1,17 @@
+<script src="ajax.js"></script>
+<script>
+  const url = 'https://api.github.com/users/ntnyq',
+    data = {
+      name: '刘森',
+      age: 25
+    }
+
+  ajax({ url, data })
+    .then(res => {
+      console.log('成功回调！');
+      console.log(res);
+    }, err => {
+      console.log('失败回调！');
+      console.log(err);
+    })
+</script>

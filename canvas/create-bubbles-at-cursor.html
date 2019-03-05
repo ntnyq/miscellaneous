@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CanvasBubble</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      //获取canvas画布
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      //获取窗口的宽和高
+      var winW = window.innerWidth;
+      var winH = window.innerHeight;
+      //设定画布大小为窗口大小
+      canvas.width = winW;
+      canvas.height = winH;
+
+      var ball = [];
+      //黑色填充画布
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      setInterval(function () {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < ball.length; i++) {
+
+          ctx.save();
+          ctx.beginPath();
+          //随机泡泡颜色
+          ctx.fillStyle = ball[i].randomColor(ball[i].r, ball[i].g, ball[i].b, ball[i].opacity);
+          ctx.moveTo(ball[i].x,ball[i].y);
+          ctx.arc(ball[i].x, ball[i].y, ball[i].radius, 0, 360 * Math.PI / 180, false);
+          ctx.fill();
+          ctx.closePath();
+          ctx.restore();
+
+          ball[i].x += ball[i].speedX;
+          ball[i].y += ball[i].speedY;
+          ball[i].opacity = (ball[i].opacity - 0.015).toPrecision(3);//方法可在对象的值超出指定位数时将其转换为指数计数法，同样也会做舍入操作
+          if (ball[i].opacity < 0) {
+            ball.splice(i, 1);  //splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+          }
+        }
+      }, 0.1);
+
+      canvas.onmousemove = function (e) {
+
+        var ev = e || window.event;
+
+        for (var i = 0; i < 5; i++) {
+          ball.push({
+          x: ev.clientX - canvas.offsetLeft,
+          y: ev.clientY - canvas.offsetTop,
+          radius: Math.floor(Math.random() * 20 + 1),
+          r: Math.floor(Math.random() * 256),
+          b: Math.floor(Math.random() * 256),
+          g: Math.floor(Math.random() * 256),
+          opacity: Math.random() * 2 - 0.3,
+          randomColor: function (r, g, b, opacity) {
+              return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity + ')';
+          },
+          speedX: (Math.random() * 11 + (-5)) / 1,
+          speedY: -(ev.clientY - canvas.offsetTop) / 100
+          });
+        }
+      };
+    };
+  </script>
+</head>
+<body>
+  <canvas id="canvas">Sorry,but your browser doesn't support the canvas!</canvas>
+</body>
+</html>

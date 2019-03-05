@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="x-ua-compatible" content="ie=edge, chrome=1" />
+  <title>运动的太阳系</title>
+  <style>
+    html, body, div{
+      padding: 0;
+      margin: 0;
+    }
+    body{
+      background-color: #000;
+      overflow: hidden;
+    }
+    div{
+      border-radius: 50%;
+    }
+    .sun{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+      box-shadow: 0 0 20px 1px red;
+    }
+
+    .earth{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      border: 1px solid #fff;
+      transform: translate(-50%, -50%);
+      animation: autoPlay 3s linear infinite;
+    }
+    .earth::before{
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background-color: deepskyblue;
+      box-shadow: 0 0 10px 1px blue;
+    }
+
+    .moon{
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      animation: autoPlay 2s linear infinite;
+    }
+    .moon::before{
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      box-shadow: 0 0 10px 1px #fff;
+    }
+
+    .mark{
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border: 1px solid #fff;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      animation: autoPlay 6s linear infinite;
+    }
+    .mark::before{
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background-color: red;
+      box-shadow: 0 0 10px 1px #ff5227;
+    }
+
+    .vnues{
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border: 1px solid #fff;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      animation: autoPlay 8s linear infinite;
+    }
+    .vnues::before{
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background-color: gold;
+      box-shadow: 0 0 10px 1px #fff232;
+    }
+
+    @keyframes autoPlay{
+      0%{
+        transform: translate(-50%, -50%) rotate(0);
+      }
+      100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sun"></div>
+  <div class="earth">
+    <div class="moon"></div>
+  </div>
+  <div class="mark"></div>
+  <div class="vnues"></div>
+</body>
+</html>

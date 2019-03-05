@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>snap</title>
+  <style>
+    svg{
+      overflow: visible;
+    }
+    circle,
+    path {
+      stroke-linecap: round;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <svg id="svg" width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <!-- 底层灰色圆环 -->
+      <circle cx="150" cy="150" r="150" fill="none" stroke="#eeeeee" stroke-width="9" stroke-dasharray="706" />
+      <!-- 外层 -->
+      <path id="myPath" class="bar" data-array="123" d="M150,0,A150,150,0,1,0,300,150" style="fill:none;stroke:#3385ff;stroke-width:9;stroke-dasharray:706;stroke-dashoffset:706"></path>
+    </svg>
+  </div>
+  <script src="https://cdn.staticfile.org/snap.svg/0.5.1/snap.svg-min.js"></script>
+  <script>
+    var bar = Snap("#myPath");
+
+    bar.animate({
+      'strokeDashoffset': 0
+    }, 2000, mina.linear, function () {
+      console.log('done');
+    });
+  </script>
+</body>
+</html>

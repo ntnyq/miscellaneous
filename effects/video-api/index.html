@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <meta content="email=no" name="format-detection">
+  <title>播放器</title>
+</head>
+<body>
+  <button id="loadBtn">Load</button>
+  <button id="pauseBtn">Pause</button>
+  <button id="playBtn">Play</button>
+  <button id="muteBtn">Mute</button>
+
+  Volume: <input id="volumeInput" type="number" min="0" max="100" value="50" />
+  Rate: <input id="rateInput" type="number" min="0" max="4" value="1" step="0.5" />
+  <button id="fullScreenBtn">FullScreen</button>
+  <br />
+
+  <span id="current"></span>
+  <input id="progressInput" type="range" min="0" value="0" disabled="disabled" />
+  <span id="total"></span>
+  <br />
+
+  Seek: <input id="seekInput" type="range" min="0" value="0" />
+  <br />
+
+  <video id="video" width="400" src="" controls="controls" autoplay="autoplay"></video>
+  <script>
+    window.onload = () => {
+      loadBtn.onclick = () => {
+        video.src = 'http://vodcdn.video.taobao.com/oss/ali-video/2e27345d58b045f6b0a391e0ee16c7b7/1465789891/video.mp4'
+      }
+      pauseBtn.onclick = () => {
+        video.pause()
+      }
+      playBtn.onclick = () => {
+        video.play()
+      }
+      muteBtn.onclick = () => {
+        video.muted = !video.muted
+      }
+      video.volume = volumeInput.value / 100
+      volumeInput.onchange = () => {
+        video.volume = volumeInput.value / 100
+      }
+      video.playbackRate = rateInput.value
+      rateInput.onchange = () => {
+        video.playbackRate = rateInput.value
+      }
+      fullScreenBtn.onclick = () => {
+        try {
+          video.requestFullscreen()
+        } catch(e) {
+          try {
+            video.webkitRequestFullscreen()
+          } catch(e) {
+            video.mozRequestFullscreen()
+          }
+        }
+      }
+      video.onloadedmetadata = () => {
+        var totalTime = parseInt(video.duration)
+        total.textContent = totalTime
+        progressInput.max = totalTime
+        seekInput.max = totalTime
+      }
+      video.ontimeupdate = () => {
+        var currentTime = parseInt(video.currentTime)
+        current.textContent = currentTime
+        progressInput.value = currentTime
+      }
+      seekInput.onchange = () => {
+        video.currentTime = seekInput.value
+      }
+    }
+  </script>
+</body>
+</html>

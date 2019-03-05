@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #canavs {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    window.onload = () => {
+      // 设置尺寸
+      let cw = canvas.width = window.innerWidth
+      let ch = canvas.height = window.innerHeight
+      // 获取绘图对象
+      cc = canvas.getContext('2d')
+
+      const RUN = {
+        x: cw / 2,
+        y: ch / 2,
+        w: cw * 0.5,
+        h: ch * 0.6,
+        distance: 0,
+        speed: 3
+      }
+
+      // 运动圆圈
+      var Circle = function () {
+        this.x = RUN.x - RUN.w / 2
+        this.y = RUN.y - RUN.h / 2
+        this.radius = 2
+        this.color = 0
+      }
+
+      Circle.prototype.draw = function (){
+        cc.beginPath()
+        cc.fillStyle = `hsl(${this.color}, 100%, 50%)`
+        cc.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false)
+        cc.closePath()
+        cc.fill()
+      }
+
+      var circle = new Circle()
+
+      let isFirstT = true
+      let isFirstR = true
+      let isFirstB = true
+      let isFirstL = true
+
+      let animateCircle = () => {
+        if (!isFirstT && !isFirstR && !isFirstB && !isFirstL) {
+          isFirstT = true
+          isFirstR = true
+          isFirstB = true
+          isFirstL = true
+        }
+
+        // 拖尾效果
+        cc.fillStyle = 'rgba(0, 0, 0, .1)'
+        cc.fillRect(0, 0, cw, ch)
+
+        if (circle.x < (RUN.x + RUN.w / 2) - RUN.speed && Math.abs(circle.y - (RUN.y - RUN.h / 2) < RUN.speed)) {
+
+          if (isFirstT) {
+            RUN.distance = 0
+            isFirstT = false
+          }
+
+          circle.x = RUN.x - RUN.w / 2 + RUN.distance
+          circle.y = RUN.y - RUN.h / 2
+          RUN.distance += RUN.speed
+        } else if (circle.y < (RUN.y + RUN.h / 2) - RUN.speed && circle.x > RUN.x) {
+
+          if (isFirstR) {
+            RUN.distance = 0
+            isFirstR = false
+          }
+
+          circle.x = RUN.x + RUN.w / 2
+          circle.y = RUN.y - RUN.h / 2 + RUN.distance
+          RUN.distance += RUN.speed
+        } else if (circle.x > (RUN.x - RUN.w / 2) + RUN.speed && circle.y > RUN.y) {
+
+          if (isFirstB) {
+            RUN.distance = 0
+            isFirstB = false
+          }
+
+          circle.x = RUN.x + RUN.w / 2 - RUN.distance
+          circle.y = RUN.y + RUN.h / 2
+          RUN.distance += RUN.speed
+        } else if (circle.y > (RUN.y - RUN.h /2) + RUN.speed && circle.x < RUN.x) {
+
+          if (isFirstL) {
+            RUN.distance = 0
+            isFirstL = false
+          }
+
+          circle.x = RUN.x - RUN.w / 2
+          circle.y = RUN.y + RUN.h / 2 - RUN.distance
+          RUN.distance += RUN.speed
+        }
+
+        circle.color++
+        circle.color %= 360
+        circle.draw()
+        requestAnimationFrame(animateCircle)
+      }
+
+      requestAnimationFrame(animateCircle)
+    }
+  </script>
+</body>
+</html>

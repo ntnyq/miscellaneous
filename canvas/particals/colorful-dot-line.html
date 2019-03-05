@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      overflow: hidden;
+    }
+    #canvas{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas">Sorry,but your browser doesn't support the canvas tag!</canvas>
+  <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      // 初始化画布大小
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      // 线宽为0.3
+      ctx.lineWidth = 0.3;
+      // 生成随机颜色
+      ctx.strokeStyle = (new Color(150)).style;
+      // 定义一个鼠标位置的对象
+      var mousePosition = {
+        // 初始化鼠标位置 不明白为什么不直接写/2
+        x: 50 * canvas.width / 100,
+        y: 50 * canvas.height / 100
+      };
+      console.log(mousePosition.x +' '+ mousePosition.y);
+      // 定义一个点的对象
+      var dots = {
+        // 点的个数
+        nb: 300,
+        // 两点间的最大距离的平方除以2再开放，就是一个筛选值
+        distance: 100,
+        // 鼠标的有效半径
+        d_radius: window.innerWidth / 20,
+        // 小球数组
+        array: []
+      };
+      /**
+       * [colorValue rgb的颜色介于0-255之间]
+       * @param  {[type]} min [description]
+       * @return {[type]}     [description]
+       */
+      function colorValue (min) {
+        return Math.floor(Math.random() * 255 + min);
+      }
+      function createColorStyle (r, g, b) {
+        return 'rgba('+ r +','+ g +','+ b +',.9)';
+      }
+      /**
+       * [mixComponents 取两个颜色的中间值，加上了直径的比例]
+       * @param  {[type]} comp1   [description]
+       * @param  {[type]} weight1 [description]
+       * @param  {[type]} comp2   [description]
+       * @param  {[type]} weight2 [description]
+       * @return {[type]}         [description]
+       */
+      function mixComponents (comp1, weight1, comp2, weight2) {
+        return (comp1 * weight1 + comp2 * weight2) / (weight1 + weight2);
+      }
+      /**
+       * [averageColorStyle 返回连线的颜色]
+       * @param  {[type]} dot1 [description]
+       * @param  {[type]} dot2 [description]
+       * @return {[type]}      [description]
+       */
+      function averageColorStyle (dot1, dot2) {
+        // 获取两个点的颜色
+        var color1 = dot1.color;
+        var color2 = dot2.color;
+
+        var r = mixComponents(color1.r, dot1.radius, color2.r, dot2.radius);
+        var g = mixComponents(color1.g, dot1.radius, color2.g, dot2.radius);
+        var b = mixComponents(color1.b, dot1.radius, color2.b, dot2.radius);
+        return createColorStyle(Math.floor(r), Math.floor(g), Math.floor(b));
+      }
+      /**
+       * [Color 创建颜色的构造函数]
+       * @param {[type]} min [description]
+       */
+      function Color (min) {
+        min = min || 0;
+        this.r = colorValue(min);
+        this.g = colorValue(min);
+        this.b = colorValue(min);
+        this.style = createColorStyle(this.r, this.g, this.b);
+      }
+      /**
+       * [Dot 创建点的构造函数]
+       */
+      function Dot () {
+        // 在页面的随机位置产生点
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        // 设定点移动的速度
+        this.vx = - 0.5 + Math.random();
+        this.vy = - 0.5 + Math.random();
+        // 点的直径大小随机
+        this.radius = Math.random() * 3;
+        // 点的颜色随机
+        this.color = new Color();
+        // console.log(this);
+      }
+
+      Dot.prototype = {
+        // 绘制点的方法
+        draw:function () {
+          ctx.beginPath();
+          ctx.fillStyle = this.color.style;
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+          ctx.fill();
+        }
+      };
+      /**
+       * [createDots 利用构造函数实例对象并装入数组]
+       * @return {[type]} [description]
+       */
+      function createDots () {
+        for(var i = 0; i < dots.nb; i++){
+          dots.array.push(new Dot());
+        }
+      }
+      /**
+       * [moveDots 移动点，并且边界检测]
+       * @return {[type]} [description]
+       */
+      function moveDots () {
+        for(var i = 0; i < dots.nb; i++){
+          var dot = dots.array[i];
+
+          if (dot.y < 0 || dot.y > canvas.height) {
+            dot.vx = dot.vx;
+            dot.vy = - dot.vy;
+          }else if (dot.x < 0 || dot.x > canvas.width) {
+            dot.vx = - dot.vx;
+            dot.vy = dot.vy;
+          }
+          dot.x += dot.vx;
+          dot.y += dot.vy;
+        }
+      }
+      /**
+       * [connectDots 连接这些点]
+       * @return {[type]} [description]
+       */
+      function connectDots () {
+        for(var i = 0; i < dots.nb; i++){
+          for(var j = 0; j < dots.nb; j++){
+            i_dot = dots.array[i];
+            j_dot = dots.array[j];
+            // 假设当前点距离和遍历的点的距离小于所定义的半径长度（其实为distance的平方乘以2再开方，三角函数），这两个判断可以重新研究一下，让算法更优雅
+            if ((i_dot.x - j_dot.x) < dots.distance && (i_dot.y - j_dot.y) < dots.distance && (i_dot.x - j_dot.x) > - dots.distance && (i_dot.y - j_dot.y) > - dots.distance) {
+              // 用来筛选鼠标所在点设定值半径内的所有点
+              if ((i_dot.x - mousePosition.x) < dots.d_radius && (i_dot.y - mousePosition.y) < dots.d_radius && (i_dot.x - mousePosition.x) > - dots.d_radius && (i_dot.y - mousePosition.y) > - dots.d_radius) {
+                // 把满足的条件用计算得到的颜色连接起来
+                ctx.beginPath();
+                ctx.strokeStyle = averageColorStyle(i_dot, j_dot);
+                ctx.lineWidth = 1;
+                ctx.moveTo(i_dot.x, i_dot.y);
+                ctx.lineTo(j_dot.x, j_dot.y);
+                ctx.stroke();
+                ctx.closePath();
+              }
+            }
+          }
+        }
+      }
+      /**
+       * [drawDots 绘制这些点]
+       * @return {[type]} [description]
+       */
+      function drawDots () {
+        for(var i = 0; i < dots.nb; i++){
+          var dot = dots.array[i];
+          dot.draw();
+        }
+      }
+      /**
+       * [animateDots 比定时器准确，跟着浏览器的渲染频率运动]
+       * @return {[type]} [description]
+       */
+      function animateDots () {
+        // 清空画布，并且重新绘制，然后执行定时器，循环绘制
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        moveDots();
+        connectDots();
+        drawDots();
+        requestAnimationFrame(animateDots);
+      }
+      // 监听鼠标移动和离开
+      canvas.onmousemove = function (e) {
+        mousePosition.x = e.pageX;
+        mousePosition.y = e.pageY;
+      };
+      canvas.onmouseleave = function (e) {
+          mousePosition.x = canvas.width / 2;
+          mousePosition.y = canvas.height / 2;
+      };
+      // 创建点的集合
+      createDots();
+      // 相当于定时器
+      requestAnimationFrame(animateDots);
+    };
+  </script>
+</body>
+</html>
