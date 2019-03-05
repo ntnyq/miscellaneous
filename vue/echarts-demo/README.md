@@ -121,8 +121,3 @@ ECharts.registerTheme('ovilia-green', theme)
   }
 </style>
 ```
-
-
-
-
-
