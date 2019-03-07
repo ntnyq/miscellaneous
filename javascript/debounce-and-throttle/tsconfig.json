@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "rootDir": "src",
+    "outDir": "lib",
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "sourceMap": false,
+    "lib": [
+      "es2018",
+      "dom",
+      "dom.iterable"
+    ],
+    "allowJs": false,
+    "noUnusedLocals": true,
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "newLine": "lf",
+    "importHelpers": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "removeComments": false,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

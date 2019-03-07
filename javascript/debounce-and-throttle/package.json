@@ -1,0 +1,13 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  }
+}
