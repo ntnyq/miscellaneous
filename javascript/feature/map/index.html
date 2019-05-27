@@ -1,0 +1,62 @@
+<script>
+console.log(`
+const map = new Map([
+  ['name', 'ntnyq'],
+  [1, 'first']
+])
+`)
+const map = new Map([
+  ['name', 'ntnyq'],
+  [1, 'first']
+])
+
+console.log(`\n======== map.size ===================`)
+console.log(map.size) // => 2
+
+console.log(`\n======== map.get('name') ===================`)
+console.log(map.get('name')) // => ntnyq
+
+console.log(`\n======== map.has('name') ===================`)
+console.log(map.has('name')) // => true
+
+console.log(`\n======== map.has('foo') ===================`)
+console.log(map.has('foo')) // => false
+
+console.log(`
+map.set('foo', 'bar')
+map.delete('name')
+`)
+map.set('foo', 'bar')
+map.delete('name')
+
+console.log(`\n======== map.has('foo') ===================`)
+console.log(map.has('foo')) // => true
+
+console.log(`\n======== map.has('name') ===================`)
+console.log(map.has('name')) // => false
+
+console.log(`\n======== map.get('name') ===================`)
+console.log(map.get('name')) // => undefined
+
+console.log(`
+map.set('foo', 'baz')
+`)
+map.set('foo', 'baz')
+
+console.log(`\n======== map.get('foo') ===================`)
+console.log(map.get('foo')) // => baz
+
+console.log(`\n======== map.delete('name') ===================`)
+console.log(map.delete('name')) // => false
+
+console.log(`\n======== map.delete('foo') ===================`)
+console.log(map.delete('foo')) // => true
+
+console.log(`
+map.clear()
+`)
+map.clear()
+
+console.log(`\n======== map.size ===================`)
+console.log(map.size) // => 0
+</script>
