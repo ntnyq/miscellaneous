@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* demo需要的样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #212121;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .demo {
+      width: 60%;
+    }
+  </style>
+  <style>
+    /* 这里是实际需要的样式 */
+    .marqueen {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .marqueen a {
+      margin: 0 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo">
+    <div class="marqueen" id="marqueen">
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+      <a href="javascript:;">Lorem ipsum, dolor sit amet consectetur adipisicing.</a>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <!--  插件文档 https://github.com/aamirafridi/jQuery.Marquee -->
+  <script src="./js/jquery.marquee.min.js"></script>
+  <script>
+    $(function () {
+      $('#marqueen').marquee({
+        // duration: 15000,
+        speed: 50,
+        gap: 20,
+        delayBeforeStart: 0,
+        direction: 'left',
+        duplicated: true,
+        pauseOnHover: true
+      })
+    })
+  </script>
+</body>
+
+</html>

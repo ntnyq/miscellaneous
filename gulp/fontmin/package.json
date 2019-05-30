@@ -1,0 +1,14 @@
+{
+  "name": "fontmin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-fontmin": "^0.7.4"
+  }
+}
