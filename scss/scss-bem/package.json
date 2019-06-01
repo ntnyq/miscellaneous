@@ -1,0 +1,15 @@
+{
+  "name": "scss-bem",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "scss --watch --no-cache scss/button.scss:dist/button.css --style expanded"
+  },
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "stylelint-scss": "^3.8.0"
+  }
+}

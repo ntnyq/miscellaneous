@@ -1,0 +1,34 @@
+/* Scrollbar
+------------------------- */
+$--color-scrollbar-thumb: #b4bccc !default;
+$--color-scrollbar-track: #fff !default;
+
+@mixin scrollbar ($thumb: $--color-scrollbar-thumb, $track: $--color-scrollbar-track) {
+  &::-webkit-scrollbar {
+    width: 6px;
+    z-index: 11;
+
+    &:horizontal {
+      height: 6px;
+    }
+
+    &-thumb {
+      border-radius: 5px;
+      width: 6px;
+      background: $thumb;
+    }
+
+    &-corner {
+      background: $track;
+    }
+
+    &-track {
+      background: $track;
+
+      &-piece {
+        background: $track;
+        width: 6px;
+      }
+    }
+  }
+}

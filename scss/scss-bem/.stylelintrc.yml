@@ -1,0 +1,15 @@
+# https://github.com/stylelint/stylelint
+# https://github.com/stylelint/stylelint-config-standard
+# https://github.com/kristerkari/stylelint-scss
+extends:
+  - stylelint-config-standard
+
+plugins:
+  - stylelint-scss
+
+rules:
+  at-rule-no-unknown: null
+
+  # SCSS rules
+  scss/at-rule-no-unknown: null
+  scss/css-lparentexpected: null

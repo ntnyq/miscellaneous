@@ -1,0 +1,54 @@
+@mixin extend-rule($name) {
+  @extend #{"%shared-" + $name};
+}
+
+@mixin shared-rule ($name) {
+  $rule-name: "%shared-" + $name;
+
+  @at-root #{$rule-name} {
+    @content;
+  }
+}
+
+@mixin pseudo ($pseudo) {
+  @at-root #{&}#{":#{$pseudo}"} {
+    @content;
+  }
+}
+
+@mixin utils-user-select($value: none) {
+  user-select: $value;
+}
+
+@mixin utils-clearfix {
+  $selector: &;
+
+  #{$selector}::before,
+  #{$selector}::after {
+    content: "";
+    display: table;
+  }
+
+  #{$selector}::after {
+    clear: both;
+  }
+}
+
+@mixin utils-vertical-center {
+  $selector: &;
+
+  @at-root {
+    #{$selector}::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+}
+
+@mixin utils-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

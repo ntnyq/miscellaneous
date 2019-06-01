@@ -1,0 +1,55 @@
+@import "bem/bem";
+@import "mq/mq";
+@import "utils/utils";
+
+@include b(button) {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #fff;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+
+  @include m(small) {
+    padding: 5px 12px;
+  }
+
+  @include e(icon) {
+    color: red;
+  }
+
+  @include e(text) {
+    color: blue;
+
+    @include when(active) {
+      background-color: red;
+    }
+  }
+
+  @include configurable-m(blue, true) {
+    color: red;
+  }
+
+  @include when(primary) {
+    background-color: blue;
+  }
+
+  @include when(active) {
+    transform: scale(1.2);
+  }
+
+  @include pseudo(after) {
+    display: inline-block;
+  }
+
+  @include res(xl) {
+    color: red;
+  }
+
+  @include res(sm) {
+    color: black;
+    background-color: blue;
+  }
+}
