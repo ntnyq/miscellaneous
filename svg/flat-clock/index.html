@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="renderer" content="webkit" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-  <meta name="author" content="ntnyq<1210485244@qq.com>" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta name="author" content="ntnyq, 1210485244@qq.com" />
   <title>SVG钟表</title>
   <style>
     html,
@@ -13,6 +15,7 @@
       height: 100%;
       overflow: hidden;
     }
+
     body {
       display: flex;
       justify-content: center;
@@ -20,14 +23,17 @@
       background-color: #1e2730;
       font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     }
+
     svg {
       display: block;
       width: 90vmin;
     }
+
     circle {
       fill: none;
       stroke-width: 4;
     }
+
     #secondsPath,
     #minutesPath,
     #hoursPath {
@@ -36,18 +42,21 @@
       stroke-linecap: round;
       transform: translate(0, .5px);
     }
+
     text {
       dominant-baseline: central;
       text-anchor: middle;
       font-size: 5px;
       fill: Linen;
     }
+
     #hub {
       fill: #24303a;
       stroke-width: 0;
     }
   </style>
 </head>
+
 <body>
   <svg viewBox="0 0 50 50">
     <g>
@@ -65,22 +74,19 @@
   <script>
 
     addEventListener('load', () => {
-
       const RAD = Math.PI / 180,
-            SVG = document.querySelector('svg'),
-            g = document.querySelector('g')
+        SVG = document.querySelector('svg'),
+        g = document.querySelector('g')
 
       let rAF = null,
-          isStop = false;
+        isStop = false;
 
       const fixNumber = (num) => ('0' + num).slice(-2)
-
       const setText = (h, m, s) => {
         text.textContent = `${fixNumber(h)}:${fixNumber(m)}:${fixNumber(s)}`
       }
 
       const animClock = () => {
-
         sTrack.updateStrokeLength()
         mTrack.updateStrokeLength()
         hTrack.updateStrokeLength()
@@ -88,7 +94,6 @@
       }
 
       const getNow = () => {
-
         let _now = new Date()
         return {
           h: _now.getHours(),
@@ -98,7 +103,6 @@
       }
 
       let circles = {
-
         s: {
           path: secondsPath,
           divisions: 60,
@@ -123,18 +127,16 @@
       }
 
       let translation = { x: 25, y: 25 },
-          rotation = -90,
-          rotRad = -(rotation * RAD)
+        rotation = -90,
+        rotRad = -(rotation * RAD)
 
       g.setAttributeNS(null, 'transform', `translate(${translation.x} ${translation.y}) rotate(${rotation})`)
 
       let spring = 0.09, // 跳
-          friction = 0.8 // 摩擦
+        friction = 0.8 // 摩擦
 
       class ClockCircle {
-
-        constructor (o) {
-
+        constructor(o) {
           this.path = o.path
           this.divisions = o.divisions
           this.start = o.start
@@ -144,8 +146,7 @@
           this.vel = 0
         }
 
-        update (time) {
-
+        update(time) {
           this.strokeLength = this.target // 要画的弧线长度
           this.target = time * this.pathLength / this.divisions // 要画的长度
 
@@ -156,8 +157,7 @@
           }
         }
 
-        updateStrokeLength () {
-
+        updateStrokeLength() {
           this.dist = this.target - this.strokeLength
           this.acc = this.dist * spring
           this.vel += this.acc
@@ -167,8 +167,7 @@
           this.path.style.strokeDashoffset = this.strokeDashoffset
         }
 
-        definePath () {
-
+        definePath() {
           let d = `M${this.r},0 A${this.r},${this.r} 0 1,1${this.r}, -1z`
           this.path.setAttributeNS(null, 'd', d)
 
@@ -183,8 +182,7 @@
       }
 
       const updateTime = () => { // 每秒变化1次
-
-        let {h, m, s} = getNow()
+        let { h, m, s } = getNow()
 
         setText(h, m, s)
 
@@ -194,10 +192,10 @@
       }
 
       let sTrack = new ClockCircle(circles.s),
-          mTrack = new ClockCircle(circles.m),
-          hTrack = new ClockCircle(circles.h)
+        mTrack = new ClockCircle(circles.m),
+        hTrack = new ClockCircle(circles.h)
 
-      let {h, m, s} = getNow()
+      let { h, m, s } = getNow()
 
       setText(h, m, s)
       animClock()
@@ -205,4 +203,5 @@
     }, false)
   </script>
 </body>
+
 </html>

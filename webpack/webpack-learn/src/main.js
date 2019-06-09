@@ -1,13 +1,14 @@
-import xmlData from './foo.xml'
+import xmlData from './data/foo.xml'
 
-function createWrap () {
+function createWrap() {
   var element = document.createElement('div')
 
   element.innerHTML = xmlData.note.body
   element.classList.add('header')
-  console.log(xmlData)
 
   return element
 }
 
-document.body.appendChild(createWrap())
+const wrap = createWrap()
+
+document.body.appendChild(wrap)

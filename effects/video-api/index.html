@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -9,6 +10,7 @@
   <meta content="email=no" name="format-detection">
   <title>播放器</title>
 </head>
+
 <body>
   <button id="loadBtn">Load</button>
   <button id="pauseBtn">Pause</button>
@@ -54,10 +56,10 @@
       fullScreenBtn.onclick = () => {
         try {
           video.requestFullscreen()
-        } catch(e) {
+        } catch (e) {
           try {
             video.webkitRequestFullscreen()
-          } catch(e) {
+          } catch (e) {
             video.mozRequestFullscreen()
           }
         }
@@ -79,4 +81,5 @@
     }
   </script>
 </body>
+
 </html>
