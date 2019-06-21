@@ -1,0 +1,15 @@
+{
+  "name": "ms-terminal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "serve": "parcel serve src/index.pug",
+    "build": "parcel build src/index.pug"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "pug": "^2.0.4",
+    "sass": "^1.21.0"
+  }
+}
