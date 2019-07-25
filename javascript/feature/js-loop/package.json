@@ -1,0 +1,13 @@
+{
+  "name": "js-loop",
+  "version": "1.0.0",
+  "scripts": {
+    "serve": "parcel serve src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  }
+}
