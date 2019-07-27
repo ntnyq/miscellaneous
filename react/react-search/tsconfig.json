@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": false,
+    "jsx": "react",
+    "lib": ["es2017", "dom"],
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "sourceMap": true,
+    "removeComments": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "strict": true,
+    "types": []
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
