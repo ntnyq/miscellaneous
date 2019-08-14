@@ -1,0 +1,13 @@
+// Theme
+$--primary-color: #333;
+$--secondary-color: #444;
+
+// Text
+$--text-color: var(--text-color);
+$--text-dark: var(--text-dark);
+
+// Overlay
+$--overlay-color: rgba(0, 0, 0, .7);
+
+// Breakpoints
+$--media-query-mobile: 700px;

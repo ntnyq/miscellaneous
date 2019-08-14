@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    html,
+    body,
+    #container,
+    #output {
+      position: relative;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="output"></div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./vector.js"></script>
+  <script>
+    $(function () {
+      // 初始化 传入dom id
+      var victor = new Victor("container", "output");
+      var index = 0;
+      var theme = [
+        ["#002c4a", "#005584"],
+        ["#35ac03", "#3f4303"],
+        ["#ac0908", "#cd5726"],
+        ["#18bbff", "#00486b"]
+      ];
+      victor(theme[index]).set();
+      setInterval(function () {
+        if (index == 3) {
+          index = 0;
+        }
+        victor(theme[index]).set();
+        index++;
+      }, 30000)
+    });
+  </script>
+</body>
+</html>
