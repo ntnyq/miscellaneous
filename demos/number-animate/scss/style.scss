@@ -1,0 +1,60 @@
+@import "core/style";
+@import "common/style";
+
+@font-face {
+  font-family: "led";
+  src: url("../fonts/led-number.TTF") format("truetype");
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1b1b1b;
+  font-size: 60px;
+  font-weight: bold;
+  color: #0ff;
+}
+
+.number-animate {
+  &-wrap {
+    position: relative;
+    font-size: 0;
+    font-family: $font-led;
+
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+      overflow: hidden;
+    }
+  }
+
+  &-inner {
+    display: inline-block;
+    height: 80px;
+    line-height: 80px;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 60px;
+    overflow: hidden;
+  }
+
+  &-num {
+    float: left;
+    width: 50px;
+    transition-timing-function: ease-in-out;
+  }
+
+  &-symbol {
+    float: left;
+    // width: 60px;
+  }
+
+  &-span {
+    display: block;
+  }
+}
