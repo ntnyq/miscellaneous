@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+#slider {
+  position: absolute;
+  top: calc(50% - 150px);
+  left: calc(50% - 250px);
+  width: 500px;
+  height: 300px;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 500px;
+    height: 300px;
+    // background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}):after {
+      background-image: url(../../images/#{$i}.png);
+    }
+  }
+}
+
+.paint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  div {
+    width: 100%;
+    height: 25%;
+    background-color: #fff;
+    transform: translateX(-100%);
+  }
+}
+
+/*******************************************************************
+* animation
+*******************************************************************/
+.img {
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation: showImg .7s ease 0.3s + (0.2s * $i) forwards;
+    }
+  }
+}
+
+.paint div {
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation: slideRight .45s ease 1.5s + (0.1s * $i) forwards;
+    }
+  }
+}
+/*******************************************************************
+* keyframes
+*******************************************************************/
+@keyframes showImg {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

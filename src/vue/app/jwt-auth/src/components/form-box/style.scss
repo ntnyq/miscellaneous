@@ -1,0 +1,33 @@
+@import "../../scss/variables.scss";
+
+.goy-form-box {
+  margin-top: 0.4rem;
+  color: $light-color;
+  .form-row {
+    display: flex;
+    width: 5rem;
+    margin-bottom: .4rem;
+    line-height: 0.5rem;
+    label {
+      margin-right: .2rem;
+      font-size: 0.4rem;
+      color: #fff;
+    }
+    input {
+      flex: 1;
+      border-bottom: 1px solid $light-color;
+      color: #fff;
+    }
+    button {
+      display: block;
+      width: 100%;
+      height: .8rem;
+      margin-top: 0.5rem;
+      border: 1px solid $light-color;
+      border-radius: .4rem;
+      box-shadow: 0 .3rem .05rem rgba(0, 0, 0, .15), .02rem .04rem .08rem rgba(255, 255, 255, .4) inset;
+      letter-spacing: .5em;
+      color: #fff;
+    }
+  }
+}

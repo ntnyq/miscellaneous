@@ -1,0 +1,26 @@
+@import "../../scss/variables.scss";
+
+.goy-navbar {
+  display: flex;
+  height: 1rem;
+  line-height: 1rem;
+  padding: 0 .3rem;
+  font-size: .32rem;
+  .logo {
+    font-size: .5rem;
+    font-weight: bolder;
+  }
+  .navbar-menu {
+    flex: 1;
+    text-align: right;
+    a {
+      padding: 0 .1rem;
+      margin-left: 0.1rem;
+      font-weight: bold;
+      color: $light-color;
+      &.active {
+        color: $highlight-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../scss/variables';
+
+.logout-box {
+
+  button {
+    display: block;
+    width: 60%;
+    height: .8rem;
+    margin-top: 0.5rem;
+    border: 1px solid $light-color;
+    border-radius: .4rem;
+    box-shadow: 0 .3rem .05rem rgba(0, 0, 0, .15),
+                .02rem .04rem .08rem rgba(255, 255, 255, .4) inset;
+    letter-spacing: .5em;
+    color: #fff;
+  }
+}

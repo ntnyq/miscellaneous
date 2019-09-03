@@ -1,0 +1,27 @@
+doctype html
+html(lang="zh-CN")
+  head
+    meta(charset="UTF-8")
+    meta(name="renderer", content="webkit")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge, chrome=1")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover")
+    meta(name="description" content=htmlWebpackPlugin.options.description)
+    meta(name="keywords" content=htmlWebpackPlugin.options.keywords)
+    meta(property="og:url" content=htmlWebpackPlugin.options.url)
+    meta(property="og:image" content=htmlWebpackPlugin.options.ogp)
+    meta(property="og:type" content="website")
+    meta(property="og:title" content=htmlWebpackPlugin.options.title)
+    meta(property="og:site_name" content=htmlWebpackPlugin.options.sitename)
+    meta(property="og:description" content=htmlWebpackPlugin.options.description)
+    meta(property="og:locale" content="zh-CN")
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:site" content="@ntnyq")
+    meta(name="twitter:title" content=htmlWebpackPlugin.options.title)
+    meta(name="twitter:description" content=htmlWebpackPlugin.options.description)
+    meta(name="twitter:image" content=htmlWebpackPlugin.options.ogp)
+    meta(name="theme-color" content=htmlWebpackPlugin.options.theme_color)
+    //- link(rel="shortcut icon" content=htmlWebpackPlugin.options.favicon)
+    link(rel="apple-touch-icon" href=htmlWebpackPlugin.options.icon)
+    title= htmlWebpackPlugin.options.title
+  body
+    block content
