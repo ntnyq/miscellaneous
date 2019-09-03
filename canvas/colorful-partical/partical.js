@@ -24,7 +24,9 @@
         return sin((Math.floor(random() * 360) * PI) / 180)
       }
       var dist = function(p1, p2, p3) {
-        return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2) + pow(p2.z - p1.z, 2))
+        return sqrt(
+          pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2) + pow(p2.z - p1.z, 2)
+        )
       }
 
       var cam = {
@@ -59,14 +61,25 @@
           cam.dist.x = cam.dest.x - cam.obj.x
           cam.dist.y = cam.dest.y - cam.obj.y
           cam.dist.z = cam.dest.z - cam.obj.z
-          cam.ang.cplane = -cam.dist.z / sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z)
-          cam.ang.splane = cam.dist.x / sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z)
+          cam.ang.cplane =
+            -cam.dist.z /
+            sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z)
+          cam.ang.splane =
+            cam.dist.x / sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z)
           cam.ang.ctheta =
             sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z) /
-            sqrt(cam.dist.x * cam.dist.x + cam.dist.y * cam.dist.y + cam.dist.z * cam.dist.z)
+            sqrt(
+              cam.dist.x * cam.dist.x +
+                cam.dist.y * cam.dist.y +
+                cam.dist.z * cam.dist.z
+            )
           cam.ang.stheta =
             -cam.dist.y /
-            sqrt(cam.dist.x * cam.dist.x + cam.dist.y * cam.dist.y + cam.dist.z * cam.dist.z)
+            sqrt(
+              cam.dist.x * cam.dist.x +
+                cam.dist.y * cam.dist.y +
+                cam.dist.z * cam.dist.z
+            )
         },
       }
 
@@ -181,7 +194,7 @@
             this.transIn.sz,
             this.transIn.rot,
             this.transIn.pos,
-            cam.disp,
+            cam.disp
           )
         }
 
@@ -246,7 +259,7 @@
                 y: this.diff * sin((360 * random() * PI) / 180),
                 z: this.diff * sin((360 * random() * PI) / 180),
               },
-            }),
+            })
           )
           this.calc.push({
             x: 360 * random(),
@@ -290,7 +303,7 @@
               this.varr[i].transOut.p,
               this.varr[i].transOut.x,
               this.varr[i].transOut.y,
-              this.varr[i].transOut.p * 2,
+              this.varr[i].transOut.p * 2
             )
             this.$.globalCompositeOperation = 'lighter'
             g.addColorStop(0, 'hsla(255, 255%, 255%, 1)')
@@ -304,7 +317,7 @@
               this.varr[i].transOut.p * 2,
               0,
               PI * 2,
-              false,
+              false
             )
             this.$.fill()
             this.$.closePath()
@@ -336,27 +349,31 @@
               this.toX = (e.clientX - this.canvas.width / 2) * -0.8
               this.toY = (e.clientY - this.canvas.height / 2) * 0.8
             }.bind(this),
+            { passive: !0 }
           )
           wd.addEventListener(
             'touchmove',
             function(e) {
-              e.preventDefault()
+              // e.preventDefault()
               this.toX = (e.touches[0].clientX - this.canvas.width / 2) * -0.8
               this.toY = (e.touches[0].clientY - this.canvas.height / 2) * 0.8
             }.bind(this),
+            { passive: !0 }
           )
           wd.addEventListener(
             'mousedown',
             function(e) {
               this.add()
             }.bind(this),
+            { passive: !0 }
           )
           wd.addEventListener(
             'touchstart',
             function(e) {
-              e.preventDefault()
+              // e.preventDefault()
               this.add()
             }.bind(this),
+            { passive: !0 }
           )
         }
         var app = new Build()
@@ -370,6 +387,6 @@
         })
       })()
     },
-    false,
+    !1
   )
 })(window, document)

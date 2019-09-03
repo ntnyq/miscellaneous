@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: "Catamaran", sans-serif;
   line-height: 1.6;
@@ -30,4 +34,8 @@ ul {
 img {
   display: block;
   max-width: 100%;
+}
+
+:focus {
+  outline: none;
 }

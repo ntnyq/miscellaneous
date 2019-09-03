@@ -5,56 +5,56 @@
       id="gallery"
     >
       <a
-        href="https://i.ibb.co/CHLBZnp/gal2323.jpg"
+        href="/images/p1.jpg"
         class="big"
       >
         <img
-          src="https://i.ibb.co/CHLBZnp/gal2323.jpg"
+          src="/images/p1.jpg"
           alt=""
         />
       </a>
       <a
-        href="https://i.ibb.co/4pBbhfY/gal39834.jpg"
+        href="/images/p2.jpg"
         class="big"
       >
         <img
-          src="https://i.ibb.co/4pBbhfY/gal39834.jpg"
+          src="/images/p2.jpg"
           alt=""
         />
       </a>
       <a
-        href="https://i.ibb.co/xSnHP7g/gal43884.jpg"
+        href="/images/p3.jpg"
         class="big"
       >
         <img
-          src="https://i.ibb.co/xSnHP7g/gal43884.jpg"
+          src="/images/p3.jpg"
           alt=""
         />
       </a>
       <a
-        href="https://i.ibb.co/QN6Bnrb/gal4958.jpg"
+        href="/images/p4.jpg"
         class="big"
       >
         <img
-          src="https://i.ibb.co/QN6Bnrb/gal4958.jpg"
+          src="/images/p4.jpg"
           alt=""
         />
       </a>
       <a
-        href="https://i.ibb.co/dGZvj75/gal4545.jpg"
+        href="/images/p5.jpg"
         class="big"
       >
         <img
-          src="https://i.ibb.co/dGZvj75/gal4545.jpg"
+          src="/images/p5.jpg"
           alt=""
         />
       </a>
       <a
-        href="https://i.ibb.co/S6FVFNt/gal74744.jpg"
+        href="/images/p6.jpg"
         class="big"
       >
         <img
-          src="https://i.ibb.co/S6FVFNt/gal74744.jpg"
+          src="/images/p6.jpg"
           alt=""
         />
       </a>

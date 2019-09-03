@@ -10,7 +10,7 @@
         >Read More</a>
       </div>
       <img
-        src="https://i.ibb.co/37Y74kv/showcase.jpg"
+        src="/images/showcase.jpg"
         alt="banner"
       >
     </div>

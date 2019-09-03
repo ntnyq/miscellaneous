@@ -16,8 +16,7 @@
 <style lang="scss">
 .section-text {
   position: relative;
-  background: url('https://i.ibb.co/1RS1dqC/section-b.jpg') no-repeat bottom
-    center;
+  background: url('/images/section-b.jpg') no-repeat bottom center;
   background-size: cover;
   min-height: 600px;
 
