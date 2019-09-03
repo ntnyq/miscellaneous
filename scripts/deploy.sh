@@ -6,7 +6,7 @@ set -e
 # Push changes to github
 git checkout master
 git add .
-git commit -m "docs: update repo"
+git commit -m "feat: update repo"
 git push
 
 # Log when success
