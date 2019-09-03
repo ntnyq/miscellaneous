@@ -1,0 +1,16 @@
+{
+  "name": "imagemin-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node imagemin"
+  },
+  "dependencies": {
+    "imagemin": "^6.0.0",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-pngquant": "^6.0.0",
+    "imagemin-webp": "^4.1.0",
+    "sharp": "^0.21.0"
+  }
+}

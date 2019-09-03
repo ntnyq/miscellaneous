@@ -1,0 +1,23 @@
+{
+  "name": "parcel-multi-page-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "serve": "parcel ./src/views/*.html",
+    "build": "parcel build ./src/views/*.html"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "autoprefixer": "^9.6.0",
+    "node-sass": "^4.12.0",
+    "parcel-bundler": "^1.12.3",
+    "postcss": "^7.0.17"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.4.5",
+    "core-js": "2"
+  }
+}

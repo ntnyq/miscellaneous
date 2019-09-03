@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fefefe;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 2;
+  font-size: 18px;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 1em 0;
+  text-align: center;
+}
+
+p {
+  margin: 0.6em 0;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+@media screen and (min-width: 760px) {
+  .container {
+    width: 700px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  .container {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}

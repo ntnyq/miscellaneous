@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <title>测试Demo</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper" id="wrapper">
+      <div class="cube" id="cube">
+        <div class="outer front">front</div>
+        <div class="outer back">back</div>
+        <div class="outer left">left</div>
+        <div class="outer right">right</div>
+        <div class="outer top">top</div>
+        <div class="outer bottom">bottom</div>
+      </div>
+    </div>
+    <script>
+      ;(function() {
+        const body = document.body
+        const cube = document.querySelector('#cube')
+
+        let ws = new WebSocket('wss://www.iisun.top/websocket')
+
+        ws.addEventListener(
+          'open',
+          () => {
+            console.log('>>> Connect server success!')
+          },
+          !1
+        )
+
+        ws.addEventListener(
+          'message',
+          ({ data }) => {
+            cube.style.setProperty('transform', data)
+          },
+          !1
+        )
+      })()
+    </script>
+  </body>
+</html>

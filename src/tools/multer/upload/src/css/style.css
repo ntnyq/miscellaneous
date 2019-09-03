@@ -1,0 +1,13 @@
+* { padding: 0; margin: 0; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+*:before, *:after { -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+@font-face { font-family: "led"; src: url("../fonts/led-number.TTF") format("truetype"); }
+
+body { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 100vw; height: 100vh; font-weight: bold; color: #0ff; }
+
+label { position: relative; display: block; min-width: 60px; height: 40px; padding: 0 30px; line-height: 40px; background-color: #4b0082; border-radius: 5px; -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0, 1px 5px 0 rgba(0, 0, 0, 0.12); box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0, 1px 5px 0 rgba(0, 0, 0, 0.12); text-align: center; font-weight: 400; font-size: 16px; color: #fff; -webkit-transition: .3s; transition: .3s; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+label:hover { -webkit-box-shadow: none; box-shadow: none; }
+
+input[type="file"] { display: none; }

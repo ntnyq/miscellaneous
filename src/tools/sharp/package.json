@@ -1,0 +1,13 @@
+{
+  "name": "sharp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "icon": "sh ./gen-icons.sh"
+  },
+  "author": "ntnyq<ntnyq13@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "sharp-cli": "^1.7.1"
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>测试Demo</title>
+    <link rel="stylesheet" href="./css/mb.css" />
+  </head>
+
+  <body>
+    <div class="wrapper" id="wrapper">
+      <div class="cube" id="cube">
+        <div class="outer front">front</div>
+        <div class="outer back">back</div>
+        <div class="outer left">left</div>
+        <div class="outer right">right</div>
+        <div class="outer top">top</div>
+        <div class="outer bottom">bottom</div>
+        ssss
+      </div>
+    </div>
+    <script>
+      function getTouchPoint(evt) {
+        const { touches } = evt
+        const touchPoint = touches[0]
+
+        return {
+          x: touchPoint.pageX,
+          y: touchPoint.pageY,
+        }
+      }
+
+      window.addEventListener(
+        'load',
+        () => {
+          const body = document.body
+          const cube = document.querySelector('#cube')
+          let isMousedown = false
+          let lastX = 0,
+            lastY = 0
+          let ws = new WebSocket('wss://www.iisun.top/websocket')
+
+          ws.addEventListener(
+            'open',
+            function() {
+              console.log('>>> Connect server success')
+            },
+            !1
+          )
+
+          body.addEventListener('touchstart', evt => {
+            isMousedown = true
+            lastX = getTouchPoint(evt).x
+            lastY = getTouchPoint(evt).y
+          })
+
+          body.addEventListener(
+            'touchmove',
+            evt => {
+              if (isMousedown) {
+                let transform = getComputedStyle(cube).getPropertyValue('transform')
+                const touchPoint = getTouchPoint(evt)
+
+                cube.style.setProperty(
+                  'transform',
+                  `${transform} rotateX(${(touchPoint.y - lastY) / 3}deg) rotateY(${(touchPoint.x -
+                    lastX) /
+                    3}deg)`
+                )
+
+                ws.send(
+                  `${transform} rotateX(${(touchPoint.y - lastY) / 3}deg) rotateY(${(touchPoint.x -
+                    lastX) /
+                    3}deg)`
+                )
+
+                lastX = touchPoint.x
+                lastY = touchPoint.y
+              }
+
+              evt.preventDefault()
+            },
+            { passive: false }
+          )
+
+          body.addEventListener('touchend', evt => {
+            isMousedown = false
+          })
+        },
+        !1
+      )
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "root",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "bootstrap": "yarn && lerna bootstrap",
+    "build": ""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.0.21",
+    "execa": "^1.0.0",
+    "husky": "^2.4.0",
+    "lerna": "^3.14.1",
+    "lint-staged": "^8.2.0"
+  }
+}

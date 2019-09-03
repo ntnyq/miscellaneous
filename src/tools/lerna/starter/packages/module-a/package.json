@@ -1,0 +1,19 @@
+{
+  "name": "module-a",
+  "version": "0.0.2",
+  "description": "> TODO: description",
+  "author": "ntnyq <ntnyq13@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/module-a.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
