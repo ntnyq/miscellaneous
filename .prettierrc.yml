@@ -9,8 +9,3 @@ jsxBracketSameLine: false
 arrowParens: avoid
 quoteProps: as-needed
 endOfLine: lf
-
-overrides:
-  - files: '*.scss'
-    options:
-      singleQuote: false

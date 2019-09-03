@@ -1,12 +1,7 @@
-# Demos
+# miscellaneous
 
-> 个人本着学习、研究、折腾等目的收集的代码存档仓库。
+> Codes while practicing or learning.
 
-## 介绍
+## Categories
 
-**部分原创**。
-
-如有侵权，请联系我删除，或者添加版权信息。
-
-
-
+* [html](./html)

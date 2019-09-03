@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq<ntnyq13@gmail.com>" />
+  <title>简单富文本编辑器</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 14px;
+      color: #222;
+    }
+    .editor {
+      width: 800px;
+      height: 500px;
+      padding: 20px;
+      margin: 100px auto;
+      border: 3px solid blue;
+      border-radius: 10px;
+    }
+    .editor-tools {
+    }
+    .editor-tools button {
+      padding: 5px 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      background-color: #6372c2;
+      margin-right: 20px;
+      font-size: 14px;
+      color: #fff;
+      outline: none;
+      border: none;
+    }
+    .editor-tools button:hover {
+      opacity: .7;
+      filter: alpha(opacity=70);
+    }
+    .editor-content {
+      margin-top: 10px;
+      height: 340px;
+      padding: 15px;
+      border: 3px solid #eee;
+      border-radius: 8px;
+      overflow-y: auto;
+    }
+    blockquote {
+      background-color: #ddd;
+      color: #333;
+      margin: 10px 0;
+      padding: 15px 20px;
+      border-left: 4px solid #00a3cf;
+    }
+    pre {
+      padding: 15px 20px;
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="editor">
+    <div class="editor-tools"></div>
+    <div class="editor-content" contenteditable="true"></div>
+  </div>
+  <script>
+    (function () {
+        // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand
+        var commands = [
+            { cmd: 'bold', text: '加粗' },
+            { cmd: 'italic', text: '斜体' },
+            { cmd: 'decreaseFontSize', text: '小号' },
+            { cmd: 'increaseFontSize', text: '大号' },
+            { cmd: 'underline', text: '下划线' },
+            { cmd: 'strikeThrough', text: '删除线' },
+            { cmd: 'insertOrderedList', text: '有序列表' },
+            { cmd: 'insertUnorderedList', text: '无序列表' },
+            { cmd: 'createLink', text: '链接', input: '请输入一个链接' },
+            { cmd: 'insertImage', text: '插图', input: '请输入一个图片地址' },
+            { cmd: 'justifyCenter', text: '居中' },
+            { cmd: 'justifyLeft', text: '左对齐' },
+            { cmd: 'justifyRight', text: '右对齐' },
+            { cmd: 'formatBlock', text: 'H1', arg: 'H1' },
+            { cmd: 'formatBlock', text: 'H2', arg: 'H2' },
+            { cmd: 'formatBlock', text: 'H3', arg: 'H3' },
+            { cmd: 'formatBlock', text: 'H4', arg: 'H4' },
+            { cmd: 'formatBlock', text: 'H5', arg: 'H5' },
+            { cmd: 'formatBlock', text: 'H6', arg: 'H6' },
+            { cmd: 'formatBlock', text: '引用', arg: 'BLOCKQUOTE' },
+            { cmd: 'formatBlock', text: 'PRE', arg: 'PRE' },
+            { cmd: 'insertHorizontalRule', text: 'HR' }
+        ]
+        var $tools = document.querySelector('.editor-tools')
+        var $content = document.querySelector('.editor-content')
+        $tools.innerHTML = commands.map(function (item) {
+            return document.queryCommandSupported(item.cmd) ?
+                '<button type="button" class="btn btn-default" data-cmd="' + item.cmd + '"' +
+                (item.arg ? ' data-arg="' + item.arg + '"' : '') +
+                (item.input ? 'data-input="' + item.input + '"' : '') +
+                '>' + item.text + '</button>' : ''
+        }).join('')
+        $tools.addEventListener('click', function (e) {
+            var $this = e.target
+            if ($this.tagName !== 'BUTTON') {
+                return
+            }
+            var data = $this.dataset
+            var arg = data.arg || (data.input && window.prompt(data.input))
+            document.execCommand(data.cmd, true, arg)
+        })
+    })()
+  </script>
+</body>
+</html>

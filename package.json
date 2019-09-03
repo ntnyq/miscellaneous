@@ -1,14 +1,9 @@
 {
   "name": "miscellaneous",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "pretty": "prettier --write ./**/*.js"
+    "pretty": "prettier --write src/**/*.js"
   },
-  "author": {
-    "name": "ntnyq",
-    "email": "ntnyq13@gmail.com"
-  },
-  "license": "MIT",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -20,9 +15,15 @@
       "git add"
     ]
   },
+  "author": {
+    "name": "ntnyq",
+    "email": "ntnyq13@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/ntnyq/miscellaneous.git",
   "devDependencies": {
     "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
-    "prettier": "^1.16.4"
+    "prettier": "^1.18.2"
   }
 }

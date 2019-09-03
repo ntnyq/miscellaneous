@@ -1,3 +1,5 @@
 dist
-*.min.js
+public
+src/**/*.min.*
+src/**/*-min.*
 node_modules

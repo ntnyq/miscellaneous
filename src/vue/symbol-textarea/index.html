@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="author" content="ntnyq, ntnyq13@gmail.com>" />
+  <title>Vue-symbole-textarea</title>
+  <style>
+    :root {
+      --primary-color: #609889;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    h1 {
+      margin: 2em 0;
+      font-size: 30px;
+      text-align: center;
+      color: #666;
+    }
+
+    textarea {
+      appearance: none;
+      font: inherit;
+      outline: none;
+      resize: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #symbols-textarea textarea {
+      width: 600px;
+      height: 180px;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 3px solid var(--primary-color);
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, .15),
+                  0 2px 5px rgba(0, 0, 0, .15) inset;
+      font-size: 20px;
+    }
+    #symbols-textarea .symbol-list li {
+      display: inline-block;
+      width: 46px;
+      padding: 10px 0;
+      margin-right: 12px;
+      background-color: var(--primary-color);
+      border-radius: 4px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      opacity: .8;
+      cursor: pointer;
+      transition: .3s ease-out;
+    }
+    #symbols-textarea .symbol-list li:hover {
+      opacity: 1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2),
+                  0 1px 3px rgba(0, 0, 0, .1);
+    }
+    .preview {
+      width: 600px;
+      margin-top: 30px;
+      font-size: 20px;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Vue多行文本框插入内容保留光标位置</h1>
+    <div id="symbols-textarea">
+      <textarea v-model="text" placeholder="请输入文字并用鼠标点击添加符号" ref="textarea"></textarea>
+      <ul class="symbol-list">
+        <li
+          @click="insert(symbol)"
+          v-for="(symbol, index) in symbols"
+          :key="index">{{symbol}}</li>
+      </ul>
+    </div>
+    <p class="preview">您输入的文本是：{{text}}</p>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+
+      data: {
+        text: '',
+        symbols: ['+', '-', '(', ')']
+      },
+
+      methods: {
+        setCursor (textDom, pos) {
+          if(textDom.setSelectionRange) {
+            textDom.focus();
+            textDom.setSelectionRange(pos, pos);
+          } else if (textDom.createTextRange) {
+            const range = textDom.createTextRange();
+
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+          }
+        },
+
+        insert (symbol) {
+          const _this = this;
+          const { text } = _this;
+          const textarea = _this.$refs.textarea;
+          const { selectionStart, selectionEnd } = textarea;
+
+          _this.text = `${text.substring(0, selectionStart)}${symbol}${text.substring(selectionEnd, text.length)}`;
+
+          _this.$nextTick(() => {
+            _this.setCursor(textarea, text.substring(0, selectionStart).length + 1);
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
