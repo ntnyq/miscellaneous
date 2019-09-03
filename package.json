@@ -2,7 +2,8 @@
   "name": "miscellaneous",
   "version": "0.0.1",
   "scripts": {
-    "pretty": "prettier --write src/**/*.js"
+    "pretty": "prettier --write src/**/*.js",
+    "pub": "sh scripts/deploy.sh"
   },
   "husky": {
     "hooks": {
