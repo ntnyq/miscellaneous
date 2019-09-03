@@ -14,7 +14,7 @@ window.onload = () => {
         audio.pause()
       }
     },
-    false,
+    false
   )
 
   audio.addEventListener(
@@ -23,7 +23,7 @@ window.onload = () => {
       // 播放完毕停止动画
       music.classList.remove('play')
     },
-    false,
+    false
   )
 
   // 页面切换
@@ -40,6 +40,6 @@ window.onload = () => {
         page3.classList.add('fadeIn')
       }, 5500)
     },
-    false,
+    false
   )
 }

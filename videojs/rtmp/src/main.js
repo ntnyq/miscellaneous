@@ -4,7 +4,8 @@ import 'video.js/dist/video-js.min.css'
 import './style.scss'
 
 const playerOptions = {
-  poster: 'http://img.hb.aicdn.com/43531cc1e0a10212ce4675d2a9c67a94567d3d1bf5de2-evwnCb_fw658',
+  poster:
+    'http://img.hb.aicdn.com/43531cc1e0a10212ce4675d2a9c67a94567d3d1bf5de2-evwnCb_fw658',
   preload: 'auto',
   fluid: true,
   controls: true,

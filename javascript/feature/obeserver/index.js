@@ -2,15 +2,14 @@ const target = document.querySelector('#id')
 const config = {
   attributes: false,
   childList: true,
-  subtree: true
+  subtree: true,
 }
-const callback = function (mutationsList) {
+const callback = function(mutationsList) {
   for (const mutation of mutationsList) {
     const { type } = mutation
 
     switch (type) {
       case 'childList':
-
         break
 
       case 'attributes':
@@ -18,7 +17,6 @@ const callback = function (mutationsList) {
         break
 
       case 'subtree':
-
         break
 
       default:

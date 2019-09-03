@@ -1,7 +1,11 @@
 $(document).ready(function() {
   $(function() {
     if ($.browser.msie && $.browser.version <= 6) {
-      $('#back-to-top').css({ position: 'absolute', top: '400px', bottom: 'auto' })
+      $('#back-to-top').css({
+        position: 'absolute',
+        top: '400px',
+        bottom: 'auto',
+      })
       $(window).scroll(function() {
         var scroll_top = $(this).scrollTop() + 400
         $('#back-to-top').css('top', scroll_top)
@@ -18,7 +22,7 @@ $(document).ready(function() {
 				$("#back-to-top").css("top",scroll_top);
 			});
 		}*/ $(
-    window,
+    window
   ).scroll(function() {
     if ($(window).scrollTop() > 100) {
       $('#back-to-top').fadeIn('slow')

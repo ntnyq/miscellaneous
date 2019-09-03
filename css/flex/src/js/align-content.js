@@ -39,7 +39,9 @@ window.onload = () => {
   })
   ;[...align_content.children].forEach(radio => {
     radio.onchange = () => {
-      box.style.alignContent = align_content.querySelector('input:checked').value
+      box.style.alignContent = align_content.querySelector(
+        'input:checked'
+      ).value
     }
   })
 }

@@ -1,5 +1,6 @@
 const EndWebpackPlugin = require('./lib/plugins/end-webpack-plugin')
-const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
+const mode =
+  process.env.NODE_ENV === 'production' ? 'production' : 'development'
 
 module.exports = {
   mode,
@@ -31,7 +32,7 @@ module.exports = {
       },
       err => {
         console.log(err)
-      },
+      }
     ),
   ],
 

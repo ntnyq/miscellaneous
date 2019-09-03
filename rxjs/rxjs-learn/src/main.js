@@ -7,4 +7,3 @@ import { filter, map } from 'rxjs/operators'
 //     map(x => x * x)
 //   )
 //   .subscribe(x => console.log(x))
-

@@ -35,7 +35,7 @@ const start = () => {
         // 模拟浏览器
         .set(
           'User-Agent',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
         )
         .end((err, pres) => {
           const $ = cheerio.load(pres.text) // 装载页面内容
@@ -89,7 +89,7 @@ const start = () => {
         console.log(err)
       }
       console.log('抓取完毕')
-    },
+    }
   )
 }
 
@@ -104,7 +104,9 @@ ep.after('preparePage', pageUrls.length * page, data => {
 
   // 先统计每个人的发帖数 并以对象保存 利用对象名不重复来计数
   data.forEach(item => {
-    authorMap[item.author] = authorMap[item.author] ? ++authorMap[item.author] : 1
+    authorMap[item.author] = authorMap[item.author]
+      ? ++authorMap[item.author]
+      : 1
 
     if (authorMap[item.author] > 4) {
       itntermediary.push(item.author) // 认为是中介
@@ -183,9 +185,7 @@ ep.after('preparePage', pageUrls.length * page, data => {
     bottomHtml = `</tbody></table></div></body></html>`
 
   results.forEach(item => {
-    contentHtml += `<tr><td><a href="${item.url}" target="_blank">${item.title}</td><td>${
-      item.markSum
-    }</td><td>${item.lastModify}</td></tr>`
+    contentHtml += `<tr><td><a href="${item.url}" target="_blank">${item.title}</td><td>${item.markSum}</td><td>${item.lastModify}</td></tr>`
   })
 
   let finalHtml = topHtml + contentHtml + bottomHtml
@@ -194,16 +194,20 @@ ep.after('preparePage', pageUrls.length * page, data => {
 
   // 生成文件
 
-  fs.writeFile(path.resolve(__dirname, '../tmp/result.html'), finalHtml, err => {
-    console.log('进入回调')
+  fs.writeFile(
+    path.resolve(__dirname, '../tmp/result.html'),
+    finalHtml,
+    err => {
+      console.log('进入回调')
 
-    if (err) {
-      console.log('出错了')
-      return console.error(err)
+      if (err) {
+        console.log('出错了')
+        return console.error(err)
+      }
+
+      console.log('success')
     }
-
-    console.log('success')
-  })
+  )
 })
 
 module.exports = start

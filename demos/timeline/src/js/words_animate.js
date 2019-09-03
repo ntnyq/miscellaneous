@@ -84,7 +84,14 @@ WordsTyper.prototype = {
   },
 }
 
-const words = ['苟利国家', '生死以', '岂因', '福祸', '避趋之', '我劝你最好江公补过']
+const words = [
+  '苟利国家',
+  '生死以',
+  '岂因',
+  '福祸',
+  '避趋之',
+  '我劝你最好江公补过',
+]
 
 let wt = new WordsTyper('#text', { words })
 

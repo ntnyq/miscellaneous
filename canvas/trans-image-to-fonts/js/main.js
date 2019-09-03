@@ -58,7 +58,15 @@
 
       for (var _i = 0, _len = dots.length; _i < _len; _i++) {
         $.fillStyle =
-          'rgba(' + dots[_i].r + ', ' + dots[_i].g + ', ' + dots[_i].b + ', ' + dots[_i].a + ')'
+          'rgba(' +
+          dots[_i].r +
+          ', ' +
+          dots[_i].g +
+          ', ' +
+          dots[_i].b +
+          ', ' +
+          dots[_i].a +
+          ')'
 
         /*      $.beginPath();
             $.arc(dots[i].x, dots[i].y, DISTANCE / 2, 0, 2 * Math.PI);*/
@@ -71,6 +79,6 @@
         $.fill()
       }
     },
-    !0,
+    !0
   )
 })(window, document, '#canvas')

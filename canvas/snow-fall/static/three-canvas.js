@@ -268,7 +268,9 @@ THREE.Vector3.prototype = {
     return this
   },
   divideScalar: function(a) {
-    a ? ((this.x /= a), (this.y /= a), (this.z /= a)) : (this.z = this.y = this.x = 0)
+    a
+      ? ((this.x /= a), (this.y /= a), (this.z /= a))
+      : (this.z = this.y = this.x = 0)
     return this
   },
   negate: function() {
@@ -322,7 +324,8 @@ THREE.Vector3.prototype = {
     var b = Math.cos(this.y)
     this.y = Math.asin(a.n13)
     Math.abs(b) > 1.0e-5
-      ? ((this.x = Math.atan2(-a.n23 / b, a.n33 / b)), (this.z = Math.atan2(-a.n12 / b, a.n11 / b)))
+      ? ((this.x = Math.atan2(-a.n23 / b, a.n33 / b)),
+        (this.z = Math.atan2(-a.n12 / b, a.n11 / b)))
       : ((this.x = 0), (this.z = Math.atan2(a.n21, a.n22)))
   },
   isZero: function() {
@@ -452,7 +455,8 @@ THREE.Ray = function(a, b) {
       c,
       d = []
     b = 0
-    for (c = a.length; b < c; b++) Array.prototype.push.apply(d, this.intersectObject(a[b]))
+    for (c = a.length; b < c; b++)
+      Array.prototype.push.apply(d, this.intersectObject(a[b]))
     d.sort(function(a, b) {
       return a.distance - b.distance
     })
@@ -479,7 +483,9 @@ THREE.Ray = function(a, b) {
       n = c(this.origin, this.direction, k.matrixWorld.getPosition())
       if (
         n === null ||
-        n > k.geometry.boundingSphere.radius * Math.max(k.scale.x, Math.max(k.scale.y, k.scale.z))
+        n >
+          k.geometry.boundingSphere.radius *
+            Math.max(k.scale.x, Math.max(k.scale.y, k.scale.z))
       )
         return o
       var p,
@@ -500,18 +506,33 @@ THREE.Ray = function(a, b) {
             ((f = I.multiplyVector3(f.copy(H[i.a].position))),
             (e = I.multiplyVector3(e.copy(H[i.b].position))),
             (g = I.multiplyVector3(g.copy(H[i.c].position))),
-            i instanceof THREE.Face4 && (h = I.multiplyVector3(h.copy(H[i.d].position))),
+            i instanceof THREE.Face4 &&
+              (h = I.multiplyVector3(h.copy(H[i.d].position))),
             (l = k.matrixRotationWorld.multiplyVector3(l.copy(i.normal))),
             (p = b.dot(l)),
             k.doubleSided || (k.flipSided ? p > 0 : p < 0)))
         )
           if (
-            ((p = l.dot(m.sub(f, a)) / p), j.add(a, b.multiplyScalar(p)), i instanceof THREE.Face3)
+            ((p = l.dot(m.sub(f, a)) / p),
+            j.add(a, b.multiplyScalar(p)),
+            i instanceof THREE.Face3)
           )
             d(j, f, e, g) &&
-              ((i = { distance: a.distanceTo(j), point: j.clone(), face: i, object: k }), o.push(i))
+              ((i = {
+                distance: a.distanceTo(j),
+                point: j.clone(),
+                face: i,
+                object: k,
+              }),
+              o.push(i))
           else if (i instanceof THREE.Face4 && (d(j, f, e, h) || d(j, e, g, h)))
-            (i = { distance: a.distanceTo(j), point: j.clone(), face: i, object: k }), o.push(i)
+            (i = {
+              distance: a.distanceTo(j),
+              point: j.clone(),
+              face: i,
+              object: k,
+            }),
+              o.push(i)
     }
     return o
   }
@@ -577,7 +598,10 @@ THREE.Rectangle = function() {
   this.addPoint = function(e, g) {
     h
       ? ((h = !1), (b = e), (c = g), (d = e), (f = g))
-      : ((b = b < e ? b : e), (c = c < g ? c : g), (d = d > e ? d : e), (f = f > g ? f : g))
+      : ((b = b < e ? b : e),
+        (c = c < g ? c : g),
+        (d = d > e ? d : e),
+        (f = f > g ? f : g))
     a()
   }
   this.add3Points = function(e, g, j, i, n, o) {
@@ -655,7 +679,11 @@ THREE.Rectangle = function() {
   }
   this.addRectangle = function(e) {
     h
-      ? ((h = !1), (b = e.getLeft()), (c = e.getTop()), (d = e.getRight()), (f = e.getBottom()))
+      ? ((h = !1),
+        (b = e.getLeft()),
+        (c = e.getTop()),
+        (d = e.getRight()),
+        (f = e.getBottom()))
       : ((b = b < e.getLeft() ? b : e.getLeft()),
         (c = c < e.getTop() ? c : e.getTop()),
         (d = d > e.getRight() ? d : e.getRight()),
@@ -755,7 +783,7 @@ THREE.Matrix4 = function(a, b, c, d, f, e, g, h, m, l, j, i, n, o, p, k) {
     n || 0,
     o || 0,
     p || 0,
-    k !== void 0 ? k : 1,
+    k !== void 0 ? k : 1
   )
   this.flat = Array(16)
   this.m33 = new THREE.Matrix3()
@@ -802,7 +830,7 @@ THREE.Matrix4.prototype = {
       a.n41,
       a.n42,
       a.n43,
-      a.n44,
+      a.n44
     )
     return this
   },
@@ -955,7 +983,9 @@ THREE.Matrix4.prototype = {
     b.x = this.n11 * a.x + this.n12 * a.y + this.n13 * a.z + this.n14 * a.w
     b.y = this.n21 * a.x + this.n22 * a.y + this.n23 * a.z + this.n24 * a.w
     b.z = this.n31 * a.x + this.n32 * a.y + this.n33 * a.z + this.n34 * a.w
-    b.w = a.w ? this.n41 * a.x + this.n42 * a.y + this.n43 * a.z + this.n44 * a.w : 1
+    b.w = a.w
+      ? this.n41 * a.x + this.n42 * a.y + this.n43 * a.z + this.n44 * a.w
+      : 1
     return b
   },
   determinant: function() {
@@ -1152,7 +1182,7 @@ THREE.Matrix4.prototype = {
       0,
       0,
       0,
-      1,
+      1
     )
     return this
   },
@@ -1191,22 +1221,38 @@ THREE.Matrix4.prototype = {
       p = a.n42,
       k = a.n43,
       s = a.n44
-    this.n11 = h * n * p - m * i * p + m * j * k - g * n * k - h * j * s + g * i * s
-    this.n12 = f * i * p - d * n * p - f * j * k + c * n * k + d * j * s - c * i * s
-    this.n13 = d * m * p - f * h * p + f * g * k - c * m * k - d * g * s + c * h * s
-    this.n14 = f * h * j - d * m * j - f * g * i + c * m * i + d * g * n - c * h * n
-    this.n21 = m * i * o - h * n * o - m * l * k + e * n * k + h * l * s - e * i * s
-    this.n22 = d * n * o - f * i * o + f * l * k - b * n * k - d * l * s + b * i * s
-    this.n23 = f * h * o - d * m * o - f * e * k + b * m * k + d * e * s - b * h * s
-    this.n24 = d * m * l - f * h * l + f * e * i - b * m * i - d * e * n + b * h * n
-    this.n31 = g * n * o - m * j * o + m * l * p - e * n * p - g * l * s + e * j * s
-    this.n32 = f * j * o - c * n * o - f * l * p + b * n * p + c * l * s - b * j * s
-    this.n33 = d * m * o - f * g * o + f * e * p - b * m * p - c * e * s + b * g * s
-    this.n34 = f * g * l - c * m * l - f * e * j + b * m * j + c * e * n - b * g * n
-    this.n41 = h * j * o - g * i * o - h * l * p + e * i * p + g * l * k - e * j * k
-    this.n42 = c * i * o - d * j * o + d * l * p - b * i * p - c * l * k + b * j * k
-    this.n43 = d * g * o - c * h * o - d * e * p + b * h * p + c * e * k - b * g * k
-    this.n44 = c * h * l - d * g * l + d * e * j - b * h * j - c * e * i + b * g * i
+    this.n11 =
+      h * n * p - m * i * p + m * j * k - g * n * k - h * j * s + g * i * s
+    this.n12 =
+      f * i * p - d * n * p - f * j * k + c * n * k + d * j * s - c * i * s
+    this.n13 =
+      d * m * p - f * h * p + f * g * k - c * m * k - d * g * s + c * h * s
+    this.n14 =
+      f * h * j - d * m * j - f * g * i + c * m * i + d * g * n - c * h * n
+    this.n21 =
+      m * i * o - h * n * o - m * l * k + e * n * k + h * l * s - e * i * s
+    this.n22 =
+      d * n * o - f * i * o + f * l * k - b * n * k - d * l * s + b * i * s
+    this.n23 =
+      f * h * o - d * m * o - f * e * k + b * m * k + d * e * s - b * h * s
+    this.n24 =
+      d * m * l - f * h * l + f * e * i - b * m * i - d * e * n + b * h * n
+    this.n31 =
+      g * n * o - m * j * o + m * l * p - e * n * p - g * l * s + e * j * s
+    this.n32 =
+      f * j * o - c * n * o - f * l * p + b * n * p + c * l * s - b * j * s
+    this.n33 =
+      d * m * o - f * g * o + f * e * p - b * m * p - c * e * s + b * g * s
+    this.n34 =
+      f * g * l - c * m * l - f * e * j + b * m * j + c * e * n - b * g * n
+    this.n41 =
+      h * j * o - g * i * o - h * l * p + e * i * p + g * l * k - e * j * k
+    this.n42 =
+      c * i * o - d * j * o + d * l * p - b * i * p - c * l * k + b * j * k
+    this.n43 =
+      d * g * o - c * h * o - d * e * p + b * h * p + c * e * k - b * g * k
+    this.n44 =
+      c * h * l - d * g * l + d * e * j - b * h * j - c * e * i + b * g * i
     this.multiplyScalar(1 / a.determinant())
     return this
   },
@@ -1437,7 +1483,8 @@ THREE.Matrix4.makeInvert3x3 = function(a) {
     j = -a.n23 * a.n11 + a.n21 * a.n13,
     i = a.n22 * a.n11 - a.n21 * a.n12,
     a = a.n11 * d + a.n21 * g + a.n31 * l
-  a === 0 && console.error('THREE.Matrix4.makeInvert3x3: Matrix not invertible.')
+  a === 0 &&
+    console.error('THREE.Matrix4.makeInvert3x3: Matrix not invertible.')
   a = 1 / a
   c[0] = a * d
   c[1] = a * f
@@ -1585,7 +1632,10 @@ THREE.Object3D.prototype = {
       : this.matrix.setRotationFromEuler(this.rotation, this.eulerOrder)
     if (this.scale.x !== 1 || this.scale.y !== 1 || this.scale.z !== 1)
       this.matrix.scale(this.scale),
-        (this.boundRadiusScale = Math.max(this.scale.x, Math.max(this.scale.y, this.scale.z)))
+        (this.boundRadiusScale = Math.max(
+          this.scale.x,
+          Math.max(this.scale.y, this.scale.z)
+        ))
     this.matrixWorldNeedsUpdate = !0
   },
   updateMatrixWorld: function(a) {
@@ -1596,7 +1646,8 @@ THREE.Object3D.prototype = {
         : this.matrixWorld.copy(this.matrix),
         (this.matrixWorldNeedsUpdate = !1),
         (a = !0)
-    for (var b = 0, c = this.children.length; b < c; b++) this.children[b].updateMatrixWorld(a)
+    for (var b = 0, c = this.children.length; b < c; b++)
+      this.children[b].updateMatrixWorld(a)
   },
 }
 THREE.Object3DCount = 0
@@ -1625,8 +1676,12 @@ THREE.Projector = function() {
       ? !0
       : (e < 0 && f < 0) || (g < 0 && h < 0)
       ? !1
-      : (e < 0 ? (c = Math.max(c, e / (e - f))) : f < 0 && (d = Math.min(d, e / (e - f))),
-        g < 0 ? (c = Math.max(c, g / (g - h))) : h < 0 && (d = Math.min(d, g / (g - h))),
+      : (e < 0
+          ? (c = Math.max(c, e / (e - f)))
+          : f < 0 && (d = Math.min(d, e / (e - f))),
+        g < 0
+          ? (c = Math.max(c, g / (g - h)))
+          : h < 0 && (d = Math.min(d, g / (g - h))),
         d < c ? !1 : (a.lerpSelf(b, c), b.lerpSelf(a, 1 - d), !0))
   }
   var f,
@@ -1714,7 +1769,11 @@ THREE.Projector = function() {
                 h < 6;
                 h++
               )
-                if (((c = r[h].x * d.n14 + r[h].y * d.n24 + r[h].z * d.n34 + r[h].w), c <= e)) {
+                if (
+                  ((c =
+                    r[h].x * d.n14 + r[h].y * d.n24 + r[h].z * d.n34 + r[h].w),
+                  c <= e)
+                ) {
                   c = !1
                   break a
                 }
@@ -1763,7 +1822,10 @@ THREE.Projector = function() {
     Q = s = o = i = 0
     w.elements.length = 0
     e.parent === void 0 &&
-      (console.warn("DEPRECATED: Camera hasn't been added to a Scene. Adding it..."), a.add(e))
+      (console.warn(
+        "DEPRECATED: Camera hasn't been added to a Scene. Adding it..."
+      ),
+      a.add(e))
     a.updateMatrixWorld()
     e.matrixWorldInverse.getInverse(e.matrixWorld)
     D.multiply(e.projectionMatrix, e.matrixWorldInverse)
@@ -1906,7 +1968,10 @@ THREE.Projector = function() {
         ((J = w.sprites[a].object),
         (t = J.matrixWorld),
         J instanceof THREE.Particle &&
-          (z.set(t.n14, t.n24, t.n34, 1), D.multiplyVector4(z), (z.z /= z.w), z.z > 0 && z.z < 1))
+          (z.set(t.n14, t.n24, t.n34, 1),
+          D.multiplyVector4(z),
+          (z.z /= z.w),
+          z.z > 0 && z.z < 1))
       )
         (g = O[Q] = O[Q] || new THREE.RenderableParticle()),
           Q++,
@@ -1917,10 +1982,16 @@ THREE.Projector = function() {
           (C.rotation = J.rotation.z),
           (C.scale.x =
             J.scale.x *
-            Math.abs(C.x - (z.x + e.projectionMatrix.n11) / (z.w + e.projectionMatrix.n14))),
+            Math.abs(
+              C.x -
+                (z.x + e.projectionMatrix.n11) / (z.w + e.projectionMatrix.n14)
+            )),
           (C.scale.y =
             J.scale.y *
-            Math.abs(C.y - (z.y + e.projectionMatrix.n22) / (z.w + e.projectionMatrix.n24))),
+            Math.abs(
+              C.y -
+                (z.y + e.projectionMatrix.n22) / (z.w + e.projectionMatrix.n24)
+            )),
           (C.material = J.material),
           w.elements.push(C)
     f && w.elements.sort(c)
@@ -1987,7 +2058,9 @@ THREE.Quaternion.prototype = {
     return this
   },
   calculateW: function() {
-    this.w = -Math.sqrt(Math.abs(1 - this.x * this.x - this.y * this.y - this.z * this.z))
+    this.w = -Math.sqrt(
+      Math.abs(1 - this.x * this.x - this.y * this.y - this.z * this.z)
+    )
     return this
   },
   inverse: function() {
@@ -1997,13 +2070,21 @@ THREE.Quaternion.prototype = {
     return this
   },
   length: function() {
-    return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w)
+    return Math.sqrt(
+      this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w
+    )
   },
   normalize: function() {
-    var a = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w)
+    var a = Math.sqrt(
+      this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w
+    )
     a === 0
       ? (this.w = this.z = this.y = this.x = 0)
-      : ((a = 1 / a), (this.x *= a), (this.y *= a), (this.z *= a), (this.w *= a))
+      : ((a = 1 / a),
+        (this.x *= a),
+        (this.y *= a),
+        (this.z *= a),
+        (this.w *= a))
     return this
   },
   multiplySelf: function(a) {
@@ -2049,8 +2130,11 @@ THREE.Quaternion.prototype = {
 }
 THREE.Quaternion.slerp = function(a, b, c, d) {
   var f = a.w * b.w + a.x * b.x + a.y * b.y + a.z * b.z
-  f < 0 ? ((c.w = -b.w), (c.x = -b.x), (c.y = -b.y), (c.z = -b.z), (f = -f)) : c.copy(b)
-  if (Math.abs(f) >= 1) return (c.w = a.w), (c.x = a.x), (c.y = a.y), (c.z = a.z), c
+  f < 0
+    ? ((c.w = -b.w), (c.x = -b.x), (c.y = -b.y), (c.z = -b.z), (f = -f))
+    : c.copy(b)
+  if (Math.abs(f) >= 1)
+    return (c.w = a.w), (c.x = a.x), (c.y = a.y), (c.z = a.z), c
   var e = Math.acos(f),
     f = Math.sqrt(1 - f * f)
   if (Math.abs(f) < 0.001)
@@ -2143,7 +2227,8 @@ THREE.Geometry.prototype = {
     for (d = this.faces.length; c < d; c++) {
       var f = this.faces[c]
       b.multiplyVector3(f.normal)
-      for (var e = 0, g = f.vertexNormals.length; e < g; e++) b.multiplyVector3(f.vertexNormals[e])
+      for (var e = 0, g = f.vertexNormals.length; e < g; e++)
+        b.multiplyVector3(f.vertexNormals[e])
       a.multiplyVector3(f.centroid)
     }
   },
@@ -2195,7 +2280,11 @@ THREE.Geometry.prototype = {
       a = 0
       for (b = this.faces.length; a < b; a++)
         if (((c = this.faces[a]), c instanceof THREE.Face3))
-          c.vertexNormals = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]
+          c.vertexNormals = [
+            new THREE.Vector3(),
+            new THREE.Vector3(),
+            new THREE.Vector3(),
+          ]
         else if (c instanceof THREE.Face4)
           c.vertexNormals = [
             new THREE.Vector3(),
@@ -2212,7 +2301,9 @@ THREE.Geometry.prototype = {
     for (b = this.faces.length; a < b; a++)
       (c = this.faces[a]),
         c instanceof THREE.Face3
-          ? (d[c.a].addSelf(c.normal), d[c.b].addSelf(c.normal), d[c.c].addSelf(c.normal))
+          ? (d[c.a].addSelf(c.normal),
+            d[c.b].addSelf(c.normal),
+            d[c.c].addSelf(c.normal))
           : c instanceof THREE.Face4 &&
             (d[c.a].addSelf(c.normal),
             d[c.b].addSelf(c.normal),
@@ -2330,12 +2421,18 @@ THREE.Geometry.prototype = {
       }
       for (var b = 1, c = this.vertices.length; b < c; b++) {
         a = this.vertices[b]
-        if (a.position.x < this.boundingBox.x[0]) this.boundingBox.x[0] = a.position.x
-        else if (a.position.x > this.boundingBox.x[1]) this.boundingBox.x[1] = a.position.x
-        if (a.position.y < this.boundingBox.y[0]) this.boundingBox.y[0] = a.position.y
-        else if (a.position.y > this.boundingBox.y[1]) this.boundingBox.y[1] = a.position.y
-        if (a.position.z < this.boundingBox.z[0]) this.boundingBox.z[0] = a.position.z
-        else if (a.position.z > this.boundingBox.z[1]) this.boundingBox.z[1] = a.position.z
+        if (a.position.x < this.boundingBox.x[0])
+          this.boundingBox.x[0] = a.position.x
+        else if (a.position.x > this.boundingBox.x[1])
+          this.boundingBox.x[1] = a.position.x
+        if (a.position.y < this.boundingBox.y[0])
+          this.boundingBox.y[0] = a.position.y
+        else if (a.position.y > this.boundingBox.y[1])
+          this.boundingBox.y[1] = a.position.y
+        if (a.position.z < this.boundingBox.z[0])
+          this.boundingBox.z[0] = a.position.z
+        else if (a.position.z > this.boundingBox.z[1])
+          this.boundingBox.z[1] = a.position.z
       }
     }
   },
@@ -2355,7 +2452,11 @@ THREE.Geometry.prototype = {
     e = 0
     for (g = this.vertices.length; e < g; e++)
       (d = this.vertices[e].position),
-        (d = [Math.round(d.x * f), Math.round(d.y * f), Math.round(d.z * f)].join('_')),
+        (d = [
+          Math.round(d.x * f),
+          Math.round(d.y * f),
+          Math.round(d.z * f),
+        ].join('_')),
         a[d] === void 0
           ? ((a[d] = e), b.push(this.vertices[e]), (c[e] = b.length - 1))
           : (c[e] = c[a[d]])
@@ -2372,8 +2473,15 @@ THREE.GeometryCount = 0
 THREE.Camera = function() {
   if (arguments.length)
     return (
-      console.warn('DEPRECATED: Camera() is now PerspectiveCamera() or OrthographicCamera().'),
-      new THREE.PerspectiveCamera(arguments[0], arguments[1], arguments[2], arguments[3])
+      console.warn(
+        'DEPRECATED: Camera() is now PerspectiveCamera() or OrthographicCamera().'
+      ),
+      new THREE.PerspectiveCamera(
+        arguments[0],
+        arguments[1],
+        arguments[2],
+        arguments[3]
+      )
     )
   THREE.Object3D.call(this)
   this.matrixWorldInverse = new THREE.Matrix4()
@@ -2405,7 +2513,7 @@ THREE.OrthographicCamera.prototype.updateProjectionMatrix = function() {
     this.top,
     this.bottom,
     this.near,
-    this.far,
+    this.far
   )
 }
 THREE.PerspectiveCamera = function(a, b, c, d) {
@@ -2446,14 +2554,14 @@ THREE.PerspectiveCamera.prototype.updateProjectionMatrix = function() {
       b - ((this.y + this.height) * c) / this.fullHeight,
       b - (this.y * c) / this.fullHeight,
       this.near,
-      this.far,
+      this.far
     )
   } else
     this.projectionMatrix = THREE.Matrix4.makePerspective(
       this.fov,
       this.aspect,
       this.near,
-      this.far,
+      this.far
     )
 }
 THREE.Light = function(a) {
@@ -2494,8 +2602,10 @@ THREE.Material = function(a) {
   this.depthTest = a.depthTest !== void 0 ? a.depthTest : !0
   this.depthWrite = a.depthWrite !== void 0 ? a.depthWrite : !0
   this.polygonOffset = a.polygonOffset !== void 0 ? a.polygonOffset : !1
-  this.polygonOffsetFactor = a.polygonOffsetFactor !== void 0 ? a.polygonOffsetFactor : 0
-  this.polygonOffsetUnits = a.polygonOffsetUnits !== void 0 ? a.polygonOffsetUnits : 0
+  this.polygonOffsetFactor =
+    a.polygonOffsetFactor !== void 0 ? a.polygonOffsetFactor : 0
+  this.polygonOffsetUnits =
+    a.polygonOffsetUnits !== void 0 ? a.polygonOffsetUnits : 0
   this.alphaTest = a.alphaTest !== void 0 ? a.alphaTest : 0
   this.overdraw = a.overdraw !== void 0 ? a.overdraw : !1
 }
@@ -2514,7 +2624,8 @@ THREE.AdditiveAlphaBlending = 4
 THREE.LineBasicMaterial = function(a) {
   THREE.Material.call(this, a)
   a = a || {}
-  this.color = a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
+  this.color =
+    a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
   this.linewidth = a.linewidth !== void 0 ? a.linewidth : 1
   this.linecap = a.linecap !== void 0 ? a.linecap : 'round'
   this.linejoin = a.linejoin !== void 0 ? a.linejoin : 'round'
@@ -2526,7 +2637,8 @@ THREE.LineBasicMaterial.prototype.constructor = THREE.LineBasicMaterial
 THREE.MeshBasicMaterial = function(a) {
   THREE.Material.call(this, a)
   a = a || {}
-  this.color = a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
+  this.color =
+    a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
   this.map = a.map !== void 0 ? a.map : null
   this.lightMap = a.lightMap !== void 0 ? a.lightMap : null
   this.envMap = a.envMap !== void 0 ? a.envMap : null
@@ -2536,9 +2648,12 @@ THREE.MeshBasicMaterial = function(a) {
   this.fog = a.fog !== void 0 ? a.fog : !0
   this.shading = a.shading !== void 0 ? a.shading : THREE.SmoothShading
   this.wireframe = a.wireframe !== void 0 ? a.wireframe : !1
-  this.wireframeLinewidth = a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
-  this.wireframeLinecap = a.wireframeLinecap !== void 0 ? a.wireframeLinecap : 'round'
-  this.wireframeLinejoin = a.wireframeLinejoin !== void 0 ? a.wireframeLinejoin : 'round'
+  this.wireframeLinewidth =
+    a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
+  this.wireframeLinecap =
+    a.wireframeLinecap !== void 0 ? a.wireframeLinecap : 'round'
+  this.wireframeLinejoin =
+    a.wireframeLinejoin !== void 0 ? a.wireframeLinejoin : 'round'
   this.vertexColors = a.vertexColors !== void 0 ? a.vertexColors : !1
   this.skinning = a.skinning !== void 0 ? a.skinning : !1
   this.morphTargets = a.morphTargets !== void 0 ? a.morphTargets : !1
@@ -2548,8 +2663,10 @@ THREE.MeshBasicMaterial.prototype.constructor = THREE.MeshBasicMaterial
 THREE.MeshLambertMaterial = function(a) {
   THREE.Material.call(this, a)
   a = a || {}
-  this.color = a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
-  this.ambient = a.ambient !== void 0 ? new THREE.Color(a.ambient) : new THREE.Color(328965)
+  this.color =
+    a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
+  this.ambient =
+    a.ambient !== void 0 ? new THREE.Color(a.ambient) : new THREE.Color(328965)
   this.map = a.map !== void 0 ? a.map : null
   this.lightMap = a.lightMap !== void 0 ? a.lightMap : null
   this.envMap = a.envMap !== void 0 ? a.envMap : null
@@ -2559,9 +2676,12 @@ THREE.MeshLambertMaterial = function(a) {
   this.fog = a.fog !== void 0 ? a.fog : !0
   this.shading = a.shading !== void 0 ? a.shading : THREE.SmoothShading
   this.wireframe = a.wireframe !== void 0 ? a.wireframe : !1
-  this.wireframeLinewidth = a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
-  this.wireframeLinecap = a.wireframeLinecap !== void 0 ? a.wireframeLinecap : 'round'
-  this.wireframeLinejoin = a.wireframeLinejoin !== void 0 ? a.wireframeLinejoin : 'round'
+  this.wireframeLinewidth =
+    a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
+  this.wireframeLinecap =
+    a.wireframeLinecap !== void 0 ? a.wireframeLinecap : 'round'
+  this.wireframeLinejoin =
+    a.wireframeLinejoin !== void 0 ? a.wireframeLinejoin : 'round'
   this.vertexColors = a.vertexColors !== void 0 ? a.vertexColors : !1
   this.skinning = a.skinning !== void 0 ? a.skinning : !1
   this.morphTargets = a.morphTargets !== void 0 ? a.morphTargets : !1
@@ -2571,9 +2691,14 @@ THREE.MeshLambertMaterial.prototype.constructor = THREE.MeshLambertMaterial
 THREE.MeshPhongMaterial = function(a) {
   THREE.Material.call(this, a)
   a = a || {}
-  this.color = a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
-  this.ambient = a.ambient !== void 0 ? new THREE.Color(a.ambient) : new THREE.Color(328965)
-  this.specular = a.specular !== void 0 ? new THREE.Color(a.specular) : new THREE.Color(1118481)
+  this.color =
+    a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
+  this.ambient =
+    a.ambient !== void 0 ? new THREE.Color(a.ambient) : new THREE.Color(328965)
+  this.specular =
+    a.specular !== void 0
+      ? new THREE.Color(a.specular)
+      : new THREE.Color(1118481)
   this.shininess = a.shininess !== void 0 ? a.shininess : 30
   this.metal = a.metal !== void 0 ? a.metal : !1
   this.perPixel = a.perPixel !== void 0 ? a.perPixel : !1
@@ -2586,9 +2711,12 @@ THREE.MeshPhongMaterial = function(a) {
   this.fog = a.fog !== void 0 ? a.fog : !0
   this.shading = a.shading !== void 0 ? a.shading : THREE.SmoothShading
   this.wireframe = a.wireframe !== void 0 ? a.wireframe : !1
-  this.wireframeLinewidth = a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
-  this.wireframeLinecap = a.wireframeLinecap !== void 0 ? a.wireframeLinecap : 'round'
-  this.wireframeLinejoin = a.wireframeLinejoin !== void 0 ? a.wireframeLinejoin : 'round'
+  this.wireframeLinewidth =
+    a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
+  this.wireframeLinecap =
+    a.wireframeLinecap !== void 0 ? a.wireframeLinecap : 'round'
+  this.wireframeLinejoin =
+    a.wireframeLinejoin !== void 0 ? a.wireframeLinejoin : 'round'
   this.vertexColors = a.vertexColors !== void 0 ? a.vertexColors : !1
   this.skinning = a.skinning !== void 0 ? a.skinning : !1
   this.morphTargets = a.morphTargets !== void 0 ? a.morphTargets : !1
@@ -2600,7 +2728,8 @@ THREE.MeshDepthMaterial = function(a) {
   a = a || {}
   this.shading = a.shading !== void 0 ? a.shading : THREE.SmoothShading
   this.wireframe = a.wireframe !== void 0 ? a.wireframe : !1
-  this.wireframeLinewidth = a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
+  this.wireframeLinewidth =
+    a.wireframeLinewidth !== void 0 ? a.wireframeLinewidth : 1
 }
 THREE.MeshDepthMaterial.prototype = new THREE.Material()
 THREE.MeshDepthMaterial.prototype.constructor = THREE.MeshDepthMaterial
@@ -2617,7 +2746,8 @@ THREE.MeshFaceMaterial = function() {}
 THREE.ParticleBasicMaterial = function(a) {
   THREE.Material.call(this, a)
   a = a || {}
-  this.color = a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
+  this.color =
+    a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
   this.map = a.map !== void 0 ? a.map : null
   this.size = a.size !== void 0 ? a.size : 1
   this.sizeAttenuation = a.sizeAttenuation !== void 0 ? a.sizeAttenuation : !0
@@ -2629,11 +2759,13 @@ THREE.ParticleBasicMaterial.prototype.constructor = THREE.ParticleBasicMaterial
 THREE.ParticleCanvasMaterial = function(a) {
   THREE.Material.call(this, a)
   a = a || {}
-  this.color = a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
+  this.color =
+    a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
   this.program = a.program !== void 0 ? a.program : function() {}
 }
 THREE.ParticleCanvasMaterial.prototype = new THREE.Material()
-THREE.ParticleCanvasMaterial.prototype.constructor = THREE.ParticleCanvasMaterial
+THREE.ParticleCanvasMaterial.prototype.constructor =
+  THREE.ParticleCanvasMaterial
 THREE.Texture = function(a, b, c, d, f, e) {
   this.id = THREE.TextureCount++
   this.image = a
@@ -2656,7 +2788,7 @@ THREE.Texture.prototype = {
       this.wrapS,
       this.wrapT,
       this.magFilter,
-      this.minFilter,
+      this.minFilter
     )
     a.offset.copy(this.offset)
     a.repeat.copy(this.repeat)
@@ -2705,7 +2837,8 @@ THREE.Line = function(a, b, c) {
   this.geometry = a
   this.material = b
   this.type = c !== void 0 ? c : THREE.LineStrip
-  this.geometry && (this.geometry.boundingSphere || this.geometry.computeBoundingSphere())
+  this.geometry &&
+    (this.geometry.boundingSphere || this.geometry.computeBoundingSphere())
 }
 THREE.LineStrip = 0
 THREE.LinePieces = 1
@@ -2717,7 +2850,7 @@ THREE.Mesh = function(a, b) {
   this.material = b
   if (b instanceof Array)
     console.warn(
-      'DEPRECATED: Mesh material can no longer be an Array. Using material at index 0...',
+      'DEPRECATED: Mesh material can no longer be an Array. Using material at index 0...'
     ),
       (this.material = b[0])
   if (
@@ -2739,9 +2872,12 @@ THREE.Mesh.prototype = new THREE.Object3D()
 THREE.Mesh.prototype.constructor = THREE.Mesh
 THREE.Mesh.prototype.supr = THREE.Object3D.prototype
 THREE.Mesh.prototype.getMorphTargetIndexByName = function(a) {
-  if (this.morphTargetDictionary[a] !== void 0) return this.morphTargetDictionary[a]
+  if (this.morphTargetDictionary[a] !== void 0)
+    return this.morphTargetDictionary[a]
   console.log(
-    'THREE.Mesh.getMorphTargetIndexByName: morph target ' + a + ' does not exist. Returning 0.',
+    'THREE.Mesh.getMorphTargetIndexByName: morph target ' +
+      a +
+      ' does not exist. Returning 0.'
   )
   return 0
 }
@@ -2756,7 +2892,9 @@ THREE.Bone.prototype.supr = THREE.Object3D.prototype
 THREE.Bone.prototype.update = function(a, b) {
   this.matrixAutoUpdate && (b |= this.updateMatrix())
   if (b || this.matrixWorldNeedsUpdate)
-    a ? this.skinMatrix.multiply(a, this.matrix) : this.skinMatrix.copy(this.matrix),
+    a
+      ? this.skinMatrix.multiply(a, this.matrix)
+      : this.skinMatrix.copy(this.matrix),
       (this.matrixWorldNeedsUpdate = !1),
       (b = !0)
   var c,
@@ -2765,15 +2903,25 @@ THREE.Bone.prototype.update = function(a, b) {
 }
 THREE.Sprite = function(a) {
   THREE.Object3D.call(this)
-  this.color = a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
-  this.map = a.map instanceof THREE.Texture ? a.map : THREE.ImageUtils.loadTexture(a.map)
+  this.color =
+    a.color !== void 0 ? new THREE.Color(a.color) : new THREE.Color(16777215)
+  this.map =
+    a.map instanceof THREE.Texture ? a.map : THREE.ImageUtils.loadTexture(a.map)
   this.blending = a.blending !== void 0 ? a.blending : THREE.NormalBlending
-  this.useScreenCoordinates = a.useScreenCoordinates !== void 0 ? a.useScreenCoordinates : !0
-  this.mergeWith3D = a.mergeWith3D !== void 0 ? a.mergeWith3D : !this.useScreenCoordinates
+  this.useScreenCoordinates =
+    a.useScreenCoordinates !== void 0 ? a.useScreenCoordinates : !0
+  this.mergeWith3D =
+    a.mergeWith3D !== void 0 ? a.mergeWith3D : !this.useScreenCoordinates
   this.affectedByDistance =
-    a.affectedByDistance !== void 0 ? a.affectedByDistance : !this.useScreenCoordinates
-  this.scaleByViewport = a.scaleByViewport !== void 0 ? a.scaleByViewport : !this.affectedByDistance
-  this.alignment = a.alignment instanceof THREE.Vector2 ? a.alignment : THREE.SpriteAlignment.center
+    a.affectedByDistance !== void 0
+      ? a.affectedByDistance
+      : !this.useScreenCoordinates
+  this.scaleByViewport =
+    a.scaleByViewport !== void 0 ? a.scaleByViewport : !this.affectedByDistance
+  this.alignment =
+    a.alignment instanceof THREE.Vector2
+      ? a.alignment
+      : THREE.SpriteAlignment.center
   this.rotation3d = this.rotation
   this.rotation = 0
   this.opacity = 1
@@ -2787,7 +2935,8 @@ THREE.Sprite.prototype.updateMatrix = function() {
   this.rotation3d.set(0, 0, this.rotation)
   this.matrix.setRotationFromEuler(this.rotation3d)
   if (this.scale.x !== 1 || this.scale.y !== 1)
-    this.matrix.scale(this.scale), (this.boundRadiusScale = Math.max(this.scale.x, this.scale.y))
+    this.matrix.scale(this.scale),
+      (this.boundRadiusScale = Math.max(this.scale.x, this.scale.y))
   this.matrixWorldNeedsUpdate = !0
 }
 THREE.SpriteAlignment = {}
@@ -2812,7 +2961,8 @@ THREE.Scene = function() {
 THREE.Scene.prototype = new THREE.Object3D()
 THREE.Scene.prototype.constructor = THREE.Scene
 THREE.Scene.prototype.addObject = function(a) {
-  if (a instanceof THREE.Light) this.lights.indexOf(a) === -1 && this.lights.push(a)
+  if (a instanceof THREE.Light)
+    this.lights.indexOf(a) === -1 && this.lights.push(a)
   else if (
     !(a instanceof THREE.Camera || a instanceof THREE.Bone) &&
     this.objects.indexOf(a) === -1
@@ -2983,7 +3133,7 @@ THREE.CanvasRenderer = function(a) {
           Math.floor(Z.getX()),
           Math.floor(Z.getY()),
           Math.floor(Z.getWidth()),
-          Math.floor(Z.getHeight()),
+          Math.floor(Z.getHeight())
         ),
       K > 0 &&
         (c(THREE.NormalBlending),
@@ -2997,13 +3147,13 @@ THREE.CanvasRenderer = function(a) {
             Math.floor(s.b * 255) +
             ',' +
             K +
-            ')',
+            ')'
         ),
         k.fillRect(
           Math.floor(Z.getX()),
           Math.floor(Z.getY()),
           Math.floor(Z.getWidth()),
-          Math.floor(Z.getHeight()),
+          Math.floor(Z.getHeight())
         )),
       Z.empty())
   }
@@ -3021,7 +3171,8 @@ THREE.CanvasRenderer = function(a) {
             ? (($.r += e.r), ($.g += e.g), ($.b += e.b))
             : d instanceof THREE.DirectionalLight
             ? ((ta.r += e.r), (ta.g += e.g), (ta.b += e.b))
-            : d instanceof THREE.PointLight && ((ua.r += e.r), (ua.g += e.g), (ua.b += e.b))
+            : d instanceof THREE.PointLight &&
+              ((ua.r += e.r), (ua.g += e.g), (ua.b += e.b))
     }
     function n(a, b, c, d) {
       var e, f, g, h, k, j
@@ -3032,14 +3183,24 @@ THREE.CanvasRenderer = function(a) {
           g instanceof THREE.DirectionalLight
             ? ((k = g.matrixWorld.getPosition()),
               (j = c.dot(k)),
-              j <= 0 || ((j *= g.intensity), (d.r += h.r * j), (d.g += h.g * j), (d.b += h.b * j)))
+              j <= 0 ||
+                ((j *= g.intensity),
+                (d.r += h.r * j),
+                (d.g += h.g * j),
+                (d.b += h.b * j)))
             : g instanceof THREE.PointLight &&
               ((k = g.matrixWorld.getPosition()),
               (j = c.dot(T.sub(k, b).normalize())),
               j <= 0 ||
-                ((j *= g.distance == 0 ? 1 : 1 - Math.min(b.distanceTo(k) / g.distance, 1)),
+                ((j *=
+                  g.distance == 0
+                    ? 1
+                    : 1 - Math.min(b.distanceTo(k) / g.distance, 1)),
                 j != 0 &&
-                  ((j *= g.intensity), (d.r += h.r * j), (d.g += h.g * j), (d.b += h.b * j))))
+                  ((j *= g.intensity),
+                  (d.r += h.r * j),
+                  (d.g += h.g * j),
+                  (d.b += h.b * j))))
     }
     function s(a, e, g) {
       b(g.opacity)
@@ -3113,7 +3274,21 @@ THREE.CanvasRenderer = function(a) {
         if (q.map)
           q.map.mapping instanceof THREE.UVMapping &&
             ((aa = i.uvs[0]),
-            Aa(G, H, I, Y, L, B, aa[g].u, aa[g].v, aa[h].u, aa[h].v, aa[k].u, aa[k].v, q.map))
+            Aa(
+              G,
+              H,
+              I,
+              Y,
+              L,
+              B,
+              aa[g].u,
+              aa[g].v,
+              aa[h].u,
+              aa[h].v,
+              aa[k].u,
+              aa[k].v,
+              q.map
+            ))
         else if (q.envMap) {
           if (q.envMap.mapping instanceof THREE.SphericalReflectionMapping)
             (a = j.matrixWorldInverse),
@@ -3129,17 +3304,38 @@ THREE.CanvasRenderer = function(a) {
               Aa(G, H, I, Y, L, B, Ba, Ca, Da, Ea, Fa, Ga, q.envMap)
         } else
           q.wireframe
-            ? ja(q.color, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin)
+            ? ja(
+                q.color,
+                q.wireframeLinewidth,
+                q.wireframeLinecap,
+                q.wireframeLinejoin
+              )
             : ia(q.color)
       else if (q instanceof THREE.MeshLambertMaterial)
         q.map &&
           !q.wireframe &&
           (q.map.mapping instanceof THREE.UVMapping &&
             ((aa = i.uvs[0]),
-            Aa(G, H, I, Y, L, B, aa[g].u, aa[g].v, aa[h].u, aa[h].v, aa[k].u, aa[k].v, q.map)),
+            Aa(
+              G,
+              H,
+              I,
+              Y,
+              L,
+              B,
+              aa[g].u,
+              aa[g].v,
+              aa[h].u,
+              aa[h].v,
+              aa[k].u,
+              aa[k].v,
+              q.map
+            )),
           c(THREE.SubtractiveBlending)),
           ya
-            ? !q.wireframe && q.shading == THREE.SmoothShading && i.vertexNormalsWorld.length == 3
+            ? !q.wireframe &&
+              q.shading == THREE.SmoothShading &&
+              i.vertexNormalsWorld.length == 3
               ? ((A.r = x.r = y.r = $.r),
                 (A.g = x.g = y.g = $.g),
                 (A.b = x.b = y.b = $.b),
@@ -3168,10 +3364,20 @@ THREE.CanvasRenderer = function(a) {
                 (t.g = Math.max(0, Math.min(q.color.g * t.g, 1))),
                 (t.b = Math.max(0, Math.min(q.color.b * t.b, 1))),
                 q.wireframe
-                  ? ja(t, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin)
+                  ? ja(
+                      t,
+                      q.wireframeLinewidth,
+                      q.wireframeLinecap,
+                      q.wireframeLinejoin
+                    )
                   : ia(t))
             : q.wireframe
-            ? ja(q.color, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin)
+            ? ja(
+                q.color,
+                q.wireframeLinewidth,
+                q.wireframeLinecap,
+                q.wireframeLinejoin
+              )
             : ia(q.color)
       else if (q instanceof THREE.MeshDepthMaterial)
         (ga = j.near),
@@ -3188,14 +3394,22 @@ THREE.CanvasRenderer = function(a) {
         (t.r = pa(i.normalWorld.x)),
           (t.g = pa(i.normalWorld.y)),
           (t.b = pa(i.normalWorld.z)),
-          q.wireframe ? ja(t, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin) : ia(t)
+          q.wireframe
+            ? ja(
+                t,
+                q.wireframeLinewidth,
+                q.wireframeLinecap,
+                q.wireframeLinejoin
+              )
+            : ia(t)
     }
     function Q(a, d, f, g, h, k, i, q, o) {
       e.info.render.vertices += 4
       e.info.render.faces++
       b(q.opacity)
       c(q.blending)
-      if (q.map || q.envMap) C(a, d, g, 0, 1, 3, i, q, o), C(h, f, k, 1, 2, 3, i, q, o)
+      if (q.map || q.envMap)
+        C(a, d, g, 0, 1, 3, i, q, o), C(h, f, k, 1, 2, 3, i, q, o)
       else if (
         ((G = a.positionScreen.x),
         (H = a.positionScreen.y),
@@ -3213,11 +3427,18 @@ THREE.CanvasRenderer = function(a) {
       )
         O(G, H, I, Y, L, B, S, v),
           q.wireframe
-            ? ja(q.color, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin)
+            ? ja(
+                q.color,
+                q.wireframeLinewidth,
+                q.wireframeLinecap,
+                q.wireframeLinejoin
+              )
             : ia(q.color)
       else if (q instanceof THREE.MeshLambertMaterial)
         ya
-          ? !q.wireframe && q.shading == THREE.SmoothShading && i.vertexNormalsWorld.length == 4
+          ? !q.wireframe &&
+            q.shading == THREE.SmoothShading &&
+            i.vertexNormalsWorld.length == 4
             ? ((A.r = x.r = y.r = M.r = $.r),
               (A.g = x.g = y.g = M.g = $.g),
               (A.b = x.b = y.b = M.b = $.b),
@@ -3251,18 +3472,35 @@ THREE.CanvasRenderer = function(a) {
               (t.b = Math.max(0, Math.min(q.color.b * t.b, 1))),
               O(G, H, I, Y, L, B, S, v),
               q.wireframe
-                ? ja(t, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin)
+                ? ja(
+                    t,
+                    q.wireframeLinewidth,
+                    q.wireframeLinecap,
+                    q.wireframeLinejoin
+                  )
                 : ia(t))
           : (O(G, H, I, Y, L, B, S, v),
             q.wireframe
-              ? ja(q.color, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin)
+              ? ja(
+                  q.color,
+                  q.wireframeLinewidth,
+                  q.wireframeLinecap,
+                  q.wireframeLinejoin
+                )
               : ia(q.color))
       else if (q instanceof THREE.MeshNormalMaterial)
         (t.r = pa(i.normalWorld.x)),
           (t.g = pa(i.normalWorld.y)),
           (t.b = pa(i.normalWorld.z)),
           O(G, H, I, Y, L, B, S, v),
-          q.wireframe ? ja(t, q.wireframeLinewidth, q.wireframeLinecap, q.wireframeLinejoin) : ia(t)
+          q.wireframe
+            ? ja(
+                t,
+                q.wireframeLinewidth,
+                q.wireframeLinecap,
+                q.wireframeLinejoin
+              )
+            : ia(t)
       else if (q instanceof THREE.MeshDepthMaterial)
         (ga = j.near),
           (ha = j.far),
@@ -3312,7 +3550,13 @@ THREE.CanvasRenderer = function(a) {
             r = l.wrapT == THREE.RepeatWrapping
           la[l.id] = k.createPattern(
             l.image,
-            p && r ? 'repeat' : p && !r ? 'repeat-x' : !p && r ? 'repeat-y' : 'no-repeat',
+            p && r
+              ? 'repeat'
+              : p && !r
+              ? 'repeat-x'
+              : !p && r
+              ? 'repeat-y'
+              : 'no-repeat'
           )
           l.needsUpdate = !1
         }
@@ -3343,7 +3587,12 @@ THREE.CanvasRenderer = function(a) {
               (b.height = l.image.height),
               (a = b.getContext('2d')),
               a.drawImage(l.image, 0, 0),
-              (fa[l.id] = a.getImageData(0, 0, l.image.width, l.image.height).data),
+              (fa[l.id] = a.getImageData(
+                0,
+                0,
+                l.image.width,
+                l.image.height
+              ).data),
               delete b
           b = fa[l.id]
           h = (Math.floor(h) + Math.floor(i) * l.image.width) * 4
@@ -3436,7 +3685,13 @@ THREE.CanvasRenderer = function(a) {
         d = b.y - a.y,
         e = c * c + d * d
       e != 0 &&
-        ((e = 1 / Math.sqrt(e)), (c *= e), (d *= e), (b.x += c), (b.y += d), (a.x -= c), (a.y -= d))
+        ((e = 1 / Math.sqrt(e)),
+        (c *= e),
+        (d *= e),
+        (b.x += c),
+        (b.y += d),
+        (a.x -= c),
+        (a.y -= d))
     }
     var xa, Ha, U, ca
     this.autoClear ? this.clear() : k.setTransform(1, 0, 0, -1, o, p)
@@ -3455,7 +3710,8 @@ THREE.CanvasRenderer = function(a) {
         !(ca == null || ca.opacity == 0))
       ) {
         X.empty()
-        if (U instanceof THREE.RenderableParticle) (u = U), (u.x *= o), (u.y *= p), s(u, U, ca, a)
+        if (U instanceof THREE.RenderableParticle)
+          (u = U), (u.x *= o), (u.y *= p), s(u, U, ca, a)
         else if (U instanceof THREE.RenderableLine)
           (u = U.v1),
             (r = U.v2),
@@ -3486,7 +3742,7 @@ THREE.CanvasRenderer = function(a) {
               r.positionScreen.x,
               r.positionScreen.y,
               E.positionScreen.x,
-              E.positionScreen.y,
+              E.positionScreen.y
             ),
             ma.intersects(X) && C(u, r, E, 0, 1, 2, U, ca, a)
         else if (U instanceof THREE.RenderableFace4)
@@ -3536,7 +3792,11 @@ THREE.RenderableFace3 = function() {
   this.centroidWorld = new THREE.Vector3()
   this.centroidScreen = new THREE.Vector3()
   this.normalWorld = new THREE.Vector3()
-  this.vertexNormalsWorld = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]
+  this.vertexNormalsWorld = [
+    new THREE.Vector3(),
+    new THREE.Vector3(),
+    new THREE.Vector3(),
+  ]
   this.faceMaterial = this.material = null
   this.uvs = [[]]
   this.z = null

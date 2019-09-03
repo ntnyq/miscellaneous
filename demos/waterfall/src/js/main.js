@@ -121,7 +121,8 @@ window.onload = function() {
   window.onscroll = function() {
     var iNum = 12 // 每次加载的图片数目
 
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop // 页面滚上去的高度
+    var scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop // 页面滚上去的高度
     var cHeight = document.documentElement.clientHeight // 可视区域的高度
 
     var idx = getShortLi() // 获取最短的li的索引

@@ -13,7 +13,8 @@ CAV.Utils = {
   )
     (window.requestAnimationFrame = window[b[c] + 'RequestAnimationFrame']),
       (window.cancelAnimationFrame =
-        window[b[c] + 'CancelAnimationFrame'] || window[b[c] + 'CancelRequestAnimationFrame'])
+        window[b[c] + 'CancelAnimationFrame'] ||
+        window[b[c] + 'CancelRequestAnimationFrame'])
   if (!window.requestAnimationFrame)
     window.requestAnimationFrame = function(b) {
       var c = new Date().getTime(),
@@ -140,7 +141,9 @@ CAV.Vector3 = {
     return this
   },
   divideScalar: function(a, b) {
-    b !== 0 ? ((a[0] /= b), (a[1] /= b), (a[2] /= b)) : ((a[0] = 0), (a[1] = 0), (a[2] = 0))
+    b !== 0
+      ? ((a[0] /= b), (a[1] /= b), (a[2] /= b))
+      : ((a[0] = 0), (a[1] = 0), (a[2] = 0))
     return this
   },
   cross: function(a, b) {
@@ -177,7 +180,9 @@ CAV.Vector3 = {
   },
   limit: function(a, b, c) {
     var d = this.length(a)
-    b !== null && d < b ? this.setLength(a, b) : c !== null && d > c && this.setLength(a, c)
+    b !== null && d < b
+      ? this.setLength(a, b)
+      : c !== null && d > c && this.setLength(a, c)
     return this
   },
   dot: function(a, b) {
@@ -352,9 +357,12 @@ CAV.Triangle = function(a, b, c) {
 }
 CAV.Triangle.prototype = {
   computeCentroid: function() {
-    this.centroid[0] = this.a.position[0] + this.b.position[0] + this.c.position[0]
-    this.centroid[1] = this.a.position[1] + this.b.position[1] + this.c.position[1]
-    this.centroid[2] = this.a.position[2] + this.b.position[2] + this.c.position[2]
+    this.centroid[0] =
+      this.a.position[0] + this.b.position[0] + this.c.position[0]
+    this.centroid[1] =
+      this.a.position[1] + this.b.position[1] + this.c.position[1]
+    this.centroid[2] =
+      this.a.position[2] + this.b.position[2] + this.c.position[2]
     CAV.Vector3.divideScalar(this.centroid, 3)
     return this
   },
@@ -447,13 +455,13 @@ CAV.Mesh.prototype.update = function(a, b) {
           CAV.Vector4.multiplyVectors(
             this.material.slave.rgba,
             this.material.ambient.rgba,
-            f.ambient.rgba,
+            f.ambient.rgba
           ),
           CAV.Vector4.add(d.color.rgba, this.material.slave.rgba),
           CAV.Vector4.multiplyVectors(
             this.material.slave.rgba,
             this.material.diffuse.rgba,
-            f.diffuse.rgba,
+            f.diffuse.rgba
           ),
           CAV.Vector4.multiplyScalar(this.material.slave.rgba, g),
           CAV.Vector4.add(d.color.rgba, this.material.slave.rgba)
@@ -469,7 +477,9 @@ CAV.Scene.prototype = {
   add: function(a) {
     a instanceof CAV.Mesh && !~this.meshes.indexOf(a)
       ? this.meshes.push(a)
-      : a instanceof CAV.Light && !~this.lights.indexOf(a) && this.lights.push(a)
+      : a instanceof CAV.Light &&
+        !~this.lights.indexOf(a) &&
+        this.lights.push(a)
     return this
   },
   remove: function(a) {
@@ -519,7 +529,12 @@ CAV.CanvasRenderer.prototype.setSize = function(a, b) {
 }
 CAV.CanvasRenderer.prototype.clear = function() {
   CAV.Renderer.prototype.clear.call(this)
-  this.context.clearRect(-this.halfWidth, -this.halfHeight, this.width, this.height)
+  this.context.clearRect(
+    -this.halfWidth,
+    -this.halfHeight,
+    this.width,
+    this.height
+  )
   return this
 }
 CAV.CanvasRenderer.prototype.render = function(a) {
@@ -581,7 +596,7 @@ function Victor(container, anitOut) {
       step: CAV.Vector3.create(
         Math.randomInRange(0.2, 1),
         Math.randomInRange(0.2, 1),
-        Math.randomInRange(0.2, 1),
+        Math.randomInRange(0.2, 1)
       ),
     }
     var m = 'canvas'
@@ -634,7 +649,12 @@ function Victor(container, anitOut) {
     function s() {
       I.remove(h)
       D.clear()
-      q = new CAV.Plane(t.width * D.width, t.height * D.height, t.segments, t.slices)
+      q = new CAV.Plane(
+        t.width * D.width,
+        t.height * D.height,
+        t.segments,
+        t.slices
+      )
       y = new CAV.Material(t.ambient, t.diffuse)
       h = new CAV.Mesh(q, y)
       I.add(h)
@@ -645,7 +665,7 @@ function Victor(container, anitOut) {
         O.step = CAV.Vector3.create(
           Math.randomInRange(0.2, 1),
           Math.randomInRange(0.2, 1),
-          Math.randomInRange(0.2, 1),
+          Math.randomInRange(0.2, 1)
         )
         O.time = Math.randomInRange(0, Math.PIM2)
       }
@@ -698,7 +718,11 @@ function Victor(container, anitOut) {
       for (R = I.lights.length - 1; R >= 0; R--) {
         T = I.lights[R]
         CAV.Vector3.setZ(T.position, G.zOffset)
-        var N = Math.clamp(CAV.Vector3.distanceSquared(T.position, k), G.minDistance, G.maxDistance)
+        var N = Math.clamp(
+          CAV.Vector3.distanceSquared(T.position, k),
+          G.minDistance,
+          G.maxDistance
+        )
         var W = (G.gravity * T.mass) / N
         CAV.Vector3.subtractVectors(T.force, k, T.position)
         CAV.Vector3.normalise(T.force)
@@ -719,7 +743,7 @@ function Victor(container, anitOut) {
           U.position,
           t.xRange * q.segmentWidth * Q,
           t.yRange * q.sliceHeight * P,
-          t.zRange * S * O - S,
+          t.zRange * S * O - S
         )
         CAV.Vector3.add(U.position, U.anchor)
       }

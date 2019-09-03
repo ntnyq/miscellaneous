@@ -12,14 +12,14 @@ window.onload = function() {
     function() {
       flag = true
     },
-    false,
+    false
   )
   document.addEventListener(
     'mouseup',
     function() {
       flag = false
     },
-    false,
+    false
   )
   var div = document.querySelector('div')
   //给DOM对象绑定鼠标移动事件
@@ -39,7 +39,7 @@ window.onload = function() {
           (move.lastY - e.y) / 5 +
           'deg) rotateY(' +
           (e.x - move.lastX) / 5 +
-          'deg)',
+          'deg)'
       )
 
       div.style.setProperty(
@@ -49,11 +49,11 @@ window.onload = function() {
           (move.lastY - e.y) / 5 +
           'deg) rotateY(' +
           (e.x - move.lastX) / 5 +
-          'deg)',
+          'deg)'
       )
       move.lastX = e.x
       move.lastY = e.y
     },
-    false,
+    false
   )
 }

@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 const About = () => (
   <div>
     <div>
-      <Link to="/">回到首页</Link>
+      <Link to='/'>回到首页</Link>
     </div>
     <h2>关于页面</h2>
   </div>
@@ -16,7 +16,7 @@ const About = () => (
 const Users = () => (
   <div>
     <div>
-      <Link to="/">回到首页</Link>
+      <Link to='/'>回到首页</Link>
     </div>
     <h2>用户页面</h2>
   </div>
@@ -26,11 +26,11 @@ ReactDom.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path="/" exact component={App} />
-        <Route path="/about" component={About} />
-        <Route path="/users" component={Users} />
+        <Route path='/' exact component={App} />
+        <Route path='/about' component={About} />
+        <Route path='/users' component={Users} />
       </Switch>
     </Router>
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 )

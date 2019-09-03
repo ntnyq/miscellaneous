@@ -59,7 +59,7 @@ gulp.task('less', function() {
         browsers: ['last 5 version', 'Android >= 4.0'],
         cascade: true, // Beatify css rules with prefix, Default value: true
         remove: true, // Remove rules not neccessary, Default value: true
-      }),
+      })
     )
 
     .pipe(gulp.dest('src/css'))
@@ -76,13 +76,13 @@ gulp.task('cssmin', function() {
       base64({
         extensions: ['png'],
         maxImageSize: 8 * 1024, // bytes
-      }),
+      })
     )
 
     .pipe(
       rename({
         suffix: '.min',
-      }),
+      })
     )
 
     .pipe(gulp.dest('dist/css'))
@@ -96,19 +96,19 @@ gulp.task('jsmin', function() {
     .pipe(
       babel({
         presets: ['env'],
-      }),
+      })
     )
 
     .pipe(
       uglify().on('error', function(e) {
         console.log(e)
-      }),
+      })
     )
 
     .pipe(
       rename({
         suffix: '.min',
-      }),
+      })
     )
 
     .pipe(gulp.dest('dist/js'))

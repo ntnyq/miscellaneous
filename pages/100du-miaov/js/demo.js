@@ -55,14 +55,24 @@ $(function() {
         title: '那些灿烂华美的瞬间',
         url: 'http://www.miaov.com/2013/#message',
       },
-      { name: '萱萱', time: 4, title: '那些灿烂华美的瞬间', url: 'http://www.miaov.com/2013/' },
+      {
+        name: '萱萱',
+        time: 4,
+        title: '那些灿烂华美的瞬间',
+        url: 'http://www.miaov.com/2013/',
+      },
       {
         name: '畅畅',
         time: 5,
         title: '广东3天抓获涉黄疑犯',
         url: 'http://www.miaov.com/2013/#curriculum',
       },
-      { name: '萱萱', time: 7, title: '那些灿烂华美的瞬间', url: 'http://www.miaov.com/2013/' },
+      {
+        name: '萱萱',
+        time: 7,
+        title: '那些灿烂华美的瞬间',
+        url: 'http://www.miaov.com/2013/',
+      },
       {
         name: '畅畅',
         time: 8,
@@ -109,7 +119,11 @@ $(function() {
       }
       oUl
         .stop()
-        .animate({ top: iH * iNow }, 2000, 'elasticOut') /*加stop避免点击多下后动画依然执行*/
+        .animate(
+          { top: iH * iNow },
+          2000,
+          'elasticOut'
+        ) /*加stop避免点击多下后动画依然执行*/
     }
     function autoPlay() {
       timer = setInterval(function() {
@@ -233,7 +247,7 @@ $(function() {
       },
       function() {
         oPrompt.hide()
-      },
+      }
     )
   })()
 
@@ -275,7 +289,7 @@ $(function() {
           ($(this).height() - 12) +
           'px">' +
           arr[$(this).index()] +
-          '</p>',
+          '</p>'
       )
     })
   })()

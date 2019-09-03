@@ -22,15 +22,16 @@ class App extends React.Component {
         <nav>
           <ul>
             <li>
-              <Link to="/about">页面1</Link>
+              <Link to='/about'>页面1</Link>
             </li>
             <li>
-              <Link to="/users">页面2</Link>
+              <Link to='/users'>页面2</Link>
             </li>
           </ul>
         </nav>
         <div>
-          current number: {this.props.number} <button onClick={() => this.onClick()}>点击+1</button>
+          current number: {this.props.number}{' '}
+          <button onClick={() => this.onClick()}>点击+1</button>
         </div>
         <div>
           current number: {this.props.number}{' '}

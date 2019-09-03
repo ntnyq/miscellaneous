@@ -49,7 +49,10 @@ const ajax = options =>
     xhr.open(type, url, async)
 
     if (type === 'post' && !contentType) {
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8')
+      xhr.setRequestHeader(
+        'Content-Type',
+        'application/x-www-form-urlencoded;charset=UTF-8'
+      )
     } else {
       xhr.setRequestHeader('Content-Type', contentType)
     }

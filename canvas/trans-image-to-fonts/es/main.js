@@ -68,6 +68,6 @@
         $.fill()
       }
     },
-    !0,
+    !0
   )
 })(window, document, '#canvas')

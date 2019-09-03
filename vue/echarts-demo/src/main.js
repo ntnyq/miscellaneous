@@ -5,5 +5,5 @@ import './plugins/echarts'
 Vue.config.productionTip = false
 
 new Vue({
-  ...App
+  ...App,
 }).$mount('#app')

@@ -26,7 +26,7 @@ var DD_belatedPNG = {
     b.setAttribute('media', 'screen')
     document.documentElement.firstChild.insertBefore(
       b,
-      document.documentElement.firstChild.firstChild,
+      document.documentElement.firstChild.firstChild
     )
     if (b.styleSheet) {
       b = b.styleSheet
@@ -34,14 +34,14 @@ var DD_belatedPNG = {
       b.addRule(this.ns + '\\:shape', 'position:absolute;')
       b.addRule(
         'img.' + this.ns + '_sizeFinder',
-        'behavior:none; border:none; position:absolute; z-index:-1; top:-10000px; visibility:hidden;',
+        'behavior:none; border:none; position:absolute; z-index:-1; top:-10000px; visibility:hidden;'
       )
       this.screenStyleSheet = b
       a = document.createElement('style')
       a.setAttribute('media', 'print')
       document.documentElement.firstChild.insertBefore(
         a,
-        document.documentElement.firstChild.firstChild,
+        document.documentElement.firstChild.firstChild
       )
       a = a.styleSheet
       a.addRule(this.ns + '\\:*', '{display: none !important;}')
@@ -75,7 +75,9 @@ var DD_belatedPNG = {
   vmlOpacity: function(b) {
     if (b.currentStyle.filter.search('lpha') != -1) {
       var a = b.currentStyle.filter
-      a = parseInt(a.substring(a.lastIndexOf('=') + 1, a.lastIndexOf(')')), 10) / 100
+      a =
+        parseInt(a.substring(a.lastIndexOf('=') + 1, a.lastIndexOf(')')), 10) /
+        100
       b.vml.color.shape.style.filter = b.currentStyle.filter
       b.vml.image.fill.opacity = a
     }
@@ -90,7 +92,10 @@ var DD_belatedPNG = {
       var c, b
       c = a.split(',')
       for (b = 0; b < c.length; b++) {
-        this.screenStyleSheet.addRule(c[b], 'behavior:expression(DD_belatedPNG.fixPng(this))')
+        this.screenStyleSheet.addRule(
+          c[b],
+          'behavior:expression(DD_belatedPNG.fixPng(this))'
+        )
       }
     }
   },
@@ -223,7 +228,7 @@ var DD_belatedPNG = {
       n.T + (d.isImg ? 0 : n.bTW),
       n.W - 1,
       n.H - 1,
-      0,
+      0
     )
     e(d.vml.image.shape, n.L + n.bLW, n.T + n.bTW, n.W, n.H, 1)
     g = { X: 0, Y: 0 }
@@ -252,9 +257,18 @@ var DD_belatedPNG = {
         i.B = n.H
       }
       d.vml.image.shape.style.clip =
-        'rect(' + i.T + 'px ' + (i.R + a) + 'px ' + i.B + 'px ' + (i.L + a) + 'px)'
+        'rect(' +
+        i.T +
+        'px ' +
+        (i.R + a) +
+        'px ' +
+        i.B +
+        'px ' +
+        (i.L + a) +
+        'px)'
     } else {
-      d.vml.image.shape.style.clip = 'rect(' + f.T + 'px ' + f.R + 'px ' + f.B + 'px ' + f.L + 'px)'
+      d.vml.image.shape.style.clip =
+        'rect(' + f.T + 'px ' + f.R + 'px ' + f.B + 'px ' + f.L + 'px)'
     }
   },
   figurePercentage: function(d, c, f, a) {
@@ -280,7 +294,9 @@ var DD_belatedPNG = {
           e = false
         }
     }
-    d[f] = Math.ceil(e ? c[b ? 'W' : 'H'] * d[f] - c[b ? 'w' : 'h'] * d[f] : parseInt(a, 10))
+    d[f] = Math.ceil(
+      e ? c[b ? 'W' : 'H'] * d[f] - c[b ? 'w' : 'h'] * d[f] : parseInt(a, 10)
+    )
     if (d[f] % 2 === 0) {
       d[f]++
     }

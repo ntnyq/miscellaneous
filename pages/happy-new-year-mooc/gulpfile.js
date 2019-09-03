@@ -31,7 +31,7 @@ gulp.task('cssmin', function() {
         browsers: ['last 2 version', 'Android >= 4.0'],
         cascade: true, // 是否美化属性值 把前缀后的对齐
         remove: true, // 是否去掉不必要的前缀 默认true
-      }),
+      })
     )
     .pipe(minifyCSS())
 
@@ -39,7 +39,7 @@ gulp.task('cssmin', function() {
       rename({
         // 压缩后的文件改成**.min.css
         suffix: '.min',
-      }),
+      })
     )
     .pipe(gulp.dest('dist/css'))
 })
@@ -51,7 +51,7 @@ gulp.task('jsmin', function() {
       uglify().on('error', function(e) {
         // 遇到错误打印出来
         console.log(e)
-      }),
+      })
     )
     // {
     //   mangle: true, // 是否修改变量名 默认true
@@ -62,7 +62,7 @@ gulp.task('jsmin', function() {
       rename({
         // 压缩后的文件改成**.min.js
         suffix: '.min',
-      }),
+      })
     )
     .pipe(gulp.dest('dist/js'))
 })

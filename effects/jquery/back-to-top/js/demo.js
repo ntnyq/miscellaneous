@@ -39,7 +39,8 @@ window.onload = function() {
       }
       var ispeed = Math.floor(-osTop / 5) //数学函数，去掉小数点后的部分
       //用负数是为了让距离浏览器顶部的数值可以达到0，这个可以在控制台打印出来看
-      document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
+      document.documentElement.scrollTop = document.body.scrollTop =
+        osTop + ispeed
       isTop = true
       if (osTop === 0) {
         clearInterval(timer)

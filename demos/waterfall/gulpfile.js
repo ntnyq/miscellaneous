@@ -27,7 +27,7 @@ gulp.task('prefix', function() {
         browsers: ['last 2 version', 'Android >= 4.0'],
         cascade: true, // 是否美化属性值 把前缀后的对齐
         remove: true, // 是否去掉不必要的前缀 默认true
-      }),
+      })
     )
     .pipe(gulp.dest('dist/css'))
 })
@@ -45,7 +45,7 @@ gulp.task('jsmin', function() {
       rename({
         // 压缩后的文件改成**.min.js
         suffix: '.min',
-      }),
+      })
     )
     .pipe(gulp.dest('dist/js'))
 })

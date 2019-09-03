@@ -22,10 +22,11 @@ export default function download(json, fileName) {
           {},
           {
             v: v[k],
-            position: (j > 25 ? getCharCol(j) : String.fromCharCode(65 + j)) + (i + 1),
-          },
-        ),
-      ),
+            position:
+              (j > 25 ? getCharCol(j) : String.fromCharCode(65 + j)) + (i + 1),
+          }
+        )
+      )
     )
     .reduce((prev, next) => prev.concat(next))
     .forEach(v => (tmpData[v.position] = { v: v.v }))
@@ -47,12 +48,12 @@ export default function download(json, fileName) {
           bookType: type ? 'xlsx' : type,
           bookSST: false, // 格式化
           type: 'binary',
-        }),
+        })
       ),
     ],
     {
       type: '',
-    },
+    }
   ) // 创建二进制对象写入转换好的字节流
 
   saveAs(tmpDown, fileName)

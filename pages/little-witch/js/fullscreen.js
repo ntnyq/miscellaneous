@@ -19,11 +19,15 @@ function cancelFullscreen() {
 function dumpFullscreen() {
   console.log(
     'document.fullScreenElement is: ',
-    document.fullScreenElement || document.mozFullScreenElement || document.webkitFullScreenElement,
+    document.fullScreenElement ||
+      document.mozFullScreenElement ||
+      document.webkitFullScreenElement
   )
   console.log(
     'document.fullScreenEnabled is: ',
-    document.fullScreenEnabled || document.mozScreenEnabled || document.webkitScreenEnabled,
+    document.fullScreenEnabled ||
+      document.mozScreenEnabled ||
+      document.webkitScreenEnabled
   )
 }
 // Events

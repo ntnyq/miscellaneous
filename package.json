@@ -1,6 +1,9 @@
 {
   "name": "miscellaneous",
   "version": "1.0.0",
+  "scripts": {
+    "pretty": "prettier --write ./**/*.js"
+  },
   "author": {
     "name": "ntnyq",
     "email": "ntnyq13@gmail.com"

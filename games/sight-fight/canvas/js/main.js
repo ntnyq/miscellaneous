@@ -58,7 +58,12 @@ var Game = function Game(query, callback) {
 
     ctx.beginPath()
     ctx.fillStyle = colors.color2
-    ctx.fillRect(diff.w * diff.x + 3, diff.h * diff.y + 3, diff.w - 6, diff.h - 6)
+    ctx.fillRect(
+      diff.w * diff.x + 3,
+      diff.h * diff.y + 3,
+      diff.w - 6,
+      diff.h - 6
+    )
   }
 
   var getColors = function getColors() {
@@ -104,7 +109,7 @@ var Game = function Game(query, callback) {
         }
       }
     },
-    !1,
+    !1
   )
 
   this.start = function(second) {
@@ -144,7 +149,7 @@ var span = document.querySelectorAll('span'),
           ? '还有两把刷子'
           : core > 10
           ? '一般啦'
-          : '跪了把？哈哈哈！！！',
+          : '跪了把？哈哈哈！！！'
       )
     }
   })
@@ -154,5 +159,5 @@ document.querySelector('input').addEventListener(
   function() {
     game.start(30)
   },
-  !1,
+  !1
 )

@@ -109,8 +109,17 @@ function Star() {
       //comet tail
       for (var i = 0; i < 30; i++) {
         universe.fillStyle =
-          'rgba(' + cometColor + ',' + (this.opacity - (this.opacity / 20) * i) + ')'
-        universe.rect(this.x - (this.dx / 4) * i, this.y - (this.dy / 4) * i - 2, 2, 2)
+          'rgba(' +
+          cometColor +
+          ',' +
+          (this.opacity - (this.opacity / 20) * i) +
+          ')'
+        universe.rect(
+          this.x - (this.dx / 4) * i,
+          this.y - (this.dy / 4) * i - 2,
+          2,
+          2
+        )
         universe.fill()
       }
     } else {

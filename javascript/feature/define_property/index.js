@@ -1,4 +1,3 @@
-
 /**
  * var foo = 'apple', bar = 'banane'
  *
@@ -9,7 +8,7 @@
  */
 
 Object.defineProperty(String.prototype, 'name', {
-  get () {
+  get() {
     return this.toString()
-  }
+  },
 })

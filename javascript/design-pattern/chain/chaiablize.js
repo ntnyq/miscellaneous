@@ -17,7 +17,10 @@ function chainablize(constructor) {
   var prototype = constructor.prototype
   for (var method in prototype) {
     try {
-      if (prototype.hasOwnProperty(method) && typeof prototype[method] == 'function') {
+      if (
+        prototype.hasOwnProperty(method) &&
+        typeof prototype[method] == 'function'
+      ) {
         ;(function(method) {
           var old = prototype[method]
           prototype[method] = function() {
@@ -42,7 +45,10 @@ function chainablize(constructor) {
   var prototype = constructor.prototype
   for (var method in prototype) {
     try {
-      if (prototype.hasOwnProperty(method) && typeof prototype[method] == 'function') {
+      if (
+        prototype.hasOwnProperty(method) &&
+        typeof prototype[method] == 'function'
+      ) {
         ;(function(method) {
           var old = prototype[method]
           prototype[method] = function() {

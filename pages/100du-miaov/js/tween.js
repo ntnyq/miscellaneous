@@ -46,7 +46,13 @@
     } else {
       var s = (p / (2 * Math.PI)) * Math.asin(c / a)
     }
-    return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin(((t * d - s) * (2 * Math.PI)) / p)) + b
+    return (
+      -(
+        a *
+        Math.pow(2, 10 * (t -= 1)) *
+        Math.sin(((t * d - s) * (2 * Math.PI)) / p)
+      ) + b
+    )
   },
   elasticOut: function(x, t, b, c, d, a, p) {
     //正弦增强曲线（弹动渐出）
@@ -65,7 +71,11 @@
     } else {
       var s = (p / (2 * Math.PI)) * Math.asin(c / a)
     }
-    return a * Math.pow(2, -10 * t) * Math.sin(((t * d - s) * (2 * Math.PI)) / p) + c + b
+    return (
+      a * Math.pow(2, -10 * t) * Math.sin(((t * d - s) * (2 * Math.PI)) / p) +
+      c +
+      b
+    )
   },
   elasticBoth: function(x, t, b, c, d, a, p) {
     if (t === 0) {
@@ -85,11 +95,20 @@
     }
     if (t < 1) {
       return (
-        -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin(((t * d - s) * (2 * Math.PI)) / p)) + b
+        -0.5 *
+          (a *
+            Math.pow(2, 10 * (t -= 1)) *
+            Math.sin(((t * d - s) * (2 * Math.PI)) / p)) +
+        b
       )
     }
     return (
-      a * Math.pow(2, -10 * (t -= 1)) * Math.sin(((t * d - s) * (2 * Math.PI)) / p) * 0.5 + c + b
+      a *
+        Math.pow(2, -10 * (t -= 1)) *
+        Math.sin(((t * d - s) * (2 * Math.PI)) / p) *
+        0.5 +
+      c +
+      b
     )
   },
   backIn: function(x, t, b, c, d, s) {

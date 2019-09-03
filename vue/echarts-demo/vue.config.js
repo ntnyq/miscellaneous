@@ -1,10 +1,7 @@
 module.exports = {
   devServer: {
-    open: true
+    open: true,
   },
 
-  transpileDependencies: [
-    'vue-echarts',
-    'resize-detector'
-  ]
+  transpileDependencies: ['vue-echarts', 'resize-detector'],
 }

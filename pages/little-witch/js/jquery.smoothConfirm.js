@@ -34,9 +34,15 @@
         pos.y = position.top + $this.height() + settings.offset
         break
     }
-    pos.x = pos.x + settings.width > windows_width ? windows_width - settings.width - 20 : pos.x
+    pos.x =
+      pos.x + settings.width > windows_width
+        ? windows_width - settings.width - 20
+        : pos.x
     pos.x = pos.x < 10 ? 10 : pos.x
-    pos.y = pos.y + settings.height > windows_height ? windows_height - settings.height - 20 : pos.y
+    pos.y =
+      pos.y + settings.height > windows_height
+        ? windows_height - settings.height - 20
+        : pos.y
     pos.y = pos.y < 10 ? 10 : pos.y
     return pos
   }
@@ -58,24 +64,32 @@
       .find('.ok')
       .unbind('click')
       .click(function() {
-        $html.animate({ top: final_pos.y, opacity: 'hide' }, settings.speed, function() {
-          if (settings.ok != null) {
-            settings.ok()
+        $html.animate(
+          { top: final_pos.y, opacity: 'hide' },
+          settings.speed,
+          function() {
+            if (settings.ok != null) {
+              settings.ok()
+            }
+            $html.remove()
           }
-          $html.remove()
-        })
+        )
       })
 
     $html
       .find('.cancel')
       .unbind('click')
       .click(function() {
-        $html.animate({ top: final_pos.y, opacity: 'hide' }, settings.speed, function() {
-          if (settings.cancel != null) {
-            settings.cancel()
+        $html.animate(
+          { top: final_pos.y, opacity: 'hide' },
+          settings.speed,
+          function() {
+            if (settings.cancel != null) {
+              settings.cancel()
+            }
+            $html.remove()
           }
-          $html.remove()
-        })
+        )
       })
   }
 

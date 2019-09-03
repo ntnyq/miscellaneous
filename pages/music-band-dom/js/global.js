@@ -133,7 +133,16 @@ function moveElement(elementID, final_x, final_y, interVal) {
   }
   elem.style.left = xpos + 'px'
   elem.style.top = ypos + 'px'
-  var repeat = 'moveElement("' + elementID + '",' + final_x + ',' + final_y + ',' + interVal + ')'
+  var repeat =
+    'moveElement("' +
+    elementID +
+    '",' +
+    final_x +
+    ',' +
+    final_y +
+    ',' +
+    interVal +
+    ')'
   elem.movement = setTimeout(repeat, interVal)
 }
 
@@ -372,7 +381,11 @@ function highLightRows() {
  * @return {[type]} [description]
  */
 function displayAbbreviations() {
-  if (!document.getElementsByTagName || !document.createElement || !document.createTextNode) {
+  if (
+    !document.getElementsByTagName ||
+    !document.createElement ||
+    !document.createTextNode
+  ) {
     return false
   }
   var abbreviations = document.getElementsByTagName('abbr')
@@ -584,7 +597,9 @@ function submitFormWithAjax(whichForm, theTarget) {
   request.onreadystatechange = function() {
     if (request.readyState == 4) {
       if (request.status == 200 || request.status === 0) {
-        var matches = request.responseText.match(/<article>([\s\S]+)<\/article>/)
+        var matches = request.responseText.match(
+          /<article>([\s\S]+)<\/article>/
+        )
         if (matches.length > 0) {
           theTarget.innerHTML = matches[1]
         } else {

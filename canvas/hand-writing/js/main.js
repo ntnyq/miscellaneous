@@ -123,7 +123,9 @@ function calcLineWidth(t, s) {
     resultLineWidth = minLineWidth
   } else {
     resultLineWidth =
-      maxLineWidth - ((v - minStrokeV) / (maxStrokeV - minStrokeV)) * (maxLineWidth - minLineWidth)
+      maxLineWidth -
+      ((v - minStrokeV) / (maxStrokeV - minStrokeV)) *
+        (maxLineWidth - minLineWidth)
   }
 
   if (lastLineWidth == -1) {
@@ -133,7 +135,10 @@ function calcLineWidth(t, s) {
 }
 
 function calcDistance(loc1, loc2) {
-  return Math.sqrt((loc1.x - loc2.x) * (loc1.x - loc2.x) + (loc1.y - loc2.y) * (loc1.y - loc2.y))
+  return Math.sqrt(
+    (loc1.x - loc2.x) * (loc1.x - loc2.x) +
+      (loc1.y - loc2.y) * (loc1.y - loc2.y)
+  )
 }
 
 function windowToCanvas(x, y) {

@@ -53,7 +53,7 @@ addEventListener(
   function(e) {
     keysDown[e.keyCode] = true
   },
-  false,
+  false
 )
 
 addEventListener(
@@ -61,7 +61,7 @@ addEventListener(
   function(e) {
     delete keysDown[e.keyCode]
   },
-  false,
+  false
 )
 
 /*当英雄捉住怪兽后重置游戏*/

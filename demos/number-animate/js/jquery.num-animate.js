@@ -9,7 +9,10 @@
   const templateNums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']
   const numberAnimateTemplate = `
       <div class="number-animate-num" data-target="{{num}}">
-        ${$.map(templateNums, c => `<span class="number-animate-span">${c}</span>`).join('')}
+        ${$.map(
+          templateNums,
+          c => `<span class="number-animate-span">${c}</span>`
+        ).join('')}
       </div>
     `
 
@@ -47,7 +50,10 @@
       let result = []
 
       // TODO 修复当设置小数位数过长的问题
-      result = (decimals ? toFixedFix(num, decimals, format) : '' + Math[format](num)).split('.')
+      result = (decimals
+        ? toFixedFix(num, decimals, format)
+        : '' + Math[format](num)
+      ).split('.')
 
       if (result[0].length > 3) {
         result[0] = result[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, separator)
@@ -76,7 +82,9 @@
 
       domStr.push('</div>')
 
-      $obj.empty().html(`<div class="number-animate-wrap">${domStr.join('')}</div>`)
+      $obj
+        .empty()
+        .html(`<div class="number-animate-wrap">${domStr.join('')}</div>`)
     },
 
     _createPrefixStyle: function(k, v) {
@@ -139,7 +147,7 @@
 
       if (!_this._isNumber(number))
         throw new Error(
-          '>>> jquery.num-animte: In order to init the plugin, a number need to be passed in!',
+          '>>> jquery.num-animte: In order to init the plugin, a number need to be passed in!'
         )
 
       _this.displayValue = _this._formatNumber(number)

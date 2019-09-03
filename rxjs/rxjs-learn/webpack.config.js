@@ -7,12 +7,10 @@ module.exports = {
 
   output: {
     path: `${__dirname}/public`,
-    filename: '[name].js'
+    filename: '[name].js',
   },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 
   module: {
     rules: [
@@ -20,13 +18,13 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        include: `${__dirname}/src`
-      }
-    ]
+        include: `${__dirname}/src`,
+      },
+    ],
   },
 
   devServer: {
     contentBase: `${__dirname}/public`,
-    open: true
-  }
+    open: true,
+  },
 }
