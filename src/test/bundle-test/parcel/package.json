@@ -1,0 +1,17 @@
+{
+  "name": "parcel-test",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "ntnyq <ntnyq13@gmail.com> (https://ntnyq.com)",
+  "license": "MIT",
+  "scripts": {
+    "serve": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.15",
+    "lodash.uniq": "^4.5.0",
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {}
+}

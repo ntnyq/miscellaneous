@@ -1,0 +1,17 @@
+{
+  "name": "tester",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index"
+  },
+  "author": "ntnyq <ntnyq13@gmail.com> (https://ntnyq.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0"
+  },
+  "dependencies": {
+    "core-js": "^3.2.1"
+  }
+}
