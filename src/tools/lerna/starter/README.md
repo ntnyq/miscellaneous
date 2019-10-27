@@ -1,6 +1,6 @@
 # Lerna 管理多依赖项目
 
-## Bootstrap
+### bootstrap
 
 ``` bash
 $ lerna bootstrap --hoist
@@ -10,7 +10,42 @@ $ lerna bootstrap --hoist
 
 该操作会自动为每个 module 执行 `npm install` 和 `npm link` 操作。
 
-## Add
+## commands
+
+常用命令
+
+``` bash
+# init 创建一个 lerna 管理的项目或将现有项目升级
+$ lerna init
+
+# create 创建一个被管理的 package
+$ lerna create
+
+# list 列出当前所有被管理的 package
+$ lerna list
+
+# changed 列出发生了修改的包
+$ lerna changed
+
+# run 在所有有要执行该命令的包内执行命令
+$ lerna run build  --stream --ignore docs
+
+# publish 将包发布至 npm 和 GitHub
+$ lerna publish
+# 其中包含了 lerna version 后者不常用
+# lerna publish from-package 可发布已确定好版本的包 
+
+# clean 删除所有模块下的依赖文件
+$ lerna clean
+# 可搭配 yarn workspaces run clean 来执行所有workspaces的clean script
+
+# changelog need [lerna-changelog](https://github.com/lerna/lerna-changelog)
+$ lerna changelog 
+```
+
+
+
+### add
 
 给模块安装依赖。
 
@@ -24,41 +59,15 @@ $ leana add lodash packages/re-* 通配符匹配
 $ lerna add a --scope=b 给b模块安装lodash依赖
 ```
 
-## Create
 
-新增一个由lerna管理的依赖。
 
-## Clean
-
-删除所有模块下的依赖文件。
-
-## Changed
-
-列出当前所有从上次提交发生了文件变动的代码。
-
-## Link
+### link
 
 将本地包链接起来，可以直接引用。
 
-## Import
+### Import
 
 导入已有的模块
-
-## List
-
-列出项目中所有的模块。
-
-## Run
-
-在每个包含该脚本的模块中运行该脚本
-
-## Publish
-
-发布版本
-
-## Changelog
-
-需要安装 [lerna-changelog](https://github.com/lerna/lerna-changelog)
 
 ## 模式
 

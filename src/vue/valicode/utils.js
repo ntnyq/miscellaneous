@@ -22,7 +22,7 @@ export function randomColor(min, max) {
  * @param {function} fn function
  */
 export function loopFn(length, fn) {
-  Array.apply(null, { length }).map((_, idx) => {
+  Array.from({ length }, (_, idx) => {
     typeof fn === 'function' && fn.call(null, idx)
   })
 }

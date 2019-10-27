@@ -1,0 +1,13 @@
+{
+  "name": "post-message",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "ntnyq <ntnyq13@gmail.com> (https://ntnyq.com)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel ./*.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
