@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "ntnyq <ntnyq13@gmail.com> (https://ntnyq.com)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.2",
+    "browser-sync": "^2.26.7",
+    "fs-extra": "^8.1.0",
+    "gulp": "^4.0.2",
+    "gulp-load-plugins": "^2.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

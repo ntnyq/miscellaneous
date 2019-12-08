@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+/*
+ * 页面样式
+ */
+html,
+body {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+
+  .swiper {
+    &-wrapper {
+      transition-timing-function: ease-in;
+    }
+
+    &-slide {
+      overflow: hidden;
+
+      &-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-ctrls {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-ctrl {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      opacity: 0;
+      appearance: none;
+      outline: none;
+      box-shadow: none;
+      border: none;
+      cursor: pointer;
+
+      &-prev {
+        left: 0;
+      }
+
+      &-next {
+        right: 0;
+      }
+    }
+
+    &-pagination {
+      left: auto;
+      right: 6%;
+      z-index: 20;
+      bottom: 6%;
+      width: auto;
+
+      &-bullet {
+        position: relative;
+        width: 4px;
+        height: 4px;
+        background: none;
+        border-radius: 0;
+        opacity: 1;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: hsla(0, 0%, 100%, 0.5);
+          transition: transform 0.5s ease;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: -3px;
+          left: -3px;
+          right: -3px;
+          bottom: -3px;
+          border: 2px solid #fff;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 0.5s ease;
+        }
+
+        &-active {
+          &:before {
+            transform: scale(0);
+          }
+
+          &:after {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+
+  &-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-weight: 300;
+    line-height: 1em;
+    font-size: 80px;
+    color: #fff;
+    transform: translate(-90%, -50%);
+  }
+
+  &-sub-title {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 6%;
+
+    &-list {
+      position: relative;
+      margin-bottom: 0.6em;
+      font-size: 1.2em;
+      color: #fff;
+
+      .sub-title-list-item {
+        font-weight: 500;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &-scroll {
+    display: block;
+    color: hsla(0, 0%, 100%, 0.65);
+  }
+}
+
+.home-swiper {
+  .swiper {
+    &-slide {
+      cursor: pointer;
+
+      &-inner {
+        position: relative;
+        padding-top: 130%;
+      }
+
+      &-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(17, 17, 17, 0.35);
+      }
+
+      &-content {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 3em 4em;
+      }
+
+      &-title {
+        white-space: normal;
+        margin-bottom: 0.4em;
+        font-size: 2em;
+        font-weight: 300;
+        color: #fff;
+      }
+
+      &-text {
+        color: hsla(0, 0%, 100%, 0.75);
+      }
+    }
+  }
+
+  &-ctrls {
+    position: relative;
+    height: 20px;
+    margin: 50px 200px;
+    overflow: hidden;
+
+    .swiper {
+      &-ctrl {
+        appearance: none;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        cursor: pointer;
+
+        & + .swiper-ctrl {
+          margin-left: 20px;
+        }
+
+        svg {
+          width: auto;
+          height: 20px;
+          overflow: hidden;
+        }
+      }
+
+      &-progress {
+        position: absolute;
+        top: 50%;
+        left: 110px;
+        right: 0;
+        height: 2px;
+        margin-top: -1px;
+
+        .swiper-pagination-progressbar {
+          background-color: #111;
+        }
+      }
+    }
+  }
+}

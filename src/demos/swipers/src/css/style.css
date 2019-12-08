@@ -1,0 +1,302 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*:before, *:after {
+  -webkit-box-sizing: inherit;
+     -moz-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/*
+ * 页面样式
+ */
+html,
+body {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-swiper .swiper-wrapper {
+  -webkit-transition-timing-function: ease-in;
+     -moz-transition-timing-function: ease-in;
+       -o-transition-timing-function: ease-in;
+          transition-timing-function: ease-in;
+}
+
+.hero-swiper .swiper-slide {
+  overflow: hidden;
+}
+
+.hero-swiper .swiper-slide-video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.hero-swiper .swiper-ctrls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-swiper .swiper-ctrl {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-swiper .swiper-ctrl-prev {
+  left: 0;
+}
+
+.hero-swiper .swiper-ctrl-next {
+  right: 0;
+}
+
+.hero-swiper .swiper-pagination {
+  left: auto;
+  right: 6%;
+  z-index: 20;
+  bottom: 6%;
+  width: auto;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  position: relative;
+  width: 4px;
+  height: 4px;
+  background: none;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  opacity: 1;
+}
+
+.hero-swiper .swiper-pagination-bullet:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  -o-transition: -o-transform 0.5s ease;
+  -moz-transition: transform 0.5s ease, -moz-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease, -moz-transform 0.5s ease, -o-transform 0.5s ease;
+}
+
+.hero-swiper .swiper-pagination-bullet:after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-transform: scale(0);
+     -moz-transform: scale(0);
+      -ms-transform: scale(0);
+       -o-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  -o-transition: -o-transform 0.5s ease;
+  -moz-transition: transform 0.5s ease, -moz-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease, -moz-transform 0.5s ease, -o-transform 0.5s ease;
+}
+
+.hero-swiper .swiper-pagination-bullet-active:before {
+  -webkit-transform: scale(0);
+     -moz-transform: scale(0);
+      -ms-transform: scale(0);
+       -o-transform: scale(0);
+          transform: scale(0);
+}
+
+.hero-swiper .swiper-pagination-bullet-active:after {
+  -webkit-transform: scale(1);
+     -moz-transform: scale(1);
+      -ms-transform: scale(1);
+       -o-transform: scale(1);
+          transform: scale(1);
+}
+
+.hero-swiper-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-swiper-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: 300;
+  line-height: 1em;
+  font-size: 80px;
+  color: #fff;
+  -webkit-transform: translate(-90%, -50%);
+     -moz-transform: translate(-90%, -50%);
+      -ms-transform: translate(-90%, -50%);
+       -o-transform: translate(-90%, -50%);
+          transform: translate(-90%, -50%);
+}
+
+.hero-swiper-sub-title {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 6%;
+}
+
+.hero-swiper-sub-title-list {
+  position: relative;
+  margin-bottom: 0.6em;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.hero-swiper-sub-title-list .sub-title-list-item {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hero-swiper-scroll {
+  display: block;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.home-swiper .swiper-slide {
+  cursor: pointer;
+}
+
+.home-swiper .swiper-slide-inner {
+  position: relative;
+  padding-top: 130%;
+}
+
+.home-swiper .swiper-slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.home-swiper .swiper-slide-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 17, 17, 0.35);
+}
+
+.home-swiper .swiper-slide-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 3em 4em;
+}
+
+.home-swiper .swiper-slide-title {
+  white-space: normal;
+  margin-bottom: 0.4em;
+  font-size: 2em;
+  font-weight: 300;
+  color: #fff;
+}
+
+.home-swiper .swiper-slide-text {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.home-swiper-ctrls {
+  position: relative;
+  height: 20px;
+  margin: 50px 200px;
+  overflow: hidden;
+}
+
+.home-swiper-ctrls .swiper-ctrl {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+
+.home-swiper-ctrls .swiper-ctrl + .swiper-ctrl {
+  margin-left: 20px;
+}
+
+.home-swiper-ctrls .swiper-ctrl svg {
+  width: auto;
+  height: 20px;
+  overflow: hidden;
+}
+
+.home-swiper-ctrls .swiper-progress {
+  position: absolute;
+  top: 50%;
+  left: 110px;
+  right: 0;
+  height: 2px;
+  margin-top: -1px;
+}
+
+.home-swiper-ctrls .swiper-progress .swiper-pagination-progressbar {
+  background-color: #111;
+}

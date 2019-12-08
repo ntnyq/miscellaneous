@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <title>示例Demo</title>
+  <link rel="stylesheet" href="./static/swiper/css/swiper.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="swiper-container hero-swiper" id="hero_swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <video class="swiper-slide-video" src="./static/videos/video.mp4" loop muted autoplay playsinline
+          preload="metadata"></video>
+      </div>
+      <div class="swiper-slide">
+        <video class="swiper-slide-video" src="./static/videos/video.mp4" loop muted autoplay playsinline
+          preload="metadata"></video>
+      </div>
+      <div class="swiper-slide">
+        <video class="swiper-slide-video" src="./static/videos/video.mp4" loop muted autoplay playsinline
+          preload="metadata"></video>
+      </div>
+      <div class="swiper-slide">
+        <video class="swiper-slide-video" src="./static/videos/video.mp4" loop muted autoplay playsinline
+          preload="metadata"></video>
+      </div>
+      <div class="swiper-slide">
+        <video class="swiper-slide-video" src="./static/videos/video.mp4" loop muted autoplay playsinline
+          preload="metadata"></video>
+      </div>
+    </div>
+    <div class="hero-swiper-text">
+      <h2 class="hero-swiper-title">
+        <!-- 示例1 将元素切割成单个字符 动画 需要直接包裹文字 且加 data-ani-view="letters" -->
+        <p data-ani-view="letters" data-scroll-container="body">Discover</p>
+        <p data-ani-view="letters" data-scroll-container="body">your world</p>
+      </h2>
+      <div class="hero-swiper-sub-title">
+        <ul class="hero-swiper-sub-title-list">
+          <li class="sub-title-list-item">
+            Journey across the desert
+          </li>
+        </ul>
+        <span class="hero-swiper-scroll">Scroll down</span>
+      </div>
+    </div>
+    <div class="swiper-ctrls">
+      <button class="swiper-ctrl swiper-ctrl-prev" type="button"></button>
+      <button class="swiper-ctrl swiper-ctrl-next" type="button"></button>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <!-- 示例2 运动多行文字 每行文字用p标签包裹 设置 data-ani-view="p" 2种示例都需要设置data-scroll-container="body" 因为目前需要监听body的滚动事件来处理动画 -->
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div class="home-swiper swiper-container" id="home_swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img1.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img2.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img3.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img4.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img5.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img6.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img7.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img8.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img9.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img10.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="swiper-slide-inner">
+          <img class="swiper-lazy swiper-slide-img" data-src="./img/img11.jpg">
+          <div class="swiper-slide-mask"></div>
+          <div class="swiper-slide-content">
+            <h3 class="swiper-slide-title">Chileno Bay</h3>
+            <p class="swiper-slide-text">Cabo San Lucas, Mexico</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-ctrls home-swiper-ctrls" id="home_swiper_ctrls">
+    <button class="swiper-ctrl swiper-ctrl-prev" type="button" role="button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.06 20.91">
+        <path
+          d="M28.06 9.81H2.2l8.89-8.9c.01-.03-.9-.91-.9-.91l-10 10c0 .01-.01.01-.02.02l-.04.04c-.01.01-.02.02-.02.03-.01.01-.02.03-.03.05-.01.01-.01.03-.02.04 0 .01-.01.02-.01.03v.02c-.01.01-.01.03-.01.04 0 .02-.01.03-.01.05 0 .01 0 .03-.01.04 0 .02 0 .03-.01.05v.1c0 .02 0 .03.01.05 0 .01 0 .03.01.04 0 .02.01.03.01.05 0 .01.01.03.01.04 0 .01 0 .01.01.02 0 .01.01.02.02.03.01.01.01.03.02.04.01.02.02.03.03.05.01.01.02.02.02.03.01.01.02.03.04.04l.02.02 10 10c0 .01.91-.91.91-.91L2.2 11.1h25.86V9.81z">
+        </path>
+      </svg>
+    </button>
+    <button class="swiper-ctrl swiper-ctrl-next" type="button" role="button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.06 20.91">
+        <path
+          d="M0 11.1h25.86L16.97 20c0 .04.91.92.91.91l10-10c0-.01.01-.01.02-.02l.04-.04c.01-.01.02-.02.02-.03.01-.01.02-.03.03-.05.01-.01.01-.03.02-.04 0-.01.01-.02.01-.03v-.02c.01-.01.01-.03.01-.04 0-.02.01-.03.01-.05 0-.01 0-.03.01-.04 0-.02 0-.03.01-.05v-.05-.05c0-.02 0-.03-.01-.05 0-.01 0-.03-.01-.04 0-.02-.01-.03-.01-.05 0-.01-.01-.03-.01-.04 0-.01 0-.01-.01-.02 0-.01-.01-.02-.02-.03-.01-.01-.01-.03-.02-.04-.01-.02-.02-.03-.03-.05-.01-.01-.02-.02-.02-.03-.01-.01-.02-.03-.04-.04.01 0 0-.01 0-.01l-10-10c0-.01-.91.91-.91.91l8.89 8.9H0v1.29z">
+        </path>
+      </svg>
+    </button>
+    <div class="swiper-progress"></div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 300px;font-size: 14px; color: #999;"
+    class="gap">
+    <div style="line-height: 1.8em;" data-ani-view="p" data-scroll-container="body">
+      <p>Discover the unique atmosphere of our private </p>
+      <p>residential club communities. Once experienced. Never </p>
+      <p>forgotten. This is classic, comfortable, modern living in </p>
+      <p>nature’s most spectacular settings worldwide. </p>
+      <p>Reassuringly exclusive. Generously welcoming. Find </p>
+      <p>your unique world – a place where families love to be; </p>
+      <p>creating unforgettable moments, together. </p>
+    </div>
+  </div>
+  <script src="./static/jquery.min.js"></script>
+  <script src="./static/swiper/js/swiper.jquery.min.js"></script>
+  <script src="./static/anime.min.js"></script>
+  <script src="./js/jquery.ani-view.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
