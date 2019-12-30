@@ -1,0 +1,10 @@
+{
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "vue", "vue-html"],
+  "editor.codeActionsOnSave": {
+    "source.eslint.fixAll": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": false
+  }
+}
