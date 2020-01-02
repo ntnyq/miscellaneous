@@ -1,0 +1,45 @@
+# replace default config
+
+plugins:
+  - cleanupAttrs: true
+  - cleanupEnableBackground: true
+  - cleanupIDs: true
+  - cleanupListOfValues: true
+  - cleanupNumericValues: true
+  - collapseGroups: true
+  - convertColors: true
+  - convertPathData: false
+  - convertShapeToPath: true
+  - convertStyleToAttrs: true
+  - convertTransform: true
+  - mergePaths: true
+  - removeComments: true
+  - removeDesc: true
+  - removeDimensions: true
+  - removeDoctype: true
+  - removeEditorsNSData: true
+  - removeEmptyAttrs: true
+  - removeEmptyContainers: true
+  - removeOffCanvasPaths: true
+  - removeEmptyText: true
+  - removeHiddenElems: true
+  - removeViewBox: true
+  - removeMetadata: true
+  - minifyStyles: true
+  - removeNonInheritableGroupAttrs: true
+  - removeRasterImages: true
+  - removeTitle: true
+  - removeUnknownsAndDefaults: true
+  - removeUselessDefs: true
+  - removeUnusedNS: true
+  - removeUselessStrokeAndFill: true
+  - removeXMLProcInst: true
+  - removeStyleElement: true
+  - removeUnknownsAndDefaults: true
+  - sortAttrs: true
+  - removeAttrs:
+      attrs:
+        - fill
+        - fill-rule
+        - stroke
+        - class
