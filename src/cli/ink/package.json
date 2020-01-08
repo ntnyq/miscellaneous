@@ -1,0 +1,27 @@
+{
+  "name": "ntnyq",
+  "version": "0.0.1",
+  "description": "The ntnyq CLI",
+  "license": "MIT",
+  "author": "ntnyq <ntnyq13@gmail.com> (https://ntnyq.com)",
+  "main": "index.js",
+  "bin": {
+    "ntnyq": "lib/cli.js"
+  },
+  "scripts": {},
+  "dependencies": {
+    "import-jsx": "^3.0.0",
+    "ink": "^2.6.0",
+    "ink-big-text": "^1.0.1",
+    "ink-box": "^1.0.0",
+    "ink-gradient": "^1.0.0",
+    "ink-image": "^2.0.0",
+    "ink-select-input": "^3.1.2",
+    "open": "^7.0.0",
+    "react": "^16.12.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=10"
+  }
+}

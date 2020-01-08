@@ -8,6 +8,7 @@ plugins:
   - cleanupNumericValues: true
   - collapseGroups: true
   - convertColors: true
+  # Set to false to fix svgicons2svgfont
   - convertPathData: false
   - convertShapeToPath: true
   - convertStyleToAttrs: true

@@ -21,7 +21,7 @@ function makeIcons() {
         fontHeight: 256,
         normalize: true,
         timestamp: Date.now(),
-        log () {}
+        log() {},
       })
     )
     .pipe(gulp.dest('src/scss'))
