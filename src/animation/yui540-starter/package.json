@@ -1,20 +1,24 @@
 {
   "name": "yui540-starter",
   "version": "1.0.0",
+  "private": false,
   "description": "Learn css animation with yui540.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline",
-    "watch": "ccross-env NODE_ENV=development webpack --watch",
-    "build": "cross-env NODE_ENV=production webpack"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ntnyq/css-animation.git"
   },
-  "author": "ntnyq <ntnyq13@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline",
+    "watch": "ccross-env NODE_ENV=development webpack --watch"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -43,10 +47,5 @@
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 10"
-  ]
+  }
 }
