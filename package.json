@@ -9,7 +9,7 @@
   },
   "scripts": {
     "pretty": "prettier --write src/**/*.js",
-    "pub": "sh scripts/deploy.sh"
+    "publish": "sh scripts/deploy.sh"
   },
   "husky": {
     "hooks": {
@@ -17,19 +17,15 @@
     }
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "package.json": [
-      "sort-package-json",
-      "git add"
-    ]
+    "*.{js,ts,vue,css,scss,html,yml,json}": "prettier --write",
+    "package.json": "sort-package-json"
   },
+  "prettier": "prettier-config-goy",
   "devDependencies": {
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
+    "lint-staged": "^10.2.13",
+    "prettier": "^2.1.1",
+    "prettier-config-goy": "^1.1.0",
     "sort-package-json": "^1.44.0"
   }
 }
