@@ -1,0 +1,21 @@
+{
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "vue-html"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.eslint.fixAll": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": false
+  }
+}

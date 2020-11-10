@@ -1,0 +1,10 @@
+{
+  "prettier": "@qxy/prettier-config",
+  "dependencies": {
+    "ajv": "^6.12.6"
+  },
+  "devDependencies": {
+    "@qxy/prettier-config": "^0.0.1",
+    "prettier": "^2.1.2"
+  }
+}
