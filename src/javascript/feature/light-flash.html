@@ -1,53 +1,42 @@
 <script>
-function red () {
-  console.log('Red light is on now');
-}
+  function red() {
+    console.log('Red light is on now')
+  }
 
-function green () {
-  console.log('Green light is on now');
-}
+  function green() {
+    console.log('Green light is on now')
+  }
 
+  function yellow() {
+    console.log('Yellow light is on now')
+  }
 
-function yellow () {
-  console.log('Yellow light is on now');
-}
+  const light = (fn, sec) => {
+    console.log(
+      `${fn.name} light will be on ${sec} second${sec === !1 ? 's' : ''} later!`
+    )
+    return new Promise(resolve => {
+      setTimeout(() => {
+        fn()
+        console.log('')
+        resolve()
+      }, sec * 1e3)
+    })
+  }
 
-const light = (fn, sec) => {
-  console.log(`${fn.name} light will be on ${sec} second${sec === !1 ? 's' : ''} later!`)
-  return new Promise(resolve => {
-    setTimeout(() => {
-      fn();
-      console.log('')
-      resolve();
-    }, sec * 1e3);
-  });
-};
-
-const step = async () => {
-  await light(red, 3)
-  await light(green, 2)
-  await light(yellow, 1)
+  const step = async () => {
+    await light(red, 3)
+    await light(green, 2)
+    await light(yellow, 1)
+    step()
+  }
   step()
-};
-step();
 </script>
 
-
-red light will be on 3 second later!
-Red light is on now
-
-
- green light will be on 2 second later!
-Green light is on now
-
- yellow light will be on 1 second later!
- Yellow light is on now
-
-light-flash.html:16 red light will be on 3 second later!
-light-flash.html:3 Red light is on now
-light-flash.html:20
-light-flash.html:16 green light will be on 2 second later!
-light-flash.html:7 Green light is on now
-light-flash.html:20
-light-flash.html:16 yellow light will be on 1 second later!
+red light will be on 3 second later! Red light is on now green light will be on
+2 second later! Green light is on now yellow light will be on 1 second later!
+Yellow light is on now light-flash.html:16 red light will be on 3 second later!
+light-flash.html:3 Red light is on now light-flash.html:20 light-flash.html:16
+green light will be on 2 second later! light-flash.html:7 Green light is on now
+light-flash.html:20 light-flash.html:16 yellow light will be on 1 second later!
 light-flash.html:12 Yellow light is on now
